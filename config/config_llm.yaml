@@ -1,0 +1,29 @@
+# 实验参数
+experiment:
+  n_i_values: [50, 100, 200, 500, 1000]
+  max_questions: 50
+
+# 数据集配置
+datasets:
+  Navigate: navigate.yaml
+#  FEVER: fever_subset.json
+#  LogiQA: logiqa_subset.json
+
+# 模型配置
+models:
+  - name: "gpt-3.5-turbo"
+    api-type: "openai"
+    base_url: "https://api.chatanywhere.tech"
+    api_keys: "sk-iX0M9keAJemCgNFqvQMVLyWkcembRT27ix50aymLnvZ18QuT"
+    params:
+      model: "gpt-3.5-turbo"
+      temperature: 0.3
+      max_tokens: 1024
+  - name: "deepseek-r1"
+    api-type: "openai"
+    base_url: "https://api.deepseek.com/v1"
+    api_keys: "sk-b4ad593d19db42d9874a63b28e710b71"
+    params:
+      model: "deepseek-r1"
+      temperature: 0.3
+      max_tokens: 1024

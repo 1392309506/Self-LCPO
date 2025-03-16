@@ -1,0 +1,81 @@
+Question:
+If you follow these instructions, do you return to the starting point? Always face forward. Take 7 steps left. Take 2 steps backward. Take 7 steps backward. Take 7 steps backward. Take 3 steps forward.
+Options:
+- Yes
+- No
+
+Answer:
+Let's break down the movements step by step:
+
+1. **Starting Point**: We begin at the starting point, facing forward.
+2. **Take 7 steps left**: 
+   - After this move, we are now 7 steps to the left of the starting point.
+3. **Take 2 steps backward**: 
+   - Since we are facing forward, "backward" means moving in the opposite direction of where we are currently facing. 
+   - We move 2 steps backward, which means we move 2 steps to the right. Now we are 5 steps to the left of the starting point.
+4. **Take 7 steps backward**: 
+   - Again, moving backward means moving to the right. 
+   - We move 7 steps to the right. Now we are at 2 steps to the right of the starting point (5 - 7 = -2).
+5. **Take 7 steps backward**: 
+   - Moving backward again means moving to the right. 
+   - We move 7 steps to the right. Now we are at 5 steps to the right of the starting point (2 - 7 = -5).
+6. **Take 3 steps forward**: 
+   - Moving forward means moving in the direction we are currently facing, which is still forward. 
+   - We move 3 steps to the left. Now we are at 2 steps to the left of the starting point (5 - 3 = 2).
+
+After all these movements, we end up 2 steps to the left of the starting point, not at the starting point.
+
+Therefore, the answer is:
+
+<answer>No</answer>
+
+Question:
+If you follow these instructions, do you return to the starting point? Turn left. Turn left. Take 6 steps. Take 3 steps. Turn around. Take 1 step. Take 3 steps. Take 5 steps.
+Options:
+- Yes
+- No
+
+Answer:
+Let's break down the instructions step by step:
+
+1. **Starting Point**: Assume we start at point (0, 0) facing north.
+2. **Turn left**: Now facing west.
+3. **Turn left**: Now facing south.
+4. **Take 6 steps**: Move south to (0, -6).
+5. **Take 3 steps**: Move south to (0, -9).
+6. **Turn around**: Now facing north.
+7. **Take 1 step**: Move north to (0, -8).
+8. **Take 3 steps**: Move north to (0, -5).
+9. **Take 5 steps**: Move north to (0, 0).
+
+After following all the instructions, we end up back at the starting point (0, 0).
+
+Therefore, the answer is:
+
+<answer>Yes</answer>
+
+Question:
+If you follow these instructions, do you return to the starting point? Always face forward. Take 6 steps backward. Take 8 steps left. Take 3 steps right. Take 7 steps forward. Take 3 steps right. Take 9 steps right. Take 1 step backward. Take 7 steps left.
+Options:
+- Yes
+- No
+
+Answer:
+Let's analyze the movements step by step:
+
+1. **Starting Point**: Let's denote the starting point as (0, 0).
+2. **Step 1**: Take 6 steps backward. This means moving in the negative y-direction. New position: (0, -6).
+3. **Step 2**: Take 8 steps left. This means moving in the negative x-direction. New position: (-8, -6).
+4. **Step 3**: Take 3 steps right. This means moving in the positive x-direction. New position: (-5, -6).
+5. **Step 4**: Take 7 steps forward. This means moving in the positive y-direction. New position: (-5, 1).
+6. **Step 5**: Take 3 steps right. New position: (-2, 1).
+7. **Step 6**: Take 9 steps right. New position: (7, 1).
+8. **Step 7**: Take 1 step backward. New position: (7, 0).
+9. **Step 8**: Take 7 steps left. New position: (0, 0).
+
+After following all the steps, we end up back at the starting point (0, 0).
+
+Therefore, the answer is:
+
+<answer>Yes</answer>
+
