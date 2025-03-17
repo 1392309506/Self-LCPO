@@ -1,6 +1,6 @@
 import argparse
 
-from components.optimizer import PromptOptimizer
+from spo.components import PromptOptimizer
 from utils.llm_client import SPO_LLM
 
 

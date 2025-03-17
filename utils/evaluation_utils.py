@@ -4,7 +4,7 @@ from typing import Any, List, Optional, Tuple
 
 import tiktoken
 
-from components.evaluator import QuickEvaluate, QuickExecute
+from spo.components import QuickEvaluate, QuickExecute
 
 from utils.logger_util import LoggerUtil
 logger=LoggerUtil.get_logger("EvaluationUtils")

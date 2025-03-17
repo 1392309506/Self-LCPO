@@ -29,7 +29,7 @@ class ExperimentRunner:
         # except json.JSONDecodeError:
         #     raise ValueError(f"数据集文件 {path} 格式错误")
 
-    # @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
+    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
     def call_model(self, model_cfg: dict, prompt: str):
         """执行模型调用"""
         client = OpenAI(
@@ -105,6 +105,12 @@ class ExperimentRunner:
             logging.info(f"模型参数：{model_cfg}")
 
         print(self.config.datasets.items())
+        '''
+        多一个参数path。
+        数据集处理可能有问题？模型接口调用可能有问题？
+        
+        
+        '''
         # try:
         #     data = self._load_dataset(path).get("qa", [
         #     ])

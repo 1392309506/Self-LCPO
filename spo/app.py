@@ -6,7 +6,7 @@ import streamlit as st
 import yaml
 from loguru import logger as _logger
 
-from components.optimizer import PromptOptimizer
+from spo.components import PromptOptimizer
 from utils.llm_client import SPO_LLM, RequestType
 
 

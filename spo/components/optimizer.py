@@ -7,7 +7,7 @@ import asyncio
 from pathlib import Path
 from typing import List
 
-from prompts.optimize_prompt import PROMPT_OPTIMIZE_PROMPT
+from spo.prompts.optimize_prompt import PROMPT_OPTIMIZE_PROMPT
 from utils import load
 from utils.data_utils import DataUtils
 from utils.evaluation_utils import EvaluationUtils

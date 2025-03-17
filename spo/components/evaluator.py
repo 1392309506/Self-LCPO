@@ -6,7 +6,7 @@ import asyncio
 import random
 from typing import Any, Dict
 
-from prompts.evaluate_prompt import EVALUATE_PROMPT
+from spo.prompts.evaluate_prompt import EVALUATE_PROMPT
 from utils import load
 from utils.llm_client import SPO_LLM, RequestType, extract_content
 
