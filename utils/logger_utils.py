@@ -2,7 +2,6 @@ import logging
 
 class LoggerUtil:
     """工具类，提供日志封装方法"""
-
     @staticmethod
     def get_logger(name: str = "app"):
         """获取一个标准化的 logger"""

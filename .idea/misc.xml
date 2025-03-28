@@ -3,5 +3,5 @@
   <component name="Black">
     <option name="sdkName" value="slco" />
   </component>
-  <component name="ProjectRootManager" version="2" project-jdk-name="slco" project-jdk-type="Python SDK" />
+  <component name="ProjectRootManager" version="2" project-jdk-name="lcpo" project-jdk-type="Python SDK" />
 </project>

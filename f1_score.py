@@ -7,23 +7,18 @@ from typing import List, Dict
 
 from utils import load_utils
 from utils.prompt_utils import PromptUtils
-from utils.data_utils import DataUtils
 from utils.llm_client import QWQ_LLM, RequestType
 from utils.logger_utils import LoggerUtil
-import utils.load_utils
-
 logger = LoggerUtil.get_logger("F1_Evaluator")
 
 
 class F1_Evaluator:
-    # 可在其他类中调用 F1_Evaluator.evaluate计算输出后的F1分数
-    def __init__(self, optimized_path: str,
-                 model_url: str,
-                 dataset_name: str,
-                 dataset_path: str,
-                 api_key: str = "",
-                 ):
-        logger.info(f"初始化 F1_Evaluator，优化路径: {optimized_path}")
+    def __init__(self, optimized_path: str = "",
+                 model_url: str = "",
+                 dataset_name: str = "",
+                 dataset_path: str = "",
+                 api_key: str = ""):
+        logger.info(f"初始化 F1_Evaluator")
         self.root_path = Path(optimized_path)
         self.prompt_utils = PromptUtils(self.root_path)
         # self.model_url = model_url  # LLM 的 API 地址
@@ -32,14 +27,14 @@ class F1_Evaluator:
         # self.api_key = api_key
         # self.api_type = "openai"
         # self.data_utils = DataUtils(self.root_path)
-        QWQ_LLM.initialize(
-            optimize_kwargs={"use_ollama": False},
-            evaluate_kwargs={"use_ollama": False},
-            execute_kwargs={"use_ollama": False},
-            analyze_kwargs={"use_ollama": False},
-            generate_kwargs={"use_ollama": False}
-        )
-        self.llm_client = QWQ_LLM.get_instance()
+        # QWQ_LLM.initialize(
+        #     optimize_kwargs={"use_ollama": False},
+        #     evaluate_kwargs={"use_ollama": False},
+        #     execute_kwargs={"use_ollama": False},
+        #     analyze_kwargs={"use_ollama": False},
+        #     generate_kwargs={"use_ollama": False}
+        # )
+        # self.llm_client = QWQ_LLM.get_instance()
 
     async def query_llm_async(self, prompt: str, question: str) -> str:
         """异步调用 QWQ_LLM 客户端接口获取回答"""
@@ -104,7 +99,6 @@ class F1_Evaluator:
 
     def calculate_f1(self, prediction: str, ground_truth: str):
         """计算单个 F1 分数"""
-        logger.info(f"计算 F1，预测: {prediction}，标准答案: {ground_truth}")
         pred_tokens = prediction.split()
         truth_tokens = ground_truth.split()
         common = set(pred_tokens) & set(truth_tokens)
@@ -118,14 +112,13 @@ class F1_Evaluator:
         logger.info(f"Precision: {precision:.4f}, Recall: {recall:.4f}, F1: {f1:.4f}")
         return f1
 
-    def calculate_f1_list(self, data, answers):
+    def calculate_f1_list(self, data: List[Dict[str, str]], predictions: List[str]) -> float:
         """计算数据集的平均 F1 分数"""
         f1_scores = []
 
-        for item, result in zip(data, answers):
+        for item, prediction in zip(data, predictions):
             question = item.get("question")
             ground_truth = item.get("answer")
-            prediction = result.get("answer")
 
             if not question or not ground_truth:
                 logger.warning("样本数据缺少 question 或 answer 字段，跳过该样本。")

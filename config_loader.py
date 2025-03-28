@@ -96,16 +96,14 @@ class ConfigLoader:
         }
 
     @property
-    def models(self) -> List[Dict]:
-        """获取标准化的模型配置"""
-        normalized_models = []
-        for model in self.config['models']:
-            normalized = {
-                'name': model['name'],
+    def models(self) -> Dict[str, Dict]:
+        """将模型配置转换为以模型名称为键的字典"""
+        return {
+            model['name']: {
                 'api_type': model['api-type'],  # 转换为下划线命名
                 'base_url': model.get('base_url'),
                 'api_key': model['api_keys'],
                 'params': model['params']
             }
-            normalized_models.append(normalized)
-        return normalized_models
+            for model in self.config['models']
+        }

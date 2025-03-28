@@ -4,14 +4,12 @@ import yaml
 
 
 class LoadUtils:
-    def __init__(self, file_name: str, sample_k: int = 3):
+    def __init__(self, file_name: str):
         """
         初始化 LoadUtils
         :param file_name: YAML 配置文件名
-        :param sample_k: 需要抽样的 QA 数量
         """
         self.file_name = file_name
-        self.sample_k = sample_k
         self.config_path = Path(__file__).parent.parent / "settings" / self.file_name
 
         if not self.config_path.exists():
@@ -31,7 +29,7 @@ class LoadUtils:
         except Exception as e:
             raise Exception(f"Error reading file '{self.file_name}': {str(e)}")
 
-    def load_meta_data(self) -> tuple:
+    def load_meta_data(self, sample_k: int = 3) -> tuple:
         """
         加载配置数据，包括 prompt、requirements、随机抽样的 QA 对以及 count 信息
         :return: (prompt, requirements, random_qa, count)
@@ -51,6 +49,11 @@ class LoadUtils:
         count_str = f", within {count} words" if isinstance(count, int) else ""
 
         # 随机抽样
-        random_qa = random.sample(qa, min(self.sample_k, len(qa)))
+        # If k is None or 0, return all QA pairs
+        if sample_k is None or sample_k == 0:
+            return prompt, requirements, qa, count
+
+        # Otherwise, sample k QA pairs
+        random_qa = random.sample(qa, min(sample_k, len(qa)))
 
         return prompt, requirements, random_qa, count_str
