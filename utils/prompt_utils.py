@@ -1,5 +1,5 @@
 from pathlib import Path
-from utils.logger_util import LoggerUtil
+from utils.logger_utils import LoggerUtil
 logger=LoggerUtil.get_logger("PromptUtils")
 class PromptUtils:
     def __init__(self, root_path: Path):

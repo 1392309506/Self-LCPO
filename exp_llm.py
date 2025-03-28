@@ -9,10 +9,24 @@ from tenacity import retry, stop_after_attempt, wait_exponential
 
 from config_loader import ConfigLoader
 
+from utils.prompt_utils import PromptUtils
+from utils.data_utils import DataUtils
+from utils.logger_utils import LoggerUtil
+from utils.load_utils import LoadUtils
+
+from f1_score import F1_Evaluator
+
+
 class ExperimentRunner:
     def __init__(self, config: ConfigLoader):
         self.config = config
         self.results = {m["name"]: {} for m in config.models}
+        self.F1_Evaluator = F1_Evaluator(
+            model_url=args.model_url,
+            dataset_name=args.dataset_name,
+            dataset_path=args.dataset_path,
+            api_key=args.api_key,
+        )
 
     def _load_dataset(self, dataset_path: str):
         """安全加载数据集"""
@@ -108,42 +122,63 @@ class ExperimentRunner:
         '''
         多一个参数path。
         数据集处理可能有问题？模型接口调用可能有问题？
-        
-        
+
+
         '''
-        # try:
-        #     data = self._load_dataset(path).get("qa", [
-        #     ])
-        #     logging.info(f"加载数据集 {dataset_name}，共 {len(data)} 条数据")
-        #
-        #     for n_i in exp_params["n_i_values"]:
-        #         prompt = ("Please think step by step."
-        #                   "Ensure the response concludes with the answer in the XML format:) "
-        #                   "<answer>[Yes or No]</answer>."
-        #                   f"Think for {n_i} tokens. ")
-        #         f1 = self.evaluate_model(model_cfg, data, n_i, prompt)
-        #         print(f"f1= {f1} ")
-        #         self.results[model_cfg["name"]][n_i] = f1
-        #         logging.info(f"n_i={n_i or '无限制'} | F1={f1:.4f}")
-        #
-        # except Exception as e:
-        #     logging.error(f"数据集 {dataset_name} 处理失败: {str(e)}")
+        try:
+            loader = LoadUtils(file_name="example.yaml", sample_k=5)
+            prompt, requirements, qa, count_str = loader.load_meta_data()
+
+            for n_i in exp_params["n_i_values"]:
+                prompt = (prompt + f"Think for {n_i} tokens.")
+                f1 = self.evaluate_model(model_cfg, data, n_i, prompt)
+                print(f"f1= {f1} ")
+                self.results[model_cfg["name"]][n_i] = f1
+                logging.info(f"n_i={n_i or '无限制'} | F1={f1:.4f}")
+
+        except Exception as e:
+            logging.error(f"数据集 {dataset_name} 处理失败: {str(e)}")
 
         self._save_results()
         self.visualize()
         logging.info("实验完成")
 
-if __name__ == "__main__":
-    logging.basicConfig(level=logging.INFO)
+
+def parse_args():
+    # # LLM parameter
+    # parser.add_argument("--opt-model", type=str, default="claude-3-5-sonnet-20240620", help="Model for optimization")
+    # parser.add_argument("--opt-temp", type=float, default=0.7, help="Temperature for optimization")
+    # parser.add_argument("--eval-model", type=str, default="gpt-4o-mini", help="Model for evaluation")
+    # parser.add_argument("--eval-temp", type=float, default=0.3, help="Temperature for evaluation")
+    # parser.add_argument("--exec-model", type=str, default="gpt-4o-mini", help="Model for execution")
+    # parser.add_argument("--exec-temp", type=float, default=0, help="Temperature for execution")
+
+    # # PromptOptimizer parameter
+    # parser.add_argument("--workspace", type=str, default="workspace", help="Path for optimized output")
+    # parser.add_argument("--initial-round", type=int, default=1, help="Initial round number")
+    # parser.add_argument("--max-rounds", type=int, default=10, help="Maximum number of rounds")
+    # parser.add_argument("--template", type=str, default="Poem.yaml", help="Template file name")
+    # parser.add_argument("--name", type=str, default="Poem", help="Project name")
+
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    args = parser.parse_args()
+    parser.add_argument("--model_name", type=str, default="deepseek-r1", help="Project name")
+    return parser.parse_args()
+
+
+def main():
+    logging.basicConfig(level=logging.INFO)
+    args = parse_args()
 
     try:
         config = ConfigLoader(args.config)
         runner = ExperimentRunner(config)
-        runner.run(dataset_name="gpt-3.5-turbo")
+        runner.run(args.model_name)
     except Exception as e:
         logging.error(f"实验启动失败: {str(e)}")
         exit(1)
+
+
+if __name__ == "__main__":
+    main()

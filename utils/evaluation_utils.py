@@ -6,7 +6,7 @@ import tiktoken
 
 from spo.components import QuickEvaluate, QuickExecute
 
-from utils.logger_util import LoggerUtil
+from utils.logger_utils import LoggerUtil
 logger=LoggerUtil.get_logger("EvaluationUtils")
 
 EVALUATION_REPETITION = 4

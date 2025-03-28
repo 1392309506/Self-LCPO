@@ -7,7 +7,7 @@ import random
 from typing import Any, Dict
 
 from spo.prompts.evaluate_prompt import EVALUATE_PROMPT
-from utils import load
+from utils import load_utils
 from utils.llm_client import SPO_LLM, RequestType, extract_content
 
 

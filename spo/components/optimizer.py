@@ -8,13 +8,13 @@ from pathlib import Path
 from typing import List
 
 from spo.prompts.optimize_prompt import PROMPT_OPTIMIZE_PROMPT
-from utils import load
+from utils import load_utils
 from utils.data_utils import DataUtils
 from utils.evaluation_utils import EvaluationUtils
 from utils.llm_client import SPO_LLM, RequestType, extract_content
 from utils.prompt_utils import PromptUtils
 
-from utils.logger_util import LoggerUtil
+from utils.logger_utils import LoggerUtil
 logger=LoggerUtil.get_logger("PromptOptimizer")
 
 class PromptOptimizer:

@@ -5,7 +5,7 @@ from typing import Dict, List, Union
 
 import pandas as pd
 
-from utils.logger_util import LoggerUtil
+from utils.logger_utils import LoggerUtil
 logger=LoggerUtil.get_logger("DataUtils")
 
 

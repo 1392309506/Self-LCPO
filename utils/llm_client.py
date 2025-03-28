@@ -1,26 +1,31 @@
 import asyncio
 import re
 import json
-import requests
+import torch
+import aiohttp
 from enum import Enum
 from typing import Any, Dict, List, Optional
+from transformers import AutoModelForCausalLM, AutoTokenizer
 
-# Online LLM API Configuration
-DEFAULT_API_URL = "https://api.example.com/llm/generate"  # 线上大模型的API地址
-# OLLAMA_API_URL = "http://localhost:11434/api/generate"
-MODEL_NAME = "llama3.1"  # 默认模型名称
-TEMPERATURE = 0.7  # 默认温度参数
-API_KEY = "your-api-key"  # 线上API需要的API key
+# Model Configuration
+QWQ_MODEL_PATH = "/root/qwq32b"
+DEVICE = "cuda:0"
+TEMPERATURE = 0.7  # Default temperature parameter
+
+# OLLama Local API Configuration
+OLLAMA_API_URL = "http://localhost:11434/api/generate"  # Local OLLama server URL
+OLLAMA_MODEL_NAME = "llama3.1"  # Default model name
+
 
 class RequestType(Enum):
     OPTIMIZE = "optimize"
     EVALUATE = "evaluate"
     EXECUTE = "execute"
     ANALYZE = "analyze"
+    GENERATE = "generate"  # Added for prompt variant generation
+
 
 class LLMResponse:
-    """简单类来模拟LLM的响应结构"""
-
     def __init__(self, content: str):
         self.choices = [self.Choice(content)]
 
@@ -32,8 +37,9 @@ class LLMResponse:
             def __init__(self, content: str):
                 self.content = content
 
-class SPO_LLM:
-    _instance: Optional["SPO_LLM"] = None
+
+class QWQ_LLM:
+    _instance: Optional["QWQ_LLM"] = None
 
     def __init__(
             self,
@@ -41,92 +47,167 @@ class SPO_LLM:
             evaluate_kwargs: Optional[dict] = None,
             execute_kwargs: Optional[dict] = None,
             analyze_kwargs: Optional[dict] = None,
+            generate_kwargs: Optional[dict] = None,  # Added for variant generation
     ) -> None:
         self.optimize_config = self._prepare_config(optimize_kwargs)
         self.evaluate_config = self._prepare_config(evaluate_kwargs)
         self.execute_config = self._prepare_config(execute_kwargs)
         self.analyze_config = self._prepare_config(analyze_kwargs)
+        self.generate_config = self._prepare_config(generate_kwargs)  # New config
 
-        # 打印初始化信息
-        print(f"SPO_LLM initialized with model: {MODEL_NAME}")
+        # Initialize QWQ model only if needed
+        self.model = None
+        self.tokenizer = None
+        self.use_ollama = {}
+
+        # Track which configs use Ollama
+        for req_type, config in [
+            (RequestType.OPTIMIZE, self.optimize_config),
+            (RequestType.EVALUATE, self.evaluate_config),
+            (RequestType.EXECUTE, self.execute_config),
+            (RequestType.ANALYZE, self.analyze_config),
+            (RequestType.GENERATE, self.generate_config),  # Added new type
+        ]:
+            self.use_ollama[req_type] = config.get("use_ollama", False)
+
+        # Only load QWQ model if at least one config uses it
+        if not all(self.use_ollama.values()):
+            print(f"Loading QWQ model: {QWQ_MODEL_PATH} on {DEVICE}")
+            self.model = AutoModelForCausalLM.from_pretrained(
+                QWQ_MODEL_PATH,
+                torch_dtype=torch.bfloat16,
+                device_map=DEVICE,
+            )
+
+            self.tokenizer = AutoTokenizer.from_pretrained(
+                QWQ_MODEL_PATH,
+                padding_side="left",
+                trust_remote_code=True
+            )
+            print("QWQ model loaded successfully")
+
+        print(f"QWQ_LLM initialized with configurations:")
+        for req_type in RequestType:
+            config_type = req_type.value
+            if self.use_ollama.get(req_type, False):
+                print(
+                    f"  - {config_type}: Using Ollama model {self._get_config_for_type(req_type).get('model', OLLAMA_MODEL_NAME)}")
+            else:
+                print(f"  - {config_type}: Using QWQ model on {DEVICE}")
 
     def _prepare_config(self, kwargs: Optional[dict]) -> Dict[str, Any]:
-        """为LLM请求准备配置"""
         if not kwargs:
             kwargs = {}
 
-        config = {
-            "model": kwargs.get("model", MODEL_NAME),
-            "base_url": kwargs.get("base_url", DEFAULT_API_URL),
-            "temperature": kwargs.get("temperature", TEMPERATURE),
-            "max_tokens": kwargs.get("max_tokens", 1000),
-            "api_key": kwargs.get("api_key", API_KEY)  # 增加API key的支持
-        }
+        # Detect if using Ollama
+        use_ollama = kwargs.get("use_ollama", False)
+
+        # If using Ollama
+        if use_ollama:
+            config = {
+                "use_ollama": True,
+                "model": kwargs.get("model", OLLAMA_MODEL_NAME),
+                "base_url": kwargs.get("base_url", OLLAMA_API_URL),
+                "temperature": kwargs.get("temperature", TEMPERATURE),
+                "max_tokens": kwargs.get("max_tokens", 1000)
+            }
+        # If using QWQ model
+        else:
+            config = {
+                "use_ollama": False,
+                "model_path": kwargs.get("model_path", QWQ_MODEL_PATH),
+                "device": kwargs.get("device", DEVICE),
+                "temperature": kwargs.get("temperature", TEMPERATURE),
+                "max_tokens": kwargs.get("max_tokens", 1000)
+            }
 
         return config
 
-    async def _send_request(self, config: Dict[str, Any], messages: List[Dict[str, str]]) -> LLMResponse:
-        """向线上大模型API发送请求"""
-        headers = {
-            "Content-Type": "application/json",
-            "Authorization": f"Bearer {config['api_key']}"  # 通过Authorization头传递API key
-        }
-
-        # 对于LLM，我们需要提取最后一条消息的内容
-        prompt = messages[-1]["content"]
-
-        payload = {
-            "model": config["model"],
-            "prompt": prompt,
-            "temperature": config["temperature"],
-            "max_tokens": config.get("max_tokens", 1000),
-            "stream": False
-        }
-
-        try:
-            response = requests.post(
-                config["base_url"],
-                headers=headers,
-                data=json.dumps(payload),
-                timeout=30  # 设置请求超时时间
-            )
-
-            if response.status_code == 200:
-                data = response.json()
-                return LLMResponse(data.get("response", "").strip())
-            else:
-                error_msg = f"Error: API request failed with status code {response.status_code}"
-                print(error_msg)
-                return LLMResponse(error_msg)
-
-        except requests.Timeout:
-            error_msg = "Error: The request timed out"
-            print(error_msg)
-            return LLMResponse(error_msg)
-        except Exception as e:
-            error_msg = f"Exception during API call: {str(e)}"
-            print(error_msg)
-            return LLMResponse(error_msg)
-
-    async def acompletion(self, config: Dict[str, Any], messages: List[Dict[str, str]]) -> LLMResponse:
-        """异步完成方法"""
-        return await self._send_request(config, messages)
-
-    async def responser(self, request_type: RequestType, messages: List[dict]) -> str:
-        """根据请求类型从LLM获取响应"""
+    def _get_config_for_type(self, request_type: RequestType) -> Dict[str, Any]:
         config_mapping = {
             RequestType.OPTIMIZE: self.optimize_config,
             RequestType.EVALUATE: self.evaluate_config,
             RequestType.EXECUTE: self.execute_config,
             RequestType.ANALYZE: self.analyze_config,
+            RequestType.GENERATE: self.generate_config,  # Added new type
         }
 
-        config = config_mapping.get(request_type)
-        if not config:
+        return config_mapping.get(request_type)
+
+    async def _generate_response_qwq(self, config: Dict[str, Any], prompt: str) -> str:
+        loop = asyncio.get_event_loop()
+
+        def _generate():
+            inputs = self.tokenizer(prompt, return_tensors="pt").to(self.model.device)
+
+            with torch.no_grad():
+                outputs = self.model.generate(
+                    inputs.input_ids,
+                    max_new_tokens=config["max_tokens"],
+                    temperature=config["temperature"],
+                    do_sample=True if config["temperature"] > 0 else False,
+                    pad_token_id=self.tokenizer.eos_token_id
+                )
+
+            # Only return the newly generated tokens
+            response_ids = outputs[0][inputs.input_ids.shape[1]:]
+            response = self.tokenizer.decode(response_ids, skip_special_tokens=True)
+            return response.strip()
+
+        try:
+            response = await loop.run_in_executor(None, _generate)
+            return response
+        except Exception as e:
+            error_msg = f"Exception during QWQ model generation: {str(e)}"
+            print(error_msg)
+            return error_msg
+
+    async def _generate_response_ollama(self, config: Dict[str, Any], prompt: str) -> str:
+        base_url = config.get("base_url", OLLAMA_API_URL)
+        model_name = config.get("model", OLLAMA_MODEL_NAME)
+        temperature = config.get("temperature", TEMPERATURE)
+        max_tokens = config.get("max_tokens", 1000)
+
+        payload = {
+            "model": model_name,
+            "prompt": prompt,
+            "temperature": temperature,
+            "max_tokens": max_tokens,
+            "stream": False  # ✅ 关闭流式返回，确保返回 JSON
+        }
+
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.post(base_url, json=payload) as response:
+                    if response.status != 200:
+                        error_text = await response.text()
+                        return f"Error from Ollama API: {response.status}, {error_text}"
+
+                    result = await response.json()  # ✅ 现在 Ollama 会返回 JSON
+                    return result.get("response", "")  # 提取文本
+        except Exception as e:
+            error_msg = f"Exception during Ollama API call: {str(e)}"
+            print(error_msg)
+            return error_msg
+
+    async def acompletion(self, request_type: RequestType, messages: List[Dict[str, str]]) -> LLMResponse:
+        config = self._get_config_for_type(request_type)
+        prompt = messages[-1]["content"]
+
+        # Choose the appropriate generation method based on the config
+        if config.get("use_ollama", False):
+            response = await self._generate_response_ollama(config, prompt)
+        else:
+            response = await self._generate_response_qwq(config, prompt)
+
+        return LLMResponse(response)
+
+    async def responser(self, request_type: RequestType, messages: List[dict]) -> str:
+        if request_type not in RequestType:
             raise ValueError(
                 f"Invalid request type. Valid types: {', '.join([t.value for t in RequestType])}")
 
-        response = await self.acompletion(config, messages)
+        response = await self.acompletion(request_type, messages)
         return response.choices[0].message.content
 
     @classmethod
@@ -134,88 +215,98 @@ class SPO_LLM:
                    optimize_kwargs: dict = None,
                    evaluate_kwargs: dict = None,
                    execute_kwargs: dict = None,
-                   analyze_kwargs: dict = None) -> None:
-        """初始化全局实例"""
-        if optimize_kwargs is None:
-            optimize_kwargs = {"model": MODEL_NAME}
-        if evaluate_kwargs is None:
-            evaluate_kwargs = {"model": MODEL_NAME}
-        if execute_kwargs is None:
-            execute_kwargs = {"model": MODEL_NAME}
-        if analyze_kwargs is None:
-            analyze_kwargs = {"model": MODEL_NAME}
-
-        cls._instance = cls(optimize_kwargs, evaluate_kwargs, execute_kwargs, analyze_kwargs)
+                   analyze_kwargs: dict = None,
+                   generate_kwargs: dict = None) -> None:  # Added for variant generation
+        cls._instance = cls(
+            optimize_kwargs,
+            evaluate_kwargs,
+            execute_kwargs,
+            analyze_kwargs,
+            generate_kwargs
+        )
 
     @classmethod
-    def get_instance(cls) -> "SPO_LLM":
-        """获取全局实例"""
+    def get_instance(cls) -> "QWQ_LLM":
         if cls._instance is None:
-            # 如果没有初始化，使用默认设置自动初始化
             cls.initialize()
-            print("Warning: SPO_LLM auto-initialized with default settings")
+            print("Warning: QWQ_LLM auto-initialized with default settings")
         return cls._instance
 
 
 def extract_content(text: str, tag: str) -> Optional[str]:
-    """提取文本中<tag>...</tag>标签内的内容"""
     pattern = rf"<{tag}>(.*?)</{tag}>"
     match = re.search(pattern, text, re.DOTALL)
     return match.group(1).strip() if match else None
 
 
 async def main():
-    # 使用线上API模型配置初始化
-    SPO_LLM.initialize(
+    # Example with mixed configuration
+    QWQ_LLM.initialize(
+        # Use QWQ for optimization tasks
         optimize_kwargs={
-            "model": MODEL_NAME,
-            "base_url": DEFAULT_API_URL,
-            "temperature": TEMPERATURE,
-            "max_tokens": 1000,
-            "api_key": API_KEY  # 传递API key
+            "use_ollama": False,
+            "model_path": QWQ_MODEL_PATH,
+            "device": DEVICE,
+            "temperature": 0.7,
+            "max_tokens": 1000
         },
+        # Use Ollama for evaluation tasks
         evaluate_kwargs={
-            "model": MODEL_NAME,
-            "base_url": DEFAULT_API_URL,
-            "temperature": TEMPERATURE,
-            "max_tokens": 500,
-            "api_key": API_KEY  # 传递API key
+            "use_ollama": True,
+            "model": "llama3.1",
+            "base_url": OLLAMA_API_URL,
+            "temperature": 0.7,
+            "max_tokens": 500
         },
+        # Use QWQ for execution tasks
         execute_kwargs={
-            "model": MODEL_NAME,
-            "base_url": DEFAULT_API_URL,
-            "temperature": TEMPERATURE,
-            "max_tokens": 500,
-            "api_key": API_KEY  # 传递API key
+            "use_ollama": False,
+            "model_path": QWQ_MODEL_PATH,
+            "device": DEVICE,
+            "temperature": 0.7,
+            "max_tokens": 1000
         },
+        # Use Ollama for analysis tasks
         analyze_kwargs={
-            "model": MODEL_NAME,
-            "base_url": DEFAULT_API_URL,
-            "temperature": TEMPERATURE,
-            "max_tokens": 500,
-            "api_key": API_KEY  # 传递API key
+            "use_ollama": True,
+            "model": "llama3.1",
+            "base_url": OLLAMA_API_URL,
+            "temperature": 0.7,
+            "max_tokens": 500
         },
+        # Use QWQ for variant generation
+        generate_kwargs={
+            "use_ollama": False,
+            "model_path": QWQ_MODEL_PATH,
+            "device": DEVICE,
+            "temperature": 0.8,  # Slightly higher for more creative variants
+            "max_tokens": 1500
+        }
     )
 
-    llm = SPO_LLM.get_instance()
+    llm = QWQ_LLM.get_instance()
 
-    # 测试消息
     hello_msg = [{"role": "user", "content": "hello"}]
 
-    print("\nTesting EXECUTE request type:")
+    print("\nTesting EXECUTE request type (QWQ model):")
     response = await llm.responser(request_type=RequestType.EXECUTE, messages=hello_msg)
     print(f"AI: {response}")
 
-    print("\nTesting OPTIMIZE request type:")
+    print("\nTesting OPTIMIZE request type (QWQ model):")
     response = await llm.responser(request_type=RequestType.OPTIMIZE, messages=hello_msg)
     print(f"AI: {response}")
 
-    print("\nTesting EVALUATE request type:")
+    print("\nTesting EVALUATE request type (Ollama model):")
     response = await llm.responser(request_type=RequestType.EVALUATE, messages=hello_msg)
     print(f"AI: {response}")
 
-    print("\nTesting ANALYZE request type:")
+    print("\nTesting ANALYZE request type (Ollama model):")
     response = await llm.responser(request_type=RequestType.ANALYZE, messages=hello_msg)
+    print(f"AI: {response}")
+
+    print("\nTesting GENERATE request type (QWQ model):")
+    generate_msg = [{"role": "user", "content": "Generate a prompt for a customer service chatbot"}]
+    response = await llm.responser(request_type=RequestType.GENERATE, messages=generate_msg)
     print(f"AI: {response}")
 
 
