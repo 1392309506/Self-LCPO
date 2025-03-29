@@ -1,6 +1,6 @@
 # 实验参数
 experiment:
-  n_i_values: [50, 100, 200, 500, 1000]
+  n_i_values: [100, 200, 500, 1000, 2000, 4000, 8000, 10000]
   max_questions: 50
 
 # 数据集配置
@@ -13,7 +13,7 @@ datasets:
 models:
   - name: "gpt-3.5-turbo"
     api-type: "openai"
-    base_url: "https://api.chatanywhere.tech"
+    base_url: "https://api.chatanywhere.tech/v1/chat/completions"
     api_keys: "sk-iX0M9keAJemCgNFqvQMVLyWkcembRT27ix50aymLnvZ18QuT"
     params:
       model: "gpt-3.5-turbo"

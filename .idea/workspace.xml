@@ -4,7 +4,72 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="Optimization tool category, supplement llm_client, complete exp_llm" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="Optimization tool category, supplement llm_client, complete exp_llm">
+      <change afterPath="$PROJECT_DIR$/metagpt/_compat.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/base_llm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/config2.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/browser_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/embedding_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/file_parser_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/llm_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/mermaid_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/models_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/redis_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/s3_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/search_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/configs/workspace_config.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/context.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/context_mixin.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/logs.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/provider/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/provider/base_llm.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/provider/llm_provider_registry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/azure_tts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/iflytek_tts.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/libs/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/libs/data_preprocess.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/libs/email_login.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/libs/feature_engineering.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/libs/gpt_v_generator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/libs/sd_engine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/libs/web_scraping.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/metagpt_oas3_api_svc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/metagpt_text_to_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/moderation.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/openai_text_to_embedding.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/openai_text_to_image.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/openapi_v3_hello.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/prompt_writer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/search_engine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/search_engine_bing.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/search_engine_ddg.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/search_engine_googleapi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/search_engine_meilisearch.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/search_engine_serpapi.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/search_engine_serper.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/tool_convert.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/tool_data_type.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/tool_recommend.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/tool_registry.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/translator.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/ut_writer.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/web_browser_engine.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/web_browser_engine_playwright.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/metagpt/tools/web_browser_engine_selenium.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prompt/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/prompt/exp_llm_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/f1_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/f1_score.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/results.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/general_llm_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/general_llm_client.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/llm_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/llm_client.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,26 +97,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.exp_llm.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO/metagpt",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
+    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO/metagpt&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code_store\Python\Self-LCPO\metagpt" />
+      <recent name="D:\Code_store\Python\Self-LCPO\metagpt\tools" />
+      <recent name="D:\Code_store\Python\Self-LCPO\metagpt\utils" />
+      <recent name="D:\Code_store\Python\Self-LCPO\metagpt\provider" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\metagpt" />
       <recent name="D:\Code_store\Python\Self-LCPO\spo" />
       <recent name="D:\Code_store\Python\SLCO\spo" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Python.exp_llm">
     <configuration name="exp_llm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Self-LCPO" />
       <option name="ENV_FILES" value="" />
@@ -74,9 +144,32 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="general_llm_client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/general_llm_client.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Python.exp_llm" />
+        <item itemvalue="Python.general_llm_client" />
       </list>
     </recent_temporary>
   </component>
@@ -136,7 +229,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743168619515</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Optimization tool category, supplement llm_client, complete exp_llm">
+      <option name="closed" value="true" />
+      <created>1743168820592</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1743168820592</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">

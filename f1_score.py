@@ -9,6 +9,7 @@ from utils import load_utils
 from utils.prompt_utils import PromptUtils
 from utils.llm_client import QWQ_LLM, RequestType
 from utils.logger_utils import LoggerUtil
+
 logger = LoggerUtil.get_logger("F1_Evaluator")
 
 
@@ -114,15 +115,23 @@ class F1_Evaluator:
 
     def calculate_f1_list(self, data: List[Dict[str, str]], predictions: List[str]) -> float:
         """计算数据集的平均 F1 分数"""
+        required_keys = {"question", "answer"}
         f1_scores = []
 
+        if len(data) != len(predictions):
+            raise ValueError("data 和 predictions 长度不一致")
         for item, prediction in zip(data, predictions):
+            if not required_keys.issubset(item.keys()):
+                logger.error(f"数据字段缺失：{item}")
+
             question = item.get("question")
             ground_truth = item.get("answer")
 
             if not question or not ground_truth:
                 logger.warning("样本数据缺少 question 或 answer 字段，跳过该样本。")
                 continue
+
+            # logger.info(f"🔍 问题: {question}, 答案: {ground_truth}, 预测: {prediction}")
 
             f1 = self.calculate_f1(prediction, ground_truth)
             f1_scores.append(f1)

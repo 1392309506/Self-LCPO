@@ -1,17 +1,20 @@
 import json
 import argparse
 from pathlib import Path
-import matplotlib as plt
+import matplotlib.pyplot as plt
 from openai import OpenAI
 from tenacity import retry, stop_after_attempt, wait_exponential
 from config_loader import ConfigLoader
+from utils.llm_client import SPO_LLM, RequestType
 from utils.load_utils import LoadUtils
 from utils.general_llm_client import General_LLM
+from spo.prompts.optimize_prompt import PROMPT_OPTIMIZE_PROMPT
+
 from f1_score import F1_Evaluator
 from utils.logger_utils import LoggerUtil
 logger = LoggerUtil.get_logger("exp_llm")
 
-class ExperimentRunner:
+class LLM_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, sample_k: int=0):
         self.config = config
         self.model_name = model_name
@@ -26,45 +29,8 @@ class ExperimentRunner:
             # dataset_path=args.dataset_path,
             # api_key=args.api_key,
         )
-        self.results=[]
-
-    @retry(stop=stop_after_attempt(3), wait=wait_exponential(multiplier=1, min=4, max=10))
-    def call_model(self, model_cfg: dict, prompt: str):
-        """执行模型调用"""
-        client = OpenAI(
-            api_key=model_cfg["api_key"],  # 直接使用 model_cfg 中的 api_key
-            base_url=model_cfg.get("base_url")  # 使用 model_cfg 中的 base_url
-        )
-
-        response = client.chat.completions.create(
-            messages=[{"role": "user", "content": prompt}],
-            **model_cfg["params"]
-        )
-        print(f"使用了 {response.usage.completion_tokens} tokens")
-        return response.choices[0].message.content, response.usage.completion_tokens
-
-    def calculate_f1(self, predicted: str, expected: str) -> float:
-        """计算F1分数"""
-        logger.info("开始计算F1分数：")
-        # 示例实现
-        predicted_tokens = set(predicted.split())
-        expected_tokens = set(expected.split())
-        tp = len(predicted_tokens & expected_tokens)
-        fp = len(predicted_tokens - expected_tokens)
-        fn = len(expected_tokens - predicted_tokens)
-        precision = tp / (tp + fp) if (tp + fp) > 0 else 0
-        recall = tp / (tp + fn) if (tp + fn) > 0 else 0
-        f1 = 2 * (precision * recall) / (precision + recall) if (precision + recall) > 0 else 0
-        return f1
-
-    def evaluate_model(self, model_cfg: dict, data: list, n_i: int, prompt: str) -> float:
-        """评估模型性能"""
-        total_f1 = 0
-        for item in data:
-            response, _ = self.call_model(model_cfg, prompt)
-            f1 = self.calculate_f1(response, item["expected_answer"])
-            total_f1 += f1
-        return total_f1 / len(data[:n_i] if n_i is not None else len(data))
+        self.results={}
+        self.llm = SPO_LLM.get_instance()
 
     def _save_results(self):
         """保存实验结果"""
@@ -81,6 +47,8 @@ class ExperimentRunner:
             logger.info(f"实验结果已保存至 {results_path}")
         except Exception as e:
             logger.error(f"保存实验结果失败: {e}")
+    def _execute_prompt(self):
+        """执行提示"""
 
     def visualize(self):
         """可视化实验结果"""
@@ -115,9 +83,10 @@ class ExperimentRunner:
         try:
             prompt, requirements, qa, count_str = self.loadUtil.load_meta_data(self.sample_k)
             for n_i in exp_params["n_i_values"]:
-                modified_prompt = f"{prompt} Think for exactly {n_i} tokens."
+                modified_prompt = f"{prompt} Think for {n_i} tokens."
                 answers = []
-                logger.info(f"开始训练的token数量为："+str(n_i))
+                logger.info("Prompt:" + modified_prompt)
+                logger.info(f"开始训练的token数量为：" + str(n_i))
 
                 for question, expected_answer in qa:
                     try:
@@ -125,16 +94,21 @@ class ExperimentRunner:
                         full_prompt = f"Prompt: {modified_prompt}\nQuestion: {question}\nAnswer:"
 
                         # 调用模型生成回答
-                        answer = self.GeneralLLM.generate_response(full_prompt)
-                        answers.append(answer)
+                        response = self.llm.responser(
+                            request_type=RequestType.OPTIMIZE, messages=[
+                                {"role": "user", "content": full_prompt}]
+                        )
+                        print(response)
+                        answers.append(response)
                     except Exception as e:
                         logger.error(f"模型调用失败，问题：{question}，错误：{str(e)}")
                         answers.append({"question": question, "answer": "ERROR", "expected": expected_answer})
 
-                f1_score=self.F1_Evaluator.calculate_f1_list(qa, answers)
+                f1_score = self.F1_Evaluator.calculate_f1_list(qa, answers)
                 logger.info(f"n_i={n_i} | F1 Score={f1_score:.4f}")
                 self.results[n_i] = f1_score
 
+            logger.info("模型训练结束")
             self._save_results()
             self.visualize()
             logger.info("实验完成")
@@ -162,7 +136,7 @@ def parse_args():
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="gpt-3.5-turbo", help="Project name")
     parser.add_argument("--dataset", type=str, default="Navigate", help="Project name")
-    parser.add_argument("--sample_k", type=int, default=0, help="抽样的QA数量（0表示全部）")
+    parser.add_argument("--sample_k", type=int, default=3, help="抽样的QA数量（0表示全部）")
     return parser.parse_args()
 
 def main():
@@ -170,7 +144,7 @@ def main():
     print(args)
     try:
         config = ConfigLoader(args.config)
-        runner = ExperimentRunner(config, args.model_name, args.dataset, args.sample_k)
+        runner = LLM_Runner(config, args.model_name, args.dataset, args.sample_k)
         runner.run()
     except Exception as e:
         logger.error(f"实验启动失败: {str(e)}")
