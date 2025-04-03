@@ -62,7 +62,7 @@ class ConfigLoader:
 
     def _validate_models(self):
         """验证模型配置"""
-        required_model_fields = ['name', 'api-type', 'api_keys', 'params']
+        required_model_fields = ['name', 'api-type', 'api_key', 'params']
         valid_api_types = ['openai']
 
         for model in self.config['models']:
@@ -102,7 +102,7 @@ class ConfigLoader:
             model['name']: {
                 'api_type': model['api-type'],  # 转换为下划线命名
                 'base_url': model.get('base_url'),
-                'api_key': model['api_keys'],
+                'api_key': model['api_key'],
                 'params': model['params']
             }
             for model in self.config['models']

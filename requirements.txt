@@ -50,3 +50,6 @@ tree_sitter==0.24.0
 tree_sitter_python==0.23.6
 webdriver_manager==4.0.2
 websockets==10.4
+
+python-dotenv~=1.1.0
+matplotlib~=3.9.4

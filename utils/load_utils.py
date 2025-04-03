@@ -1,6 +1,8 @@
 import random
 from pathlib import Path
 import yaml
+from typing import Optional
+import re
 
 
 class LoadUtils:
@@ -57,3 +59,8 @@ class LoadUtils:
         random_qa = random.sample(qa, min(sample_k, len(qa)))
 
         return prompt, requirements, random_qa, count_str
+
+    def extract_content(text: str, tag: str) -> Optional[str]:
+        pattern = rf"<{tag}>(.*?)</{tag}>"
+        match = re.search(pattern, text, re.DOTALL)
+        return match.group(1).strip() if match else None

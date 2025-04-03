@@ -99,18 +99,30 @@ class F1_Evaluator:
     #         return []
 
     def calculate_f1(self, prediction: str, ground_truth: str):
-        """计算单个 F1 分数"""
-        pred_tokens = prediction.split()
-        truth_tokens = ground_truth.split()
-        common = set(pred_tokens) & set(truth_tokens)
+        """计算单个 F1 分数（支持空值与无效预测容错）"""
+        if not prediction or not isinstance(prediction, str):
+            logger.warning(f"预测值无效：{prediction}，将视为 F1=0.0")
+            return 0.0
 
+        if not ground_truth or not isinstance(ground_truth, str):
+            logger.warning(f"标签值无效：{ground_truth}，将视为 F1=0.0")
+            return 0.0
+
+        pred_tokens = prediction.strip().split()
+        truth_tokens = ground_truth.strip().split()
+
+        if not pred_tokens or not truth_tokens:
+            logger.warning(f"预测或标签为空 token，prediction: {prediction}, ground_truth: {ground_truth}")
+            return 0.0
+
+        common = set(pred_tokens) & set(truth_tokens)
         if not common:
             return 0.0
 
         precision = len(common) / len(pred_tokens)
         recall = len(common) / len(truth_tokens)
         f1 = 2 * (precision * recall) / (precision + recall)
-        logger.info(f"Precision: {precision:.4f}, Recall: {recall:.4f}, F1: {f1:.4f}")
+
         return f1
 
     def calculate_f1_list(self, data: List[Dict[str, str]], predictions: List[str]) -> float:
