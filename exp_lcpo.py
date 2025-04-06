@@ -2,7 +2,7 @@ import asyncio
 import json
 import argparse
 import string
-from datetime import time
+from datetime import time, datetime
 from pathlib import Path
 import random
 from typing import List
@@ -49,14 +49,15 @@ class LCPO_Runner:
             for item, answer in zip(self.qa, answers)
         ]
         self.qa_answers_by_ni[best_token] = qa_pairs
-        f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
+        _,_,qa,_ = LoadUtils.load_meta_data(sample_k=0)
+        f1_score = self.F1_Evaluator.calculate_f1_list(qa, answers)
         # 获取最优 token 与其 F1 分数
         logger.info(f"🏆 最佳 token: {best_token}, F1 分数: {f1_score:.4f}")
 
         # 生成时间戳+随机码文件夹名
-        timestamp = time.strftime("%Y%m%d_%H%M%S")
-        rand_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
-        folder = Path("results") / f"{timestamp}_{rand_code}"
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+        random_code = hex(random.randint(0, 65535))[2:].upper()
+        folder = Path("results") / f"{timestamp}_{random_code}"
         folder.mkdir(parents=True, exist_ok=True)
 
         # 生成 best_prompt

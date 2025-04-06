@@ -33,8 +33,8 @@ class LoadUtils:
 
     def load_meta_data(self, sample_k: int = 3) -> tuple:
         """
-        加载配置数据，包括 prompt、requirements、随机抽样的 QA 对以及 count 信息
-        :return: (prompt, requirements, random_qa, count)
+        加载配置数据，包括 prompt、requirements、固定选取前k条 QA 对以及 count 信息
+        :return: (prompt, requirements, selected_qa, count_str)
         """
         data = self._load_yaml()
 
@@ -50,15 +50,13 @@ class LoadUtils:
         # 处理 count 的格式
         count_str = f", within {count} words" if isinstance(count, int) else ""
 
-        # 随机抽样
-        # If k is None or 0, return all QA pairs
+        # 固定选取前 sample_k 条 QA
         if sample_k is None or sample_k == 0:
-            return prompt, requirements, qa, count
+            return prompt, requirements, qa, count_str
 
-        # Otherwise, sample k QA pairs
-        random_qa = random.sample(qa, min(sample_k, len(qa)))
+        selected_qa = qa[:sample_k]
 
-        return prompt, requirements, random_qa, count_str
+        return prompt, requirements, selected_qa, count_str
 
     def extract_content(text: str, tag: str) -> Optional[str]:
         pattern = rf"<{tag}>(.*?)</{tag}>"

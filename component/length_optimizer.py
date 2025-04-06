@@ -168,6 +168,8 @@ class TokenLengthOptimizer:
                 ranking = LoadUtils.extract_content(response.content, "ranking")
                 # ✅ 转为 list 对象
                 ranked = ast.literal_eval(ranking)
+                if ranked[0] > len(token_list) - 1 or ranked[0] < 0:
+                    raise ValueError("index is out of bounds for token_list")
                 if isinstance(ranked, list) and all(isinstance(i, int) for i in ranked):
                     logger.info(f"🧠 warm-up listwise 排序结果: {ranked}")
                     return ranked

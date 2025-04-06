@@ -4,15 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add metagpt">
-      <change afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="complete exp_lcpo">
+      <change afterPath="$PROJECT_DIR$/dataset/GPQA/gpqa.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat/chat_llm_openai.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/chat_llm_openai.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/evaluate_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/evaluate_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/load_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/load_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +284,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743255838062</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="complete exp_lcpo">
+      <option name="closed" value="true" />
+      <created>1743920829275</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1743920829275</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -296,6 +302,7 @@
     <MESSAGE value="Optimization tool category, supplement llm_client" />
     <MESSAGE value="Optimization tool category, supplement llm_client, complete exp_llm" />
     <MESSAGE value="add metagpt" />
-    <option name="LAST_COMMIT_MESSAGE" value="add metagpt" />
+    <MESSAGE value="complete exp_lcpo" />
+    <option name="LAST_COMMIT_MESSAGE" value="complete exp_lcpo" />
   </component>
 </project>
