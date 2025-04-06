@@ -143,24 +143,28 @@ class TokenLengthOptimizer:
         answer_block = ""
         print("🧩 listwise 传入的 token_list:", token_list)
         for idx, token in enumerate(token_list):
-            answer_block += f"token {idx} (token={token}):\n"
+            answer_block += f"count {idx} (token={token}):\n"
             for qa in qa_dict[token]:
                 answer_block += f"Question: {qa['question']}\nAnswer: {qa['answer']}\n\n"
         # print(answer_block)
 
         # 构建完整 prompt（注意你可以将 EVALUATE_PROMPT 调整成更强的版本）
-        full_prompt = EVALUATE_PROMPT.format(answer_block=answer_block.strip(),
-                                             token_list= str(token_list))
+        full_prompt = EVALUATE_PROMPT.format(
+            cnt_answers=len(token_list),
+            answer_block=answer_block.strip(),
+            token_list= str(token_list))
         messages = [
             {"role": "system", "content": "You are a helpful evaluator."},
             {"role": "user", "content": full_prompt}
         ]
 
-        # 尝试调用 LLM 进行排序，最多三次尝试
-        for attempt in range(3):
-            prompt = EVALUATE_PROMPT.format(answer_block=answer_block.strip(),
-                                             token_list= str(token_list))
-            messages = [{"role": "user", "content": prompt}]
+        # 尝试调用 LLM 进行排序，最多5次尝试
+        prompt = EVALUATE_PROMPT.format(
+                cnt_answers=len(token_list),
+                answer_block=answer_block.strip(),
+                token_list= str(token_list))
+        messages = [{"role": "user", "content": prompt}]
+        for attempt in range(5):
             response = await self.llm.chat(messages)
             try:
                 # print(response.content)
@@ -170,6 +174,8 @@ class TokenLengthOptimizer:
                 ranked = ast.literal_eval(ranking)
                 if ranked[0] > len(token_list) - 1 or ranked[0] < 0:
                     raise ValueError("index is out of bounds for token_list")
+                if len(ranked) > len(token_list):
+                    raise ValueError("length of ranked is not equal to length of token_list")
                 if isinstance(ranked, list) and all(isinstance(i, int) for i in ranked):
                     logger.info(f"🧠 warm-up listwise 排序结果: {ranked}")
                     return ranked

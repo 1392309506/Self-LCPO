@@ -89,7 +89,7 @@ class F1_Evaluator:
     #         try:
     #             with open(dataset_file, 'r', encoding='utf-8') as f:
     #                 data = json.load(f)
-    #             logger.info(f"成功加载 GPQA 数据集，共 {len(data)} 条数据")
+    #             logger.info(f"成功加载 GPQA-Diamond 数据集，共 {len(data)} 条数据")
     #             return data
     #         except json.JSONDecodeError as e:
     #             logger.error(f"解析 JSON 失败: {e}")

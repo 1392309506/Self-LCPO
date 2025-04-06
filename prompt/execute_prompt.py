@@ -17,7 +17,7 @@ Respond in the following XML format:
 [Your reasoning process here. Use multiple steps or perspectives.]
 </analysis>
 <answer>
-[Final answer only. For example: Yes or No.]
+[Final answer only.]
 </answer>
 </response>
 """

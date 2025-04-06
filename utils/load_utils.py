@@ -1,4 +1,4 @@
-import random
+import json
 from pathlib import Path
 import yaml
 from typing import Optional
@@ -62,3 +62,24 @@ class LoadUtils:
         pattern = rf"<{tag}>(.*?)</{tag}>"
         match = re.search(pattern, text, re.DOTALL)
         return match.group(1).strip() if match else None
+
+    def load_json(self, sample_k: int = 0) -> list:
+        """
+        从 JSON 文件中加载问答对。
+
+        参数:
+            sample_k (int): 要加载的问答数量。为 0 表示加载全部。
+
+        返回:
+            list: 包含问答对的列表，每个元素是一个字典，具有 'question' 和 'answer' 键。
+        """
+        with open(self.file_name, 'r', encoding='utf-8') as file:
+            qa_list = json.load(file)
+
+        if not isinstance(qa_list, list):
+            raise ValueError(f"JSON 内容格式错误，应为 list，但实际是 {type(qa_list)}")
+
+        if sample_k == 0:
+            return qa_list
+        else:
+            return qa_list[:min(sample_k, len(qa_list))]

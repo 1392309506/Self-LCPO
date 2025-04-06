@@ -4,12 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="complete exp_lcpo">
-      <change afterPath="$PROJECT_DIR$/dataset/GPQA/gpqa.py" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix model and make it strong">
+      <change afterPath="$PROJECT_DIR$/dataset/AGIEval-MATH/math.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/LIAR/dataset2json.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/BBH-Navigate/navigate.json" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/BBH-Navigate/navigate.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/BBH-Navigate/variant_1.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/GPQA/gpqa.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/f1_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/f1_score.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/evaluate_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/evaluate_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/execute_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/load_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/load_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -39,38 +46,132 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
-    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO/metagpt&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.dataset2json (1).executor": "Run",
+    "Python.dataset2json.executor": "Run",
+    "Python.exp_lcpo.executor": "Run",
+    "Python.exp_llm.executor": "Run",
+    "Python.exp_prompt.executor": "Run",
+    "Python.general_llm_client.executor": "Run",
+    "Python.gpqa.executor": "Run",
+    "Python.length_optimizer (1).executor": "Run",
+    "Python.length_optimizer.executor": "Run",
+    "Python.popb_optimizer.executor": "Run",
+    "Python.run.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO/dataset/ AGIEval-MATH",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
+      <recent name="D:\Code_store\Python\Self-LCPO\dataset\GPQA" />
       <recent name="D:\Code_store\Python\Self-LCPO\metagpt" />
       <recent name="D:\Code_store\Python\Self-LCPO\metagpt\tools" />
       <recent name="D:\Code_store\Python\Self-LCPO\metagpt\utils" />
-      <recent name="D:\Code_store\Python\Self-LCPO\metagpt\provider" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\dataset\LIAR" />
+      <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
       <recent name="D:\Code_store\Python\Self-LCPO\component" />
       <recent name="D:\Code_store\Python\Self-LCPO" />
       <recent name="D:\Code_store\Python\Self-LCPO\metagpt" />
-      <recent name="D:\Code_store\Python\Self-LCPO\spo" />
-      <recent name="D:\Code_store\Python\SLCO\spo" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.exp_lcpo">
-    <configuration name="exp_lcpo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.exp_prompt">
+    <configuration name="dataset2json (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/LIAR" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/LIAR/dataset2json.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataset2json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/BBH-Navigate" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH\dataset2json.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataset2json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/BBH-Navigate" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH\dataset2json.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="dataset2json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/AGIEval-MATH" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\dataset\LIAR\dataset2json.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exp_prompt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Self-LCPO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -83,7 +184,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_lcpo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_prompt.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -92,7 +193,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="exp_llm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="gpqa" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Self-LCPO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -101,33 +202,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/GPQA" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_llm.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="general_llm_client" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Self-LCPO" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/utils" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/general_llm_client.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/GPQA/gpqa.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -167,28 +246,6 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\component\length_optimizer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="length_optimizer" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Self-LCPO" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
       <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/component" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
@@ -204,11 +261,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.exp_lcpo" />
-        <item itemvalue="Python.length_optimizer (1)" />
-        <item itemvalue="Python.length_optimizer" />
-        <item itemvalue="Python.length_optimizer" />
-        <item itemvalue="Python.exp_llm" />
+        <item itemvalue="Python.exp_prompt" />
+        <item itemvalue="Python.dataset2json (1)" />
+        <item itemvalue="Python.dataset2json (1)" />
+        <item itemvalue="Python.dataset2json (1)" />
+        <item itemvalue="Python.dataset2json" />
       </list>
     </recent_temporary>
   </component>
@@ -292,7 +349,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743920829275</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="fix model and make it strong">
+      <option name="closed" value="true" />
+      <created>1743923881292</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1743923881292</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -303,6 +368,7 @@
     <MESSAGE value="Optimization tool category, supplement llm_client, complete exp_llm" />
     <MESSAGE value="add metagpt" />
     <MESSAGE value="complete exp_lcpo" />
-    <option name="LAST_COMMIT_MESSAGE" value="complete exp_lcpo" />
+    <MESSAGE value="fix model and make it strong" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix model and make it strong" />
   </component>
 </project>

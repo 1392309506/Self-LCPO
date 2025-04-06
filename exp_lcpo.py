@@ -30,7 +30,7 @@ class LCPO_Runner:
         self.F1_Evaluator = F1_Evaluator()
         self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
         self.llm = ChatLLM(api_key=self.model.get("api_key"),base_url=self.model.get("base_url"),model=model_name)
-        self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
+        self.max_concurrent_requests = 10  # 建议 5~15，根据模型和账户配额灵活设置
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.n_steps = n_steps
         self.sorted_tokens = []
