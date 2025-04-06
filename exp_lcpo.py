@@ -1,7 +1,10 @@
 import asyncio
 import json
 import argparse
+import string
+from datetime import time
 from pathlib import Path
+import random
 from typing import List
 
 import matplotlib.pyplot as plt
@@ -14,10 +17,10 @@ from chat.chat_llm_openai import ChatLLM
 
 from f1_score import F1_Evaluator
 from utils.logger_utils import LoggerUtil
-logger = LoggerUtil.get_logger("exp_llm")
+logger = LoggerUtil.get_logger("exp_lcpo")
 
 class LCPO_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, sample_k: int=0):
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, sample_k: int=0, n_steps: int=5):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
@@ -25,65 +28,54 @@ class LCPO_Runner:
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
         self.prompt, self.requirements, self.qa, self.count_str = self.loadUtil.load_meta_data(sample_k)
         self.F1_Evaluator = F1_Evaluator()
-        self.results={}
         self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
-        self.llm = ChatLLM(api_key=self.model.get("api_key"),base_url=self.model.get("base_url"))
-        self.max_concurrent_requests = 200  # 建议 5~15，根据模型和账户配额灵活设置
+        self.llm = ChatLLM(api_key=self.model.get("api_key"),base_url=self.model.get("base_url"),model=model_name)
+        self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
+        self.n_steps = n_steps
+        self.sorted_tokens = []
+        self.token_list = []
 
-
-    def _visualize(self):
-        """可视化实验结果"""
-        # 检查是否有实验结果
-        if not hasattr(self, 'results') or not self.results:
-            logger.warning("没有实验结果可以可视化")
-            return
-
-        # 提取 n_i 值和对应的 F1 分数，并排序
-        n_i_values = sorted(self.results.keys())
-        f1_scores = [self.results[n_i] for n_i in n_i_values]
-
-        # 绘制折线图
-        plt.figure(figsize=(8, 6))
-        plt.plot(n_i_values, f1_scores, marker='o', linestyle='-', color='b', label='F1 Score')
-        plt.xlabel("n_i (Token 数量)")
-        plt.ylabel("F1 Score")
-        plt.title("模型性能对比")
-        plt.legend()
-        plt.grid(True)
-
-        # 保存图表到文件
-        output_path = Path("results/performance.png")
-        output_path.parent.mkdir(parents=True, exist_ok=True)
-        plt.savefig(output_path)
-        plt.show()
-
-    def _save_results(self):
-        """保存 F1 分数 和 QA 对"""
-        if not hasattr(self, 'results') or not self.results:
+    async def _save_results(self):
+        """保存最优 Prompt 与对应的 F1 分数到新文件夹"""
+        if not hasattr(self, 'sorted_tokens') or not self.sorted_tokens:
             logger.warning("没有实验结果需要保存。")
             return
+        best_token = self.sorted_tokens[0]
+        answers = await self._execute_prompt(best_token)
+        # 存储每个 n_i 下的 QA 对
+        qa_pairs = [
+            {"question": item.get("question"), "answer": answer}
+            for item, answer in zip(self.qa, answers)
+        ]
+        self.qa_answers_by_ni[best_token] = qa_pairs
+        f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
+        # 获取最优 token 与其 F1 分数
+        logger.info(f"🏆 最佳 token: {best_token}, F1 分数: {f1_score:.4f}")
 
-        results_dir = Path("results")
-        results_dir.mkdir(parents=True, exist_ok=True)
+        # 生成时间戳+随机码文件夹名
+        timestamp = time.strftime("%Y%m%d_%H%M%S")
+        rand_code = ''.join(random.choices(string.ascii_uppercase + string.digits, k=4))
+        folder = Path("results") / f"{timestamp}_{rand_code}"
+        folder.mkdir(parents=True, exist_ok=True)
+
+        # 生成 best_prompt
+        best_prompt = EXECUTE_PROMPT.format(
+            question=self.qa[0]["question"],
+            count=best_token
+        )
+
+        # 保存 Prompt
+        prompt_path = folder / "best_prompt.txt"
+        with open(prompt_path, "w", encoding="utf-8") as f:
+            f.write(best_prompt)
 
         # 保存 F1 分数
-        results_path = results_dir / "results.json"
-        try:
-            with open(results_path, "w", encoding="utf-8") as f:
-                json.dump(self.results, f, indent=4, ensure_ascii=False)
-            logger.info(f"F1 分数已保存至 {results_path}")
-        except Exception as e:
-            logger.error(f"保存 F1 分数失败: {e}")
+        f1_path = folder / "f1_score.json"
+        with open(f1_path, "w", encoding="utf-8") as f:
+            json.dump({"best_token": best_token, "f1": f1_score}, f, indent=2, ensure_ascii=False)
 
-        # 保存 QA 对
-        qa_path = results_dir / "qa_answers.json"
-        try:
-            with open(qa_path, "w", encoding="utf-8") as f:
-                json.dump(self.qa_answers_by_ni, f, indent=2, ensure_ascii=False)
-            logger.info(f"QA 对已保存至 {qa_path}")
-        except Exception as e:
-            logger.error(f"保存 QA 对失败: {e}")
+        logger.info(f"✅ 最优结果已保存至: {folder}")
 
     async def _execute_prompt(self,n:int)-> List[str]:
         """并发执行提示"""
@@ -108,83 +100,112 @@ class LCPO_Runner:
             logger.error(f"模型调用失败，问题：{question}，错误：{str(e)}")
             return "ERROR"
 
-    async def run(self):
-        """执行实验流程"""
-        exp_params = self.config.experiment  # 使用 experiment 属性
+    async def _warmup(self):
+        """执行 warm-up 初始化阶段"""
+        # initial_tokens = self.config.experiment["n_i_values"]
+        initial_tokens = list(range(100, 4001, 400))
 
-        try:
-            # 初始 warm-up 预热模型
-            initial_tokens = exp_params["n_i_values"]
-            for n_i in initial_tokens:
-                logger.info(f"开始训练的token数量为：{n_i}")
+        self.token_list = list(initial_tokens)
+        self.all_tested_tokens = set(initial_tokens)
+
+        for n_i in initial_tokens:
+            logger.info(f"开始训练的token数量为：{n_i}")
+            answers = await self._execute_prompt(n_i)
+            qa_pairs = [
+                {"question": item.get("question"), "answer": answer}
+                for item, answer in zip(self.qa, answers)
+            ]
+            self.qa_answers_by_ni[n_i] = qa_pairs
+
+        logger.info("✅ warm-up 结束")
+
+        init_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in initial_tokens}
+        ranked_indices = await self.opt.listwise(init_qa_dict)
+        self.opt.update_listwise(initial_tokens, ranked_indices)
+
+    async def _iterative_optimization(self):
+        """执行多轮优化迭代（滑动窗口控制 token 集）"""
+        n_steps = self.n_steps
+
+        for step in range(n_steps):
+            logger.info(f"\n[Step {step + 1}] 当前候选池: {self.token_list}")
+
+            try:
+                best_token = self.opt.get_best_token()
+                logger.info(f"🎯 当前 GP 模型预测最优 token: {best_token}")
+            except Exception:
+                best_token = None
+                logger.warning("尚无最优 token")
+
+            # 排序当前池并删除最差的四分之一
+            current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
+            ranked_indices = await self.opt.listwise(current_qa_dict)
+            self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
+
+            n_delete = max(1, len(self.token_list) // 4)
+            tokens_to_remove = self.sorted_tokens[-n_delete:]
+            for t in tokens_to_remove:
+                self.token_list.remove(t)
+                logger.info(f"🗑️  移除 token: {t}")
+
+            # 获取新 token
+            n_add = max(1, len(self.token_list) // 3)
+            new_tokens = self.opt.suggest_next(
+                n_suggestions=n_add,
+                anchor_token=best_token,
+                exclude=set(self.qa_answers_by_ni.keys()) | set(self.token_list),
+            )
+
+            logger.info(f"➕ 新增 token: {new_tokens}")
+            self.token_list.extend(new_tokens)
+
+            # 执行生成
+            for n_i in new_tokens:
+                logger.info(f"生成 token={n_i} 的回答中")
                 answers = await self._execute_prompt(n_i)
-                # 存储每个 n_i 下的 QA 对
                 qa_pairs = [
                     {"question": item.get("question"), "answer": answer}
                     for item, answer in zip(self.qa, answers)
                 ]
                 self.qa_answers_by_ni[n_i] = qa_pairs
+                self.all_tested_tokens.add(n_i)
 
-            logger.info("warm-up ending.")
-            #现在有了初始的对于每一个n_i的question,answer/pred_answers
-            # 将 warm-up 阶段的 token 候选加入 optimizer 进行 listwise 训练
-            init_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in initial_tokens}
-            ranked_indices = await self.opt.listwise(init_qa_dict)
-            self.opt.register_ranked_list(initial_tokens, ranked_indices)
+            # 模型更新
+            current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
+            ranked_indices = await self.opt.listwise(current_qa_dict)
+            self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
+            logger.info(f"📊 排序 index: {ranked_indices}")
+            logger.info(f"➡️  token 排名: {self.sorted_tokens}")
 
-            logger.info("进入贝叶斯优化迭代阶段")
-            m = 6  # 每轮建议的 token 数
+            self.opt.update_listwise(self.token_list, ranked_indices)
+            logger.info("✅ 模型已更新")
 
-            for step in range(5):
-                logger.info(f"[Step {step + 1}] 当前采样候选数量: {m}")
 
-                # 建议下一轮 token 长度候选
-                try:
-                    token_list = self.opt.suggest_next(n_suggestions=m)
-                except Exception as e:
-                    logger.warning(f"采样建议失败：{str(e)}，使用随机备选")
-                    token_list = [200, 500, 800, 1000][:m]  # fallback
+    async def run(self):
+        """主实验入口：包含 warm-up + 多轮优化"""
+        try:
+            await self._warmup()
+            print("🔎 token_history:", self.opt.token_history)
+            print("🔎 comparisons:", self.opt.comparisons)
+            logger.info("🚀 进入贝叶斯优化迭代阶段")
+            await self._iterative_optimization()
 
-                logger.info(f"候选 token: {token_list}")
+            logger.info("🏁 模型训练结束")
+            await self._save_results()
+            logger.info("✅ 实验完成")
 
-                # 获取当前 token 下的回答
-                for n_i in token_list:
-                    if n_i not in self.qa_answers_by_ni:
-                        logger.info(f"采样新 token={n_i}，生成回答中")
-                        answers = await self._execute_prompt(n_i)
-                        qa_pairs = [
-                            {"question": item.get("question"), "answer": answer}
-                            for item, answer in zip(self.qa, answers)
-                        ]
-                        self.qa_answers_by_ni[n_i] = qa_pairs
-
-                # 对当前候选执行 listwise 排序
-                # 构造一个新的 dict {token: QA对} 传给 listwise
-                current_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in token_list}
-                ranked_indices = await self.opt.listwise(current_qa_dict)
-
-                logger.info(f"↳ 排序结果: {ranked_indices}")
-
-                # 注册排名结果以更新 GP 模型
-                self.opt.register_ranked_list(token_list, ranked_indices)
-                logger.info("✅ 模型已更新")
-
-                m = max(m // 2, 2)  # 每轮减少采样数量（可调）
-
-            logger.info("模型训练结束")
-            self._save_results()
-            self._visualize()
-            logger.info("实验完成")
         except Exception as e:
             logger.error(f"实验运行失败: {str(e)}")
+
 
 def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="gpt-3.5-turbo", help="Project name")
+    parser.add_argument("--model_name", type=str, default="deepseek-r1:7b", help="Project name")
     parser.add_argument("--dataset", type=str, default="Navigate", help="Project name")
-    parser.add_argument("--sample_k", type=int, default=0, help="抽样的QA数量（0表示全部）")
+    parser.add_argument("--sample_k", type=int, default=3, help="抽样的QA数量（0表示全部）")
+    parser.add_argument("--n_steps", type=int, default=5, help="贝叶斯优化迭代轮次")
     return parser.parse_args()
 
 def main():
@@ -192,7 +213,7 @@ def main():
     print(args)
     try:
         config = ConfigLoader(args.config)
-        runner = LCPO_Runner(config, args.model_name, args.dataset, args.sample_k)
+        runner = LCPO_Runner(config, args.model_name, args.dataset, args.sample_k, args.n_steps)
         # asyncio.run(runner.run())
 
         loop = asyncio.get_event_loop()

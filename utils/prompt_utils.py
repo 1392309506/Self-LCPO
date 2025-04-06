@@ -30,3 +30,12 @@ class PromptUtils:
     def write_prompt(self, directory: Path, prompt: str):
         prompt_file = directory / "prompt.txt"
         prompt_file.write_text(prompt, encoding="utf-8")
+
+    def get_final_prompt(self) -> str:
+        """直接从结果目录加载最终 prompt"""
+        prompt_file = self.root_path / "best_prompt.txt"
+        if not prompt_file.exists():
+            logger.error(f"找不到 best_prompt.txt: {prompt_file}")
+            return ""
+        return prompt_file.read_text(encoding="utf-8").strip()
+

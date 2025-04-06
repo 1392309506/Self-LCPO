@@ -5,123 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add metagpt">
-      <change afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Self-LCPO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Self-LCPO.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/chat_llm_openai.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/chat_llm_openai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_loader.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f1_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/f1_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/_compat.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/base_llm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/config2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/browser_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/embedding_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/file_parser_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/llm_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/mermaid_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/models_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/redis_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/s3_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/search_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/configs/workspace_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/const.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/context.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/context_mixin.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/llm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/llm_config.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/logs.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/provider/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/evaluate_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/provider/base_llm.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/provider/llm_provider_registry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/azure_tts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/iflytek_tts.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/libs/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/libs/data_preprocess.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/libs/email_login.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/libs/feature_engineering.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/libs/gpt_v_generator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/libs/sd_engine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/libs/web_scraping.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/metagpt_oas3_api_svc.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/metagpt_text_to_image.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/moderation.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/openai_text_to_embedding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/openai_text_to_image.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/openapi_v3_hello.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/prompt_writer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/search_engine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/search_engine_bing.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/search_engine_ddg.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/search_engine_googleapi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/search_engine_meilisearch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/search_engine_serpapi.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/search_engine_serper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/tool_convert.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/tool_data_type.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/tool_recommend.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/tool_registry.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/translator.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/ut_writer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/web_browser_engine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/web_browser_engine_playwright.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/tools/web_browser_engine_selenium.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/__init__.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/ahttp_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/async_helper.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/common.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/cost_manager.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/custom_decoder.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/dependency_file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/di_graph_repository.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/embedding.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/exceptions.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/file.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/file_repository.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/git_repository.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/graph_repository.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/highlight.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/human_interaction.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/json_to_markdown.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/mermaid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/mmdc_ink.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/mmdc_playwright.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/mmdc_pyppeteer.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/omniparse_client.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/parse_docstring.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/parse_html.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/project_repo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/pycst.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/read_document.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/recovery_util.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/redis.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/reflection.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/repair_llm_raw_output.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/repo_to_markdown.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/s3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/sanitize.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/save_code.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/serialize.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/singleton.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/special_tokens.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/stream_pipe.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/text.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/token_counter.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/tree.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/visual_graph_repo.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/metagpt/utils/yaml_model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/exp_llm_prompt.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/evaluate_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/evaluate_prompt.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/results/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/results.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/llm_client.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/llm_client.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/load_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/load_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -152,8 +43,10 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
     &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
     &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
     &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
@@ -178,7 +71,29 @@
       <recent name="D:\Code_store\Python\SLCO\spo" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.length_optimizer">
+  <component name="RunManager" selected="Python.exp_lcpo">
+    <configuration name="exp_lcpo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_lcpo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <configuration name="exp_llm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Self-LCPO" />
       <option name="ENV_FILES" value="" />
@@ -215,6 +130,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/utils/general_llm_client.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="length_optimizer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/component" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/component/length_optimizer.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -269,10 +206,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.exp_lcpo" />
+        <item itemvalue="Python.length_optimizer (1)" />
         <item itemvalue="Python.length_optimizer" />
         <item itemvalue="Python.length_optimizer" />
         <item itemvalue="Python.exp_llm" />
-        <item itemvalue="Python.general_llm_client" />
       </list>
     </recent_temporary>
   </component>

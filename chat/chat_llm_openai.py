@@ -6,22 +6,24 @@ from openai import AsyncOpenAI
 from typing import List, Dict
 logging.getLogger("httpx").setLevel(logging.WARNING)
 class ChatLLM:
-    def __init__(self, api_key:str="", base_url: str="", debug_http: bool = False) -> None:
-        # Load environment variables from .env
+    def __init__(
+        self,
+        api_key: str = "",
+        base_url: str = "",
+        model: str = "gpt-3.5-turbo",
+        debug_http: bool = False
+    ) -> None:
         load_dotenv()
 
-        # 可选启用 httpx 日志
-        if debug_http:
-            httpx_logger = logging.getLogger("httpx")
-            httpx_logger.setLevel(logging.INFO)
+        self.model = model  # ✅ 保存模型名
 
-        # self.client = AsyncOpenAI(
-        #     api_key=os.getenv('apikey'),
-        #     base_url=os.getenv('base_url')
-        # )
+        if debug_http:
+            logging.getLogger("httpx").setLevel(logging.INFO)
+
         self.client = AsyncOpenAI(
-            api_key= api_key,
-            base_url= base_url
+            api_key=api_key,
+            base_url=base_url,
+            timeout=30.0
         )
 
     async def chat(self, messages: List[Dict], max_retries: int = 3):
@@ -29,9 +31,9 @@ class ChatLLM:
         while retries < max_retries:
             try:
                 completion = await self.client.chat.completions.create(
-                    model="gpt-3.5-turbo",
+                    model=self.model,  # ✅ 改成使用类内的 model 属性
                     messages=messages,
-                    temperature=1.2,
+                    temperature=0.7,
                     max_tokens=4096
                 )
                 return completion.choices[0].message
@@ -42,10 +44,7 @@ class ChatLLM:
         return None
 
     async def __call__(self, system_prompt: str = None, content: List[Dict] = None, max_retries: int = 3):
-        messages = [
-            {"role": "system", "content": system_prompt},
-            *content
-        ]
+        messages = [{"role": "system", "content": system_prompt}, *content]
         return await self.chat(messages, max_retries)
 
 if __name__ == "__main__":
