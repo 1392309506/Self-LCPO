@@ -1,17 +1,17 @@
+from __future__ import annotations
+
 import asyncio
 import json
 import argparse
-import string
-from datetime import time, datetime
+from datetime import datetime
 from pathlib import Path
 import random
 from typing import List
 
-import matplotlib.pyplot as plt
-
 from component.length_optimizer import TokenLengthOptimizer
 from config_loader import ConfigLoader
 from prompt.execute_prompt import EXECUTE_PROMPT
+from prompt.dataset_prompt import MATH_PROMPT, GPQA_PROMPT
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
 
@@ -24,13 +24,18 @@ class LCPO_Runner:
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
-        self.opt = TokenLengthOptimizer(token_bounds=(100, 4000), config=config, model_name=model_name)
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
-        self.prompt, self.requirements, self.qa, self.count_str = self.loadUtil.load_meta_data(sample_k)
+        self.qa = self.loadUtil.load_json(sample_k)
         self.F1_Evaluator = F1_Evaluator()
         self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
-        self.llm = ChatLLM(api_key=self.model.get("api_key"),base_url=self.model.get("base_url"),model=model_name)
-        self.max_concurrent_requests = 10  # 建议 5~15，根据模型和账户配额灵活设置
+        self.llm = ChatLLM(
+            api_type=self.model.get("api_type"),
+            api_key=self.model.get("api_key"),
+            base_url=self.model.get("base_url"),
+            params=self.model.get("params"),
+        )
+        self.opt = TokenLengthOptimizer(token_bounds=(100, 4000), config=config, model_name=model_name,llm=self.llm)
+        self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.n_steps = n_steps
         self.sorted_tokens = []
@@ -49,7 +54,7 @@ class LCPO_Runner:
             for item, answer in zip(self.qa, answers)
         ]
         self.qa_answers_by_ni[best_token] = qa_pairs
-        _,_,qa,_ = LoadUtils.load_meta_data(sample_k=0)
+        qa = self.loadUtil.load_json(sample_k=0)
         f1_score = self.F1_Evaluator.calculate_f1_list(qa, answers)
         # 获取最优 token 与其 F1 分数
         logger.info(f"🏆 最佳 token: {best_token}, F1 分数: {f1_score:.4f}")
@@ -61,7 +66,7 @@ class LCPO_Runner:
         folder.mkdir(parents=True, exist_ok=True)
 
         # 生成 best_prompt
-        best_prompt = EXECUTE_PROMPT.format(
+        best_prompt = MATH_PROMPT.format(
             question=self.qa[0]["question"],
             count=best_token
         )
@@ -84,22 +89,25 @@ class LCPO_Runner:
         results = await asyncio.gather(*tasks)
         return results
 
-    async def _fetch_answer(self, question: str, n: int) -> str:
-        """发送异步请求获取答案"""
-        try:
-            async with self._semaphore:
-                prompt = EXECUTE_PROMPT.format(
-                    question=question, count=n
-                )
+    async def _fetch_answer(self, question: str, n: int) -> str | None:
+        """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
+        async with self._semaphore:
+            try:
+                # prompt = EXECUTE_PROMPT.format(question=question, count=n)
+                prompt = GPQA_PROMPT.format(question=question, count=n)
                 messages = [{"role": "user", "content": prompt}]
                 response = await self.llm.chat(messages)
+
+                if response is None or not hasattr(response, "content"):
+                    logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
+                    return None
+
                 answer = LoadUtils.extract_content(response.content, "answer")
-                analysis = LoadUtils.extract_content(response.content, "analysis")
-                # print(response.content)
                 return answer
-        except Exception as e:
-            logger.error(f"模型调用失败，问题：{question}，错误：{str(e)}")
-            return "ERROR"
+
+            except Exception as e:
+                logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
+                return None
 
     async def _warmup(self):
         """执行 warm-up 初始化阶段"""
@@ -130,38 +138,52 @@ class LCPO_Runner:
 
         for step in range(n_steps):
             logger.info(f"\n[Step {step + 1}] 当前候选池: {self.token_list}")
+            best_token = 0
 
             try:
                 best_token = self.opt.get_best_token()
-                logger.info(f"🎯 当前 GP 模型预测最优 token: {best_token}")
+                logger.info(f"🎯 当前 GP 模型预测最优 token 可能为: {best_token}")
             except Exception:
-                best_token = None
-                logger.warning("尚无最优 token")
+                logger.warning("⚠️ 尚无可用的 GP 最优 token，使用默认值 0")
 
-            # 排序当前池并删除最差的四分之一
+            # 排序当前池并删除最差的若干个（保留 best_token）
             current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
             ranked_indices = await self.opt.listwise(current_qa_dict)
             self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
 
-            n_delete = max(1, len(self.token_list) // 4)
+            n_delete = max(1, len(self.token_list) // 3)
             tokens_to_remove = self.sorted_tokens[-n_delete:]
-            for t in tokens_to_remove:
-                self.token_list.remove(t)
-                logger.info(f"🗑️  移除 token: {t}")
 
-            # 获取新 token
-            n_add = max(1, len(self.token_list) // 3)
+            for t in tokens_to_remove:
+                if t != best_token:
+                    self.token_list.remove(t)
+                    logger.info(f"🗑️  移除 token: {t}")
+                else:
+                    logger.info(f"🔒 保留 best_token: {t}（禁止移除）")
+
+            # 生成新 token，exclude 中不要包含 best_token
+            n_add = max(1, len(self.token_list) // 2)
+            exclude_set = (set(self.qa_answers_by_ni.keys()) | set(self.token_list)) - {best_token}
             new_tokens = self.opt.suggest_next(
                 n_suggestions=n_add,
                 anchor_token=best_token,
-                exclude=set(self.qa_answers_by_ni.keys()) | set(self.token_list),
+                exclude=exclude_set,
             )
 
             logger.info(f"➕ 新增 token: {new_tokens}")
-            self.token_list.extend(new_tokens)
 
-            # 执行生成
-            for n_i in new_tokens:
+            # 加一轮判断，如果 token 已存在或已处理过，则不添加
+            seen = set(self.all_tested_tokens)  # 已处理过的 token
+            filtered_new_tokens = []
+            for token in new_tokens:
+                # 排除空值（避免 NoneType 错误）和重复项
+                if token is not None and token not in seen:
+                    seen.add(token)  # 标记当前批次的 token 已添加
+                    filtered_new_tokens.append(token)
+            self.token_list.extend(filtered_new_tokens)
+
+            # 执行新 token 的生成（仅处理过滤后的 token）
+            for n_i in filtered_new_tokens:
                 logger.info(f"生成 token={n_i} 的回答中")
                 answers = await self._execute_prompt(n_i)
                 qa_pairs = [
@@ -169,9 +191,9 @@ class LCPO_Runner:
                     for item, answer in zip(self.qa, answers)
                 ]
                 self.qa_answers_by_ni[n_i] = qa_pairs
-                self.all_tested_tokens.add(n_i)
+                self.all_tested_tokens.add(n_i)  # 标记为已处理
 
-            # 模型更新
+            # 只在所有 token 生成与处理完毕后一次性更新模型
             current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
             ranked_indices = await self.opt.listwise(current_qa_dict)
             self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
@@ -203,8 +225,8 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="deepseek-r1:7b", help="Project name")
-    parser.add_argument("--dataset", type=str, default="Navigate", help="Project name")
+    parser.add_argument("--model_name", type=str, default="gpt", help="Project name")
+    parser.add_argument("--dataset", type=str, default="math", help="Project name")
     parser.add_argument("--sample_k", type=int, default=3, help="抽样的QA数量（0表示全部）")
     parser.add_argument("--n_steps", type=int, default=5, help="贝叶斯优化迭代轮次")
     return parser.parse_args()

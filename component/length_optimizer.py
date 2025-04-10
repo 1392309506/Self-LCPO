@@ -24,7 +24,7 @@ class TokenLengthOptimizer:
     """
     使用 Pairwise Gaussian Process 实现的偏好贝叶斯优化器，用于寻找最佳 LLM token 长度。
     """
-    def __init__(self, token_bounds=(100, 4000), config: ConfigLoader = None, model_name: str = "gpt-3.5-turbo"):
+    def __init__(self, token_bounds=(100, 4000), config: ConfigLoader = None, model_name: str = "gpt-3.5-turbo", llm: ChatLLM=None):
         self.token_bounds = token_bounds                  # token 长度的搜索边界
         self.token_history = []                           # 记录历史所有 token 值
         self.comparisons = []                             # 存储 pairwise 偏好对 (winner, loser)
@@ -33,11 +33,13 @@ class TokenLengthOptimizer:
 
         # 初始化 LLM 接口
         self.model = config.models[model_name]
-        self.llm = ChatLLM(
-            api_key=self.model.get("api_key"),
-            base_url=self.model.get("base_url"),
-            model=model_name
-        )
+        self.llm = llm
+        # self.llm = ChatLLM(
+        #     api_type=self.model.get("api_type"),
+        #     api_key=self.model.get("api_key"),
+        #     base_url=self.model.get("base_url"),
+        #     params=self.model.get("params"),
+        # )
 
     def update_listwise(self, token_list: list[int], ranked_indices: list[int]) -> None:
         """
@@ -184,7 +186,7 @@ class TokenLengthOptimizer:
 
             except Exception as e:
                 print(f"[⚠️ 排序解析失败 - 第 {attempt + 1} 次尝试]")
-                print(f"⛔ LLM 回复部分内容:\n<ranking>{ranking}</ranking>")
+                print(f"⛔ LLM 回复部分内容:\n<ranking>{response.content}</ranking>")
                 print(f"🚨 错误信息: {str(e)}")
 
         # 所有尝试失败，终止
