@@ -1,12 +1,9 @@
-import os
 import asyncio
 import logging
-from dotenv import load_dotenv
 from openai import AsyncOpenAI
 from typing import List, Dict, Optional
 import torch
 from transformers import AutoModelForCausalLM, AutoTokenizer
-import aiohttp
 from utils.logger_utils import LoggerUtil
 logger = LoggerUtil.get_logger("ChatLLM")
 
@@ -25,6 +22,7 @@ class ChatLLM:
         self.model = params.get("model", "gpt-3.5-turbo")
         self.temperature = params.get("temperature", 0.7)
         self.max_tokens = params.get("max_tokens", 1024)
+        self.total_token = 0
         logger.info("初始化Chat LLM")
         logger.info(params)
 
@@ -73,8 +71,8 @@ class ChatLLM:
         elif self.api_type == "qwq":
             return await self._generate_qwq(prompt)
 
-        elif self.api_type == "ollama":
-            return await self._generate_ollama(prompt)
+        # elif self.api_type == "ollama":
+        #     return await self._generate_ollama(prompt)
 
     async def _generate_qwq(self, prompt: str):
         loop = asyncio.get_event_loop()
@@ -96,6 +94,12 @@ class ChatLLM:
                     pad_token_id=self.tokenizer.eos_token_id
                 )
 
+            # ✅ Token统计
+            input_ids = inputs["input_ids"]
+            input_token_count = input_ids.shape[1]
+            output_token_count = outputs.shape[1] - input_ids.shape[1]
+            self.total_token += input_token_count + output_token_count
+
             response_ids = outputs[0][inputs["input_ids"].shape[1]:]
             response = self.tokenizer.decode(response_ids, skip_special_tokens=True)
             return response.strip()
@@ -113,6 +117,7 @@ class ChatLLM:
                     temperature=self.temperature,
                     max_tokens=self.max_tokens
                 )
+                self.total_token+=completion.usage.total_tokens
                 return completion.choices[0].message
             except Exception as e:
                 print(f"Error occurred: {e}, retrying... ({retries + 1}/{max_retries})")
@@ -120,27 +125,21 @@ class ChatLLM:
                 await asyncio.sleep(1)
         return None
 
-    async def _generate_ollama(self, prompt: str):
-        payload = {
-            "model": self.model,
-            "prompt": prompt,
-            "temperature": self.temperature,
-            "max_tokens": self.max_tokens,
-            "stream": False
-        }
-
-        async with aiohttp.ClientSession() as session:
-            async with session.post(self.ollama_url, json=payload) as response:
-                if response.status != 200:
-                    text = await response.text()
-                    raise Exception(f"Ollama API error: {response.status} {text}")
-                result = await response.json()
-                content = result.get("response", "")
-                return type('Message', (), {'content': content})()
-
     async def __call__(self, system_prompt: str = None, content: List[Dict] = None, max_retries: int = 3):
         messages = [{"role": "system", "content": system_prompt}, *content]
         return await self.chat(messages, max_retries)
+
+    def get_total_token(self) -> int:
+        """
+        返回当前累计的 token 总花销
+        """
+        return self.total_token
+
+    def token2zero(self):
+        """
+        token花销归零
+        """
+        self.total_token = 0
 
 if __name__ == "__main__":
     async def main():

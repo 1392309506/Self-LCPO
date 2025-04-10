@@ -8,10 +8,9 @@ from pathlib import Path
 from random import randint
 from typing import List
 
-import matplotlib.pyplot as plt
 from config_loader import ConfigLoader
-from prompt.execute_prompt import EXECUTE_PROMPT
-from prompt.dataset_prompt import MATH_PROMPT,GPQA_PROMPT,BLANK_PROMPT,SPO_PROMPT,COT_PROMPT
+from prompt.dataset_prompt import MATH_PROMPT, GPQA_PROMPT
+from prompt.execute_prompt import BLANK_PROMPT,SPO_PROMPT,COT_PROMPT
 
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -20,7 +19,6 @@ from f1_score import F1_Evaluator
 from utils.logger_utils import LoggerUtil
 
 logger = LoggerUtil.get_logger("exp_llm")
-
 
 class Prompt_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 100, prompt:str=""):
@@ -158,7 +156,7 @@ def parse_args():
 
 def main():
     args = parse_args()
-    print(args)
+    logger.info(args)
     try:
         config = ConfigLoader(args.config)
         runner = Prompt_Runner(config, args.model_name, args.dataset, token=args.token, prompt=args.prompt)
