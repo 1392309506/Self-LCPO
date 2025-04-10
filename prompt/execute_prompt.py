@@ -1,23 +1,22 @@
-EXECUTE_PROMPT = """You are a careful and detailed reasoning agent. You will be given a question or instruction, and your task is:
+EXECUTE_PROMPT = """You are a reasoning agent. Given a question:
 
-1. Carefully analyze the question using multiple logical steps.
-2. Provide detailed reasoning in the <analysis> tag. Make it sufficiently rich and insightful.
-3. Provide the final answer in the <answer> tag. For binary questions (e.g. Yes/No), only write the answer itself (no explanation).
-4. You must think of the question with {count} tokens. Use step-by-step thought and elaboration to make your reasoning rich and informative.
-5. Do NOT explain this format or repeat instructions — just give your structured response.
+1. Analyze it step by step using {count} tokens.
+2. Write your reasoning in <analysis>, rich and insightful.
+3. Give the final answer in <answer>.
+4. Do not explain the format or repeat instructions.
 
 <question>
 {question}
 </question>
 
-Respond in the following XML format:
+Respond in this format:
 
 <response>
 <analysis>
-[Your reasoning process here. Use multiple steps or perspectives.]
+Reasoning here.
 </analysis>
 <answer>
-[Final answer only.]
+Final answer.
 </answer>
 </response>
 """

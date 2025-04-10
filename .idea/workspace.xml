@@ -4,19 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix model and make it strong">
-      <change afterPath="$PROJECT_DIR$/dataset/AGIEval-MATH/math.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/dataset/LIAR/dataset2json.py" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add dataset">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/BBH-Navigate/navigate.json" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/BBH-Navigate/navigate.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/BBH-Navigate/variant_1.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GPQA/gpqa.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config_loader.py" beforeDir="false" afterPath="$PROJECT_DIR$/config_loader.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/f1_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/f1_score.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/evaluate_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/evaluate_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/execute_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/results/results.json" beforeDir="false" afterPath="$PROJECT_DIR$/results/results.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/load_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/load_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -357,7 +351,15 @@
       <option name="project" value="LOCAL" />
       <updated>1743923881292</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="add dataset">
+      <option name="closed" value="true" />
+      <created>1743939809506</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1743939809506</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -369,6 +371,7 @@
     <MESSAGE value="add metagpt" />
     <MESSAGE value="complete exp_lcpo" />
     <MESSAGE value="fix model and make it strong" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix model and make it strong" />
+    <MESSAGE value="add dataset" />
+    <option name="LAST_COMMIT_MESSAGE" value="add dataset" />
   </component>
 </project>

@@ -27,6 +27,7 @@ Discuss the differences in quality across counts. Highlight which performed best
 </analysis>
 <ranking>
 Return the index of count from best to worst. For example: [2, 0, 1, 3]. That means index=2 has the best performance.
+You must provide a int list. Don't provide None or other values.
 </ranking>
 </response>
 """

@@ -56,7 +56,7 @@ class ConfigLoader:
     def _validate_datasets(self):
         """验证数据集配置"""
         for name, path in self.config['datasets'].items():
-            dataset_path = self.config_path.parent.parent / 'dataset' / Path(path).name
+            dataset_path = self.config_path.parent.parent / 'dataset' / Path(path)
             if not dataset_path.exists():
                 raise FileNotFoundError(f"数据集 {name} 路径不存在: {dataset_path}")
 
@@ -71,9 +71,9 @@ class ConfigLoader:
             if missing_fields:
                 raise ValueError(f"模型 {model.get('name', '未命名')} 缺少必要字段: {missing_fields}")
 
-            # 验证API类型
-            if model['api-type'].lower() not in valid_api_types:
-                raise ValueError(f"模型 {model['name']} 的api-type不合法，当前支持: {valid_api_types}")
+            # # 验证API类型
+            # if model['api-type'].lower() not in valid_api_types:
+            #     raise ValueError(f"模型 {model['name']} 的api-type不合法，当前支持: {valid_api_types}")
 
             # 验证参数结构
             if not isinstance(model['params'], dict):
@@ -91,7 +91,7 @@ class ConfigLoader:
     def datasets(self) -> Dict[str, str]:
         """获取数据集路径映射"""
         return {
-            name: str(self.config_path.parent.parent / 'dataset' / Path(path).name)
+            name: str(self.config_path.parent.parent / 'dataset' / Path(path))
             for name, path in self.config['datasets'].items()
         }
 
