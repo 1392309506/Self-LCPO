@@ -35,6 +35,7 @@ class LCPO_Runner:
             api_key=self.model.get("api_key"),
             base_url=self.model.get("base_url"),
             params=self.model.get("params"),
+            name="exp_lcpo",
         )
         self.opt = TokenLengthOptimizer(token_bounds=(100, 4000), config=config, model_name=model_name,llm=self.llm)
         self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
@@ -90,44 +91,31 @@ class LCPO_Runner:
 
     async def _execute_protect_prompt(self)-> List[str]:
         """并发执行提示"""
-        async def _fetch_protect_answer(question: str) -> str | None:
-            """内部函数：发送异步请求获取答案（失败返回None，不污染F1数据）"""
-            async with self._semaphore:
-                try:
-                    prompt = SPO_PROMPT.format(question=question)
-                    messages = [{"role": "user", "content": prompt}]
-                    response = await self.llm.chat(messages)
+        prompt = SPO_PROMPT
 
-                    if response is None or not hasattr(response, "content"):
-                        logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
-                        return None
-
-                    answer = LoadUtils.extract_content(response.content, "answer")
-                    return answer
-
-                except Exception as e:
-                    logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
-                    return None
-        tasks = [_fetch_protect_answer(item.get("question")) for item in self.qa]
+        tasks = [self._fetch_answer(item.get("question"),prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
         return results
 
-    async def _execute_prompt(self,n:int)-> List[str]:
+    async def _execute_prompt(self, n: int) -> List[str]:
         """并发执行提示"""
-        tasks = [self._fetch_answer(item.get("question"),n) for item in self.qa]
+        prompt = ""
+        if self.dataset == "math":
+            prompt = MATH_PROMPT.format(count=n)
+        elif self.dataset == "gpqa":
+            prompt = GPQA_PROMPT.format(count=n)
+
+        tasks = [self._fetch_answer(item.get("question"),prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
         return results
-    async def _fetch_answer(self, question: str, n: int) -> str | None:
+
+    async def _fetch_answer(self, question: str, prompt: str ="") -> str | None:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
+        content = prompt+"\n"+question
+
         async with self._semaphore:
             try:
-                prompt = ""
-                if self.model_name == "math":
-                    prompt = MATH_PROMPT.format(question=question, count=n)
-                elif self.model_name == "gpqa":
-                    prompt = GPQA_PROMPT.format(question=question, count=n)
-
-                messages = [{"role": "user", "content": prompt}]
+                messages = [{"role": "user", "content": content}]
                 response = await self.llm.chat(messages)
 
                 if response is None or not hasattr(response, "content"):
@@ -140,7 +128,6 @@ class LCPO_Runner:
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
-
     async def _warmup(self):
         """执行 warm-up 初始化阶段"""
         # initial_tokens = self.config.experiment["n_i_values"]
@@ -270,7 +257,6 @@ def main():
     try:
         config = ConfigLoader(args.config)
         runner = LCPO_Runner(config, args.model_name, args.dataset, args.sample_k, args.n_steps)
-        # asyncio.run(runner.run())
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

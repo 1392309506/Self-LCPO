@@ -5,7 +5,7 @@ from typing import List, Dict
 from chat.chat_llm_openai import ChatLLM
 from config_loader import ConfigLoader
 from utils.logger_utils import LoggerUtil
-from prompt.extract_prompt import EXTRACT_PROMPT
+from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 
 logger = LoggerUtil.get_logger("F1_Evaluator")
 
@@ -13,13 +13,13 @@ logger = LoggerUtil.get_logger("F1_Evaluator")
 class F1_Evaluator:
     def __init__(self,config: ConfigLoader=None):
         logger.info(f"初始化 F1_Evaluator")
-        model = config.models["gpt"]
-        self.llm = ChatLLM(
-            api_type=model.get("api_type"),
-            api_key=model.get("api_key"),
-            base_url=model.get("base_url"),
-            params=model.get("params"),
-        )
+        # model = config.models["gpt"]
+        # self.llm = ChatLLM(
+        #     api_type=model.get("api_type"),
+        #     api_key=model.get("api_key"),
+        #     base_url=model.get("base_url"),
+        #     params=model.get("params"),
+        # )
 
     def calculate_f1(self, prediction: str, ground_truth: str) -> float:
         """计算单个 F1 分数（支持空值与无效预测容错）"""

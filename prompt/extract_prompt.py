@@ -13,5 +13,5 @@ I will give you a response from a LLM, which may contain a *int list*, please ex
 Conclude with a definitive answer formatted in XML:<ranking>For example:[1, 0, 3] or None</ranking>.
 
 Response:
-{standard}
+{response}
 """

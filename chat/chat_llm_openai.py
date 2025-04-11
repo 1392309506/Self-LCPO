@@ -17,13 +17,14 @@ class ChatLLM:
         params: Dict = {},
         debug_http: bool = False,
         api_type: str = "openai",
+        name: str = "ChatLLM",
     ) -> None:
         self.api_type = api_type
         self.model = params.get("model", "gpt-3.5-turbo")
         self.temperature = params.get("temperature", 0.7)
         self.max_tokens = params.get("max_tokens", 1024)
         self.total_token = 0
-        logger.info("初始化Chat LLM")
+        logger.info("初始化Chat LLM | Name: "+name)
         logger.info(params)
 
         if debug_http:
