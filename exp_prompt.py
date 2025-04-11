@@ -10,7 +10,7 @@ from typing import List
 
 from config_loader import ConfigLoader
 from prompt.dataset_prompt import MATH_PROMPT, GPQA_PROMPT
-from prompt.execute_prompt import BLANK_PROMPT,SPO_PROMPT,COT_PROMPT
+from prompt.execute_prompt import BLANK_PROMPT, SPO_PROMPT, COT_PROMPT
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 
 from utils.load_utils import LoadUtils
@@ -21,8 +21,9 @@ from utils.logger_utils import LoggerUtil
 
 logger = LoggerUtil.get_logger("exp_llm")
 
+
 class Prompt_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 100, prompt:str=""):
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 100, prompt: str = ""):
         self.config = config
         self.model_name = model_name
         self.dataset = dataset
@@ -42,7 +43,7 @@ class Prompt_Runner:
         self.token = token
         self.f1_score = 0
         self.acc = 0
-        self.cnt = 0
+        self.cnt = 1
         self.prompt = prompt
 
         extract_model = config.models["gpt"]
@@ -70,9 +71,9 @@ class Prompt_Runner:
         try:
             with open(results_path, "w", encoding="utf-8") as f:
                 json.dump({"token": self.token,
-                            "f1_score": self.f1_score,
-                            "acc": self.acc,
-                            "dataset": self.dataset}, f, indent=4, ensure_ascii=False)
+                           "f1_score": self.f1_score,
+                           "acc": self.acc,
+                           "dataset": self.dataset}, f, indent=4, ensure_ascii=False)
             logger.info(f"F1 分数已保存至 {results_path}")
         except Exception as e:
             logger.error(f"保存 F1 分数失败: {e}")
@@ -86,7 +87,7 @@ class Prompt_Runner:
         except Exception as e:
             logger.error(f"保存 QA 对失败: {e}")
 
-    async def _execute_prompt(self,n:int)-> List[str]:
+    async def _execute_prompt(self, n: int) -> List[str]:
         """并发执行提示"""
         prompt = ""
         if self.prompt == "blank":
@@ -101,14 +102,14 @@ class Prompt_Runner:
             elif self.model_name == "gpqa":
                 prompt = GPQA_PROMPT.format(count=n)
 
-        tasks = [self._fetch_answer(item,prompt) for item in self.qa]
+        tasks = [self._fetch_answer(item, prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
         return results
 
-    async def _fetch_answer(self, item: dict, prompt: str ="") -> str | None:
+    async def _fetch_answer(self, item: dict, prompt: str = "") -> str | None:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
         question = item.get("question")
-        content = prompt+"\n"+question
+        content = prompt + "\n" + question
 
         async with self._semaphore:
             try:
@@ -123,19 +124,26 @@ class Prompt_Runner:
                 # LLM 提取答案（修正）
                 if answer == None:
                     standard_answer = item.get("answer")
-                    judge = await self._extract(standard=standard_answer,personal=response.content)
+                    judge = await self._extract(standard=standard_answer, personal=response.content)
                     if judge == 1 or judge == "1":
                         answer = standard_answer
+                    else:
+                        answer = "None"
+
+                logger.info(str(self.cnt) + ": " + answer)
+                self.cnt += 1
                 return answer
             except Exception as e:
                 logger.exception(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
+
     async def _extract(self, standard: str, personal: str) -> str:
-        prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard,personal=personal)
+        prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard, personal=personal)
         messages = [{"role": "user", "content": prompt}]
         response = await self.extract_llm.chat(messages)
-        ranking = LoadUtils.extract_content(response.content, "ranking")
+        ranking = LoadUtils.extract_content(response.content, "judge")
         return ranking
+
     async def run(self):
         """执行实验流程"""
         try:
@@ -151,7 +159,7 @@ class Prompt_Runner:
 
             # 计算 F1 分数
             # self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
-            self.acc = self.F1_Evaluator.calculate_ACC(self.qa,answers)
+            self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
             logger.info(f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f}")
 
             self._save_results()
@@ -167,7 +175,7 @@ def parse_args():
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="math", help="评估使用的数据集名称")
-    parser.add_argument("--token", type=int, default=1300, help="用于测试的 token 数量")
+    parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
     parser.add_argument("--prompt", type=str, default="spo", help="用于测试的 token 数量")
     return parser.parse_args()
 
