@@ -122,16 +122,16 @@ class Prompt_Runner:
                 answer = LoadUtils.extract_content(response.content, "answer")
                 # LLM 提取答案（修正）
                 if answer == None:
-                    judge = await self._extract(response.content)
+                    standard_answer = item.get("answer")
+                    judge = await self._extract(standard=standard_answer,personal=response.content)
                     if judge == 1 or judge == "1":
-                        answer = item.get("answer")
-
+                        answer = standard_answer
                 return answer
             except Exception as e:
-                logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
+                logger.exception(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
-    async def _extract(self, content:str) -> str:
-        prompt = EXTRACT_ANSWER_PROMPT.format(response=content)
+    async def _extract(self, standard: str, personal: str) -> str:
+        prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard,personal=personal)
         messages = [{"role": "user", "content": prompt}]
         response = await self.extract_llm.chat(messages)
         ranking = LoadUtils.extract_content(response.content, "ranking")
@@ -168,7 +168,7 @@ def parse_args():
     parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="math", help="评估使用的数据集名称")
     parser.add_argument("--token", type=int, default=1300, help="用于测试的 token 数量")
-    parser.add_argument("--prompt", type=str, default="", help="用于测试的 token 数量")
+    parser.add_argument("--prompt", type=str, default="spo", help="用于测试的 token 数量")
     return parser.parse_args()
 
 

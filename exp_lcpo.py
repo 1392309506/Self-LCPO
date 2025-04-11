@@ -131,7 +131,7 @@ class LCPO_Runner:
     async def _warmup(self):
         """执行 warm-up 初始化阶段"""
         # initial_tokens = self.config.experiment["n_i_values"]
-        initial_tokens = list(range(100, 4001, 4000))
+        initial_tokens = list(range(100, 4001, 400))
 
         for n_i in initial_tokens:
             logger.info(f"开始训练的token数量为：{n_i}")
@@ -242,7 +242,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="gpt", help="Project name")
+    parser.add_argument("--model_name", type=str, default="ds", help="Project name")
     parser.add_argument("--dataset", type=str, default="math", help="Project name")
     parser.add_argument("--sample_k", type=int, default=6, help="抽样的QA数量（0表示全部）")
     parser.add_argument("--n_steps", type=int, default=10, help="贝叶斯优化迭代轮次")
