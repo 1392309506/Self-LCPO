@@ -37,7 +37,7 @@ class LCPO_Runner:
             params=self.model.get("params"),
             name="exp_lcpo",
         )
-        self.opt = TokenLengthOptimizer(token_bounds=(100, 4000), config=config, model_name=model_name,llm=self.llm)
+        self.opt = TokenLengthOptimizer(token_bounds=(100, 4000), config=config, model_name=model_name,llm=self.llm,qa=self.qa)
         self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.n_steps = n_steps
@@ -112,6 +112,7 @@ class LCPO_Runner:
     async def _fetch_answer(self, question: str, prompt: str ="") -> str | None:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
         content = prompt+"\n"+question
+        # print(content)
 
         async with self._semaphore:
             try:
@@ -120,7 +121,7 @@ class LCPO_Runner:
 
                 if response is None or not hasattr(response, "content"):
                     logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
-                    return None
+                    return "None"
 
                 answer = LoadUtils.extract_content(response.content, "answer")
                 return answer
@@ -131,18 +132,15 @@ class LCPO_Runner:
     async def _warmup(self):
         """执行 warm-up 初始化阶段"""
         # initial_tokens = self.config.experiment["n_i_values"]
-        initial_tokens = list(range(100, 4001, 400))
+        initial_tokens = list(range(100, 4001, 4000))
 
         for n_i in initial_tokens:
             logger.info(f"开始训练的token数量为：{n_i}")
             answers = await self._execute_prompt(n_i)
-            qa_pairs = [
-                {"question": item.get("question"), "answer": answer}
-                for item, answer in zip(self.qa, answers)
-            ]
-            self.qa_answers_by_ni[n_i] = qa_pairs
+            self.qa_answers_by_ni[n_i] = answers
 
         # 单独处理protect
+        logger.info(f"特殊处理：训练的token数量为：{self.protect_token}")
         protect_answers = await self._execute_protect_prompt()
         self.qa_answers_by_ni[self.protect_token] = protect_answers
         initial_tokens.append(self.protect_token)
@@ -152,7 +150,7 @@ class LCPO_Runner:
         logger.info("✅ warm-up 结束")
 
         init_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in initial_tokens}
-        ranked_indices = await self.opt.listwise(init_qa_dict)
+        ranked_indices = await self.opt.listwise(qa_dict=init_qa_dict)
         self.opt.update_listwise(initial_tokens, ranked_indices)
 
     async def _iterative_optimization(self):
@@ -171,7 +169,7 @@ class LCPO_Runner:
 
             # 排序当前池并删除最差的若干个（保留 best_token）
             current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
-            ranked_indices = await self.opt.listwise(current_qa_dict)
+            ranked_indices = await self.opt.listwise(qa_dict=current_qa_dict)
             self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
 
             n_change = max(1, len(self.token_list) // 3)
@@ -245,10 +243,11 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="deepseek", help="Project name")
+    parser.add_argument("--model_name", type=str, default="gpt", help="Project name")
     parser.add_argument("--dataset", type=str, default="math", help="Project name")
     parser.add_argument("--sample_k", type=int, default=6, help="抽样的QA数量（0表示全部）")
     parser.add_argument("--n_steps", type=int, default=10, help="贝叶斯优化迭代轮次")
+    parser.add_argument("--protect_token", type=int, default=2335, help="特殊token花销")
     return parser.parse_args()
 
 def main():
@@ -256,7 +255,8 @@ def main():
     logger.info(args)
     try:
         config = ConfigLoader(args.config)
-        runner = LCPO_Runner(config, args.model_name, args.dataset, args.sample_k, args.n_steps)
+        runner = LCPO_Runner(config=config, model_name=args.model_name, dataset=args.dataset,
+                             sample_k= args.sample_k, n_steps= args.n_steps, protect_token=args.protect_token)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

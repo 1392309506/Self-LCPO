@@ -25,12 +25,14 @@ class TokenLengthOptimizer:
     """
     使用 Pairwise Gaussian Process 实现的偏好贝叶斯优化器，用于寻找最佳 LLM token 长度。
     """
-    def __init__(self, token_bounds=(100, 4000), config: ConfigLoader = None, model_name: str = "gpt", llm: ChatLLM=None):
+    def __init__(self, token_bounds=(100, 4000), config: ConfigLoader = None, model_name: str = "gpt", llm: ChatLLM=None,
+                 qa:list = None):
         self.token_bounds = token_bounds                  # token 长度的搜索边界
         self.token_history = []                           # 记录历史所有 token 值
         self.comparisons = []                             # 存储 pairwise 偏好对 (winner, loser)
         self.gpmodel = None                               # GP 模型
         self.config = config
+        self.qa=qa
 
         # 初始化 LLM 接口
         self.model = config.models[model_name]
@@ -124,27 +126,39 @@ class TokenLengthOptimizer:
 
         return sorted(suggestions)
 
-    async def listwise(self, qa_dict: dict[int, list[dict]]) -> list[int]:
+    async def listwise(self, qa_dict: dict[int, list[str]]) -> list[int]:
         """
         输入多个 token 候选对应的 QA 对，让 LLM 返回 listwise 排名结果（索引顺序）
         如果 LLM 返回格式不合要求，将尝试重试，并打印错误内容以供调试。
+        参数:
+            qa_dict: {token_count: ['answer1', 'answer2', ...]
+            reference_qas: [{'question': ..., 'answer': ...}]（标准答案）
+        返回:
+            list[int]: 排序后的 token 数（从最佳到最差）
         """
         import ast
-
         token_list = list(qa_dict.keys())
+        # 构造标准答案
+        reference_block = ""
+        for i, qa in enumerate(self.qa):
+            q = qa.get("question", "").strip()
+            a = qa.get("answer", "").strip()
+            reference_block += f"{i + 1}. Q: {q}\n   A: {a}\n"
 
-        # 构建 answer block 展示给 LLM
+        # 构造 candidate answer block（只有答案）
         answer_block = ""
-        print("🧩 listwise 传入的 token_list:", token_list)
         for idx, token in enumerate(token_list):
-            answer_block += f"count {idx} (token={token}):\n"
-            for qa in qa_dict[token]:
-                answer_block += f"Question: {qa['question']}\nAnswer: {qa['answer']}\n\n"
+            answer_block += f"Candidate {idx} (Token={token}):\n"
+            for j, ans in enumerate(qa_dict[token]):
+                ans_clean = ans.strip()
+                answer_block += f"{j + 1}. {ans_clean}\n"
+            answer_block += "\n"
 
         # 构建完整 prompt（注意你可以将 EVALUATE_PROMPT 调整成更强的版本）
         prompt = EVALUATE_PROMPT.format(
-                cnt_answers=len(token_list),
-                answer_block=answer_block.strip(),
+                cnt_answers= len(token_list),
+                reference_block= reference_block,
+                answer_block= answer_block.strip(),
                 token_list= str(token_list))
         messages = [{"role": "user", "content": prompt}]
         # 尝试调用 LLM 进行排序，最多5次尝试
@@ -216,7 +230,7 @@ async def main():
 
     # 模拟 warm-up 阶段回答数据（真实项目中应该用 execute_prompt 生成）
     qa_dict = {
-        n: [{"question": "What is the capital of France?", "answer": f"Paris with reasoning for {n} tokens"}]
+        n: [f"Paris with reasoning for {n} tokens"]
         for n in initial_tokens
     }
 
@@ -234,7 +248,7 @@ async def main():
 
         # 模拟该 token 下的回答（此处简化）
         qa_dict = {
-            n: [{"question": "What is the capital of France?", "answer": f"Paris with reasoning for {n} tokens"}]
+            n: [f"Paris with reasoning for {n} tokens"]
             for n in token_list
         }
 
