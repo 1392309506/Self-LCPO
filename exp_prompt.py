@@ -11,6 +11,7 @@ from typing import List
 from config_loader import ConfigLoader
 from prompt.dataset_prompt import MATH_PROMPT, GPQA_PROMPT
 from prompt.execute_prompt import BLANK_PROMPT,SPO_PROMPT,COT_PROMPT
+from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -44,6 +45,15 @@ class Prompt_Runner:
         self.cnt = 0
         self.prompt = prompt
 
+        extract_model = config.models["gpt"]
+        self.extract_llm = ChatLLM(
+            api_type=extract_model.get("api_type"),
+            api_key=extract_model.get("api_key"),
+            base_url=extract_model.get("base_url"),
+            params=extract_model.get("params"),
+            name="optimizer"
+        )
+
     def _save_results(self):
         """保存 F1 分数 和 QA 对"""
         results_dir = Path("results")
@@ -55,7 +65,7 @@ class Prompt_Runner:
         folder = Path("results") / f"{timestamp}_{random_code}"
         folder.mkdir(parents=True, exist_ok=True)
 
-        # 保存 F1 分数
+        # 保存 分数
         results_path = folder / "results.json"
         try:
             with open(results_path, "w", encoding="utf-8") as f:
@@ -78,46 +88,54 @@ class Prompt_Runner:
 
     async def _execute_prompt(self,n:int)-> List[str]:
         """并发执行提示"""
-        tasks = [self._fetch_answer(item.get("question"),n) for item in self.qa]
+        prompt = ""
+        if self.prompt == "blank":
+            prompt = BLANK_PROMPT
+        elif self.prompt == "spo":
+            prompt = SPO_PROMPT
+        elif self.prompt == "cot":
+            prompt = COT_PROMPT
+        else:
+            if self.model_name == "math":
+                prompt = MATH_PROMPT.format(count=n)
+            elif self.model_name == "gpqa":
+                prompt = GPQA_PROMPT.format(count=n)
+
+        tasks = [self._fetch_answer(item,prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
         return results
 
-    async def _fetch_answer(self, question: str, n: int) -> str | None:
+    async def _fetch_answer(self, item: dict, prompt: str ="") -> str | None:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
+        question = item.get("question")
+        content = prompt+"\n"+question
+
         async with self._semaphore:
             try:
-                prompt = ""
-                if self.prompt=="blank":
-                    prompt=BLANK_PROMPT.format(question=question)
-                elif self.prompt=="spo":
-                    prompt = SPO_PROMPT.format(question=question)
-                elif self.prompt=="cot":
-                    prompt = COT_PROMPT.format(question=question)
-                else:
-                    if self.model_name=="math":
-                        prompt = MATH_PROMPT.format(question=question, count=n)
-                    elif self.model_name=="gpqa":
-                        prompt = GPQA_PROMPT.format(question=question, count=n)
-                # prompt = SPO_PROMPT.format(question=question)
-
-
-
-                messages = [{"role": "user", "content": prompt}]
+                messages = [{"role": "user", "content": content}]
                 response = await self.llm.chat(messages)
 
                 if response is None or not hasattr(response, "content"):
                     logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
-                    return None
+                    return "None"
 
                 answer = LoadUtils.extract_content(response.content, "answer")
-                self.cnt = self.cnt + 1
-                logger.info(str(self.cnt) + ": " + answer)
-                return answer
+                # LLM 提取答案（修正）
+                if answer == None:
+                    judge = await self._extract(response.content)
+                    if judge == 1 or judge == "1":
+                        answer = item.get("answer")
 
+                return answer
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
-
+    async def _extract(self, content:str) -> str:
+        prompt = EXTRACT_ANSWER_PROMPT.format(response=content)
+        messages = [{"role": "user", "content": prompt}]
+        response = await self.extract_llm.chat(messages)
+        ranking = LoadUtils.extract_content(response.content, "ranking")
+        return ranking
     async def run(self):
         """执行实验流程"""
         try:
@@ -147,7 +165,7 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="gpt", help="使用的模型名称")
+    parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="math", help="评估使用的数据集名称")
     parser.add_argument("--token", type=int, default=1300, help="用于测试的 token 数量")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的 token 数量")

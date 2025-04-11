@@ -150,6 +150,7 @@ class TokenLengthOptimizer:
         for idx, token in enumerate(token_list):
             answer_block += f"Candidate {idx} (Token={token}):\n"
             for j, ans in enumerate(qa_dict[token]):
+                # print(ans)
                 ans_clean = ans.strip()
                 answer_block += f"{j + 1}. {ans_clean}\n"
             answer_block += "\n"
@@ -169,7 +170,7 @@ class TokenLengthOptimizer:
                 # ✅ 使用 LoadUtils 提取 <ranking> 标签内容
                 ranking = LoadUtils.extract_content(response.content, "ranking")
                 if ranking==None:
-                    ranking = self._extract(response.content)
+                    ranking = await self._extract(response.content)
                 # ✅ 转为 list 对象
                 ranked = ast.literal_eval(ranking)
                 if ranked[0] > len(token_list) - 1 or ranked[0] < 0:

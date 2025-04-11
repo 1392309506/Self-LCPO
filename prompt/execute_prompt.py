@@ -23,5 +23,6 @@ SPO_PROMPT = """
 Please analyze the question in depth and break down the problem into clear, concise steps. 
 Use bullet points or numbered lists to ensure clarity and provide logical reasoning with any required calculations or deductions. 
 Conclude your response with the final answer formatted in XML: <answer>your_answer_here</answer>.
+
 """
 

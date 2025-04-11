@@ -112,7 +112,6 @@ class LCPO_Runner:
     async def _fetch_answer(self, question: str, prompt: str ="") -> str | None:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
         content = prompt+"\n"+question
-        # print(content)
 
         async with self._semaphore:
             try:
