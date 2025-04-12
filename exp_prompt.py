@@ -38,7 +38,7 @@ class Prompt_Runner:
             base_url=self.model.get("base_url"),
             params=self.model.get("params"),
         )
-        self.max_concurrent_requests = 15
+        self.max_concurrent_requests = 20
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.token = token
         self.f1_score = 0
@@ -70,9 +70,10 @@ class Prompt_Runner:
         results_path = folder / "results.json"
         try:
             with open(results_path, "w", encoding="utf-8") as f:
-                json.dump({"token": self.token,
+                json.dump({"set_token": self.token,
                            "f1_score": self.f1_score,
                            "acc": self.acc,
+                           "total_token": self.llm.get_total_token,
                            "dataset": self.dataset}, f, indent=4, ensure_ascii=False)
             logger.info(f"F1 分数已保存至 {results_path}")
         except Exception as e:
@@ -121,16 +122,16 @@ class Prompt_Runner:
                     return "None"
 
                 answer = LoadUtils.extract_content(response.content, "answer")
+                standard_answer = item.get("answer")
                 # LLM 提取答案（修正）
-                if answer == None:
-                    standard_answer = item.get("answer")
+                if answer != standard_answer:
                     judge = await self._extract(standard=standard_answer, personal=response.content)
                     if judge == 1 or judge == "1":
                         answer = standard_answer
-                    else:
+                    elif answer == None:
                         answer = "None"
 
-                logger.info(str(self.cnt) + ": " + answer)
+                logger.info(str(self.cnt) + ": " + answer + " | " + standard_answer)
                 self.cnt += 1
                 return answer
             except Exception as e:
@@ -158,7 +159,7 @@ class Prompt_Runner:
             self.qa_answers_by_ni[self.token] = qa_pairs
 
             # 计算 F1 分数
-            # self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
+            self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
             self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
             logger.info(f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f}")
 

@@ -225,8 +225,8 @@ class LCPO_Runner:
         """主实验入口：包含 warm-up + 多轮优化"""
         try:
             await self._warmup()
-            print("🔎 token_history:", self.opt.token_history)
-            print("🔎 comparisons:", self.opt.comparisons)
+            logger.info("🔎 token_history:", self.opt.token_history)
+            logger.info("🔎 comparisons:", self.opt.comparisons)
             logger.info("🚀 进入贝叶斯优化迭代阶段")
             await self._iterative_optimization()
 
