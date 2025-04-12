@@ -73,7 +73,7 @@ class Prompt_Runner:
                 json.dump({"set_token": self.token,
                            "f1_score": self.f1_score,
                            "acc": self.acc,
-                           "total_token": self.llm.get_total_token,
+                           "total_token": self.llm.get_total_token(),
                            "dataset": self.dataset}, f, indent=4, ensure_ascii=False)
             logger.info(f"F1 分数已保存至 {results_path}")
         except Exception as e:
@@ -161,7 +161,8 @@ class Prompt_Runner:
             # 计算 F1 分数
             self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
             self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
-            logger.info(f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f}")
+            logger.info(
+                f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f} | total_token={self.llm.get_total_token()}")
 
             self._save_results()
             logger.info("实验完成")

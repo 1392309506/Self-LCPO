@@ -150,7 +150,10 @@ class TokenLengthOptimizer:
         for idx, token in enumerate(token_list):
             answer_block += f"Candidate {idx} (Token={token}):\n"
             for j, ans in enumerate(qa_dict[token]):
-                # print(ans)
+                if ans==None:
+                    ans="None"
+                    question = self.qa[j].get("question", "")
+                    logger.error(f"答案为空❌, index = {j} , question: {question.strip()[:40]}")
                 ans_clean = ans.strip()
                 answer_block += f"{j + 1}. {ans_clean}\n"
             answer_block += "\n"
