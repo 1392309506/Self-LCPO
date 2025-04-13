@@ -57,7 +57,7 @@ class LCPO_Runner:
             api_key=extract_model.get("api_key"),
             base_url=extract_model.get("base_url"),
             params=extract_model.get("params"),
-            name="optimizer"
+            name="extract_llm"
         )
 
     async def _save_results(self):
@@ -135,7 +135,9 @@ class LCPO_Runner:
                 if response is None or not hasattr(response, "content"):
                     logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
                     return "None"
-
+                if response.content is None:
+                    logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
+                    return "None"
                 answer = LoadUtils.extract_content(response.content, "answer")
                 standard_answer = item.get("answer")
                 # LLM 提取答案（修正）
@@ -148,7 +150,7 @@ class LCPO_Runner:
 
                 return answer
             except Exception as e:
-                logger.exception(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
+                logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
     async def _extract(self, standard: str, personal: str) -> str:
         prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard, personal=personal)
@@ -159,7 +161,7 @@ class LCPO_Runner:
     async def _warmup(self):
         """执行 warm-up 初始化阶段"""
         # initial_tokens = self.config.experiment["n_i_values"]
-        initial_tokens = list(range(1000, 16001, 1500))
+        initial_tokens = list(range(1000, 4001, 1000))
 
         for n_i in initial_tokens:
             logger.info(f"开始训练的token数量为：{n_i}")
@@ -218,7 +220,7 @@ class LCPO_Runner:
                 exclude=exclude_set,
             )
 
-            logger.info(f"➕ 新增 token: {new_tokens}")
+            logger.info(f"新增 token: {new_tokens}")
 
             # 过滤：排除空值（避免 NoneType 错误）和重复项
             filtered_new_tokens = [
@@ -226,16 +228,14 @@ class LCPO_Runner:
                 if token is not None and token not in self.all_tested_tokens
             ]
             self.token_list.extend(filtered_new_tokens)
+            logger.info(f"➕ 过滤后新增 : {filtered_new_tokens}")
+
 
             # 执行新 token 的生成（仅处理过滤后的 token）
             for n_i in filtered_new_tokens:
                 logger.info(f"生成 token={n_i} 的回答中")
                 answers = await self._execute_prompt(n_i)
-                qa_pairs = [
-                    {"question": item.get("question"), "answer": answer}
-                    for item, answer in zip(self.qa, answers)
-                ]
-                self.qa_answers_by_ni[n_i] = qa_pairs
+                self.qa_answers_by_ni[n_i] = answers
                 self.all_tested_tokens.add(n_i)  # 标记为已处理
 
             # 只在所有 token 生成与处理完毕后一次性更新模型
@@ -252,8 +252,8 @@ class LCPO_Runner:
         """主实验入口：包含 warm-up + 多轮优化"""
         try:
             await self._warmup()
-            logger.info("🔎 token_history:", self.opt.token_history)
-            logger.info("🔎 comparisons:", self.opt.comparisons)
+            print("🔎 token_history:", self.opt.token_history)
+            print("🔎 comparisons:", self.opt.comparisons)
             logger.info("🚀 进入贝叶斯优化迭代阶段")
             await self._iterative_optimization()
 
@@ -271,8 +271,8 @@ def parse_args():
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="ds", help="Project name")
     parser.add_argument("--dataset", type=str, default="math", help="Project name")
-    parser.add_argument("--sample_k", type=int, default=6, help="抽样的QA数量（0表示全部）")
-    parser.add_argument("--n_steps", type=int, default=10, help="贝叶斯优化迭代轮次")
+    parser.add_argument("--sample_k", type=int, default=5, help="抽样的QA数量（0表示全部）")
+    parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=2586, help="特殊token花销")
     return parser.parse_args()
 

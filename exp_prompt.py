@@ -37,6 +37,7 @@ class Prompt_Runner:
             api_key=self.model.get("api_key"),
             base_url=self.model.get("base_url"),
             params=self.model.get("params"),
+            name="exp_prompt"
         )
         self.max_concurrent_requests = 20
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
@@ -52,7 +53,7 @@ class Prompt_Runner:
             api_key=extract_model.get("api_key"),
             base_url=extract_model.get("base_url"),
             params=extract_model.get("params"),
-            name="optimizer"
+            name="extract_llm"
         )
 
     def _save_results(self):
@@ -117,7 +118,7 @@ class Prompt_Runner:
                 messages = [{"role": "user", "content": content}]
                 response = await self.llm.chat(messages)
 
-                if response is None or not hasattr(response, "content"):
+                if response is None or not hasattr(response, "content") or response.content is None:
                     logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
                     return "None"
 
@@ -135,7 +136,7 @@ class Prompt_Runner:
                 self.cnt += 1
                 return answer
             except Exception as e:
-                logger.exception(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
+                logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
 
     async def _extract(self, standard: str, personal: str) -> str:
@@ -178,7 +179,7 @@ def parse_args():
     parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="math", help="评估使用的数据集名称")
     parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
-    parser.add_argument("--prompt", type=str, default="spo", help="用于测试的 token 数量")
+    parser.add_argument("--prompt", type=str, default="", help="用于测试的 token 数量")
     return parser.parse_args()
 
 

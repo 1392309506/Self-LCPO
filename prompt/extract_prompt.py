@@ -8,10 +8,17 @@ Conclude with a definitive answer formatted in XML:<judge>[1 or 0]</judge>.
 <personal>{personal}</personal>
 """
 
-EXTRACT_RANKING_PROMPT="""
-I will give you a response from a LLM, which may contain a *int list*, please extract it.
-Conclude with a definitive answer formatted in XML:<ranking>For example:[1, 0, 3] or None</ranking>.
+EXTRACT_RANKING_PROMPT = """
+Given a response from an LLM, extract the **ranking list of indices** (e.g., [2, 0, 1]) if clearly present.
 
-Response:
+- Accept formats like [2, 0, 1] or 2 > 0 > 1.
+- Only return a list if ranking is explicit or clearly inferable.
+- If no valid list is found, return None.
+
+Respond strictly in this XML format:
+<ranking>[list] or None</ranking>
+
+<content>
 {response}
+</content>
 """

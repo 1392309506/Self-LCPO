@@ -132,7 +132,6 @@ class TokenLengthOptimizer:
         如果 LLM 返回格式不合要求，将尝试重试，并打印错误内容以供调试。
         参数:
             qa_dict: {token_count: ['answer1', 'answer2', ...]
-            reference_qas: [{'question': ..., 'answer': ...}]（标准答案）
         返回:
             list[int]: 排序后的 token 数（从最佳到最差）
         """
@@ -165,8 +164,8 @@ class TokenLengthOptimizer:
                 answer_block= answer_block.strip(),
                 token_list= str(token_list))
         messages = [{"role": "user", "content": prompt}]
-        # 尝试调用 LLM 进行排序，最多5次尝试
-        for attempt in range(5):
+        # 尝试调用 LLM 进行排序，最多3次尝试
+        for attempt in range(3):
             response = await self.llm.chat(messages)
             try:
                 # print(response.content)
@@ -178,8 +177,10 @@ class TokenLengthOptimizer:
                 ranked = ast.literal_eval(ranking)
                 if ranked[0] > len(token_list) - 1 or ranked[0] < 0:
                     raise ValueError("index is out of bounds for token_list")
-                if len(ranked) != len(token_list):
-                    raise ValueError("length of ranked is not equal to length of token_list")
+                if len(ranked) > len(token_list):
+                    raise ValueError("ranking is out of range to the token_list")
+                if len(ranked) < len(token_list)/3 :
+                    raise ValueError("length of ranked is not included enough good tokens")
                 if isinstance(ranked, list) and all(isinstance(i, int) for i in ranked):
                     logger.info(f"🧠 warm-up listwise 排序结果: {ranked}")
                     return ranked
@@ -187,14 +188,16 @@ class TokenLengthOptimizer:
                     raise ValueError("解析出的结构不是 int list")
 
             except Exception as e:
-                print(f"[⚠️ 排序解析失败 - 第 {attempt + 1} 次尝试]")
-                print(f"⛔ LLM 回复部分内容:\n<ranking>{response.content}</ranking>")
-                print(f"🚨 错误信息: {str(e)}")
+                if ranking == None:
+                    ranking = "None"
+                logger.warning(f"[⚠️ 排序解析失败 - 第 {attempt + 1} 次尝试]")
+                logger.info(f"⛔ LLM 回复部分内容:\n<ranking>{ranking}</ranking>")
+                logger.error(f"🚨 错误信息: {str(e)}")
 
         # 所有尝试失败，终止
-        raise ValueError("无法从 LLM 回复中提取合法排序结果，原结果为："+str(token_list))
+        # raise ValueError("无法从 LLM 回复中提取合法排序结果，原结果为："+str(token_list))
         # （可选 fallback）返回默认排序避免崩溃
-        # return list(range(len(token_list)))
+        return list(range(len(token_list)))
 
     async def _extract(self, content:str) -> str:
         prompt = EXTRACT_RANKING_PROMPT.format(response=content)
