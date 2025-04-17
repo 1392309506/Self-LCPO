@@ -1,18 +1,24 @@
-import csv
 import json
 
-def preprocess_liar_tsv_to_json(tsv_file_path, json_file_path):
-    data = []
-    with open(tsv_file_path, 'r', encoding='utf-8') as tsv_file:
-        reader = csv.reader(tsv_file, delimiter='\t')
-        for row in reader:
-            if len(row) >= 3:
-                question = row[2]  # 第三列：声明文本
-                answer = row[1]    # 第二列：真实性标签
-                data.append({"question": question, "answer": answer})
-    with open(json_file_path, 'w', encoding='utf-8') as json_file:
-        json.dump(data, json_file, ensure_ascii=False, indent=4)
+def convert_liar_to_qa_format(input_path="valid.json", output_path="valid.json"):
+    with open(input_path, "r", encoding="utf-8") as f:
+        data = json.load(f)
 
-preprocess_liar_tsv_to_json('train.tsv', 'train.json')
-preprocess_liar_tsv_to_json('valid.tsv', 'valid.json')
-preprocess_liar_tsv_to_json('test.tsv', 'test.json')
+    qa_data = []
+
+    for item in data:
+        claim = item["question"]
+        label = item["answer"]
+        qa = {
+            "question": f"Given the claim: '{claim}', classify the veracity of this statement into one of the following categories: [true, mostly-true, half-true, barely-true, false, pants-fire].",
+            "answer": label
+        }
+        qa_data.append(qa)
+
+    with open(output_path, "w", encoding="utf-8") as f:
+        json.dump(qa_data, f, indent=2, ensure_ascii=False)
+
+    print(f"✅ Converted {len(qa_data)} items to QA format.")
+
+# 执行转换
+convert_liar_to_qa_format()

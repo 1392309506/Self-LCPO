@@ -7,6 +7,7 @@ logger = LoggerUtil.get_logger("F1_Evaluator")
 class F1_Evaluator:
     def __init__(self):
         logger.info(f"初始化 F1_Evaluator")
+        self.len=0
 
     def calculate_f1(self, prediction: str, ground_truth: str) -> float:
         """计算单个 F1 分数（支持空值与无效预测容错）"""
@@ -73,15 +74,21 @@ class F1_Evaluator:
         total_count = len(data)
         if total_count != len(predictions):
             raise -1
+        skip = 0
         for i in range(total_count):
             # 从字典中获取正确答案（使用 'answer' 作为键）
             correct_answer = data[i].get('answer')
-            predicted_answer = predictions[i]
+            prediction = predictions[i]
+            if prediction is None or not isinstance(prediction, str) or prediction.strip().upper() == "ERROR":
+                skip+=1
             # 进行精确匹配比较
-            if correct_answer == predicted_answer:
+            if correct_answer == prediction:
                 correct_count += 1
+        self.len=total_count-skip
         # 处理空列表情况
-        return correct_count / total_count if total_count > 0 else 0.0
+        return correct_count / self.len if total_count > 0 else 0.0
+    def get_len(self)-> int:
+        return self.len
 
 def parse_args():
     parser = argparse.ArgumentParser(description="F1 Evaluator")

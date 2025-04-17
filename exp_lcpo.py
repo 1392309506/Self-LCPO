@@ -9,14 +9,14 @@ import random
 from typing import List
 
 from component.length_optimizer import TokenLengthOptimizer
-from config_loader import ConfigLoader
-from prompt.dataset_prompt import MATH_PROMPT, GPQA_PROMPT
-from prompt.execute_prompt import BLANK_PROMPT, SPO_PROMPT, COT_PROMPT
+from component.config_loader import ConfigLoader
+from prompt.dataset_prompt import MATH_PROMPT
+from prompt.execute_prompt import SPO_PROMPT
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
 
-from f1_score import F1_Evaluator
+from component.f1_score import F1_Evaluator
 from utils.logger_utils import LoggerUtil
 
 logger = LoggerUtil.get_logger("exp_lcpo")
@@ -25,7 +25,7 @@ logger = LoggerUtil.get_logger("exp_lcpo")
 class LCPO_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str,
                  sample_k: int = 0, n_steps: int = 5,
-                 protect_token: int = 0):
+                 protect_token: int = 0, template: str = "GPQA_PROMPT", initial_tokens=list(range(1000, 5001, 500))):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
@@ -50,6 +50,7 @@ class LCPO_Runner:
         self.all_tested_tokens = set()
         self.protect_token = protect_token
         self.model_name = model_name
+        self.template = template
 
         extract_model = config.models["gpt"]
         self.extract_llm = ChatLLM(
@@ -57,8 +58,9 @@ class LCPO_Runner:
             api_key=extract_model.get("api_key"),
             base_url=extract_model.get("base_url"),
             params=extract_model.get("params"),
-            name="extract_llm"
+            name="extract_lcpo"
         )
+        self.initial_tokens = initial_tokens
 
     async def _save_results(self):
         """保存最优 Prompt 与对应的 F1 分数到新文件夹"""
@@ -112,11 +114,15 @@ class LCPO_Runner:
 
     async def _execute_prompt(self, n: int) -> List[str]:
         """并发执行提示"""
-        prompt = ""
-        if self.dataset == "math":
-            prompt = MATH_PROMPT.format(count=n)
-        elif self.dataset == "gpqa":
-            prompt = GPQA_PROMPT.format(count=n)
+        prompt = self.template.format(count=n)
+        # if self.dataset == "math":
+        #     prompt = MATH_PROMPT.format(count=n)
+        # elif self.dataset == "gpqa":
+        #     prompt = GPQA_PROMPT.format(count=n)
+        # elif self.model_name == "bbh":
+        #     prompt = BBH_PROMPT.format(count=n)
+        # elif self.model_name == "liar":
+        #     prompt = LIAR_PROMPT.format(count=n)
 
         tasks = [self._fetch_answer(item, prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
@@ -152,18 +158,19 @@ class LCPO_Runner:
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
+
     async def _extract(self, standard: str, personal: str) -> str:
         prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard, personal=personal)
         messages = [{"role": "user", "content": prompt}]
         response = await self.extract_llm.chat(messages)
         ranking = LoadUtils.extract_content(response.content, "judge")
         return ranking
+
     async def _warmup(self):
         """执行 warm-up 初始化阶段"""
         # initial_tokens = self.config.experiment["n_i_values"]
-        initial_tokens = list(range(1000, 4001, 1000))
 
-        for n_i in initial_tokens:
+        for n_i in self.initial_tokens:
             logger.info(f"开始训练的token数量为：{n_i}")
             answers = await self._execute_prompt(n_i)
             self.qa_answers_by_ni[n_i] = answers
@@ -172,15 +179,15 @@ class LCPO_Runner:
         logger.info(f"特殊处理：训练的token数量为：{self.protect_token}")
         protect_answers = await self._execute_protect_prompt()
         self.qa_answers_by_ni[self.protect_token] = protect_answers
-        initial_tokens.append(self.protect_token)
+        self.initial_tokens.append(self.protect_token)
 
-        self.token_list = list(initial_tokens)
-        self.all_tested_tokens = set(initial_tokens)
+        self.token_list = list(self.initial_tokens)
+        self.all_tested_tokens = set(self.initial_tokens)
         logger.info("✅ warm-up 结束")
 
-        init_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in initial_tokens}
+        init_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in self.initial_tokens}
         ranked_indices = await self.opt.listwise(qa_dict=init_qa_dict)
-        self.opt.update_listwise(initial_tokens, ranked_indices)
+        self.opt.update_listwise(self.initial_tokens, ranked_indices)
 
     async def _iterative_optimization(self):
         """执行多轮优化迭代（滑动窗口控制 token 集）"""
@@ -215,7 +222,7 @@ class LCPO_Runner:
             # 生成新 token，exclude 中不要包含 best_token
             exclude_set = (set(self.qa_answers_by_ni.keys()) | set(self.token_list)) - {best_token}
             new_tokens = self.opt.suggest_next(
-                n_suggestions=n_change,
+                n_suggestions=max(n_change, 1),
                 anchor_token=best_token,
                 exclude=exclude_set,
             )
@@ -229,7 +236,6 @@ class LCPO_Runner:
             ]
             self.token_list.extend(filtered_new_tokens)
             logger.info(f"➕ 过滤后新增 : {filtered_new_tokens}")
-
 
             # 执行新 token 的生成（仅处理过滤后的 token）
             for n_i in filtered_new_tokens:
@@ -267,13 +273,20 @@ class LCPO_Runner:
 
 def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
+    # config
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="ds", help="Project name")
-    parser.add_argument("--dataset", type=str, default="math", help="Project name")
+    # train
+    parser.add_argument("--dataset", type=str, default="gpqa", help="Project name")
     parser.add_argument("--sample_k", type=int, default=5, help="抽样的QA数量（0表示全部）")
-    parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
-    parser.add_argument("--protect_token", type=int, default=2586, help="特殊token花销")
+    parser.add_argument("--n_steps", type=int, default=20, help="贝叶斯优化迭代轮次")
+    parser.add_argument("--protect_token", type=int, default=2459, help="特殊token花销")
+    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
+    # init_token_list
+    parser.add_argument("--init_left", type=int, default=1000, help="初试token_list边界左值")
+    parser.add_argument("--init_right", type=int, default=5001, help="初试token_list边界右值")
+    parser.add_argument("--init_step", type=int, default=800, help="初试token_list边界步长")
     return parser.parse_args()
 
 
@@ -281,9 +294,12 @@ def main():
     args = parse_args()
     logger.info(args)
     try:
+
+        initial_tokens = list(range(args.init_left, args.init_right, args.init_step))
         config = ConfigLoader(args.config)
         runner = LCPO_Runner(config=config, model_name=args.model_name, dataset=args.dataset,
-                             sample_k=args.sample_k, n_steps=args.n_steps, protect_token=args.protect_token)
+                             sample_k=args.sample_k, n_steps=args.n_steps, protect_token=args.protect_token,
+                             template=args.template, initial_tokens=initial_tokens)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

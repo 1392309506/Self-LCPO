@@ -7,24 +7,26 @@ from datetime import datetime
 from pathlib import Path
 from random import randint
 from typing import List
-
-from config_loader import ConfigLoader
+import matplotlib.pyplot as plt
+from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT, EXTRACT_PROMPT
+from component.config_loader import ConfigLoader
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
 
-from f1_score import F1_Evaluator
+from component.f1_score import F1_Evaluator
+
 from utils.logger_utils import LoggerUtil
 
 logger = LoggerUtil.get_logger("exp_llm")
 
 
 class IO_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str):
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, prompt: str, template: str):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
-        self.qa = self.loadUtil.load_json(0)
+        self.qa = self.loadUtil.load_json(100)
         self.F1_Evaluator = F1_Evaluator()
         self.qa_pairs = {}  # 存储每个 token 限制下的 QA 对
         self.llm = ChatLLM(
@@ -37,79 +39,131 @@ class IO_Runner:
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.result = 0
         self.cnt = 0
+        self.prompt = prompt
+        self.template = template
+
+        extract_model = config.models["gpt"]
+        self.extract_llm = ChatLLM(
+            api_type=extract_model.get("api_type"),
+            api_key=extract_model.get("api_key"),
+            base_url=extract_model.get("base_url"),
+            params=extract_model.get("params"),
+            name="extract_llm"
+        )
+        self.acc_list={}
+
+    import matplotlib.pyplot as plt
 
     def _save_results(self):
-        """保存 F1 分数 和 QA 对"""
+        """保存 ACC 分数，并绘制结果图"""
         results_dir = Path("results")
         results_dir.mkdir(parents=True, exist_ok=True)
 
         # 生成时间戳+随机码文件夹名
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M")
+        timestamp = datetime.now().strftime("%Y%m%d_%H%M_" + self.dataset)
         random_code = hex(randint(0, 65535))[2:].upper()
-        folder = Path("results") / f"{timestamp}_{random_code}"
+        folder = results_dir / f"{timestamp}_{random_code}"
         folder.mkdir(parents=True, exist_ok=True)
 
-        # 保存 F1 分数
+        # 提取 acc_list 中的 ACC 值（acc_list[token] = qa_pairs）
+        acc_result = {}
+        for token, qa_list in self.acc_list.items():
+            acc = self.F1_Evaluator.calculate_ACC(self.qa, [qa["answer"] for qa in qa_list])
+            acc_result[token] = acc
+
+        # 保存 JSON
         results_path = folder / "results.json"
-        try:
-            with open(results_path, "w", encoding="utf-8") as f:
-                json.dump({"Python Project": "IO",
-                            "f1_score": self.result,
-                            "dataset": self.dataset}, f, indent=4, ensure_ascii=False)
-            logger.info(f"F1 分数已保存至 {results_path}")
-        except Exception as e:
-            logger.error(f"保存 F1 分数失败: {e}")
+        with open(results_path, "w", encoding="utf-8") as f:
+            json.dump(acc_result, f, indent=2, ensure_ascii=False)
 
-        # 保存 QA 对
-        qa_path = folder / "qa_answers.json"
-        try:
-            with open(qa_path, "w", encoding="utf-8") as f:
-                json.dump(self.qa_pairs, f, indent=2, ensure_ascii=False)
-            logger.info(f"QA 对已保存至 {qa_path}")
-        except Exception as e:
-            logger.error(f"保存 QA 对失败: {e}")
+        # 绘制 ACC 曲线图
+        tokens = sorted(acc_result.keys())
+        acc_values = [acc_result[t] for t in tokens]
 
-    async def _execute_prompt(self)-> List[str]:
+        plt.figure()
+        plt.plot(tokens, acc_values, marker='o')
+        plt.title(f"ACC vs Token Count ({self.dataset})")
+        plt.xlabel("Token Count")
+        plt.ylabel("Accuracy (ACC)")
+        plt.grid(True)
+        plt.tight_layout()
+
+        fig_path = folder / "acc_curve.png"
+        plt.savefig(fig_path)
+        plt.close()
+
+        logger.info(f"结果和图表已保存至：{folder}")
+
+    async def _execute_prompt(self, n: int) -> List[str]:
         """并发执行提示"""
-        tasks = [self._fetch_answer(item.get("question")) for item in self.qa]
+        prompt = self.template.format(count=n)
+        tasks = [self._fetch_answer(item, prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
         return results
 
-    async def _fetch_answer(self, question: str) -> str | None:
+    async def _fetch_answer(self, item: dict, prompt: str = "") -> str | None:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
+        question = item.get("question")
+        content = prompt + "\n" + question
+
         async with self._semaphore:
             try:
-                messages = [{"role": "user", "content": question}]
+                messages = [{"role": "user", "content": content}]
                 response = await self.llm.chat(messages)
 
-                if response is None or not hasattr(response, "content"):
-                    logger.warning(f"❌ 模型响应为空，响应为: {response}\n跳过该问题: {question[:40]}...")
+                if response is None or not hasattr(response, "content") or response.content is None:
+                    logger.warning(f"❌ 模型响应为空，跳过该问题: {question[:40]}...")
                     return None
 
-                answer = response.content
-                self.cnt = self.cnt + 1
-                print(str(self.cnt) + ": " + answer)
-                return answer
+                answer = LoadUtils.extract_content(response.content, "answer")
+                standard_answer = item.get("answer")
+                # LLM 提取答案（修正）
+                if answer != standard_answer:
+                    answer = await self._extract(standard=standard_answer, personal=response.content)
 
+                logger.info(str(self.cnt) + ": " + answer + " | " + standard_answer)
+                self.cnt += 1
+                return answer
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
 
+    async def _extract(self, standard: str, personal: str) -> str:
+        # prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard, personal=personal)
+        prompt = EXTRACT_PROMPT.format(content=personal)
+        messages = [{"role": "user", "content": prompt}]
+        response = await self.extract_llm.chat(messages)
+        personal = LoadUtils.extract_content(response.content, "answer")
+
+        # judge = LoadUtils.extract_content(response.content, "judge")
+        # if judge == "1":
+        #     personal = standard
+        # else:
+        #     personal = "None"
+        return personal
+
     async def run(self):
         """执行实验流程"""
         try:
-            answers = await self._execute_prompt()
+            init_tokenlist = list(range(100,5001,400))
+            for token in init_tokenlist:
+                logger.info(f"开始训练的token数量为：{token}")
+                answers = await self._execute_prompt(token)
 
-            # 存储 QA 对
-            self.qa_pairs = [
-                {"question": item.get("question"), "answer": answer}
-                for item, answer in zip(self.qa, answers)
-            ]
+                # 存储 QA 对
+                qa_pairs = [
+                    {"question": item.get("question"), "answer": answer}
+                    for item, answer in zip(self.qa, answers)
+                ]
+                self.acc_list[token] = qa_pairs  # ✅ 关键：存入 acc_list
 
-            # 计算 F1 分数
-            f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
-            logger.info(f"F1 Score={f1_score:.4f}")
-            self.result = f1_score
+                f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
+                acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
+                avg_token = self.llm.get_total_token() / self.F1_Evaluator.get_len()
+
+                logger.info(f"total_token={self.llm.get_total_token()}")
+                logger.info(
+                    f"self.token={token} | F1 Score={f1_score:.4f} | ACC Score={acc:.4f} | avg_token={avg_token}")
 
             self._save_results()
             logger.info("实验完成")
@@ -122,8 +176,11 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="gpt", help="使用的模型名称")
-    parser.add_argument("--dataset", type=str, default="math", help="评估使用的数据集名称")
+    parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
+    parser.add_argument("--dataset", type=str, default="bbh", help="评估使用的数据集名称")
+
+    parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
+    parser.add_argument("--template", type=str, default="BBH_PROMPT", help="使用的prompt模板")
     return parser.parse_args()
 
 
@@ -132,7 +189,7 @@ def main():
     print(args)
     try:
         config = ConfigLoader(args.config)
-        runner = IO_Runner(config, args.model_name, args.dataset)
+        runner = IO_Runner(config, args.model_name, args.dataset, args.prompt, args.template)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

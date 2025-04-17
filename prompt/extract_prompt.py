@@ -7,6 +7,12 @@ Conclude with a definitive answer formatted in XML:<judge>[1 or 0]</judge>.
 <standard>{standard}</standard>
 <personal>{personal}</personal>
 """
+EXTRACT_PROMPT="""
+Extract the answer from the content of answer process. If there is no explicit output, return None.
+Ensure the response concludes with the answer in the XML format: \n<answer>true, mostly-true, half-true, barely-true, false, pants-fire or None</answer>.\n
+
+{content}
+"""
 
 EXTRACT_RANKING_PROMPT = """
 Given a response from an LLM, extract the **ranking list of indices** (e.g., [2, 0, 1]) if clearly present.

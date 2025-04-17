@@ -13,7 +13,7 @@ from botorch.fit import fit_gpytorch_mll
 
 # 本地模块：LLM 接口、配置、Prompt模板
 from chat.chat_llm_openai import ChatLLM
-from config_loader import ConfigLoader
+from component.config_loader import ConfigLoader
 from prompt.evaluate_prompt import EVALUATE_PROMPT
 from prompt.extract_prompt import EXTRACT_RANKING_PROMPT
 from utils.load_utils import LoadUtils
