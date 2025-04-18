@@ -1,5 +1,5 @@
 import openai
-from dataset import get_examples, is_correct, extract_answer
+from dataset.GBSM8K.dataset import get_examples, is_correct, extract_answer
 import time
 
 # Step 1: 设置 Ollama 的 OpenAI 接口参数

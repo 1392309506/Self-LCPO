@@ -88,5 +88,4 @@ Return a Python list of indices (e.g., [2, 0, 1]). Do not explain your ranking.
 
 ---
 
-如需协助构建完整实验报告、补充评估结果或部署 DEMO，请继续与我对接。
 
