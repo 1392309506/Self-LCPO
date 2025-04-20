@@ -4,16 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add exp_llm">
-      <change afterPath="$PROJECT_DIR$/dataset/StrategyQA/dataset2json.py" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix exp_llm">
+      <change afterPath="$PROJECT_DIR$/dataset/BBH-Navigate/dataset2json.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/dataset/BoolQ/dev.jsonl" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GBSM8K/run.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/GBSM8K/run.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/LIAR/dataset2json.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/LIAR/test.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/LIAR/train.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/LIAR/valid.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/WSC/data2json.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/dataset/StrategyQA/dataset2json.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/evaluate_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/evaluate_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,41 +42,41 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.data2json.executor": "Run",
-    "Python.dataset2json (1).executor": "Run",
-    "Python.dataset2json.executor": "Run",
-    "Python.exp_lcpo.executor": "Run",
-    "Python.exp_llm.executor": "Run",
-    "Python.exp_prompt.executor": "Run",
-    "Python.general_llm_client.executor": "Run",
-    "Python.gpqa.executor": "Run",
-    "Python.length_optimizer (1).executor": "Run",
-    "Python.length_optimizer.executor": "Run",
-    "Python.popb_optimizer.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO/dataset/StrategyQA",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.data2json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO/dataset/BBH-Navigate&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\dataset\BBH-Navigate" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\StrategyQA" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\WSC" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\GBSM8K" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
-      <recent name="D:\Code_store\Python\Self-LCPO\dataset\GPQA" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\dataset\BBH-Navigate" />
+      <recent name="D:\Code_store\Python\Self-LCPO\dataset\BoolQ" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\StrategyQA" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\GBSM8K" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset" />
-      <recent name="D:\Code_store\Python\Self-LCPO\dataset\drop" />
-      <recent name="D:\Code_store\Python\Self-LCPO\component" />
     </key>
   </component>
   <component name="RunManager" selected="Python.dataset2json (1)">
@@ -111,11 +111,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/StrategyQA" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/BBH-Navigate" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/StrategyQA/dataset2json.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/BBH-Navigate/dataset2json.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -133,11 +133,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/BoolQ" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\dataset\StrategyQA\dataset2json.py" />
+      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\dataset\BBH-Navigate\dataset2json.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -238,9 +238,9 @@
       <list>
         <item itemvalue="Python.dataset2json (1)" />
         <item itemvalue="Python.dataset2json (1)" />
+        <item itemvalue="Python.dataset2json (1)" />
+        <item itemvalue="Python.dataset2json (1)" />
         <item itemvalue="Python.data2json" />
-        <item itemvalue="Python.exp_lcpo" />
-        <item itemvalue="Python.exp_prompt" />
       </list>
     </recent_temporary>
   </component>
@@ -436,7 +436,15 @@
       <option name="project" value="LOCAL" />
       <updated>1744904798072</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="fix exp_llm">
+      <option name="closed" value="true" />
+      <created>1744964616036</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1744964616036</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
@@ -458,6 +466,7 @@
     <MESSAGE value="fix exp_lcpo.py" />
     <MESSAGE value="strengthen exp_lcpo" />
     <MESSAGE value="add exp_llm" />
-    <option name="LAST_COMMIT_MESSAGE" value="add exp_llm" />
+    <MESSAGE value="fix exp_llm" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix exp_llm" />
   </component>
 </project>

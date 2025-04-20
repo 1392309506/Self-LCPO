@@ -10,7 +10,7 @@ from typing import List
 
 from component.config_loader import ConfigLoader
 from prompt.execute_prompt import BLANK_PROMPT, SPO_PROMPT, COT_PROMPT
-from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
+from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT, EXTRACT_PROMPT
 
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -146,7 +146,7 @@ class Prompt_Runner:
         # prompt = EXTRACT_PROMPT.format(content=personal)
         messages = [{"role": "user", "content": prompt}]
         response = await self.extract_llm.chat(messages)
-        # answer = LoadUtils.extract_content(response.content, "answer")
+        personal = LoadUtils.extract_content(response.content, "answer")
 
         judge = LoadUtils.extract_content(response.content, "judge")
         if judge == "1":
@@ -157,15 +157,15 @@ class Prompt_Runner:
 
     async def run(self):
         """执行实验流程"""
-        try:
-            logger.info(f"开始训练的token数量为：{self.token}")
-            answers = await self._execute_prompt(self.token)
+        logger.info(f"开始训练的token数量为：{self.token}")
+        answers = await self._execute_prompt(self.token)
 
-            # 存储 QA 对
-            qa_pairs = [
-                {"question": item.get("question"), "answer": answer}
-                for item, answer in zip(self.qa, answers)
-            ]
+        # 存储 QA 对
+        qa_pairs = [
+            {"question": item.get("question"), "answer": answer}
+            for item, answer in zip(self.qa, answers)
+        ]
+        try:
             self.qa_answers_by_ni[self.token] = qa_pairs
 
             # 计算 分数
@@ -180,6 +180,15 @@ class Prompt_Runner:
             logger.info("实验完成")
 
         except Exception as e:
+            # 计算 分数
+            self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
+            self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
+            avg_token = self.llm.get_total_token() / self.F1_Evaluator.get_len()
+            logger.info(f"total_token={self.llm.get_total_token()}")
+            logger.info(
+                f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f} | avg_token={avg_token}")
+
+            self._save_results()
             logger.error(f"实验运行失败: {str(e)}")
 
 
@@ -188,10 +197,10 @@ def parse_args():
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
-    parser.add_argument("--dataset", type=str, default="liar", help="评估使用的数据集名称")
+    parser.add_argument("--dataset", type=str, default="str", help="评估使用的数据集名称")
     parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
-    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
+    parser.add_argument("--template", type=str, default="STR_PROMPT", help="使用的prompt模板")
     return parser.parse_args()
 
 

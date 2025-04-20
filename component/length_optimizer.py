@@ -14,7 +14,7 @@ from botorch.fit import fit_gpytorch_mll
 # 本地模块：LLM 接口、配置、Prompt模板
 from chat.chat_llm_openai import ChatLLM
 from component.config_loader import ConfigLoader
-from prompt.evaluate_prompt import EVALUATE_PROMPT
+from prompt.evaluate_prompt import EVALUATE_PROMPT, SELF_EVALUATE_PROMPT
 from prompt.extract_prompt import EXTRACT_RANKING_PROMPT
 from utils.load_utils import LoadUtils
 from utils.logger_utils import LoggerUtil
@@ -26,7 +26,7 @@ class TokenLengthOptimizer:
     使用 Pairwise Gaussian Process 实现的偏好贝叶斯优化器，用于寻找最佳 LLM token 长度。
     """
     def __init__(self, token_bounds=(100, 4000), config: ConfigLoader = None, model_name: str = "gpt", llm: ChatLLM=None,
-                 qa:list = None):
+                 qa:list = None, is_truth :str = "true"):
         self.token_bounds = token_bounds                  # token 长度的搜索边界
         self.token_history = []                           # 记录历史所有 token 值
         self.comparisons = []                             # 存储 pairwise 偏好对 (winner, loser)
@@ -47,6 +47,8 @@ class TokenLengthOptimizer:
             params=extract_model.get("params"),
             name="optimizer"
         )
+        self.is_truth = is_truth
+
 
     def update_listwise(self, token_list: list[int], ranked_indices: list[int]) -> None:
         """
@@ -137,12 +139,6 @@ class TokenLengthOptimizer:
         """
         import ast
         token_list = list(qa_dict.keys())
-        # 构造标准答案
-        reference_block = ""
-        for i, qa in enumerate(self.qa):
-            q = qa.get("question", "").strip()
-            a = qa.get("answer", "").strip()
-            reference_block += f"{i + 1}. Q: {q}\n   A: {a}\n"
 
         # 构造 candidate answer block（只有答案）
         answer_block = ""
@@ -158,11 +154,28 @@ class TokenLengthOptimizer:
             answer_block += "\n"
 
         # 构建完整 prompt（注意你可以将 EVALUATE_PROMPT 调整成更强的版本）
-        prompt = EVALUATE_PROMPT.format(
-                cnt_answers= len(token_list),
-                reference_block= reference_block,
-                answer_block= answer_block.strip(),
-                token_list= str(token_list))
+        if self.is_truth=="true":
+            # 构造标准答案
+            reference_block = ""
+            for i, qa in enumerate(self.qa):
+                q = qa.get("question", "").strip()
+                a = qa.get("answer", "").strip()
+                reference_block += f"{i + 1}. Q: {q}\n   A: {a}\n"
+            prompt = EVALUATE_PROMPT.format(
+                cnt_answers=len(token_list),
+                reference_block=reference_block,
+                answer_block=answer_block.strip(),
+                token_list=str(token_list))
+        else :
+            question_block = ""
+            for i, qa in enumerate(self.qa):
+                q = qa.get("question", "").strip()
+                question_block += f"{i + 1}. {q}\n"
+            prompt = SELF_EVALUATE_PROMPT.format(
+                cnt_answers=len(token_list),
+                question_block=question_block,
+                answer_block=answer_block.strip(),
+                token_list=str(token_list))
         messages = [{"role": "user", "content": prompt}]
         # 尝试调用 LLM 进行排序，最多3次尝试
         for attempt in range(3):

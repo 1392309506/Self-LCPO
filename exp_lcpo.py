@@ -23,7 +23,7 @@ logger = LoggerUtil.get_logger("exp_lcpo")
 
 
 class LCPO_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str,
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, is_truth : str,
                  sample_k: int = 0, n_steps: int = 5,
                  protect_token: int = 0, template: str = "GPQA_PROMPT", initial_tokens=list(range(1000, 5001, 500))):
         self.config = config
@@ -41,7 +41,7 @@ class LCPO_Runner:
             name="exp_lcpo",
         )
         self.opt = TokenLengthOptimizer(token_bounds=(100, 4000), config=config, model_name=model_name, llm=self.llm,
-                                        qa=self.qa)
+                                        qa=self.qa,is_truth=is_truth)
         self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.n_steps = n_steps
@@ -75,10 +75,8 @@ class LCPO_Runner:
             for item, answer in zip(self.qa, answers)
         ]
         self.qa_answers_by_ni[best_token] = qa_pairs
-        qa = self.loadUtil.load_json(sample_k=0)
-        f1_score = self.F1_Evaluator.calculate_f1_list(qa, answers)
         # 获取最优 token 与其 F1 分数
-        logger.info(f"🏆 最佳 token: {best_token}, F1 分数: {f1_score:.4f}")
+        logger.info(f"🏆 最佳 token: {best_token}")
 
         # 生成时间戳+随机码文件夹名
         timestamp = datetime.now().strftime("%Y%m%d_%H%M")
@@ -97,12 +95,6 @@ class LCPO_Runner:
         with open(prompt_path, "w", encoding="utf-8") as f:
             f.write(best_prompt)
 
-        # 保存 F1 分数
-        f1_path = folder / "f1_score.json"
-        with open(f1_path, "w", encoding="utf-8") as f:
-            json.dump({"best_token": best_token, "f1": f1_score}, f, indent=2, ensure_ascii=False)
-
-        logger.info(f"✅ 最优结果已保存至: {folder}")
 
     async def _execute_protect_prompt(self) -> List[str]:
         """并发执行提示"""
@@ -222,7 +214,7 @@ class LCPO_Runner:
             # 生成新 token，exclude 中不要包含 best_token
             exclude_set = (set(self.qa_answers_by_ni.keys()) | set(self.token_list)) - {best_token}
             new_tokens = self.opt.suggest_next(
-                n_suggestions=max(n_change, 1),
+                n_suggestions=max(n_change+1, 1),
                 anchor_token=best_token,
                 exclude=exclude_set,
             )
@@ -278,13 +270,14 @@ def parse_args():
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="ds", help="Project name")
     # train
-    parser.add_argument("--dataset", type=str, default="gpqa", help="Project name")
+    parser.add_argument("--dataset", type=str, default="str", help="Project name")
     parser.add_argument("--sample_k", type=int, default=5, help="抽样的QA数量（0表示全部）")
     parser.add_argument("--n_steps", type=int, default=20, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=2459, help="特殊token花销")
-    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
+    parser.add_argument("--template", type=str, default="STR_PROMPT", help="使用的prompt模板")
+    parser.add_argument("--is_truth", type=str, default="true", help="是否有人工标注")
     # init_token_list
-    parser.add_argument("--init_left", type=int, default=1000, help="初试token_list边界左值")
+    parser.add_argument("--init_left", type=int, default=200, help="初试token_list边界左值")
     parser.add_argument("--init_right", type=int, default=5001, help="初试token_list边界右值")
     parser.add_argument("--init_step", type=int, default=800, help="初试token_list边界步长")
     return parser.parse_args()
@@ -299,7 +292,7 @@ def main():
         config = ConfigLoader(args.config)
         runner = LCPO_Runner(config=config, model_name=args.model_name, dataset=args.dataset,
                              sample_k=args.sample_k, n_steps=args.n_steps, protect_token=args.protect_token,
-                             template=args.template, initial_tokens=initial_tokens)
+                             template=args.template, initial_tokens=initial_tokens, is_truth=args.is_truth)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())
