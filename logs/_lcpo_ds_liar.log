@@ -1,0 +1,59 @@
+nohup: ignoring input
+2025-04-16 14:52:41,125 - INFO - exp_llm - Namespace(config='config/config_llm.yaml', model_name='ds', dataset='liar', token=1000, prompt='', template='LIAR_PROMPT')
+2025-04-16 14:52:41,133 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-16 14:52:41,134 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_prompt
+2025-04-16 14:52:41,134 - INFO - ChatLLM - {'model': 'deepseek-r1:7b', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-16 14:52:41,249 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
+2025-04-16 14:52:41,249 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-16 14:52:41,274 - INFO - exp_llm - 开始训练的token数量为：1000
+2025-04-16 14:52:54,162 - INFO - exp_llm - 1: true | true
+2025-04-16 14:52:54,920 - INFO - exp_llm - 2: pants-fire | pants-fire
+2025-04-16 14:52:56,130 - INFO - exp_llm - 3: half-true | half-true
+2025-04-16 14:53:06,590 - INFO - exp_llm - 4: false | false
+2025-04-16 14:53:07,559 - INFO - exp_llm - 5: false | false
+2025-04-16 14:53:14,792 - INFO - exp_llm - 6: barely-true | barely-true
+2025-04-16 14:53:15,767 - INFO - exp_llm - 7: true | true
+2025-04-16 14:53:21,531 - INFO - exp_llm - 8: true | true
+2025-04-16 14:53:32,251 - INFO - exp_llm - 9: barely-true | barely-true
+2025-04-16 14:53:33,505 - INFO - exp_llm - 10: true | true
+2025-04-16 14:53:40,506 - INFO - exp_llm - 11: pants-fire | pants-fire
+2025-04-16 14:53:40,827 - INFO - exp_llm - 12: None | barely-true
+2025-04-16 14:53:43,928 - INFO - exp_llm - 13: barely-true | barely-true
+2025-04-16 14:53:50,031 - INFO - exp_llm - 14: None | false
+2025-04-16 14:53:51,933 - INFO - exp_llm - 15: half-true | half-true
+2025-04-16 14:53:54,845 - INFO - exp_llm - 16: pants-fire | pants-fire
+2025-04-16 14:53:59,315 - INFO - exp_llm - 17: None | half-true
+2025-04-16 14:54:00,901 - INFO - exp_llm - 18: true | true
+2025-04-16 14:54:07,652 - INFO - exp_llm - 19: false | false
+2025-04-16 14:54:16,271 - INFO - exp_llm - 20: half-true | half-true
+2025-04-16 14:54:16,605 - INFO - exp_llm - 21: None | mostly-true
+2025-04-16 14:54:17,941 - INFO - exp_llm - 22: pants-fire | pants-fire
+2025-04-16 14:54:21,977 - INFO - exp_llm - 23: mostly-true | mostly-true
+2025-04-16 14:54:28,158 - INFO - exp_llm - 24: true | true
+2025-04-16 14:54:29,261 - INFO - exp_llm - 25: true | true
+2025-04-16 14:54:34,269 - INFO - exp_llm - 26: None | half-true
+2025-04-16 14:54:38,317 - INFO - exp_llm - 27: barely-true | barely-true
+2025-04-16 14:54:38,476 - INFO - exp_llm - 28: false | false
+2025-04-16 14:54:41,218 - INFO - exp_llm - 29: true | true
+2025-04-16 14:54:45,621 - INFO - exp_llm - 30: mostly-true | mostly-true
+2025-04-16 14:54:52,529 - INFO - exp_llm - 31: None | half-true
+2025-04-16 14:54:56,653 - INFO - exp_llm - 32: false | false
+2025-04-16 14:55:03,752 - INFO - exp_llm - 33: true | true
+2025-04-16 14:55:04,287 - INFO - exp_llm - 34: half-true | half-true
+2025-04-16 14:55:05,937 - INFO - exp_llm - 35: half-true | half-true
+2025-04-16 14:55:06,224 - INFO - exp_llm - 36: None | false
+2025-04-16 14:55:19,937 - INFO - exp_llm - 37: barely-true | barely-true
+2025-04-16 14:55:20,227 - INFO - exp_llm - 38: mostly-true | mostly-true
+2025-04-16 14:55:26,237 - INFO - exp_llm - 39: true | true
+2025-04-16 14:55:33,514 - INFO - exp_llm - 40: true | true
+2025-04-16 14:55:35,453 - INFO - exp_llm - 41: half-true | half-true
+2025-04-16 14:55:41,351 - INFO - exp_llm - 42: barely-true | barely-true
+2025-04-16 14:55:47,158 - INFO - exp_llm - 43: barely-true | barely-true
+2025-04-16 14:55:51,210 - INFO - exp_llm - 44: mostly-true | mostly-true
+2025-04-16 14:55:57,538 - INFO - exp_llm - 45: None | pants-fire
+2025-04-16 14:56:01,181 - INFO - exp_llm - 46: None | half-true
+2025-04-16 14:56:05,427 - INFO - exp_llm - 47: barely-true | barely-true
+2025-04-16 14:56:09,907 - INFO - exp_llm - 48: false | false
+2025-04-16 14:56:15,852 - INFO - exp_llm - 49: barely-true | barely-true
+2025-04-16 14:56:22,714 - INFO - exp_llm - 50: barely-true | barely-true
+2025-04-16 14:56:28,687 - INFO - exp_llm - 51: None | half-true

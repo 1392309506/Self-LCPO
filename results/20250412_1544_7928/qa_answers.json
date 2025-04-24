@@ -1,0 +1,44 @@
+{
+  "0": [
+    {
+      "question": "Let $\\lambda$ be a constant, $0 \\le \\lambda \\le 4,$ and let $f : [0,1] \\to [0,1]$ be defined by\n\\[f(x) = \\lambda x(1 - x).\\]Find the values of $\\lambda,$ $0 \\le \\lambda \\le 4,$ for which there exists an $x \\in [0,1]$ such that $f(x) \\neq x$ but $f(f(x)) = x.$",
+      "answer": null
+    },
+    {
+      "question": "What is the coefficient of $x^2y^2$ in the expansion of $(x+y)^4+(x+2y)^4$?",
+      "answer": "30"
+    },
+    {
+      "question": "In triangle $ABC$, $\\tan \\angle CAB = \\frac{22}{7}$, and the altitude from $A$ divides $\\overline{BC}$ into segments of length $3$ and $17$. What is the area of triangle $ABC$?",
+      "answer": null
+    },
+    {
+      "question": "Let $\\mathbf{w} = \\begin{pmatrix} 1 \\\\ 0 \\\\ -3 \\end{pmatrix}.$  The set of vectors $\\mathbf{v}$ such that\n\\[\\operatorname{proj}_{\\mathbf{w}} \\mathbf{v} = \\mathbf{0}\\]lie on a plane.  Enter the equation of this plane in the form\n\\[Ax + By + Cz + D = 0,\\]where $A,$ $B,$ $C,$ $D$ are integers such that $A > 0$ and $\\gcd(|A|,|B|,|C|,|D|) = 1.$",
+      "answer": "x - 3z = 0"
+    },
+    {
+      "question": "Evaluate $2911_{11}-1392_{11}$. Express your answer in base 11, using A as the digit representing 10 in base 11.",
+      "answer": null
+    },
+    {
+      "question": "The foci of the ellipse $\\frac{x^2}{49} + \\frac{y^2}{33} = 1$ are $F_1$ and $F_2,$ as shown below.  Let $P$ be a point on the circle $x^2 + (y - 3)^2 = 4.$  Line $F_2 P$ intersects the ellipse again at $Q,$ where the $y$-coordinate of $Q$ is positive.  Find the maximum value of $PQ + F_1 Q.$\n\n[asy]\nunitsize(0.4 cm);\n\npair P, Q;\npair[] F;\n\npath ell = yscale(sqrt(33))*xscale(7)*Circle((0,0),1);\nF[1] = (4,0);\nF[2] = (-4,0);\nP = (0,3) + 2*dir(240);\nQ = intersectionpoint(P--interp(F[2],P,5),ell);\n\ndraw(ell);\ndraw((-8,0)--(8,0));\ndraw((0,-7)--(0,7));\ndraw(Circle((0,3),2));\ndraw(F[1]--Q--F[2]);\n\ndot(\"$F_1$\", F[1], S);\ndot(\"$F_2$\", F[2], S);\ndot(\"$P$\", P, S);\nlabel(\"$Q$\", Q, NE);\n[/asy]",
+      "answer": null
+    },
+    {
+      "question": "Compute the area of the region that lies above the graph of $y = |x - 1| + |x - 3|$ but below the graph of $y = 8.$",
+      "answer": null
+    },
+    {
+      "question": "If $f(x)$ is a polynomial of degree 7, and $g(x)$ is a polynomial of degree 7, then what is the product of the minimum and the maximum possible degrees of $f(x) + g(x)$?",
+      "answer": null
+    },
+    {
+      "question": "Find the minimum value of $x(x + 1)(x + 2)(x + 3),$ over all real numbers $x.$",
+      "answer": "-1"
+    },
+    {
+      "question": "For what ordered pair $(a,b)$ are there infinite solutions $(x,y)$ to the system \\begin{align*}\n3ax+3y&=5b,\\\\\n2x+y&=5.\n\\end{align*}",
+      "answer": null
+    }
+  ]
+}

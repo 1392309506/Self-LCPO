@@ -1,0 +1,114 @@
+nohup: ignoring input
+2025-04-21 22:31:32,742 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-21 22:31:32,782 - INFO - ChatLLM - 初始化Chat LLM | Name: ChatLLM
+2025-04-21 22:31:32,783 - INFO - ChatLLM - {'model': 'deepseek-r1:7b', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-21 22:31:32,934 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
+2025-04-21 22:31:32,935 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-21 22:31:32,942 - INFO - exp_llm - 开始训练的token数量为：100
+2025-04-21 22:31:57,978 - INFO - exp_llm - 0: No | No
+2025-04-21 22:32:03,130 - INFO - exp_llm - 1: No | No
+2025-04-21 22:32:03,792 - INFO - exp_llm - 2: Yes | Yes
+2025-04-21 22:32:06,320 - INFO - exp_llm - 3: Yes | Yes
+2025-04-21 22:32:09,886 - INFO - exp_llm - 4: Yes | Yes
+2025-04-21 22:32:14,524 - INFO - exp_llm - 5: Yes | Yes
+2025-04-21 22:32:22,327 - INFO - exp_llm - 6: Yes | Yes
+2025-04-21 22:32:34,945 - INFO - exp_llm - 7: None | Yes
+2025-04-21 22:32:35,360 - INFO - exp_llm - 8: Yes | Yes
+2025-04-21 22:32:36,945 - INFO - exp_llm - 9: No | No
+2025-04-21 22:32:50,252 - INFO - exp_llm - 10: Yes | Yes
+2025-04-21 22:32:51,422 - INFO - exp_llm - 11: None | Yes
+2025-04-21 22:32:52,813 - INFO - exp_llm - 12: Yes | Yes
+2025-04-21 22:32:56,652 - INFO - exp_llm - 13: Yes | Yes
+2025-04-21 22:33:04,602 - INFO - exp_llm - 14: Yes | Yes
+2025-04-21 22:33:05,721 - INFO - exp_llm - 15: Yes | Yes
+2025-04-21 22:33:06,482 - INFO - exp_llm - 16: Yes | Yes
+2025-04-21 22:33:10,576 - INFO - exp_llm - 17: None | Yes
+2025-04-21 22:33:18,712 - INFO - exp_llm - 18: Yes | Yes
+2025-04-21 22:33:24,411 - INFO - exp_llm - 19: Yes | Yes
+2025-04-21 22:33:34,853 - INFO - exp_llm - 20: No | No
+2025-04-21 22:33:34,988 - INFO - exp_llm - 21: Yes | Yes
+2025-04-21 22:33:40,149 - INFO - exp_llm - 22: None | Yes
+2025-04-21 22:33:42,362 - INFO - exp_llm - 23: Yes | Yes
+2025-04-21 22:33:45,312 - INFO - exp_llm - 24: Yes | Yes
+2025-04-21 22:33:49,114 - INFO - exp_llm - 25: Yes | Yes
+2025-04-21 22:33:52,770 - INFO - exp_llm - 26: No | No
+2025-04-21 22:33:54,538 - INFO - exp_llm - 27: Yes | Yes
+2025-04-21 22:34:01,331 - INFO - exp_llm - 28: Yes | Yes
+2025-04-21 22:34:01,958 - INFO - exp_llm - 29: Yes | Yes
+2025-04-21 22:34:03,491 - INFO - exp_llm - 30: None | Yes
+2025-04-21 22:34:09,522 - INFO - exp_llm - 31: No | No
+2025-04-21 22:34:16,012 - INFO - exp_llm - 32: None | Yes
+2025-04-21 22:34:16,980 - INFO - exp_llm - 33: Yes | Yes
+2025-04-21 22:34:17,504 - INFO - exp_llm - 34: None | Yes
+2025-04-21 22:34:26,239 - INFO - exp_llm - 35: No | No
+2025-04-21 22:34:26,403 - INFO - exp_llm - 36: None | No
+2025-04-21 22:34:29,152 - INFO - exp_llm - 37: None | Yes
+2025-04-21 22:34:40,299 - INFO - exp_llm - 38: Yes | Yes
+2025-04-21 22:34:43,429 - INFO - exp_llm - 39: No | No
+2025-04-21 22:34:43,938 - INFO - exp_llm - 40: No | No
+2025-04-21 22:34:50,483 - INFO - exp_llm - 41: No | No
+2025-04-21 22:34:59,617 - INFO - exp_llm - 42: None | Yes
+2025-04-21 22:35:01,192 - INFO - exp_llm - 43: Yes | Yes
+2025-04-21 22:35:02,192 - INFO - exp_llm - 44: None | Yes
+2025-04-21 22:35:02,378 - INFO - exp_llm - 45: None | Yes
+2025-04-21 22:35:02,902 - INFO - exp_llm - 46: None | Yes
+2025-04-21 22:35:14,248 - INFO - exp_llm - 47: Yes | Yes
+2025-04-21 22:35:16,171 - INFO - exp_llm - 48: Yes | Yes
+2025-04-21 22:35:21,453 - INFO - exp_llm - 49: Yes | Yes
+2025-04-21 22:35:27,416 - INFO - exp_llm - 50: No | No
+2025-04-21 22:35:28,266 - INFO - exp_llm - 51: None | Yes
+2025-04-21 22:35:36,108 - INFO - exp_llm - 52: No | No
+2025-04-21 22:35:37,930 - INFO - exp_llm - 53: None | No
+2025-04-21 22:35:40,390 - INFO - exp_llm - 54: None | Yes
+2025-04-21 22:35:41,270 - INFO - exp_llm - 55: None | No
+2025-04-21 22:35:42,856 - INFO - exp_llm - 56: None | Yes
+2025-04-21 22:35:44,242 - INFO - exp_llm - 57: Yes | Yes
+2025-04-21 22:35:50,300 - INFO - exp_llm - 58: None | No
+2025-04-21 22:35:50,824 - INFO - exp_llm - 59: No | No
+2025-04-21 22:35:52,517 - INFO - exp_llm - 60: Yes | Yes
+2025-04-21 22:35:56,564 - INFO - exp_llm - 61: None | No
+2025-04-21 22:36:05,877 - INFO - exp_llm - 62: Yes | Yes
+2025-04-21 22:36:05,911 - INFO - exp_llm - 63: Yes | Yes
+2025-04-21 22:36:06,515 - INFO - exp_llm - 64: Yes | Yes
+2025-04-21 22:36:07,304 - INFO - exp_llm - 65: Yes | Yes
+2025-04-21 22:36:20,307 - INFO - exp_llm - 66: None | No
+2025-04-21 22:36:22,661 - INFO - exp_llm - 67: None | Yes
+2025-04-21 22:36:23,565 - INFO - exp_llm - 68: Yes | Yes
+2025-04-21 22:36:23,627 - INFO - exp_llm - 69: No | No
+2025-04-21 22:36:30,818 - INFO - exp_llm - 70: Yes | Yes
+2025-04-21 22:36:32,053 - INFO - exp_llm - 71: Yes | Yes
+2025-04-21 22:36:35,813 - INFO - exp_llm - 72: No | No
+2025-04-21 22:36:43,653 - INFO - exp_llm - 73: None | No
+2025-04-21 22:36:45,065 - INFO - exp_llm - 74: Yes | Yes
+2025-04-21 22:36:46,138 - INFO - exp_llm - 75: No | No
+2025-04-21 22:36:49,438 - INFO - exp_llm - 76: Yes | Yes
+2025-04-21 22:37:00,223 - INFO - openai._base_client - Retrying request to /chat/completions in 0.450090 seconds
+2025-04-21 22:37:01,809 - INFO - exp_llm - 77: Yes | Yes
+2025-04-21 22:37:03,581 - INFO - exp_llm - 78: Yes | Yes
+2025-04-21 22:37:03,975 - INFO - exp_llm - 79: None | Yes
+2025-04-21 22:37:04,966 - INFO - exp_llm - 80: None | No
+2025-04-21 22:37:07,225 - INFO - exp_llm - 81: None | No
+2025-04-21 22:37:07,323 - INFO - exp_llm - 82: None | Yes
+2025-04-21 22:37:15,291 - INFO - exp_llm - 83: None | No
+2025-04-21 22:37:19,551 - INFO - exp_llm - 84: No | No
+2025-04-21 22:37:20,287 - INFO - exp_llm - 85: Yes | Yes
+2025-04-21 22:37:23,907 - INFO - exp_llm - 86: Yes | Yes
+2025-04-21 22:37:25,806 - INFO - exp_llm - 87: Yes | Yes
+2025-04-21 22:37:26,408 - INFO - exp_llm - 88: None | Yes
+2025-04-21 22:37:27,864 - INFO - exp_llm - 89: Yes | Yes
+2025-04-21 22:37:35,090 - INFO - exp_llm - 90: None | Yes
+2025-04-21 22:37:36,261 - INFO - exp_llm - 91: Yes | Yes
+2025-04-21 22:37:36,382 - INFO - exp_llm - 92: Yes | Yes
+2025-04-21 22:37:45,856 - INFO - exp_llm - 93: Yes | Yes
+2025-04-21 22:37:48,069 - INFO - exp_llm - 94: No | No
+2025-04-21 22:37:50,446 - INFO - exp_llm - 95: None | Yes
+2025-04-21 22:37:52,690 - INFO - exp_llm - 96: None | Yes
+2025-04-21 22:37:54,910 - INFO - exp_llm - 97: None | Yes
+2025-04-21 22:37:55,847 - INFO - exp_llm - 98: None | No
+2025-04-21 22:38:00,107 - INFO - exp_llm - 99: No | No
+2025-04-21 22:38:00,108 - INFO - F1_Evaluator - 📊 有效样本数: 100，跳过: 0，平均 F1 分数: 0.6600
+2025-04-21 22:38:00,109 - INFO - exp_llm - total_token=64246
+2025-04-21 22:38:00,109 - INFO - exp_llm - self.token=100 | F1 Score=0.6600 | ACC Score=0.6600 | avg_token=642.46
+2025-04-21 22:38:00,340 - INFO - exp_llm - 结果和图表已保存至：results/20250421_2238_boolq_1337
+2025-04-21 22:38:00,340 - INFO - exp_llm - 实验完成
+Namespace(config='config/config_llm.yaml', model_name='ds', dataset='boolq', prompt='', template='BOOLQ_PROMPT')

@@ -1,0 +1,178 @@
+nohup: ignoring input
+2025-04-23 23:29:09,936 - INFO - exp_lcpo - Namespace(config='config/config_llm.yaml', model_name='o3', dataset='gpqa', sample_k=5, n_steps=6, protect_token=2412, template='GPQA_PROMPT', is_truth='false', is_extract='false', init_left=200, init_right=5001, init_step=800)
+2025-04-23 23:29:09,944 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-23 23:29:09,944 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_lcpo
+2025-04-23 23:29:09,944 - INFO - ChatLLM - {'model': 'o3-mini', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-23 23:29:10,040 - INFO - ChatLLM - 初始化Chat LLM | Name: optimizer
+2025-04-23 23:29:10,040 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-23 23:29:10,047 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_lcpo
+2025-04-23 23:29:10,047 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-23 23:29:10,055 - INFO - exp_lcpo - 开始训练的token数量为：200
+2025-04-23 23:34:10,174 - INFO - openai._base_client - Retrying request to /chat/completions in 0.444918 seconds
+2025-04-23 23:34:10,174 - INFO - openai._base_client - Retrying request to /chat/completions in 0.426865 seconds
+2025-04-23 23:34:10,174 - INFO - openai._base_client - Retrying request to /chat/completions in 0.376760 seconds
+2025-04-23 23:34:10,174 - INFO - openai._base_client - Retrying request to /chat/completions in 0.409086 seconds
+2025-04-23 23:34:10,174 - INFO - openai._base_client - Retrying request to /chat/completions in 0.474170 seconds
+2025-04-23 23:34:21,834 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:34:23,113 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:34:25,412 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:34:30,287 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:34:36,262 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:34:36,262 - INFO - exp_lcpo - 开始训练的token数量为：1000
+2025-04-23 23:34:44,650 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:34:46,672 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:34:47,368 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:34:50,977 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:35:28,336 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:35:28,337 - INFO - exp_lcpo - 开始训练的token数量为：1800
+2025-04-23 23:35:38,868 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:35:39,889 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:35:42,733 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:35:45,433 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:36:23,260 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:36:23,260 - INFO - exp_lcpo - 开始训练的token数量为：2600
+2025-04-23 23:36:32,066 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:36:32,925 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:36:33,428 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:36:35,880 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:37:05,849 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:37:05,850 - INFO - exp_lcpo - 开始训练的token数量为：3400
+2025-04-23 23:37:12,649 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:37:13,037 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:37:20,282 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:37:31,765 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:37:37,280 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:37:37,281 - INFO - exp_lcpo - 开始训练的token数量为：4200
+2025-04-23 23:37:48,311 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:37:49,533 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:37:50,123 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:37:50,219 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:37:58,718 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:37:58,719 - INFO - exp_lcpo - 开始训练的token数量为：5000
+2025-04-23 23:38:12,167 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:38:14,936 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:38:15,471 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:38:25,055 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:38:55,513 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:38:55,514 - INFO - exp_lcpo - 特殊处理：训练的token数量为：2412
+2025-04-23 23:38:58,097 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:39:01,464 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:39:02,414 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:39:02,541 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:39:11,950 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:39:11,950 - INFO - exp_lcpo - ✅ warm-up 结束
+2025-04-23 23:44:12,070 - INFO - openai._base_client - Retrying request to /chat/completions in 0.399054 seconds
+2025-04-23 23:44:32,568 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [6, 5, 4, 3, 2, 1, 0, 7]
+2025-04-23 23:44:32,569 - INFO - optimizer - ✅ 添加 pairwise 比较对数量: 28
+2025-04-23 23:44:32,978 - INFO - exp_lcpo - 🚀 进入贝叶斯优化迭代阶段
+2025-04-23 23:44:32,978 - INFO - exp_lcpo - 
+[Step 1] 当前候选池: [200, 1000, 1800, 2600, 3400, 4200, 5000, 2412]
+2025-04-23 23:44:32,980 - INFO - exp_lcpo - 🎯 当前 GP 模型预测最优 token 可能为: 5000
+2025-04-23 23:44:52,030 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [6, 5, 4, 3, 2, 1, 0, 7]
+2025-04-23 23:44:52,030 - INFO - exp_lcpo - 🗑️  移除 token: 200
+2025-04-23 23:44:52,030 - INFO - exp_lcpo - 🔒 保留 best_token: 2412（禁止移除）
+2025-04-23 23:44:52,319 - INFO - exp_lcpo - 新增 token: [4000, 5000]
+2025-04-23 23:44:52,319 - INFO - exp_lcpo - ➕ 过滤后新增 : [4000]
+2025-04-23 23:44:52,319 - INFO - exp_lcpo - 生成 token=4000 的回答中
+2025-04-23 23:45:10,838 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-23 23:45:20,369 - INFO - exp_lcpo - question: trans-cinnamaldehyde was treated with me已执行完毕
+2025-04-23 23:49:52,495 - INFO - openai._base_client - Retrying request to /chat/completions in 0.468943 seconds
+2025-04-23 23:49:52,495 - INFO - openai._base_client - Retrying request to /chat/completions in 0.473273 seconds
+2025-04-23 23:49:52,495 - INFO - openai._base_client - Retrying request to /chat/completions in 0.413207 seconds
+2025-04-23 23:50:02,530 - INFO - exp_lcpo - question: A spin-half particle is in a linear supe已执行完毕
+2025-04-23 23:50:29,341 - INFO - exp_lcpo - question: In a parallel universe where a magnet ca已执行完毕
+2025-04-23 23:54:53,066 - INFO - openai._base_client - Retrying request to /chat/completions in 0.975696 seconds
+2025-04-23 23:54:58,451 - INFO - exp_lcpo - question: Calculate the eigenvector of a quantum m已执行完毕
+2025-04-23 23:59:58,571 - INFO - openai._base_client - Retrying request to /chat/completions in 0.490149 seconds
+2025-04-24 00:04:59,212 - INFO - openai._base_client - Retrying request to /chat/completions in 0.778231 seconds
+2025-04-24 00:10:27,152 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [5, 4, 7, 3, 2, 1, 0, 6]
+2025-04-24 00:10:27,152 - INFO - exp_lcpo - 📊 排序 index: [5, 4, 7, 3, 2, 1, 0, 6]
+2025-04-24 00:10:27,152 - INFO - exp_lcpo - ➡️  token 排名: [5000, 4200, 4000, 3400, 2600, 1800, 1000, 2412]
+2025-04-24 00:10:27,152 - INFO - optimizer - ✅ 添加 pairwise 比较对数量: 56
+2025-04-24 00:10:27,366 - INFO - exp_lcpo - ✅ 模型已更新
+2025-04-24 00:10:27,367 - INFO - exp_lcpo - 
+[Step 2] 当前候选池: [1000, 1800, 2600, 3400, 4200, 5000, 2412, 4000]
+2025-04-24 00:10:27,369 - INFO - exp_lcpo - 🎯 当前 GP 模型预测最优 token 可能为: 5000
+2025-04-24 00:10:50,311 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [5, 4, 7, 3, 2, 1, 0, 6]
+2025-04-24 00:10:50,311 - INFO - exp_lcpo - 🗑️  移除 token: 1000
+2025-04-24 00:10:50,311 - INFO - exp_lcpo - 🔒 保留 best_token: 2412（禁止移除）
+2025-04-24 00:10:50,547 - INFO - exp_lcpo - 新增 token: [5000]
+2025-04-24 00:10:50,547 - INFO - exp_lcpo - ➕ 过滤后新增 : []
+2025-04-24 00:11:28,988 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [4, 6, 3, 2, 1, 0, 5]
+2025-04-24 00:11:28,988 - INFO - exp_lcpo - 📊 排序 index: [4, 6, 3, 2, 1, 0, 5]
+2025-04-24 00:11:28,988 - INFO - exp_lcpo - ➡️  token 排名: [5000, 4000, 4200, 3400, 2600, 1800, 2412]
+2025-04-24 00:11:28,988 - INFO - optimizer - ✅ 添加 pairwise 比较对数量: 77
+2025-04-24 00:11:29,276 - INFO - exp_lcpo - ✅ 模型已更新
+2025-04-24 00:11:29,277 - INFO - exp_lcpo - 
+[Step 3] 当前候选池: [1800, 2600, 3400, 4200, 5000, 2412, 4000]
+2025-04-24 00:11:29,279 - INFO - exp_lcpo - 🎯 当前 GP 模型预测最优 token 可能为: 5000
+2025-04-24 00:11:54,972 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [4, 3, 6, 2, 1, 0, 5]
+2025-04-24 00:11:54,972 - INFO - exp_lcpo - 🗑️  移除 token: 1800
+2025-04-24 00:11:54,972 - INFO - exp_lcpo - 🔒 保留 best_token: 2412（禁止移除）
+2025-04-24 00:11:55,177 - INFO - exp_lcpo - 新增 token: [5000]
+2025-04-24 00:11:55,177 - INFO - exp_lcpo - ➕ 过滤后新增 : []
+2025-04-24 00:12:21,319 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [3, 2, 5, 1, 0, 4]
+2025-04-24 00:12:21,319 - INFO - exp_lcpo - 📊 排序 index: [3, 2, 5, 1, 0, 4]
+2025-04-24 00:12:21,319 - INFO - exp_lcpo - ➡️  token 排名: [5000, 4200, 4000, 3400, 2600, 2412]
+2025-04-24 00:12:21,319 - INFO - optimizer - ✅ 添加 pairwise 比较对数量: 92
+2025-04-24 00:12:21,518 - INFO - exp_lcpo - ✅ 模型已更新
+2025-04-24 00:12:21,518 - INFO - exp_lcpo - 
+[Step 4] 当前候选池: [2600, 3400, 4200, 5000, 2412, 4000]
+2025-04-24 00:12:21,521 - INFO - exp_lcpo - 🎯 当前 GP 模型预测最优 token 可能为: 5000
+2025-04-24 00:12:53,649 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [3, 2, 5, 1, 0, 4]
+2025-04-24 00:12:53,650 - INFO - exp_lcpo - 🗑️  移除 token: 2600
+2025-04-24 00:12:53,650 - INFO - exp_lcpo - 🔒 保留 best_token: 2412（禁止移除）
+2025-04-24 00:12:53,868 - INFO - exp_lcpo - 新增 token: [5000]
+2025-04-24 00:12:53,868 - INFO - exp_lcpo - ➕ 过滤后新增 : []
+2025-04-24 00:13:17,702 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [2, 4, 1, 0, 3]
+2025-04-24 00:13:17,702 - INFO - exp_lcpo - 📊 排序 index: [2, 4, 1, 0, 3]
+2025-04-24 00:13:17,702 - INFO - exp_lcpo - ➡️  token 排名: [5000, 4000, 4200, 3400, 2412]
+2025-04-24 00:13:17,702 - INFO - optimizer - ✅ 添加 pairwise 比较对数量: 102
+2025-04-24 00:13:17,851 - INFO - exp_lcpo - ✅ 模型已更新
+2025-04-24 00:13:17,852 - INFO - exp_lcpo - 
+[Step 5] 当前候选池: [3400, 4200, 5000, 2412, 4000]
+2025-04-24 00:13:17,854 - INFO - exp_lcpo - 🎯 当前 GP 模型预测最优 token 可能为: 5000
+2025-04-24 00:13:48,602 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [2, 1, 4, 0, 3]
+2025-04-24 00:13:48,602 - INFO - exp_lcpo - 🔒 保留 best_token: 2412（禁止移除）
+2025-04-24 00:13:48,845 - INFO - exp_lcpo - 新增 token: [5000]
+2025-04-24 00:13:48,845 - INFO - exp_lcpo - ➕ 过滤后新增 : []
+2025-04-24 00:14:09,658 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [2, 1, 4, 0, 3]
+2025-04-24 00:14:09,659 - INFO - exp_lcpo - 📊 排序 index: [2, 1, 4, 0, 3]
+2025-04-24 00:14:09,659 - INFO - exp_lcpo - ➡️  token 排名: [5000, 4200, 4000, 3400, 2412]
+2025-04-24 00:14:09,659 - INFO - optimizer - ✅ 添加 pairwise 比较对数量: 112
+2025-04-24 00:14:09,822 - INFO - exp_lcpo - ✅ 模型已更新
+2025-04-24 00:14:09,822 - INFO - exp_lcpo - 
+[Step 6] 当前候选池: [3400, 4200, 5000, 2412, 4000]
+2025-04-24 00:14:09,824 - INFO - exp_lcpo - 🎯 当前 GP 模型预测最优 token 可能为: 5000
+2025-04-24 00:14:27,967 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [2, 1, 4, 0, 3]
+2025-04-24 00:14:27,967 - INFO - exp_lcpo - 🔒 保留 best_token: 2412（禁止移除）
+2025-04-24 00:14:28,151 - INFO - exp_lcpo - 新增 token: [5000]
+2025-04-24 00:14:28,151 - INFO - exp_lcpo - ➕ 过滤后新增 : []
+2025-04-24 00:14:41,897 - INFO - optimizer - 🧠 warm-up listwise 排序结果: [2, 1, 4, 0, 3]
+2025-04-24 00:14:41,898 - INFO - exp_lcpo - 📊 排序 index: [2, 1, 4, 0, 3]
+2025-04-24 00:14:41,898 - INFO - exp_lcpo - ➡️  token 排名: [5000, 4200, 4000, 3400, 2412]
+2025-04-24 00:14:41,898 - INFO - optimizer - ✅ 添加 pairwise 比较对数量: 122
+2025-04-24 00:14:42,116 - INFO - exp_lcpo - ✅ 模型已更新
+2025-04-24 00:14:42,116 - INFO - exp_lcpo - 🏁 模型训练结束
+2025-04-24 00:14:46,050 - WARNING - exp_lcpo - ❌ 模型响应为空，跳过该问题: trans-cinnamaldehyde was treated with me...
+2025-04-24 00:14:46,088 - WARNING - exp_lcpo - ❌ 模型响应为空，跳过该问题: In a parallel universe where a magnet ca...
+2025-04-24 00:14:46,099 - WARNING - exp_lcpo - ❌ 模型响应为空，跳过该问题: Calculate the eigenvector of a quantum m...
+2025-04-24 00:14:46,401 - WARNING - exp_lcpo - ❌ 模型响应为空，跳过该问题: A spin-half particle is in a linear supe...
+2025-04-24 00:14:55,958 - INFO - exp_lcpo - question: Two quantum states with energies E1 and 已执行完毕
+2025-04-24 00:14:55,958 - INFO - exp_lcpo - 🏆 最佳 token: 5000
+2025-04-24 00:14:55,959 - INFO - exp_lcpo - ✅ 实验完成
+🔎 token_history: [200, 1000, 1800, 2600, 3400, 4200, 5000, 2412]
+🔎 comparisons: [(6, 5), (6, 4), (6, 3), (6, 2), (6, 1), (6, 0), (6, 7), (5, 4), (5, 3), (5, 2), (5, 1), (5, 0), (5, 7), (4, 3), (4, 2), (4, 1), (4, 0), (4, 7), (3, 2), (3, 1), (3, 0), (3, 7), (2, 1), (2, 0), (2, 7), (1, 0), (1, 7), (0, 7)]
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (1/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (1/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (1/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (1/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (2/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (2/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (2/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (2/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (3/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (3/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (3/3)
+Error occurred: Error code: 403 - {'error': {'message': '账户余额过低不足以支持本次请求，请前往 https://api.chatanywhere.tech/#/shop 充值。Your account balance is not sufficient to support this request. Please visit https://api.chatanywhere.tech/#/shop to recharge.(当前请求使用的ApiKey: sk-Ajv****qXvN)', 'type': 'chatanywhere_error', 'param': None, 'code': '403 FORBIDDEN'}}, retrying... (3/3)

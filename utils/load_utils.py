@@ -12,7 +12,7 @@ class LoadUtils:
         :param file_name: YAML 配置文件名
         """
         self.file_name = file_name
-        self.config_path = Path(__file__).parent.parent / "settings" / self.file_name
+        self.config_path = Path(__file__).parent.parent / "dataset" / self.file_name
 
         if not self.config_path.exists():
             raise FileNotFoundError(f"Configuration file '{self.file_name}' not found in settings directory")
@@ -58,11 +58,6 @@ class LoadUtils:
 
         return prompt, requirements, selected_qa, count_str
 
-    def extract_content(text: str, tag: str) -> Optional[str]:
-        pattern = rf"<{tag}>(.*?)</{tag}>"
-        match = re.search(pattern, text, re.DOTALL)
-        return match.group(1).strip() if match else None
-
     def load_json(self, sample_k: int = 0) -> list:
         """
         从 JSON 文件中加载问答对。
@@ -83,3 +78,8 @@ class LoadUtils:
             return qa_list
         else:
             return qa_list[:min(sample_k, len(qa_list))]
+
+    def extract_content(text: str, tag: str) -> Optional[str]:
+        pattern = rf"<{tag}>(.*?)</{tag}>"
+        match = re.search(pattern, text, re.DOTALL)
+        return match.group(1).strip() if match else None

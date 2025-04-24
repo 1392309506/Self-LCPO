@@ -5,25 +5,49 @@ experiment:
 
 # 数据集配置
 datasets:
-  Navigate: navigate.yaml
-#  FEVER: fever_subset.json
-#  LogiQA: logiqa_subset.json
+  bbh: BBH/navigate.json
+  math: AGIEval-MATH/math.json
+  gpqa: GPQA-Diamond/diamond.json
+  wsc: WSC/wsc.json
+  str: StrategyQA/dev.json
+  boolq: BoolQ/dev.json
+  oly: OlyMath/OlyMath.json
+
 
 # 模型配置
 models:
-  - name: "gpt-3.5-turbo"
+  - name: "ds"
     api-type: "openai"
-    base_url: "https://api.chatanywhere.tech/v1/chat/completions"
-    api_key: ""
+    base_url: "http://localhost:11434/v1"
+    api_key: "ollama"
+    params:
+      model: "deepseek-r1:7b"
+      temperature: 0.7
+      max_tokens: 12000
+  - name: "o3"
+    api-type: "openai"
+    base_url: "https://api.chatanywhere.tech"
+    api_key: "sk-zNC4jFOhB9Q6zp8ktdKVS6w4zaJpTFn9yr7jdsoLzdy5NTeP"
+    params:
+      model: "o3-mini"
+      temperature: 0.7
+      max_tokens: 12000
+  - name: "gpt"
+    api-type: "openai"
+    base_url: "https://api.chatanywhere.tech"
+    api_key: "sk-Eby2FTk6vPxIz7i2Gh78uqG7uQZ6YVfPxNwpsCMgfDsk2lyy"
+    # api_key: "sk-iX0M9keAJemCgNFqvQMVLyWkcembRT27ix50aymLnvZ18QuT"
     params:
       model: "gpt-3.5-turbo"
-      temperature: 0.3
-      max_tokens: 1024
-  - name: "deepseek-r1"
-    api-type: "openai"
-    base_url: "https://api.deepseek.com/v1"
-    api_key: ""
+      temperature: 0.7
+      max_tokens: 4096
+  - name: "qwq"
+    api-type: "qwq"
+    base_url: null   # 不需要 API 地址
+    api_key: null    # 不需要 API Key
     params:
-      model: "deepseek-r1"
-      temperature: 0.3
-      max_tokens: 1024
+      model: "qwq32b"                 # 用于显示/记录，可忽略
+      temperature: 0.7
+      max_tokens: 16384
+      model_path: "/root/qwq32b"     # ✅ QWQ模型路径
+      device: "cuda:2"

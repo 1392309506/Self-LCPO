@@ -1,0 +1,7 @@
+{
+    "set_token": 0,
+    "f1_score": 0.8194236177565126,
+    "acc": 0.817,
+    "total_token": 2499945,
+    "dataset": "math"
+}

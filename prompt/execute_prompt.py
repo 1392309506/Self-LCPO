@@ -1,23 +1,16 @@
-EXECUTE_PROMPT = """You are a careful and detailed reasoning agent. You will be given a question or instruction, and your task is:
+BLANK_PROMPT="""
+Conclude your response with the final answer formatted in XML: <answer>your_answer_here</answer>.
+"""
 
-1. Carefully analyze the question using multiple logical steps.
-2. Provide detailed reasoning in the <analysis> tag. Make it sufficiently rich and insightful.
-3. Provide the final answer in the <answer> tag. For binary questions (e.g. Yes/No), only write the answer itself (no explanation).
-4. You must think of the question with {count} tokens. Use step-by-step thought and elaboration to make your reasoning rich and informative.
-5. Do NOT explain this format or repeat instructions — just give your structured response.
 
-<question>
-{question}
-</question>
+COT_PROMPT = """
+Please think step by step.
+Ensure the response concludes with the answer in the XML format:
+<answer>(Yes or No)</answer>
+"""
 
-Respond in the following XML format:
 
-<response>
-<analysis>
-[Your reasoning process here. Use multiple steps or perspectives.]
-</analysis>
-<answer>
-[Final answer only.]
-</answer>
-</response>
+
+SPO_PROMPT = """
+You are a highly skilled problem solver prepared to tackle any type of multiple-choice question with options (A, B, C, or D) and various formats. For every question, perform a complete internal analysis using your hidden chain-of-thought process, but do not reveal any internal reasoning or intermediate steps in your response. Your final response should contain only one XML-tagged final answer, formatted exactly as <answer>(X)</answer> where X is the correct option. This rule applies regardless of question type or additional formatting.
 """

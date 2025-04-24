@@ -1,0 +1,403 @@
+nohup: ignoring input
+2025-04-15 19:37:27,884 - INFO - exp_llm - Namespace(config='config/config_llm.yaml', model_name='ds', dataset='gpqa', token=1000, prompt='', template='GPQA_PROMPT')
+2025-04-15 19:37:27,892 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-15 19:37:27,892 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_prompt
+2025-04-15 19:37:27,892 - INFO - ChatLLM - {'model': 'deepseek-r1:7b', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-15 19:37:28,007 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
+2025-04-15 19:37:28,007 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-15 19:37:28,033 - INFO - exp_llm - 开始训练的token数量为：1000
+2025-04-15 19:37:55,670 - INFO - exp_llm - 1: D | D
+2025-04-15 19:39:13,419 - INFO - exp_llm - 2: B | B
+2025-04-15 19:40:40,759 - INFO - exp_llm - 3: D | D
+2025-04-15 19:41:09,949 - INFO - exp_llm - 4: None | D
+2025-04-15 19:42:28,032 - INFO - exp_llm - 5: C | C
+2025-04-15 19:42:28,075 - INFO - openai._base_client - Retrying request to /chat/completions in 0.432837 seconds
+2025-04-15 19:43:16,002 - INFO - exp_llm - 6: B | B
+2025-04-15 19:43:30,034 - INFO - exp_llm - 7: C | C
+2025-04-15 19:43:43,145 - INFO - exp_llm - 8: D | D
+2025-04-15 19:45:19,220 - INFO - exp_llm - 9: A | A
+2025-04-15 19:45:34,101 - INFO - exp_llm - 10: A | A
+2025-04-15 19:45:46,908 - INFO - exp_llm - 11: C | C
+2025-04-15 19:46:01,526 - INFO - exp_llm - 12: B | B
+2025-04-15 19:46:13,602 - INFO - exp_llm - 13: D | D
+2025-04-15 19:47:06,922 - INFO - exp_llm - 14: D | D
+2025-04-15 19:47:31,669 - INFO - exp_llm - 15: D | D
+2025-04-15 19:47:50,980 - INFO - exp_llm - 16: C | C
+2025-04-15 19:48:15,324 - INFO - exp_llm - 17: D | D
+2025-04-15 19:48:43,191 - INFO - openai._base_client - Retrying request to /chat/completions in 0.379712 seconds
+2025-04-15 19:50:08,075 - INFO - exp_llm - 18: A | A
+2025-04-15 19:50:36,617 - INFO - exp_llm - 19: D | D
+2025-04-15 19:50:40,497 - INFO - exp_llm - 20: C | C
+2025-04-15 19:51:13,654 - INFO - openai._base_client - Retrying request to /chat/completions in 0.427671 seconds
+2025-04-15 19:52:24,980 - INFO - exp_llm - 21: A | A
+2025-04-15 19:52:43,839 - INFO - exp_llm - 22: C | C
+2025-04-15 19:52:56,297 - INFO - exp_llm - 23: A | A
+2025-04-15 19:53:36,416 - INFO - exp_llm - 24: C | C
+2025-04-15 19:53:57,736 - INFO - exp_llm - 25: A | A
+2025-04-15 19:54:43,362 - INFO - exp_llm - 26: A | A
+2025-04-15 19:54:45,981 - INFO - exp_llm - 27: A | A
+2025-04-15 19:56:14,179 - INFO - openai._base_client - Retrying request to /chat/completions in 0.989453 seconds
+2025-04-15 19:56:30,242 - INFO - exp_llm - 28: D | D
+2025-04-15 19:57:56,402 - INFO - openai._base_client - Retrying request to /chat/completions in 0.438236 seconds
+2025-04-15 19:58:26,745 - INFO - exp_llm - 29: B | B
+2025-04-15 19:59:20,048 - INFO - exp_llm - 30: B | B
+2025-04-15 19:59:28,543 - INFO - exp_llm - 31: A | A
+2025-04-15 19:59:46,016 - INFO - openai._base_client - Retrying request to /chat/completions in 0.472936 seconds
+2025-04-15 20:00:14,763 - INFO - exp_llm - 32: D | D
+2025-04-15 20:00:37,575 - INFO - exp_llm - 33: A | A
+2025-04-15 20:00:45,831 - INFO - exp_llm - 34: B | B
+2025-04-15 20:01:05,149 - INFO - exp_llm - 35: D | D
+2025-04-15 20:02:23,158 - INFO - exp_llm - 36: C | C
+2025-04-15 20:02:41,486 - INFO - exp_llm - 37: C | C
+2025-04-15 20:03:02,074 - INFO - exp_llm - 38: B | B
+2025-04-15 20:03:34,079 - INFO - exp_llm - 39: B | B
+2025-04-15 20:04:15,364 - INFO - exp_llm - 40: A | A
+2025-04-15 20:04:38,306 - INFO - exp_llm - 41: A | A
+2025-04-15 20:04:46,507 - INFO - openai._base_client - Retrying request to /chat/completions in 0.789296 seconds
+2025-04-15 20:05:47,718 - INFO - exp_llm - 42: D | D
+2025-04-15 20:07:00,569 - INFO - exp_llm - 43: B | B
+2025-04-15 20:07:29,361 - INFO - exp_llm - 44: None | B
+2025-04-15 20:08:19,812 - INFO - exp_llm - 45: D | D
+2025-04-15 20:09:18,750 - INFO - exp_llm - 46: None | B
+2025-04-15 20:10:01,769 - INFO - exp_llm - 47: B | B
+2025-04-15 20:10:35,429 - INFO - exp_llm - 48: A | A
+2025-04-15 20:10:51,284 - INFO - exp_llm - 49: C | C
+2025-04-15 20:11:12,569 - INFO - exp_llm - 50: C | C
+2025-04-15 20:12:06,092 - INFO - exp_llm - 51: D | D
+2025-04-15 20:13:08,899 - INFO - exp_llm - 52: A | A
+2025-04-15 20:14:18,838 - INFO - openai._base_client - Retrying request to /chat/completions in 0.472943 seconds
+2025-04-15 20:14:40,184 - INFO - exp_llm - 53: A | A
+2025-04-15 20:15:01,816 - INFO - openai._base_client - Retrying request to /chat/completions in 0.380518 seconds
+2025-04-15 20:17:06,208 - INFO - openai._base_client - Retrying request to /chat/completions in 0.380553 seconds
+2025-04-15 20:17:20,419 - INFO - exp_llm - 54: C | C
+2025-04-15 20:18:35,009 - INFO - exp_llm - 55: D | D
+2025-04-15 20:19:19,366 - INFO - openai._base_client - Retrying request to /chat/completions in 0.767041 seconds
+2025-04-15 20:20:02,248 - INFO - openai._base_client - Retrying request to /chat/completions in 0.791329 seconds
+2025-04-15 20:21:56,123 - INFO - exp_llm - 56: D | D
+2025-04-15 20:22:06,608 - INFO - openai._base_client - Retrying request to /chat/completions in 0.793726 seconds
+2025-04-15 20:23:35,115 - INFO - openai._base_client - Retrying request to /chat/completions in 0.486669 seconds
+2025-04-15 20:25:27,987 - INFO - exp_llm - 57: None | B
+2025-04-15 20:28:35,698 - INFO - openai._base_client - Retrying request to /chat/completions in 0.944644 seconds
+2025-04-15 20:28:54,758 - INFO - exp_llm - 58: B | B
+2025-04-15 20:29:21,232 - INFO - openai._base_client - Retrying request to /chat/completions in 0.437345 seconds
+2025-04-15 20:30:28,072 - INFO - openai._base_client - Retrying request to /chat/completions in 0.396875 seconds
+2025-04-15 20:31:01,934 - INFO - exp_llm - 59: B | B
+2025-04-15 20:32:08,608 - INFO - openai._base_client - Retrying request to /chat/completions in 0.466556 seconds
+2025-04-15 20:33:23,438 - INFO - exp_llm - 60: B | B
+2025-04-15 20:34:16,740 - INFO - exp_llm - 61: A | A
+2025-04-15 20:35:43,460 - INFO - exp_llm - 62: B | B
+2025-04-15 20:36:01,972 - INFO - openai._base_client - Retrying request to /chat/completions in 0.437850 seconds
+2025-04-15 20:36:02,948 - INFO - exp_llm - 63: A | A
+2025-04-15 20:36:53,698 - INFO - exp_llm - 64: B | B
+2025-04-15 20:37:09,096 - INFO - openai._base_client - Retrying request to /chat/completions in 0.771687 seconds
+2025-04-15 20:37:34,583 - INFO - exp_llm - 65: B | B
+2025-04-15 20:39:37,201 - INFO - exp_llm - 66: B | B
+2025-04-15 20:39:57,107 - INFO - exp_llm - 67: B | B
+2025-04-15 20:40:44,953 - INFO - exp_llm - 68: B | B
+2025-04-15 20:41:02,431 - INFO - openai._base_client - Retrying request to /chat/completions in 0.876376 seconds
+2025-04-15 20:41:40,031 - INFO - exp_llm - 69: B | B
+2025-04-15 20:42:09,170 - INFO - exp_llm - 70: C | C
+2025-04-15 20:43:16,833 - INFO - exp_llm - 71: C | C
+2025-04-15 20:44:08,638 - INFO - exp_llm - 72: None | C
+2025-04-15 20:44:39,111 - INFO - exp_llm - 73: C | C
+2025-04-15 20:44:49,143 - INFO - exp_llm - 74: C | C
+2025-04-15 20:45:06,813 - INFO - exp_llm - 75: A | A
+2025-04-15 20:45:15,335 - INFO - exp_llm - 76: D | D
+2025-04-15 20:47:58,453 - INFO - exp_llm - 77: C | C
+2025-04-15 20:48:25,306 - INFO - exp_llm - 78: A | A
+2025-04-15 20:48:33,254 - INFO - exp_llm - 79: C | C
+2025-04-15 20:49:00,699 - INFO - exp_llm - 80: A | A
+2025-04-15 20:49:19,798 - INFO - exp_llm - 81: B | B
+2025-04-15 20:50:06,882 - INFO - openai._base_client - Retrying request to /chat/completions in 0.423060 seconds
+2025-04-15 20:51:04,446 - INFO - openai._base_client - Retrying request to /chat/completions in 0.407305 seconds
+2025-04-15 20:52:02,969 - INFO - exp_llm - 82: B | B
+2025-04-15 20:53:25,406 - INFO - openai._base_client - Retrying request to /chat/completions in 0.452916 seconds
+2025-04-15 20:54:00,747 - INFO - openai._base_client - Retrying request to /chat/completions in 0.432691 seconds
+2025-04-15 20:54:27,796 - INFO - exp_llm - 83: A | A
+2025-04-15 20:55:03,164 - INFO - exp_llm - 84: D | D
+2025-04-15 20:56:04,925 - INFO - openai._base_client - Retrying request to /chat/completions in 0.889507 seconds
+2025-04-15 20:56:08,861 - INFO - exp_llm - 85: C | C
+2025-04-15 20:58:18,885 - INFO - exp_llm - 86: D | D
+2025-04-15 20:58:25,871 - INFO - openai._base_client - Retrying request to /chat/completions in 0.813124 seconds
+2025-04-15 21:00:00,254 - INFO - exp_llm - 87: A | A
+2025-04-15 21:01:08,870 - INFO - openai._base_client - Retrying request to /chat/completions in 0.413168 seconds
+2025-04-15 21:03:19,004 - INFO - openai._base_client - Retrying request to /chat/completions in 0.432162 seconds
+2025-04-15 21:04:11,111 - INFO - exp_llm - 88: A | A
+2025-04-15 21:05:17,231 - INFO - exp_llm - 89: C | C
+2025-04-15 21:05:22,377 - INFO - exp_llm - 90: D | D
+2025-04-15 21:06:06,955 - INFO - openai._base_client - Retrying request to /chat/completions in 0.380115 seconds
+2025-04-15 21:07:00,814 - INFO - exp_llm - 91: A | A
+2025-04-15 21:07:03,365 - INFO - exp_llm - 92: D | D
+2025-04-15 21:07:50,506 - INFO - exp_llm - 93: D | D
+2025-04-15 21:08:16,367 - INFO - exp_llm - 94: A | A
+2025-04-15 21:08:34,858 - INFO - exp_llm - 95: B | B
+2025-04-15 21:10:21,205 - INFO - exp_llm - 96: D | D
+2025-04-15 21:10:29,092 - INFO - exp_llm - 97: B | B
+2025-04-15 21:11:07,356 - INFO - openai._base_client - Retrying request to /chat/completions in 0.964454 seconds
+2025-04-15 21:11:10,809 - INFO - exp_llm - 98: A | A
+2025-04-15 21:12:07,438 - INFO - exp_llm - 99: D | D
+2025-04-15 21:12:36,939 - INFO - exp_llm - 100: D | D
+2025-04-15 21:13:47,989 - INFO - exp_llm - 101: D | D
+2025-04-15 21:14:06,089 - INFO - exp_llm - 102: C | C
+2025-04-15 21:16:02,356 - INFO - exp_llm - 103: D | D
+2025-04-15 21:16:09,335 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: An equimolar mixture of salts A and B we...
+2025-04-15 21:16:21,557 - INFO - exp_llm - 104: A | A
+2025-04-15 21:17:07,501 - INFO - openai._base_client - Retrying request to /chat/completions in 0.381029 seconds
+2025-04-15 21:17:28,070 - INFO - exp_llm - 105: B | B
+2025-04-15 21:17:46,036 - INFO - exp_llm - 106: D | D
+2025-04-15 21:19:37,207 - INFO - exp_llm - 107: D | D
+2025-04-15 21:20:04,168 - INFO - exp_llm - 108: D | D
+2025-04-15 21:20:07,390 - INFO - exp_llm - 109: D | D
+2025-04-15 21:21:32,192 - INFO - exp_llm - 110: B | B
+2025-04-15 21:22:24,903 - INFO - exp_llm - 111: A | A
+2025-04-15 21:23:33,918 - INFO - exp_llm - 112: B | B
+2025-04-15 21:24:22,245 - INFO - exp_llm - 113: A | A
+2025-04-15 21:25:04,228 - INFO - openai._base_client - Retrying request to /chat/completions in 0.395748 seconds
+2025-04-15 21:25:07,410 - INFO - openai._base_client - Retrying request to /chat/completions in 0.411627 seconds
+2025-04-15 21:26:03,805 - INFO - exp_llm - 114: B | B
+2025-04-15 21:26:14,504 - INFO - exp_llm - 115: D | D
+2025-04-15 21:26:39,734 - INFO - exp_llm - 116: A | A
+2025-04-15 21:26:45,536 - INFO - exp_llm - 117: C | C
+2025-04-15 21:27:43,996 - INFO - exp_llm - 118: D | D
+2025-04-15 21:27:53,907 - INFO - exp_llm - 119: D | D
+2025-04-15 21:28:01,723 - INFO - exp_llm - 120: B | B
+2025-04-15 21:28:03,707 - INFO - exp_llm - 121: D | D
+2025-04-15 21:29:43,051 - INFO - exp_llm - 122: B | B
+2025-04-15 21:30:38,659 - INFO - exp_llm - 123: A | A
+2025-04-15 21:31:14,346 - INFO - exp_llm - 124: B | B
+2025-04-15 21:31:21,560 - INFO - exp_llm - 125: D | D
+2025-04-15 21:31:33,741 - INFO - exp_llm - 126: None | A
+2025-04-15 21:31:57,270 - INFO - exp_llm - 127: D | D
+2025-04-15 21:33:31,363 - INFO - exp_llm - 128: A | A
+2025-04-15 21:33:39,725 - INFO - exp_llm - 129: D | D
+2025-04-15 21:34:08,193 - INFO - exp_llm - 130: D | D
+2025-04-15 21:34:19,463 - INFO - exp_llm - 131: B | B
+2025-04-15 21:36:27,736 - INFO - exp_llm - 132: C | C
+2025-04-15 21:36:57,289 - INFO - openai._base_client - Retrying request to /chat/completions in 0.488897 seconds
+2025-04-15 21:36:58,390 - INFO - exp_llm - 133: C | C
+2025-04-15 21:38:30,107 - INFO - exp_llm - 134: D | D
+2025-04-15 21:39:01,329 - INFO - exp_llm - 135: B | B
+2025-04-15 21:39:19,492 - INFO - openai._base_client - Retrying request to /chat/completions in 0.479610 seconds
+2025-04-15 21:40:09,459 - INFO - exp_llm - 136: D | D
+2025-04-15 21:41:30,014 - INFO - exp_llm - 137: A | A
+2025-04-15 21:41:34,272 - INFO - exp_llm - 138: D | D
+2025-04-15 21:42:49,217 - INFO - exp_llm - 139: C | C
+2025-04-15 21:43:30,166 - INFO - openai._base_client - Retrying request to /chat/completions in 0.433964 seconds
+2025-04-15 21:43:34,288 - INFO - exp_llm - 140: A | A
+2025-04-15 21:44:20,028 - INFO - openai._base_client - Retrying request to /chat/completions in 0.936714 seconds
+2025-04-15 21:45:25,758 - INFO - exp_llm - 141: C | C
+2025-04-15 21:45:42,104 - INFO - exp_llm - 142: D | D
+2025-04-15 21:46:00,901 - INFO - exp_llm - 143: B | B
+2025-04-15 21:46:50,254 - INFO - exp_llm - 144: A | A
+2025-04-15 21:48:01,627 - INFO - exp_llm - 145: D | D
+2025-04-15 21:48:03,571 - INFO - exp_llm - 146: C | C
+2025-04-15 21:50:25,839 - INFO - openai._base_client - Retrying request to /chat/completions in 0.496890 seconds
+2025-04-15 21:50:31,528 - INFO - exp_llm - 147: B | B
+2025-04-15 21:50:33,997 - INFO - exp_llm - 148: B | B
+2025-04-15 21:50:43,037 - INFO - exp_llm - 149: A | A
+2025-04-15 21:54:22,172 - INFO - openai._base_client - Retrying request to /chat/completions in 0.473791 seconds
+2025-04-15 21:54:24,640 - INFO - exp_llm - 150: B | B
+2025-04-15 21:54:49,252 - INFO - exp_llm - 151: B | B
+2025-04-15 21:55:26,350 - INFO - openai._base_client - Retrying request to /chat/completions in 0.819016 seconds
+2025-04-15 21:55:43,070 - INFO - openai._base_client - Retrying request to /chat/completions in 0.417290 seconds
+2025-04-15 21:56:28,844 - INFO - exp_llm - 152: D | D
+2025-04-15 21:59:22,756 - INFO - openai._base_client - Retrying request to /chat/completions in 0.780923 seconds
+2025-04-15 21:59:24,658 - INFO - openai._base_client - Retrying request to /chat/completions in 0.422459 seconds
+2025-04-15 21:59:47,315 - INFO - exp_llm - 153: D | D
+2025-04-15 22:00:15,968 - INFO - exp_llm - 154: D | D
+2025-04-15 22:02:42,916 - INFO - exp_llm - 155: C | C
+2025-04-15 22:04:08,535 - INFO - exp_llm - 156: D | D
+2025-04-15 22:05:16,036 - INFO - openai._base_client - Retrying request to /chat/completions in 0.492957 seconds
+2025-04-15 22:05:28,226 - INFO - openai._base_client - Retrying request to /chat/completions in 0.448436 seconds
+2025-04-15 22:05:34,469 - INFO - exp_llm - 157: D | D
+2025-04-15 22:07:52,269 - INFO - exp_llm - 158: B | B
+2025-04-15 22:09:03,741 - INFO - exp_llm - 159: C | C
+2025-04-15 22:10:16,607 - INFO - openai._base_client - Retrying request to /chat/completions in 0.887238 seconds
+2025-04-15 22:10:28,692 - INFO - openai._base_client - Retrying request to /chat/completions in 0.796033 seconds
+2025-04-15 22:10:34,492 - INFO - openai._base_client - Retrying request to /chat/completions in 0.387934 seconds
+2025-04-15 22:12:05,438 - INFO - exp_llm - 160: D | D
+2025-04-15 22:12:52,332 - INFO - openai._base_client - Retrying request to /chat/completions in 0.426536 seconds
+2025-04-15 22:15:34,894 - INFO - openai._base_client - Retrying request to /chat/completions in 0.898654 seconds
+2025-04-15 22:16:23,300 - INFO - exp_llm - 161: C | C
+2025-04-15 22:17:52,856 - INFO - openai._base_client - Retrying request to /chat/completions in 0.853000 seconds
+2025-04-15 22:20:18,646 - INFO - openai._base_client - Retrying request to /chat/completions in 0.461770 seconds
+2025-04-15 22:20:30,535 - INFO - openai._base_client - Retrying request to /chat/completions in 0.482076 seconds
+2025-04-15 22:21:23,353 - INFO - openai._base_client - Retrying request to /chat/completions in 0.446687 seconds
+2025-04-15 22:25:19,218 - INFO - openai._base_client - Retrying request to /chat/completions in 0.756124 seconds
+2025-04-15 22:25:31,038 - INFO - openai._base_client - Retrying request to /chat/completions in 0.997641 seconds
+2025-04-15 22:25:36,830 - INFO - openai._base_client - Retrying request to /chat/completions in 0.430056 seconds
+2025-04-15 22:26:23,856 - INFO - openai._base_client - Retrying request to /chat/completions in 0.762761 seconds
+2025-04-15 22:27:54,889 - INFO - openai._base_client - Retrying request to /chat/completions in 0.401468 seconds
+2025-04-15 22:30:33,057 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: Consider this annihilation process 
+
+$p+...
+2025-04-15 22:30:37,275 - INFO - openai._base_client - Retrying request to /chat/completions in 0.870808 seconds
+2025-04-15 22:31:18,329 - INFO - exp_llm - 162: A | A
+2025-04-15 22:32:55,391 - INFO - openai._base_client - Retrying request to /chat/completions in 0.989997 seconds
+2025-04-15 22:35:21,200 - INFO - openai._base_client - Retrying request to /chat/completions in 0.483542 seconds
+2025-04-15 22:35:38,102 - INFO - exp_llm - 163: None | C
+2025-04-15 22:36:25,694 - INFO - openai._base_client - Retrying request to /chat/completions in 0.392357 seconds
+2025-04-15 22:38:24,596 - INFO - exp_llm - 164: C | C
+2025-04-15 22:40:21,771 - INFO - openai._base_client - Retrying request to /chat/completions in 0.810996 seconds
+2025-04-15 22:40:39,191 - INFO - openai._base_client - Retrying request to /chat/completions in 0.376773 seconds
+2025-04-15 22:41:26,142 - INFO - openai._base_client - Retrying request to /chat/completions in 0.916729 seconds
+2025-04-15 22:42:43,260 - INFO - exp_llm - 165: C | C
+2025-04-15 22:43:24,655 - INFO - openai._base_client - Retrying request to /chat/completions in 0.476803 seconds
+2025-04-15 22:45:23,645 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: Consider an aperture, which shapes like ...
+2025-04-15 22:45:39,593 - INFO - openai._base_client - Retrying request to /chat/completions in 0.928104 seconds
+2025-04-15 22:47:43,353 - INFO - openai._base_client - Retrying request to /chat/completions in 0.465710 seconds
+2025-04-15 22:48:25,183 - INFO - openai._base_client - Retrying request to /chat/completions in 0.807187 seconds
+2025-04-15 22:49:50,270 - INFO - exp_llm - 166: A | A
+2025-04-15 22:50:41,581 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: We would like to dissolve 0.1 g Fe(OH)3 ...
+2025-04-15 22:51:28,152 - INFO - openai._base_client - Retrying request to /chat/completions in 0.464534 seconds
+2025-04-15 22:52:43,900 - INFO - openai._base_client - Retrying request to /chat/completions in 0.819911 seconds
+2025-04-15 22:54:50,320 - INFO - openai._base_client - Retrying request to /chat/completions in 0.459047 seconds
+2025-04-15 22:55:41,654 - INFO - openai._base_client - Retrying request to /chat/completions in 0.406035 seconds
+2025-04-15 22:56:28,645 - INFO - openai._base_client - Retrying request to /chat/completions in 0.889160 seconds
+2025-04-15 22:58:27,103 - INFO - openai._base_client - Retrying request to /chat/completions in 0.379102 seconds
+2025-04-15 22:59:50,872 - INFO - openai._base_client - Retrying request to /chat/completions in 0.973442 seconds
+2025-04-15 23:00:00,497 - INFO - exp_llm - 167: B | B
+2025-04-15 23:00:26,270 - INFO - exp_llm - 168: C | C
+2025-04-15 23:01:30,582 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: Calculate the amount of non-Gaussianity(...
+2025-04-15 23:03:27,593 - INFO - openai._base_client - Retrying request to /chat/completions in 0.967652 seconds
+2025-04-15 23:04:10,356 - INFO - exp_llm - 169: None | C
+2025-04-15 23:04:57,815 - INFO - exp_llm - 170: D | D
+2025-04-15 23:05:26,316 - INFO - openai._base_client - Retrying request to /chat/completions in 0.479953 seconds
+2025-04-15 23:06:30,668 - INFO - openai._base_client - Retrying request to /chat/completions in 0.493872 seconds
+2025-04-15 23:09:10,415 - INFO - openai._base_client - Retrying request to /chat/completions in 0.421676 seconds
+2025-04-15 23:09:52,473 - INFO - exp_llm - 171: A | A
+2025-04-15 23:10:26,840 - INFO - openai._base_client - Retrying request to /chat/completions in 0.915281 seconds
+2025-04-15 23:11:31,236 - INFO - openai._base_client - Retrying request to /chat/completions in 0.757874 seconds
+2025-04-15 23:13:06,540 - INFO - exp_llm - 172: B | B
+2025-04-15 23:13:29,647 - INFO - openai._base_client - Retrying request to /chat/completions in 0.462464 seconds
+2025-04-15 23:14:10,886 - INFO - openai._base_client - Retrying request to /chat/completions in 0.871107 seconds
+2025-04-15 23:16:34,963 - INFO - exp_llm - 173: None | A
+2025-04-15 23:18:30,220 - INFO - openai._base_client - Retrying request to /chat/completions in 0.938504 seconds
+2025-04-15 23:20:28,942 - INFO - openai._base_client - Retrying request to /chat/completions in 0.472196 seconds
+2025-04-15 23:21:33,154 - INFO - openai._base_client - Retrying request to /chat/completions in 0.447684 seconds
+2025-04-15 23:21:34,982 - INFO - openai._base_client - Retrying request to /chat/completions in 0.468336 seconds
+2025-04-15 23:23:32,173 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: Substances 1-6 undergo an electrophilic ...
+2025-04-15 23:24:10,428 - INFO - exp_llm - 174: C | C
+2025-04-15 23:24:12,998 - INFO - exp_llm - 175: B | B
+2025-04-15 23:25:29,501 - INFO - openai._base_client - Retrying request to /chat/completions in 0.785409 seconds
+2025-04-15 23:26:21,954 - INFO - exp_llm - 176: B | B
+2025-04-15 23:26:35,476 - INFO - openai._base_client - Retrying request to /chat/completions in 0.925987 seconds
+2025-04-15 23:28:32,273 - INFO - openai._base_client - Retrying request to /chat/completions in 0.449413 seconds
+2025-04-15 23:29:13,056 - INFO - openai._base_client - Retrying request to /chat/completions in 0.470339 seconds
+2025-04-15 23:31:22,028 - INFO - openai._base_client - Retrying request to /chat/completions in 0.485554 seconds
+2025-04-15 23:33:32,829 - INFO - openai._base_client - Retrying request to /chat/completions in 0.759621 seconds
+2025-04-15 23:33:47,887 - INFO - exp_llm - 177: D | D
+2025-04-15 23:35:31,496 - INFO - openai._base_client - Retrying request to /chat/completions in 0.442479 seconds
+2025-04-15 23:36:22,573 - INFO - openai._base_client - Retrying request to /chat/completions in 0.771496 seconds
+2025-04-15 23:36:37,693 - INFO - openai._base_client - Retrying request to /chat/completions in 0.447399 seconds
+2025-04-15 23:37:53,839 - INFO - exp_llm - 178: D | D
+2025-04-15 23:38:47,959 - INFO - openai._base_client - Retrying request to /chat/completions in 0.382748 seconds
+2025-04-15 23:39:18,255 - INFO - exp_llm - 179: A | A
+2025-04-15 23:40:15,611 - INFO - exp_llm - 180: A | A
+2025-04-15 23:41:38,153 - INFO - openai._base_client - Retrying request to /chat/completions in 0.852076 seconds
+2025-04-15 23:43:48,452 - INFO - openai._base_client - Retrying request to /chat/completions in 0.832226 seconds
+2025-04-15 23:44:18,303 - INFO - openai._base_client - Retrying request to /chat/completions in 0.483134 seconds
+2025-04-15 23:45:15,635 - INFO - openai._base_client - Retrying request to /chat/completions in 0.419850 seconds
+2025-04-15 23:46:24,511 - INFO - openai._base_client - Retrying request to /chat/completions in 0.493152 seconds
+2025-04-15 23:49:18,824 - INFO - openai._base_client - Retrying request to /chat/completions in 0.759310 seconds
+2025-04-15 23:50:16,120 - INFO - openai._base_client - Retrying request to /chat/completions in 0.933341 seconds
+2025-04-15 23:51:25,083 - INFO - openai._base_client - Retrying request to /chat/completions in 0.813059 seconds
+2025-04-15 23:51:40,068 - INFO - openai._base_client - Retrying request to /chat/completions in 0.488186 seconds
+2025-04-15 23:53:50,518 - INFO - openai._base_client - Retrying request to /chat/completions in 0.412816 seconds
+2025-04-15 23:55:26,887 - INFO - exp_llm - 181: A | A
+2025-04-15 23:56:40,641 - INFO - openai._base_client - Retrying request to /chat/completions in 0.824475 seconds
+2025-04-15 23:58:51,039 - INFO - openai._base_client - Retrying request to /chat/completions in 0.999083 seconds
+2025-04-15 23:59:20,651 - INFO - openai._base_client - Retrying request to /chat/completions in 0.380331 seconds
+2025-04-16 00:00:18,149 - INFO - openai._base_client - Retrying request to /chat/completions in 0.463112 seconds
+2025-04-16 00:00:26,911 - INFO - openai._base_client - Retrying request to /chat/completions in 0.474800 seconds
+2025-04-16 00:01:42,552 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: What is the index of hydrogen deficiency...
+2025-04-16 00:04:05,367 - INFO - exp_llm - 182: None | B
+2025-04-16 00:04:21,042 - INFO - openai._base_client - Retrying request to /chat/completions in 0.996597 seconds
+2025-04-16 00:04:22,281 - INFO - exp_llm - 183: None | B
+2025-04-16 00:05:27,457 - INFO - openai._base_client - Retrying request to /chat/completions in 0.832840 seconds
+2025-04-16 00:06:30,313 - INFO - exp_llm - 184: D | D
+2025-04-16 00:08:53,188 - INFO - openai._base_client - Retrying request to /chat/completions in 0.470861 seconds
+2025-04-16 00:09:22,294 - INFO - openai._base_client - Retrying request to /chat/completions in 0.447380 seconds
+2025-04-16 00:09:51,572 - INFO - exp_llm - 185: C | C
+2025-04-16 00:11:30,428 - INFO - openai._base_client - Retrying request to /chat/completions in 0.424824 seconds
+2025-04-16 00:13:53,679 - INFO - openai._base_client - Retrying request to /chat/completions in 0.822724 seconds
+2025-04-16 00:14:22,779 - INFO - openai._base_client - Retrying request to /chat/completions in 0.871121 seconds
+2025-04-16 00:14:23,097 - INFO - openai._base_client - Retrying request to /chat/completions in 0.410136 seconds
+2025-04-16 00:14:51,617 - INFO - openai._base_client - Retrying request to /chat/completions in 0.420734 seconds
+2025-04-16 00:16:30,910 - INFO - openai._base_client - Retrying request to /chat/completions in 0.782121 seconds
+2025-04-16 00:18:55,613 - WARNING - exp_llm - ❌ 模型响应为空，跳过该问题: The Rhombohedral Crystal is characterize...
+2025-04-16 00:19:02,232 - INFO - exp_llm - 186: D | D
+2025-04-16 00:19:52,075 - INFO - openai._base_client - Retrying request to /chat/completions in 0.901750 seconds
+2025-04-16 00:23:55,735 - INFO - openai._base_client - Retrying request to /chat/completions in 0.495281 seconds
+2025-04-16 00:24:24,720 - INFO - openai._base_client - Retrying request to /chat/completions in 0.476585 seconds
+2025-04-16 00:26:32,852 - INFO - openai._base_client - Retrying request to /chat/completions in 0.480539 seconds
+2025-04-16 00:28:56,343 - INFO - openai._base_client - Retrying request to /chat/completions in 0.894937 seconds
+2025-04-16 00:29:25,237 - INFO - openai._base_client - Retrying request to /chat/completions in 0.781322 seconds
+2025-04-16 00:29:54,062 - INFO - openai._base_client - Retrying request to /chat/completions in 0.445731 seconds
+2025-04-16 00:30:57,337 - INFO - exp_llm - 187: C | C
+2025-04-16 00:34:54,545 - INFO - openai._base_client - Retrying request to /chat/completions in 0.934857 seconds
+2025-04-16 00:38:58,468 - INFO - openai._base_client - Retrying request to /chat/completions in 0.400772 seconds
+2025-04-16 00:39:13,996 - INFO - exp_llm - 188: A | A
+2025-04-16 00:42:23,462 - INFO - exp_llm - 189: C | C
+2025-04-16 00:43:29,222 - INFO - exp_llm - 190: C | C
+2025-04-16 00:43:29,223 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,224 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,224 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,225 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,225 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,225 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,225 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,225 - WARNING - F1_Evaluator - 跳过非法预测值：None
+2025-04-16 00:43:29,225 - INFO - F1_Evaluator - 📊 有效样本数: 190，跳过: 8，平均 F1 分数: 0.9421
+2025-04-16 00:43:29,226 - INFO - exp_llm - self.token=1000 | F1 Score=0.9421 | ACC Score=0.9040 | total_token=962944
+2025-04-16 00:43:29,227 - INFO - exp_llm - F1 分数已保存至 results/20250416_0043_B191/results.json
+2025-04-16 00:43:29,236 - INFO - exp_llm - QA 对已保存至 results/20250416_0043_B191/qa_answers.json
+2025-04-16 00:43:29,236 - INFO - exp_llm - 实验完成
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (3/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (2/3)

@@ -1,0 +1,281 @@
+nohup: ignoring input
+2025-04-16 19:58:34,015 - INFO - exp_llm - Namespace(config='config/config_llm.yaml', model_name='ds', dataset='bbh', token=0, prompt='spo', template='GPQA_PROMPT')
+2025-04-16 19:58:34,022 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-16 19:58:34,022 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_prompt
+2025-04-16 19:58:34,022 - INFO - ChatLLM - {'model': 'deepseek-r1:7b', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-16 19:58:34,138 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
+2025-04-16 19:58:34,138 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-16 19:58:34,163 - INFO - exp_llm - 开始训练的token数量为：0
+2025-04-16 19:59:20,908 - INFO - exp_llm - 1: No | No
+2025-04-16 19:59:49,458 - INFO - exp_llm - 2: Yes | Yes
+2025-04-16 20:00:07,274 - INFO - exp_llm - 3: Yes | Yes
+2025-04-16 20:00:26,306 - INFO - exp_llm - 4: Yes | Yes
+2025-04-16 20:00:38,139 - INFO - exp_llm - 5: No | No
+2025-04-16 20:01:05,748 - INFO - exp_llm - 6: No | No
+2025-04-16 20:01:08,369 - INFO - exp_llm - 7: No | No
+2025-04-16 20:01:08,822 - INFO - exp_llm - 8: No | No
+2025-04-16 20:01:17,835 - INFO - exp_llm - 9: No | No
+2025-04-16 20:01:37,860 - INFO - exp_llm - 10: None | No
+2025-04-16 20:01:49,301 - INFO - exp_llm - 11: Yes | Yes
+2025-04-16 20:02:21,950 - INFO - exp_llm - 12: No | No
+2025-04-16 20:02:33,899 - INFO - exp_llm - 13: Yes | Yes
+2025-04-16 20:02:49,823 - INFO - exp_llm - 14: Yes | Yes
+2025-04-16 20:03:01,110 - INFO - exp_llm - 15: No | No
+2025-04-16 20:03:20,678 - INFO - exp_llm - 16: No | No
+2025-04-16 20:03:31,590 - INFO - exp_llm - 17: No | No
+2025-04-16 20:03:45,900 - INFO - exp_llm - 18: Yes | Yes
+2025-04-16 20:04:14,049 - INFO - exp_llm - 19: No | No
+2025-04-16 20:04:26,293 - INFO - exp_llm - 20: No | No
+2025-04-16 20:04:34,684 - INFO - openai._base_client - Retrying request to /chat/completions in 0.456751 seconds
+2025-04-16 20:04:37,985 - INFO - exp_llm - 21: None | Yes
+2025-04-16 20:04:43,598 - INFO - exp_llm - 22: No | No
+2025-04-16 20:04:53,292 - INFO - exp_llm - 23: No | No
+2025-04-16 20:05:38,203 - INFO - openai._base_client - Retrying request to /chat/completions in 0.499865 seconds
+2025-04-16 20:05:44,911 - INFO - exp_llm - 24: Yes | Yes
+2025-04-16 20:06:16,944 - INFO - exp_llm - 25: No | No
+2025-04-16 20:06:17,852 - INFO - openai._base_client - Retrying request to /chat/completions in 0.499003 seconds
+2025-04-16 20:06:30,890 - INFO - exp_llm - 26: No | No
+2025-04-16 20:06:37,887 - INFO - openai._base_client - Retrying request to /chat/completions in 0.390498 seconds
+2025-04-16 20:06:48,566 - INFO - exp_llm - 27: No | No
+2025-04-16 20:07:13,921 - INFO - exp_llm - 28: No | No
+2025-04-16 20:07:28,858 - INFO - exp_llm - 29: No | No
+2025-04-16 20:07:54,716 - INFO - exp_llm - 30: Yes | Yes
+2025-04-16 20:08:03,735 - INFO - exp_llm - 31: None | Yes
+2025-04-16 20:08:03,808 - INFO - exp_llm - 32: No | No
+2025-04-16 20:08:14,678 - INFO - exp_llm - 33: Yes | Yes
+2025-04-16 20:08:49,778 - INFO - exp_llm - 34: Yes | Yes
+2025-04-16 20:08:52,664 - INFO - exp_llm - 35: Yes | Yes
+2025-04-16 20:09:10,284 - INFO - exp_llm - 36: Yes | Yes
+2025-04-16 20:09:20,313 - INFO - exp_llm - 37: Yes | Yes
+2025-04-16 20:09:24,414 - INFO - exp_llm - 38: No | No
+2025-04-16 20:09:32,596 - INFO - exp_llm - 39: No | No
+2025-04-16 20:09:34,502 - INFO - exp_llm - 40: Yes | Yes
+2025-04-16 20:09:42,424 - INFO - exp_llm - 41: No | No
+2025-04-16 20:09:51,613 - INFO - exp_llm - 42: Yes | Yes
+2025-04-16 20:09:52,652 - INFO - exp_llm - 43: None | Yes
+2025-04-16 20:10:12,380 - INFO - exp_llm - 44: No | No
+2025-04-16 20:10:16,757 - INFO - exp_llm - 45: None | Yes
+2025-04-16 20:10:17,852 - INFO - exp_llm - 46: Yes | Yes
+2025-04-16 20:10:24,771 - INFO - exp_llm - 47: Yes | Yes
+2025-04-16 20:10:25,519 - INFO - exp_llm - 48: No | No
+2025-04-16 20:10:33,248 - INFO - exp_llm - 49: Yes | Yes
+2025-04-16 20:10:34,888 - INFO - exp_llm - 50: Yes | Yes
+2025-04-16 20:10:42,009 - INFO - exp_llm - 51: No | No
+2025-04-16 20:10:43,660 - INFO - exp_llm - 52: No | No
+2025-04-16 20:10:51,989 - INFO - exp_llm - 53: No | No
+2025-04-16 20:10:54,455 - INFO - exp_llm - 54: No | No
+2025-04-16 20:11:02,178 - INFO - exp_llm - 55: Yes | Yes
+2025-04-16 20:11:06,432 - INFO - exp_llm - 56: No | No
+2025-04-16 20:11:07,544 - INFO - exp_llm - 57: Yes | Yes
+2025-04-16 20:11:09,262 - INFO - exp_llm - 58: No | No
+2025-04-16 20:11:17,847 - INFO - exp_llm - 59: No | No
+2025-04-16 20:11:43,459 - INFO - exp_llm - 60: No | No
+2025-04-16 20:12:19,282 - INFO - exp_llm - 61: Yes | Yes
+2025-04-16 20:12:38,380 - INFO - exp_llm - 62: Yes | Yes
+2025-04-16 20:12:43,210 - INFO - exp_llm - 63: No | No
+2025-04-16 20:12:50,572 - INFO - exp_llm - 64: Yes | Yes
+2025-04-16 20:12:56,551 - INFO - exp_llm - 65: No | No
+2025-04-16 20:13:31,151 - INFO - exp_llm - 66: No | No
+2025-04-16 20:13:49,409 - INFO - exp_llm - 67: No | No
+2025-04-16 20:14:00,433 - INFO - exp_llm - 68: Yes | Yes
+2025-04-16 20:14:03,170 - INFO - exp_llm - 69: Yes | Yes
+2025-04-16 20:14:09,232 - INFO - exp_llm - 70: Yes | Yes
+2025-04-16 20:14:09,641 - INFO - exp_llm - 71: Yes | Yes
+2025-04-16 20:14:23,757 - INFO - exp_llm - 72: No | No
+2025-04-16 20:14:36,577 - INFO - exp_llm - 73: Yes | Yes
+2025-04-16 20:15:16,031 - INFO - exp_llm - 74: No | No
+2025-04-16 20:16:17,928 - INFO - openai._base_client - Retrying request to /chat/completions in 0.447778 seconds
+2025-04-16 20:17:06,544 - INFO - exp_llm - 75: No | No
+2025-04-16 20:17:34,087 - INFO - exp_llm - 76: Yes | Yes
+2025-04-16 20:17:34,689 - INFO - exp_llm - 77: Yes | Yes
+2025-04-16 20:17:57,427 - INFO - exp_llm - 78: None | Yes
+2025-04-16 20:18:25,310 - INFO - exp_llm - 79: Yes | Yes
+2025-04-16 20:18:42,723 - INFO - exp_llm - 80: Yes | Yes
+2025-04-16 20:18:47,576 - INFO - exp_llm - 81: Yes | Yes
+2025-04-16 20:19:01,060 - INFO - exp_llm - 82: No | No
+2025-04-16 20:19:09,256 - INFO - openai._base_client - Retrying request to /chat/completions in 0.385102 seconds
+2025-04-16 20:19:20,427 - INFO - exp_llm - 83: No | No
+2025-04-16 20:19:57,108 - INFO - exp_llm - 84: No | No
+2025-04-16 20:20:07,349 - INFO - exp_llm - 85: No | No
+2025-04-16 20:20:21,285 - INFO - exp_llm - 86: Yes | Yes
+2025-04-16 20:21:05,954 - INFO - exp_llm - 87: Yes | Yes
+2025-04-16 20:21:50,334 - INFO - exp_llm - 88: No | No
+2025-04-16 20:22:39,831 - INFO - exp_llm - 89: No | No
+2025-04-16 20:23:08,973 - INFO - exp_llm - 90: No | No
+2025-04-16 20:23:13,242 - INFO - exp_llm - 91: No | No
+2025-04-16 20:23:31,127 - INFO - exp_llm - 92: No | No
+2025-04-16 20:23:44,119 - INFO - exp_llm - 93: No | No
+2025-04-16 20:24:09,676 - INFO - openai._base_client - Retrying request to /chat/completions in 0.828803 seconds
+2025-04-16 20:24:28,956 - INFO - exp_llm - 94: Yes | Yes
+2025-04-16 20:24:46,550 - INFO - exp_llm - 95: Yes | Yes
+2025-04-16 20:25:21,338 - INFO - openai._base_client - Retrying request to /chat/completions in 0.410098 seconds
+2025-04-16 20:26:00,617 - INFO - exp_llm - 96: No | No
+2025-04-16 20:26:50,419 - INFO - exp_llm - 97: No | No
+2025-04-16 20:27:48,860 - INFO - exp_llm - 98: Yes | Yes
+2025-04-16 20:28:00,362 - INFO - exp_llm - 99: No | No
+2025-04-16 20:28:11,238 - INFO - exp_llm - 100: Yes | Yes
+2025-04-16 20:28:28,302 - INFO - exp_llm - 101: No | No
+2025-04-16 20:29:28,989 - INFO - openai._base_client - Retrying request to /chat/completions in 0.483498 seconds
+2025-04-16 20:29:47,121 - INFO - exp_llm - 102: No | No
+2025-04-16 20:30:12,809 - INFO - exp_llm - 103: No | No
+2025-04-16 20:30:21,767 - INFO - openai._base_client - Retrying request to /chat/completions in 0.945916 seconds
+2025-04-16 20:30:27,259 - INFO - exp_llm - 104: Yes | Yes
+2025-04-16 20:30:31,731 - INFO - exp_llm - 105: Yes | Yes
+2025-04-16 20:30:45,868 - INFO - exp_llm - 106: No | No
+2025-04-16 20:32:05,205 - INFO - exp_llm - 107: No | No
+2025-04-16 20:32:08,136 - INFO - exp_llm - 108: No | No
+2025-04-16 20:32:44,321 - INFO - exp_llm - 109: No | No
+2025-04-16 20:32:58,898 - INFO - exp_llm - 110: No | No
+2025-04-16 20:33:05,621 - INFO - exp_llm - 111: No | No
+2025-04-16 20:33:20,167 - INFO - exp_llm - 112: Yes | Yes
+2025-04-16 20:33:32,530 - INFO - exp_llm - 113: Yes | Yes
+2025-04-16 20:33:51,830 - INFO - exp_llm - 114: Yes | Yes
+2025-04-16 20:34:10,032 - INFO - exp_llm - 115: Yes | Yes
+2025-04-16 20:34:11,564 - INFO - openai._base_client - Retrying request to /chat/completions in 0.443666 seconds
+2025-04-16 20:34:22,635 - INFO - exp_llm - 116: Yes | Yes
+2025-04-16 20:34:25,459 - INFO - exp_llm - 117: Yes | Yes
+2025-04-16 20:34:38,826 - INFO - exp_llm - 118: Yes | Yes
+2025-04-16 20:34:42,328 - INFO - exp_llm - 119: Yes | Yes
+2025-04-16 20:34:53,632 - INFO - exp_llm - 120: Yes | Yes
+2025-04-16 20:35:00,943 - INFO - exp_llm - 121: No | No
+2025-04-16 20:35:12,243 - INFO - exp_llm - 122: No | No
+2025-04-16 20:35:20,583 - INFO - exp_llm - 123: No | No
+2025-04-16 20:35:22,532 - INFO - exp_llm - 124: None | Yes
+2025-04-16 20:35:29,280 - INFO - exp_llm - 125: No | No
+2025-04-16 20:35:37,250 - INFO - exp_llm - 126: Yes | Yes
+2025-04-16 20:36:00,139 - INFO - exp_llm - 127: No | No
+2025-04-16 20:36:00,160 - INFO - exp_llm - 128: No | No
+2025-04-16 20:36:06,453 - INFO - exp_llm - 129: No | No
+2025-04-16 20:36:22,364 - INFO - exp_llm - 130: No | No
+2025-04-16 20:36:28,221 - INFO - exp_llm - 131: Yes | Yes
+2025-04-16 20:36:36,376 - INFO - exp_llm - 132: No | No
+2025-04-16 20:36:39,249 - INFO - exp_llm - 133: No | No
+2025-04-16 20:37:22,048 - INFO - exp_llm - 134: None | Yes
+2025-04-16 20:37:26,392 - INFO - exp_llm - 135: No | No
+2025-04-16 20:37:33,952 - INFO - exp_llm - 136: No | No
+2025-04-16 20:38:16,753 - INFO - exp_llm - 137: No | No
+2025-04-16 20:39:16,912 - INFO - exp_llm - 138: No | No
+2025-04-16 20:39:33,963 - INFO - exp_llm - 139: No | No
+2025-04-16 20:39:52,849 - INFO - exp_llm - 140: No | No
+2025-04-16 20:39:54,085 - INFO - exp_llm - 141: None | Yes
+2025-04-16 20:40:12,048 - INFO - exp_llm - 142: Yes | Yes
+2025-04-16 20:40:26,983 - INFO - exp_llm - 143: No | No
+2025-04-16 20:40:49,190 - INFO - exp_llm - 144: No | No
+2025-04-16 20:41:00,184 - INFO - openai._base_client - Retrying request to /chat/completions in 0.490189 seconds
+2025-04-16 20:41:16,804 - INFO - exp_llm - 145: No | No
+2025-04-16 20:41:22,332 - INFO - exp_llm - 146: No | No
+2025-04-16 20:41:30,156 - INFO - exp_llm - 147: No | No
+2025-04-16 20:41:34,083 - INFO - exp_llm - 148: No | No
+2025-04-16 20:41:36,396 - INFO - openai._base_client - Retrying request to /chat/completions in 0.492743 seconds
+2025-04-16 20:41:59,391 - INFO - exp_llm - 149: No | No
+2025-04-16 20:42:03,888 - INFO - exp_llm - 150: Yes | Yes
+2025-04-16 20:42:10,197 - INFO - exp_llm - 151: No | No
+2025-04-16 20:42:44,303 - INFO - exp_llm - 152: None | No
+2025-04-16 20:42:53,082 - INFO - exp_llm - 153: No | No
+2025-04-16 20:42:58,904 - INFO - exp_llm - 154: Yes | Yes
+2025-04-16 20:43:10,132 - INFO - exp_llm - 155: No | No
+2025-04-16 20:43:25,792 - INFO - exp_llm - 156: No | No
+2025-04-16 20:43:33,187 - INFO - exp_llm - 157: No | No
+2025-04-16 20:43:41,212 - INFO - exp_llm - 158: None | Yes
+2025-04-16 20:43:43,186 - INFO - exp_llm - 159: Yes | Yes
+2025-04-16 20:43:52,132 - INFO - exp_llm - 160: No | No
+2025-04-16 20:44:01,549 - INFO - exp_llm - 161: No | No
+2025-04-16 20:46:09,752 - INFO - exp_llm - 162: Yes | Yes
+2025-04-16 20:46:16,472 - INFO - exp_llm - 163: Yes | Yes
+2025-04-16 20:46:26,001 - INFO - exp_llm - 164: No | No
+2025-04-16 20:46:26,458 - INFO - exp_llm - 165: No | No
+2025-04-16 20:46:36,911 - INFO - openai._base_client - Retrying request to /chat/completions in 0.951657 seconds
+2025-04-16 20:46:45,471 - INFO - exp_llm - 166: No | No
+2025-04-16 20:46:48,664 - INFO - exp_llm - 167: No | No
+2025-04-16 20:46:56,071 - INFO - exp_llm - 168: Yes | Yes
+2025-04-16 20:47:11,199 - INFO - exp_llm - 169: No | No
+2025-04-16 20:47:11,224 - INFO - exp_llm - 170: Yes | Yes
+2025-04-16 20:47:24,665 - INFO - exp_llm - 171: No | No
+2025-04-16 20:47:44,207 - INFO - exp_llm - 172: Yes | Yes
+2025-04-16 20:47:45,283 - INFO - exp_llm - 173: No | No
+2025-04-16 20:47:47,763 - INFO - exp_llm - 174: No | No
+2025-04-16 20:47:54,340 - INFO - exp_llm - 175: No | No
+2025-04-16 20:47:59,704 - INFO - exp_llm - 176: Yes | Yes
+2025-04-16 20:48:14,068 - INFO - exp_llm - 177: No | No
+2025-04-16 20:48:17,064 - INFO - exp_llm - 178: No | No
+2025-04-16 20:48:27,714 - INFO - exp_llm - 179: No | No
+2025-04-16 20:48:30,245 - INFO - exp_llm - 180: No | No
+2025-04-16 20:48:33,915 - INFO - exp_llm - 181: No | No
+2025-04-16 20:48:46,225 - INFO - exp_llm - 182: Yes | Yes
+2025-04-16 20:48:54,653 - INFO - exp_llm - 183: No | No
+2025-04-16 20:48:59,094 - INFO - exp_llm - 184: Yes | Yes
+2025-04-16 20:49:23,003 - INFO - exp_llm - 185: Yes | Yes
+2025-04-16 20:49:29,832 - INFO - exp_llm - 186: No | No
+2025-04-16 20:49:45,253 - INFO - exp_llm - 187: Yes | Yes
+2025-04-16 20:49:46,048 - INFO - exp_llm - 188: Yes | Yes
+2025-04-16 20:49:48,570 - INFO - exp_llm - 189: No | No
+2025-04-16 20:50:19,612 - INFO - exp_llm - 190: Yes | Yes
+2025-04-16 20:50:26,076 - INFO - exp_llm - 191: Yes | Yes
+2025-04-16 20:50:36,618 - INFO - exp_llm - 192: No | No
+2025-04-16 20:50:46,942 - INFO - exp_llm - 193: No | No
+2025-04-16 20:50:51,841 - INFO - exp_llm - 194: No | No
+2025-04-16 20:50:56,879 - INFO - exp_llm - 195: No | No
+2025-04-16 20:51:08,747 - INFO - exp_llm - 196: Yes | Yes
+2025-04-16 20:51:11,967 - INFO - openai._base_client - Retrying request to /chat/completions in 0.432668 seconds
+2025-04-16 20:51:12,515 - INFO - exp_llm - 197: No | No
+2025-04-16 20:51:18,090 - INFO - exp_llm - 198: None | No
+2025-04-16 20:51:26,283 - INFO - exp_llm - 199: None | Yes
+2025-04-16 20:51:37,049 - INFO - exp_llm - 200: Yes | Yes
+2025-04-16 20:51:37,529 - INFO - exp_llm - 201: Yes | Yes
+2025-04-16 20:51:44,345 - INFO - exp_llm - 202: No | No
+2025-04-16 20:51:50,117 - INFO - exp_llm - 203: Yes | Yes
+2025-04-16 20:52:25,560 - INFO - exp_llm - 204: No | No
+2025-04-16 20:52:26,502 - INFO - exp_llm - 205: Yes | Yes
+2025-04-16 20:52:39,487 - INFO - exp_llm - 206: None | No
+2025-04-16 20:52:40,613 - INFO - exp_llm - 207: Yes | Yes
+2025-04-16 20:52:57,476 - INFO - exp_llm - 208: Yes | Yes
+2025-04-16 20:53:45,253 - INFO - exp_llm - 209: Yes | Yes
+2025-04-16 20:53:47,054 - INFO - exp_llm - 210: No | No
+2025-04-16 20:53:56,929 - INFO - exp_llm - 211: No | No
+2025-04-16 20:54:14,606 - INFO - exp_llm - 212: None | No
+2025-04-16 20:54:18,509 - INFO - exp_llm - 213: No | No
+2025-04-16 20:54:20,828 - INFO - exp_llm - 214: No | No
+2025-04-16 20:54:33,974 - INFO - exp_llm - 215: Yes | Yes
+2025-04-16 20:54:38,268 - INFO - exp_llm - 216: Yes | Yes
+2025-04-16 20:54:46,156 - INFO - exp_llm - 217: No | No
+2025-04-16 20:55:03,060 - INFO - exp_llm - 218: No | No
+2025-04-16 20:55:05,485 - INFO - exp_llm - 219: No | No
+2025-04-16 20:55:11,726 - INFO - exp_llm - 220: Yes | Yes
+2025-04-16 20:55:15,531 - INFO - exp_llm - 221: Yes | Yes
+2025-04-16 20:55:29,653 - INFO - exp_llm - 222: No | No
+2025-04-16 20:55:46,832 - INFO - exp_llm - 223: Yes | Yes
+2025-04-16 20:55:49,911 - INFO - exp_llm - 224: No | No
+2025-04-16 20:56:04,174 - INFO - exp_llm - 225: Yes | Yes
+2025-04-16 20:56:22,340 - INFO - exp_llm - 226: Yes | Yes
+2025-04-16 20:56:22,971 - INFO - exp_llm - 227: Yes | Yes
+2025-04-16 20:56:30,731 - INFO - exp_llm - 228: No | No
+2025-04-16 20:57:23,141 - INFO - exp_llm - 229: Yes | Yes
+2025-04-16 20:57:43,632 - INFO - exp_llm - 230: Yes | Yes
+2025-04-16 20:57:53,807 - INFO - exp_llm - 231: Yes | Yes
+2025-04-16 20:57:58,532 - INFO - exp_llm - 232: None | No
+2025-04-16 20:58:06,443 - INFO - exp_llm - 233: No | No
+2025-04-16 20:58:22,043 - INFO - exp_llm - 234: No | No
+2025-04-16 20:58:50,339 - INFO - exp_llm - 235: Yes | Yes
+2025-04-16 20:58:59,083 - INFO - exp_llm - 236: No | No
+2025-04-16 20:59:00,370 - INFO - exp_llm - 237: Yes | Yes
+2025-04-16 20:59:08,623 - INFO - exp_llm - 238: Yes | Yes
+2025-04-16 20:59:09,244 - INFO - exp_llm - 239: No | No
+2025-04-16 20:59:23,457 - INFO - exp_llm - 240: No | No
+2025-04-16 20:59:33,250 - INFO - exp_llm - 241: None | No
+2025-04-16 20:59:38,290 - INFO - openai._base_client - Retrying request to /chat/completions in 0.445323 seconds
+2025-04-16 20:59:46,681 - INFO - exp_llm - 242: No | No
+2025-04-16 20:59:49,331 - INFO - exp_llm - 243: Yes | Yes
+2025-04-16 20:59:56,846 - INFO - exp_llm - 244: Yes | Yes
+2025-04-16 21:00:03,753 - INFO - exp_llm - 245: No | No
+2025-04-16 21:01:00,073 - INFO - exp_llm - 246: No | No
+2025-04-16 21:01:04,324 - INFO - exp_llm - 247: No | No
+2025-04-16 21:01:15,954 - INFO - exp_llm - 248: No | No
+2025-04-16 21:01:57,263 - INFO - exp_llm - 249: No | No
+2025-04-16 21:02:19,101 - INFO - exp_llm - 250: No | No
+2025-04-16 21:02:19,104 - INFO - F1_Evaluator - 📊 有效样本数: 250，跳过: 0，平均 F1 分数: 0.9320
+2025-04-16 21:02:19,105 - INFO - exp_llm - total_token=353326
+2025-04-16 21:02:19,105 - INFO - exp_llm - self.token=0 | F1 Score=0.9320 | ACC Score=0.9320 | avg_token=1413.304
+2025-04-16 21:02:19,106 - INFO - exp_llm - F1 分数已保存至 results/20250416_2102_8377/results.json
+2025-04-16 21:02:19,113 - INFO - exp_llm - QA 对已保存至 results/20250416_2102_8377/qa_answers.json
+2025-04-16 21:02:19,113 - INFO - exp_llm - 实验完成
+Error occurred: Request timed out., retrying... (1/3)

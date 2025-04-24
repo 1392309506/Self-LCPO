@@ -1,0 +1,1155 @@
+nohup: ignoring input
+2025-04-23 00:19:09,021 - INFO - exp_llm - Namespace(config='config/config_llm.yaml', model_name='ds', dataset='math', token=0, prompt='cot', template='_PROMPT', is_extract='true')
+2025-04-23 00:19:09,030 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-23 00:19:09,030 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_prompt
+2025-04-23 00:19:09,030 - INFO - ChatLLM - {'model': 'deepseek-r1:7b', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-23 00:19:09,126 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
+2025-04-23 00:19:09,126 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-23 00:19:09,134 - INFO - exp_llm - 开始训练的token数量为：0
+2025-04-23 00:19:31,747 - INFO - exp_llm - 1: None | 152A_{11}
+2025-04-23 00:19:37,003 - INFO - exp_llm - 2: 30 | 30
+2025-04-23 00:20:11,649 - INFO - exp_llm - 3: x - 3z = 0 | x - 3z = 0
+2025-04-23 00:21:46,246 - INFO - exp_llm - 4: 30 | 30
+2025-04-23 00:22:25,083 - INFO - exp_llm - 5: 110 | 110
+2025-04-23 00:23:55,378 - INFO - exp_llm - 6: 0 | 0
+2025-04-23 00:24:09,327 - INFO - openai._base_client - Retrying request to /chat/completions in 0.414364 seconds
+2025-04-23 00:24:20,270 - INFO - exp_llm - 7: (2,3) | (2,3)
+2025-04-23 00:24:31,775 - INFO - openai._base_client - Retrying request to /chat/completions in 0.420334 seconds
+2025-04-23 00:26:46,364 - INFO - openai._base_client - Retrying request to /chat/completions in 0.493808 seconds
+2025-04-23 00:28:55,496 - INFO - openai._base_client - Retrying request to /chat/completions in 0.476765 seconds
+2025-04-23 00:29:09,764 - INFO - openai._base_client - Retrying request to /chat/completions in 0.767234 seconds
+2025-04-23 00:29:20,296 - INFO - openai._base_client - Retrying request to /chat/completions in 0.433187 seconds
+2025-04-23 00:29:32,212 - INFO - openai._base_client - Retrying request to /chat/completions in 0.856654 seconds
+2025-04-23 00:30:53,110 - INFO - exp_llm - 8: -1 | -1
+2025-04-23 00:32:58,951 - INFO - exp_llm - 9: None | 72 + 72\sqrt{2}
+2025-04-23 00:33:33,489 - INFO - exp_llm - 10: None | (3,4]
+2025-04-23 00:34:20,787 - INFO - openai._base_client - Retrying request to /chat/completions in 0.828794 seconds
+2025-04-23 00:34:40,566 - INFO - exp_llm - 11: 3 + 2 \sqrt{2} | 3 + 2 \sqrt{2}
+2025-04-23 00:35:04,011 - INFO - exp_llm - 12: 8 | 8
+2025-04-23 00:35:28,723 - INFO - exp_llm - 13: \frac{295}{396} | \frac{295}{396}
+2025-04-23 00:35:41,555 - INFO - exp_llm - 14: \dfrac{1}{3} | \dfrac{1}{3}
+2025-04-23 00:35:52,355 - INFO - exp_llm - 15: 9 | 9
+2025-04-23 00:36:02,247 - INFO - exp_llm - 16: \left(-\infty,-\frac 12\right)\cup \left(-\frac 12,\infty\right) | \left(-\infty,-\frac 12\right)\cup \left(-\frac 12,\infty\right)
+2025-04-23 00:36:04,372 - INFO - exp_llm - 17: None | 371,\!043,\!400
+2025-04-23 00:36:13,663 - INFO - exp_llm - 18: -6 | -6
+2025-04-23 00:36:22,779 - INFO - exp_llm - 19: -2 | -2
+2025-04-23 00:36:25,005 - INFO - exp_llm - 20: 611 | 611
+2025-04-23 00:36:35,598 - INFO - exp_llm - 21: 32 | 32
+2025-04-23 00:36:39,465 - INFO - exp_llm - 22: 15 | 15
+2025-04-23 00:36:45,606 - INFO - exp_llm - 23: (9, 3) | (9, 3)
+2025-04-23 00:36:56,020 - INFO - exp_llm - 24: -2 | -2
+2025-04-23 00:37:05,015 - INFO - exp_llm - 25: \frac{1}{350} | \frac{1}{350}
+2025-04-23 00:37:18,886 - INFO - exp_llm - 26: \dfrac{30}{143} | \dfrac{30}{143}
+2025-04-23 00:37:24,908 - INFO - exp_llm - 27: 11 | 11
+2025-04-23 00:37:35,950 - INFO - exp_llm - 28: 2 | 2
+2025-04-23 00:37:36,109 - INFO - exp_llm - 29: \frac{25}{8} | \frac{25}{8}
+2025-04-23 00:37:40,445 - INFO - exp_llm - 30: 2 | 2
+2025-04-23 00:37:43,309 - INFO - exp_llm - 31: -21 | -21
+2025-04-23 00:37:50,417 - INFO - exp_llm - 32: 105 | 105
+2025-04-23 00:38:19,224 - INFO - exp_llm - 33: 13 | 13
+2025-04-23 00:38:55,984 - INFO - exp_llm - 34: (-4,1) | (-4,1)
+2025-04-23 00:39:03,748 - INFO - exp_llm - 35: 72 | 72
+2025-04-23 00:39:34,864 - INFO - exp_llm - 36: \frac{x^2}{16} - \frac{y^2}{9} = 1 | \frac{x^2}{16} - \frac{y^2}{9} = 1
+2025-04-23 00:39:41,298 - INFO - exp_llm - 37: 8 | 8
+2025-04-23 00:39:59,431 - INFO - exp_llm - 38: 240 | 240
+2025-04-23 00:40:11,657 - INFO - exp_llm - 39: 0 | 0
+2025-04-23 00:40:19,575 - INFO - exp_llm - 40: 268 | 268
+2025-04-23 00:40:52,114 - INFO - exp_llm - 41: \begin{pmatrix} 2/5 \\ -1/5 \end{pmatrix} | \begin{pmatrix} 2/5 \\ -1/5 \end{pmatrix}
+2025-04-23 00:40:54,779 - INFO - exp_llm - 42: -8 | -8
+2025-04-23 00:41:00,843 - INFO - exp_llm - 43: \dfrac{4}{25} | \dfrac{4}{25}
+2025-04-23 00:41:29,722 - INFO - exp_llm - 44: 839 | 839
+2025-04-23 00:41:40,302 - INFO - exp_llm - 45: 5 | 5
+2025-04-23 00:42:30,765 - INFO - exp_llm - 46: None | 48
+2025-04-23 00:42:33,743 - INFO - exp_llm - 47: None | 828
+2025-04-23 00:42:43,327 - INFO - openai._base_client - Retrying request to /chat/completions in 0.493673 seconds
+2025-04-23 00:42:44,429 - INFO - exp_llm - 48: 3 | 3
+2025-04-23 00:43:04,670 - INFO - exp_llm - 49: 6 | 6
+2025-04-23 00:43:25,015 - INFO - exp_llm - 50: 26 | 26
+2025-04-23 00:43:41,865 - INFO - exp_llm - 51: 12 | 12
+2025-04-23 00:43:53,397 - INFO - exp_llm - 52: 75 | 75
+2025-04-23 00:44:03,575 - INFO - exp_llm - 53: 1024 | 1024
+2025-04-23 00:44:19,076 - INFO - exp_llm - 54: 48 | 48
+2025-04-23 00:44:23,271 - INFO - exp_llm - 55: None | 321
+2025-04-23 00:46:00,007 - INFO - exp_llm - 56: None | 15
+2025-04-23 00:46:42,071 - INFO - exp_llm - 57: \text{even} | \text{even}
+2025-04-23 00:47:16,976 - INFO - exp_llm - 58: 48 | 48
+2025-04-23 00:47:24,059 - INFO - exp_llm - 59: 5 | 5
+2025-04-23 00:47:28,119 - INFO - exp_llm - 60: 0 | 0
+2025-04-23 00:47:38,308 - INFO - exp_llm - 61: \frac{197}{2} | \frac{197}{2}
+2025-04-23 00:48:26,726 - INFO - exp_llm - 62: \left( \frac{15}{4}, \frac{1}{2}, 0 \right) | \left( \frac{15}{4}, \frac{1}{2}, 0 \right)
+2025-04-23 00:48:26,880 - INFO - exp_llm - 63: 8 | 8
+2025-04-23 00:48:36,897 - INFO - exp_llm - 64: 23 | 23
+2025-04-23 00:48:38,052 - INFO - exp_llm - 65: 2 | 2
+2025-04-23 00:49:06,691 - INFO - exp_llm - 66: None | 9
+2025-04-23 00:49:20,156 - INFO - exp_llm - 67: 15 | 15
+2025-04-23 00:49:28,337 - INFO - exp_llm - 68: B, C | B, C
+2025-04-23 00:49:28,769 - INFO - exp_llm - 69: \sqrt{2} | \sqrt{2}
+2025-04-23 00:49:38,098 - INFO - exp_llm - 70: 6 | 6
+2025-04-23 00:49:51,585 - INFO - exp_llm - 71: None | 5
+2025-04-23 00:50:11,621 - INFO - exp_llm - 72: 12 | 12
+2025-04-23 00:50:13,608 - INFO - exp_llm - 73: \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 1 & 1 \end{pmatrix} | \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 1 & 1 \end{pmatrix}
+2025-04-23 00:50:16,827 - INFO - exp_llm - 74: 23 | 23
+2025-04-23 00:50:33,752 - INFO - exp_llm - 75: 32 | 32
+2025-04-23 00:50:36,155 - INFO - openai._base_client - Retrying request to /chat/completions in 0.481721 seconds
+2025-04-23 00:50:43,192 - INFO - exp_llm - 76: None | \frac{9}{10}
+2025-04-23 00:50:46,850 - INFO - exp_llm - 77: 3:1 | 3:1
+2025-04-23 00:50:48,203 - INFO - exp_llm - 78: 17 | 17
+2025-04-23 00:50:53,671 - INFO - exp_llm - 79: 3 | 3
+2025-04-23 00:50:59,921 - INFO - exp_llm - 80: None | 5
+2025-04-23 00:51:22,651 - INFO - exp_llm - 81: 4 | 4
+2025-04-23 00:51:24,220 - INFO - exp_llm - 82: 2 \tan x | 2 \tan x
+2025-04-23 00:51:25,616 - INFO - exp_llm - 83: 48 | 48
+2025-04-23 00:51:32,702 - INFO - exp_llm - 84: 3 | 3
+2025-04-23 00:51:37,949 - INFO - exp_llm - 85: 9 | 9
+2025-04-23 00:51:44,705 - INFO - exp_llm - 86: \frac{1}{6} | \frac{1}{6}
+2025-04-23 00:51:54,233 - INFO - exp_llm - 87: 2 | 2
+2025-04-23 00:52:11,347 - INFO - exp_llm - 88: None | -15
+2025-04-23 00:52:15,428 - INFO - exp_llm - 89: 1080 | 1080
+2025-04-23 00:52:35,114 - INFO - exp_llm - 90: -\frac{7}{9} | -\frac{7}{9}
+2025-04-23 00:52:40,303 - INFO - exp_llm - 91: -1 | -1
+2025-04-23 00:52:44,051 - INFO - exp_llm - 92: 9c+6 | 9c+6
+2025-04-23 00:53:26,929 - INFO - exp_llm - 93: None | 8000
+2025-04-23 00:54:01,018 - INFO - exp_llm - 94: \left[0,\frac{343}{27}\right] | \left[0,\frac{343}{27}\right]
+2025-04-23 00:54:20,692 - INFO - exp_llm - 95: 40 | 40
+2025-04-23 00:54:40,469 - INFO - exp_llm - 96: 14 | 14
+2025-04-23 00:54:50,939 - INFO - exp_llm - 97: 292i | 292i
+2025-04-23 00:54:56,955 - INFO - exp_llm - 98: \begin{pmatrix} 6/5 \\ -17/5 \end{pmatrix} | \begin{pmatrix} 6/5 \\ -17/5 \end{pmatrix}
+2025-04-23 00:55:06,070 - INFO - exp_llm - 99: \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right) | \left( \frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}} \right)
+2025-04-23 00:55:07,942 - INFO - exp_llm - 100: 100\% | 100\%
+2025-04-23 00:55:25,002 - INFO - exp_llm - 101: 5 | 5
+2025-04-23 00:55:48,562 - INFO - exp_llm - 102: \frac{47}{24} | \frac{47}{24}
+2025-04-23 00:56:18,213 - INFO - exp_llm - 103: 156^\circ | 156^\circ
+2025-04-23 00:56:25,280 - INFO - exp_llm - 104: \text{VW} | \text{VW}
+2025-04-23 00:56:31,328 - INFO - exp_llm - 105: 17\text{ meters} | 17\text{ meters}
+2025-04-23 00:56:37,340 - INFO - exp_llm - 106: \frac{1}{4} | \frac{1}{4}
+2025-04-23 00:56:41,219 - INFO - exp_llm - 107: -4 | -4
+2025-04-23 00:56:50,413 - INFO - exp_llm - 108: \text{(P)} | \text{(P)}
+2025-04-23 00:57:04,663 - INFO - exp_llm - 109: 13 | 13
+2025-04-23 00:57:20,321 - INFO - exp_llm - 110: 777 | 777
+2025-04-23 00:57:22,264 - INFO - exp_llm - 111: \dfrac{5}{162} | \dfrac{5}{162}
+2025-04-23 00:59:57,072 - INFO - openai._base_client - Retrying request to /chat/completions in 0.463938 seconds
+2025-04-23 01:01:17,996 - INFO - exp_llm - 112: (-5,\sqrt{26}] | (-5,\sqrt{26}]
+2025-04-23 01:02:04,727 - INFO - openai._base_client - Retrying request to /chat/completions in 0.443772 seconds
+2025-04-23 01:02:20,352 - INFO - openai._base_client - Retrying request to /chat/completions in 0.454690 seconds
+2025-04-23 01:02:22,287 - INFO - openai._base_client - Retrying request to /chat/completions in 0.484588 seconds
+2025-04-23 01:02:29,595 - INFO - exp_llm - 113: 69 | 69
+2025-04-23 01:04:16,804 - INFO - exp_llm - 114: None | 15^\circ
+2025-04-23 01:04:51,737 - INFO - exp_llm - 115: -6 | -6
+2025-04-23 01:04:57,442 - INFO - exp_llm - 116: 66673 | 66673
+2025-04-23 01:05:07,909 - INFO - exp_llm - 117: \$6 | \$6
+2025-04-23 01:05:17,445 - INFO - exp_llm - 118: 60 | 60
+2025-04-23 01:05:30,825 - INFO - exp_llm - 119: 6 | 6
+2025-04-23 01:05:42,768 - INFO - exp_llm - 120: 10 | 10
+2025-04-23 01:05:47,798 - INFO - exp_llm - 121: 11 | 11
+2025-04-23 01:05:59,385 - INFO - exp_llm - 122: 10 | 10
+2025-04-23 01:06:16,971 - INFO - exp_llm - 123: 6 | 6
+2025-04-23 01:06:17,407 - INFO - exp_llm - 124: 60 | 60
+2025-04-23 01:06:29,810 - INFO - exp_llm - 125: -3 | -3
+2025-04-23 01:06:54,924 - INFO - exp_llm - 126: \dfrac{1904}{6561} | \dfrac{1904}{6561}
+2025-04-23 01:06:55,325 - INFO - exp_llm - 127: None | \frac{128}{75}
+2025-04-23 01:07:07,110 - INFO - exp_llm - 128: \frac{1}{72} | \frac{1}{72}
+2025-04-23 01:07:15,336 - INFO - exp_llm - 129: 50 | 50
+2025-04-23 01:07:20,821 - INFO - openai._base_client - Retrying request to /chat/completions in 0.984741 seconds
+2025-04-23 01:07:41,165 - INFO - exp_llm - 130: x = \frac{3}{2} | x = \frac{3}{2}
+2025-04-23 01:07:46,020 - INFO - exp_llm - 131: 21 | 21
+2025-04-23 01:08:04,037 - INFO - exp_llm - 132: -1 | -1
+2025-04-23 01:08:57,851 - INFO - exp_llm - 133: 11 | 11
+2025-04-23 01:09:22,061 - INFO - exp_llm - 134: \frac{192\sqrt{14}}{25} | \frac{192\sqrt{14}}{25}
+2025-04-23 01:09:24,344 - INFO - exp_llm - 135: None | \frac{2}{5}
+2025-04-23 01:09:41,226 - INFO - exp_llm - 136: 1 | 1
+2025-04-23 01:10:09,089 - INFO - exp_llm - 137: 9 | 9
+2025-04-23 01:10:43,481 - INFO - exp_llm - 138: \begin{pmatrix} -4/5 & -3/5 \\ -3/5 & 4/5 \end{pmatrix} | \begin{pmatrix} -4/5 & -3/5 \\ -3/5 & 4/5 \end{pmatrix}
+2025-04-23 01:11:16,054 - INFO - exp_llm - 139: 0.015 | 0.015
+2025-04-23 01:11:41,384 - INFO - exp_llm - 140: -\frac{24}{25} | -\frac{24}{25}
+2025-04-23 01:12:07,136 - INFO - openai._base_client - Retrying request to /chat/completions in 0.419882 seconds
+2025-04-23 01:12:12,964 - INFO - exp_llm - 141: None | \frac{9}{25}
+2025-04-23 01:12:53,906 - INFO - exp_llm - 142: 10 | 10
+2025-04-23 01:12:55,537 - INFO - exp_llm - 143: 76 | 76
+2025-04-23 01:13:11,021 - INFO - exp_llm - 144: (8,3,-1) | (8,3,-1)
+2025-04-23 01:13:49,559 - INFO - exp_llm - 145: \frac{1}{4} | \frac{1}{4}
+2025-04-23 01:13:49,918 - INFO - exp_llm - 146: \frac{10}{11} | \frac{10}{11}
+2025-04-23 01:14:21,333 - INFO - exp_llm - 147: 3 | 3
+2025-04-23 01:14:49,830 - INFO - exp_llm - 148: \frac{3}{2} | \frac{3}{2}
+2025-04-23 01:14:55,099 - INFO - exp_llm - 149: 10 | 10
+2025-04-23 01:15:06,284 - INFO - exp_llm - 150: 512 | 512
+2025-04-23 01:15:08,992 - INFO - exp_llm - 151: \frac{5\sqrt{42}}{27} | \frac{5\sqrt{42}}{27}
+2025-04-23 01:15:11,020 - INFO - exp_llm - 152: -2 | -2
+2025-04-23 01:15:26,649 - INFO - exp_llm - 153: 10 | 10
+2025-04-23 01:15:36,719 - INFO - exp_llm - 154: 6 | 6
+2025-04-23 01:16:22,050 - INFO - exp_llm - 155: 1 | 1
+2025-04-23 01:16:22,807 - INFO - exp_llm - 156: -59 | -59
+2025-04-23 01:16:41,420 - INFO - openai._base_client - Retrying request to /chat/completions in 0.383431 seconds
+2025-04-23 01:16:44,251 - INFO - exp_llm - 157: \text{even} | \text{even}
+2025-04-23 01:17:25,496 - INFO - exp_llm - 158: 16 | 16
+2025-04-23 01:18:24,441 - INFO - exp_llm - 159: 51 | 51
+2025-04-23 01:18:32,533 - INFO - exp_llm - 160: 6 | 6
+2025-04-23 01:19:47,459 - INFO - exp_llm - 161: 27 | 27
+2025-04-23 01:20:04,367 - INFO - exp_llm - 162: 12 | 12
+2025-04-23 01:21:19,863 - INFO - exp_llm - 163: 10 | 10
+2025-04-23 01:21:22,069 - INFO - openai._base_client - Retrying request to /chat/completions in 0.396183 seconds
+2025-04-23 01:21:28,107 - INFO - exp_llm - 164: None | \sqrt{3} - 4
+2025-04-23 01:21:30,158 - INFO - exp_llm - 165: 64 | 64
+2025-04-23 01:21:41,821 - INFO - openai._base_client - Retrying request to /chat/completions in 0.813831 seconds
+2025-04-23 01:21:53,847 - INFO - exp_llm - 166: (0,0) | (0,0)
+2025-04-23 01:25:04,485 - INFO - openai._base_client - Retrying request to /chat/completions in 0.462333 seconds
+2025-04-23 01:26:19,859 - INFO - exp_llm - 167: None | 4
+2025-04-23 01:26:25,361 - INFO - exp_llm - 168: -8 | -8
+2025-04-23 01:26:28,131 - INFO - openai._base_client - Retrying request to /chat/completions in 0.474713 seconds
+2025-04-23 01:26:36,581 - INFO - exp_llm - 169: 2 | 2
+2025-04-23 01:26:45,697 - INFO - exp_llm - 170: 1 | 1
+2025-04-23 01:27:27,877 - INFO - exp_llm - 171: 17 | 17
+2025-04-23 01:27:45,675 - INFO - exp_llm - 172: p+q-r | p+q-r
+2025-04-23 01:28:01,433 - INFO - exp_llm - 173: 56 | 56
+2025-04-23 01:28:15,474 - INFO - exp_llm - 174: None | 11189
+2025-04-23 01:28:27,747 - INFO - exp_llm - 175: 40 | 40
+2025-04-23 01:28:32,175 - INFO - exp_llm - 176: \frac{11}{15} | \frac{11}{15}
+2025-04-23 01:28:44,149 - INFO - exp_llm - 177: \frac{1}{36} | \frac{1}{36}
+2025-04-23 01:28:59,934 - INFO - exp_llm - 178: 1 | 1
+2025-04-23 01:29:09,445 - INFO - exp_llm - 179: 70 | 70
+2025-04-23 01:30:05,014 - INFO - openai._base_client - Retrying request to /chat/completions in 0.859952 seconds
+2025-04-23 01:31:43,788 - INFO - openai._base_client - Retrying request to /chat/completions in 0.395790 seconds
+2025-04-23 01:31:45,716 - INFO - openai._base_client - Retrying request to /chat/completions in 0.410103 seconds
+2025-04-23 01:33:23,534 - INFO - exp_llm - 180: -4 | -4
+2025-04-23 01:33:25,152 - INFO - exp_llm - 181: 3 | 3
+2025-04-23 01:33:42,437 - INFO - exp_llm - 182: None | 4
+2025-04-23 01:33:59,876 - INFO - exp_llm - 183: -3 | -3
+2025-04-23 01:33:59,952 - INFO - openai._base_client - Retrying request to /chat/completions in 0.379608 seconds
+2025-04-23 01:34:21,941 - INFO - exp_llm - 184: 25\% | 25\%
+2025-04-23 01:34:42,106 - INFO - exp_llm - 185: 29 | 29
+2025-04-23 01:34:56,415 - INFO - exp_llm - 186: 21 | 21
+2025-04-23 01:35:18,178 - INFO - exp_llm - 187: 10 | 10
+2025-04-23 01:35:18,873 - INFO - exp_llm - 188: [3,\infty) | [3,\infty)
+2025-04-23 01:35:35,238 - INFO - exp_llm - 189: None | 3600
+2025-04-23 01:35:52,640 - INFO - exp_llm - 190: 3 | 3
+2025-04-23 01:35:55,909 - INFO - exp_llm - 191: 14 | 14
+2025-04-23 01:36:00,995 - INFO - exp_llm - 192: 5 | 5
+2025-04-23 01:36:46,182 - INFO - openai._base_client - Retrying request to /chat/completions in 0.888472 seconds
+2025-04-23 01:39:00,446 - INFO - openai._base_client - Retrying request to /chat/completions in 0.893154 seconds
+2025-04-23 01:39:08,976 - INFO - exp_llm - 193: 2 | 2
+2025-04-23 01:40:52,676 - INFO - openai._base_client - Retrying request to /chat/completions in 0.387551 seconds
+2025-04-23 01:40:55,929 - INFO - openai._base_client - Retrying request to /chat/completions in 0.487315 seconds
+2025-04-23 01:41:01,017 - INFO - openai._base_client - Retrying request to /chat/completions in 0.494430 seconds
+2025-04-23 01:41:07,736 - INFO - exp_llm - 194: None | 8
+2025-04-23 01:41:12,234 - INFO - exp_llm - 195: 52 | 52
+2025-04-23 01:42:14,836 - INFO - exp_llm - 196: 27648 | 27648
+2025-04-23 01:42:49,340 - INFO - exp_llm - 197: 2 | 2
+2025-04-23 01:42:57,331 - INFO - exp_llm - 198: 6 | 6
+2025-04-23 01:43:25,527 - INFO - exp_llm - 199: 5 | 5
+2025-04-23 01:44:05,585 - INFO - exp_llm - 200: 32 | 32
+2025-04-23 01:44:18,979 - INFO - exp_llm - 201: 5 | 5
+2025-04-23 01:44:42,117 - INFO - exp_llm - 202: 2 | 2
+2025-04-23 01:45:23,410 - INFO - exp_llm - 203: 87.5 | 87.5
+2025-04-23 01:45:33,016 - INFO - exp_llm - 204: 0 | 0
+2025-04-23 01:45:56,451 - INFO - openai._base_client - Retrying request to /chat/completions in 0.765560 seconds
+2025-04-23 01:46:16,389 - INFO - exp_llm - 205: 4 | 4
+2025-04-23 01:46:32,768 - INFO - exp_llm - 206: \frac{250}{39} | \frac{250}{39}
+2025-04-23 01:46:41,789 - INFO - exp_llm - 207: 324 | 324
+2025-04-23 01:46:51,478 - INFO - exp_llm - 208: 0 | 0
+2025-04-23 01:48:01,395 - INFO - exp_llm - 209: 3 | 3
+2025-04-23 01:48:07,620 - INFO - exp_llm - 210: 5000 | 5000
+2025-04-23 01:48:35,940 - INFO - exp_llm - 211: None | \sqrt{241}
+2025-04-23 01:49:19,013 - INFO - openai._base_client - Retrying request to /chat/completions in 0.382303 seconds
+2025-04-23 01:49:51,763 - INFO - exp_llm - 212: -2 | -2
+2025-04-23 01:50:12,654 - INFO - exp_llm - 213: 71 | 71
+2025-04-23 01:50:23,436 - INFO - openai._base_client - Retrying request to /chat/completions in 0.418473 seconds
+2025-04-23 01:51:49,053 - INFO - exp_llm - 214: 1023 | 1023
+2025-04-23 01:52:04,647 - INFO - exp_llm - 215: 4+2\sqrt{2} | 4+2\sqrt{2}
+2025-04-23 01:52:15,772 - INFO - exp_llm - 216: 36 | 36
+2025-04-23 01:54:19,504 - INFO - openai._base_client - Retrying request to /chat/completions in 0.920981 seconds
+2025-04-23 01:54:46,233 - INFO - exp_llm - 217: 24 | 24
+2025-04-23 01:55:06,462 - INFO - exp_llm - 218: -71 | -71
+2025-04-23 01:55:14,940 - INFO - exp_llm - 219: -16 | -16
+2025-04-23 01:55:24,083 - INFO - exp_llm - 220: 8\sqrt{3} \text { square inches} | 8\sqrt{3} \text { square inches}
+2025-04-23 01:55:33,618 - INFO - exp_llm - 221: \dfrac{5}{143} | \dfrac{5}{143}
+2025-04-23 01:55:39,445 - INFO - exp_llm - 222: None | 2004 \sqrt{2} - 2003
+2025-04-23 01:55:49,724 - INFO - exp_llm - 223: 5 | 5
+2025-04-23 01:56:00,490 - INFO - exp_llm - 224: \frac{3}{2} | \frac{3}{2}
+2025-04-23 01:56:23,780 - INFO - exp_llm - 225: \sqrt{2} | \sqrt{2}
+2025-04-23 01:56:36,621 - INFO - exp_llm - 226:  \frac{1}{8} |  \frac{1}{8}
+2025-04-23 01:56:46,511 - INFO - exp_llm - 227: -3 | -3
+2025-04-23 01:56:54,389 - INFO - exp_llm - 228: 0 | 0
+2025-04-23 01:56:55,742 - INFO - exp_llm - 229: 9 | 9
+2025-04-23 01:57:10,555 - INFO - exp_llm - 230: 0 | 0
+2025-04-23 01:57:33,992 - INFO - exp_llm - 231: None | 9
+2025-04-23 01:58:18,795 - INFO - exp_llm - 232: 6 | 6
+2025-04-23 01:58:27,791 - INFO - exp_llm - 233: 1.17 | 1.17
+2025-04-23 01:59:41,143 - INFO - exp_llm - 234: 1 | 1
+2025-04-23 01:59:59,822 - INFO - exp_llm - 235: None | 504
+2025-04-23 02:00:16,482 - INFO - exp_llm - 236: 0.25\,\text{ cm} | 0.25\,\text{ cm}
+2025-04-23 02:00:41,170 - INFO - exp_llm - 237: \frac{5}{3} | \frac{5}{3}
+2025-04-23 02:00:43,412 - INFO - exp_llm - 238: 7 | 7
+2025-04-23 02:01:00,524 - INFO - openai._base_client - Retrying request to /chat/completions in 0.477824 seconds
+2025-04-23 02:01:12,457 - INFO - exp_llm - 239: \frac{9}{32} | \frac{9}{32}
+2025-04-23 02:01:18,245 - INFO - exp_llm - 240: .5 | .5
+2025-04-23 02:02:21,010 - INFO - exp_llm - 241: None | 16
+2025-04-23 02:03:16,598 - INFO - exp_llm - 242: 48 | 48
+2025-04-23 02:03:22,555 - INFO - exp_llm - 243: \text{(E)} | \text{(E)}
+2025-04-23 02:03:22,636 - INFO - exp_llm - 244: None | (7,49)
+2025-04-23 02:03:37,223 - INFO - exp_llm - 245: \text{even} | \text{even}
+2025-04-23 02:03:37,778 - INFO - exp_llm - 246: 1250 | 1250
+2025-04-23 02:03:40,980 - INFO - exp_llm - 247: 154 | 154
+2025-04-23 02:03:55,809 - INFO - exp_llm - 248: 6r^2-4r-24 | 6r^2-4r-24
+2025-04-23 02:03:56,910 - INFO - exp_llm - 249: 2 | 2
+2025-04-23 02:04:09,418 - INFO - exp_llm - 250: 69 | 69
+2025-04-23 02:04:14,091 - INFO - exp_llm - 251: 57 | 57
+2025-04-23 02:05:31,038 - INFO - exp_llm - 252: 1 | 1
+2025-04-23 02:05:43,895 - INFO - exp_llm - 253: 165 | 165
+2025-04-23 02:06:01,015 - INFO - openai._base_client - Retrying request to /chat/completions in 0.887979 seconds
+2025-04-23 02:07:30,296 - INFO - exp_llm - 254: 192 | 192
+2025-04-23 02:07:48,594 - INFO - exp_llm - 255: 2 | 2
+2025-04-23 02:09:09,516 - INFO - openai._base_client - Retrying request to /chat/completions in 0.448653 seconds
+2025-04-23 02:10:59,201 - INFO - openai._base_client - Retrying request to /chat/completions in 0.437340 seconds
+2025-04-23 02:11:01,757 - INFO - exp_llm - 256: -34 + 12x | -34 + 12x
+2025-04-23 02:11:05,140 - INFO - exp_llm - 257: None | -\frac{31}{8}
+2025-04-23 02:11:29,891 - INFO - exp_llm - 258: None | \frac{1}{9}
+2025-04-23 02:11:50,872 - INFO - exp_llm - 259: None | 32736
+2025-04-23 02:11:57,602 - INFO - exp_llm - 260: \frac{13}{3} | \frac{13}{3}
+2025-04-23 02:12:05,079 - INFO - exp_llm - 261: 3 | 3
+2025-04-23 02:12:26,072 - INFO - exp_llm - 262: None | 6
+2025-04-23 02:12:30,882 - INFO - exp_llm - 263: None | 80
+2025-04-23 02:12:40,375 - INFO - exp_llm - 264: \left( -\frac{2}{7}, -\frac{34}{7} \right) | \left( -\frac{2}{7}, -\frac{34}{7} \right)
+2025-04-23 02:12:53,755 - INFO - exp_llm - 265: 89 | 89
+2025-04-23 02:13:04,820 - INFO - exp_llm - 266: 4x(8x^2-x+5) | 4x(8x^2-x+5)
+2025-04-23 02:13:15,634 - INFO - exp_llm - 267: 14 | 14
+2025-04-23 02:13:21,991 - INFO - exp_llm - 268: 2\sqrt{22} | 2\sqrt{22}
+2025-04-23 02:13:36,703 - INFO - exp_llm - 269: 23 | 23
+2025-04-23 02:13:55,097 - INFO - exp_llm - 270: -1 | -1
+2025-04-23 02:14:03,051 - INFO - exp_llm - 271: None | \frac{3}{56}
+2025-04-23 02:14:10,144 - INFO - exp_llm - 272: None | \text{Devon}
+2025-04-23 02:14:10,166 - INFO - exp_llm - 273: 11 | 11
+2025-04-23 02:14:19,926 - INFO - exp_llm - 274: \frac1{10} | \frac1{10}
+2025-04-23 02:14:23,249 - INFO - exp_llm - 275: 52 | 52
+2025-04-23 02:14:29,579 - INFO - exp_llm - 276: 1 | 1
+2025-04-23 02:14:50,645 - INFO - exp_llm - 277: 165 | 165
+2025-04-23 02:15:06,852 - INFO - exp_llm - 278: 7 | 7
+2025-04-23 02:15:47,915 - INFO - exp_llm - 279: -1 | -1
+2025-04-23 02:16:08,234 - INFO - exp_llm - 280: 44 | 44
+2025-04-23 02:16:11,406 - INFO - exp_llm - 281: 3 | 3
+2025-04-23 02:16:15,947 - INFO - exp_llm - 282: 10 | 10
+2025-04-23 02:16:23,875 - INFO - exp_llm - 283: \frac{4}{5} | \frac{4}{5}
+2025-04-23 02:16:26,517 - INFO - exp_llm - 284: 2 | 2
+2025-04-23 02:16:42,899 - INFO - exp_llm - 285: 6 | 6
+2025-04-23 02:17:05,676 - INFO - exp_llm - 286: y = -\frac{1}{4} | y = -\frac{1}{4}
+2025-04-23 02:17:20,467 - INFO - exp_llm - 287: 920.25 | 920.25
+2025-04-23 02:17:56,440 - INFO - exp_llm - 288: -2 | -2
+2025-04-23 02:18:08,839 - INFO - exp_llm - 289: 208 | 208
+2025-04-23 02:18:18,565 - INFO - exp_llm - 290: -2 | -2
+2025-04-23 02:18:20,329 - INFO - exp_llm - 291: 3.2 | 3.2
+2025-04-23 02:18:40,157 - INFO - exp_llm - 292: 12 | 12
+2025-04-23 02:18:48,762 - INFO - exp_llm - 293: 3 | 3
+2025-04-23 02:19:15,309 - INFO - exp_llm - 294: 1320 | 1320
+2025-04-23 02:19:31,831 - INFO - exp_llm - 295: 48 | 48
+2025-04-23 02:20:15,298 - INFO - exp_llm - 296: 30\pi + 9\sqrt{3} | 30\pi + 9\sqrt{3}
+2025-04-23 02:20:25,327 - INFO - exp_llm - 297: -5 | -5
+2025-04-23 02:20:27,148 - INFO - exp_llm - 298: 60 | 60
+2025-04-23 02:20:29,310 - INFO - exp_llm - 299: 87^\circ | 87^\circ
+2025-04-23 02:20:37,154 - INFO - exp_llm - 300: 4 | 4
+2025-04-23 02:20:40,210 - INFO - exp_llm - 301: 14 | 14
+2025-04-23 02:20:47,940 - INFO - openai._base_client - Retrying request to /chat/completions in 0.469581 seconds
+2025-04-23 02:20:58,393 - INFO - exp_llm - 302: 11\sqrt2 | 11\sqrt2
+2025-04-23 02:21:15,043 - INFO - exp_llm - 303: \sec x | \sec x
+2025-04-23 02:21:59,200 - INFO - exp_llm - 304: \frac{14}{13} | \frac{14}{13}
+2025-04-23 02:24:06,285 - INFO - exp_llm - 305: \frac{64}{3} | \frac{64}{3}
+2025-04-23 02:24:35,797 - INFO - exp_llm - 306: None | 2
+2025-04-23 02:24:40,114 - INFO - exp_llm - 307: 0.15 | 0.15
+2025-04-23 02:24:58,110 - INFO - exp_llm - 308: \tfrac{3}{2} | \tfrac{3}{2}
+2025-04-23 02:25:09,361 - INFO - exp_llm - 309: None | 17,\!280
+2025-04-23 02:25:29,345 - INFO - openai._base_client - Retrying request to /chat/completions in 0.417299 seconds
+2025-04-23 02:25:43,259 - INFO - exp_llm - 310: \frac{1}{2} | \frac{1}{2}
+2025-04-23 02:25:48,424 - INFO - openai._base_client - Retrying request to /chat/completions in 0.799024 seconds
+2025-04-23 02:25:51,988 - INFO - exp_llm - 311: 4 | 4
+2025-04-23 02:26:13,694 - INFO - exp_llm - 312: \frac{20}{9} | \frac{20}{9}
+2025-04-23 02:26:36,151 - INFO - exp_llm - 313: 2i | 2i
+2025-04-23 02:27:33,860 - INFO - exp_llm - 314: \left[ \frac{3}{2}, 2 \right) | \left[ \frac{3}{2}, 2 \right)
+2025-04-23 02:28:14,821 - INFO - exp_llm - 315: 25 | 25
+2025-04-23 02:28:35,856 - INFO - exp_llm - 316: 39 | 39
+2025-04-23 02:28:38,819 - INFO - exp_llm - 317: None | 406
+2025-04-23 02:28:51,596 - INFO - exp_llm - 318: \dfrac{1}{10} | \dfrac{1}{10}
+2025-04-23 02:29:40,051 - INFO - exp_llm - 319: -\sqrt{x-3}+3 | -\sqrt{x-3}+3
+2025-04-23 02:29:44,579 - INFO - exp_llm - 320: \frac{24}{5} | \frac{24}{5}
+2025-04-23 02:29:51,394 - INFO - exp_llm - 321: 5 | 5
+2025-04-23 02:30:33,172 - INFO - exp_llm - 322: 2 | 2
+2025-04-23 02:30:50,366 - INFO - exp_llm - 323: None | 341
+2025-04-23 02:32:23,162 - INFO - exp_llm - 324: 80 | 80
+2025-04-23 02:32:28,472 - INFO - exp_llm - 325: 48^\circ | 48^\circ
+2025-04-23 02:32:32,928 - INFO - exp_llm - 326: \frac{2}{3} | \frac{2}{3}
+2025-04-23 02:32:34,556 - INFO - exp_llm - 327: 7 | 7
+2025-04-23 02:32:54,615 - INFO - exp_llm - 328: 117 | 117
+2025-04-23 02:33:08,648 - INFO - exp_llm - 329: 10 | 10
+2025-04-23 02:33:38,843 - INFO - openai._base_client - Retrying request to /chat/completions in 0.471321 seconds
+2025-04-23 02:33:40,059 - INFO - exp_llm - 330: None | 60^\circ
+2025-04-23 02:34:10,553 - INFO - exp_llm - 331: 0,4 | 0,4
+2025-04-23 02:34:31,768 - INFO - exp_llm - 332: -8 | -8
+2025-04-23 02:35:27,660 - INFO - exp_llm - 333: \frac{12}{5,\!525} | \frac{12}{5,\!525}
+2025-04-23 02:35:40,318 - INFO - exp_llm - 334: 3 | 3
+2025-04-23 02:36:22,175 - INFO - exp_llm - 335: \frac{1}{5}, \frac{1}{4}, \frac{2}{5}, \frac{1}{2} | \frac{1}{5}, \frac{1}{4}, \frac{2}{5}, \frac{1}{2}
+2025-04-23 02:36:52,190 - INFO - exp_llm - 336: None | \cos 58^\circ
+2025-04-23 02:37:08,372 - INFO - exp_llm - 337: 10\sqrt 2 | 10\sqrt 2
+2025-04-23 02:37:16,849 - INFO - exp_llm - 338: 2004 | 2004
+2025-04-23 02:37:24,316 - INFO - exp_llm - 339: 27 | 27
+2025-04-23 02:37:26,583 - INFO - exp_llm - 340: 4 | 4
+2025-04-23 02:37:37,265 - INFO - exp_llm - 341: 20 | 20
+2025-04-23 02:37:42,708 - INFO - exp_llm - 342: \begin{pmatrix} -3 \\ 11 \\ 7 \end{pmatrix} | \begin{pmatrix} -3 \\ 11 \\ 7 \end{pmatrix}
+2025-04-23 02:37:47,428 - INFO - exp_llm - 343: 284 | 284
+2025-04-23 02:37:51,172 - INFO - exp_llm - 344: \frac{\pi}{3} | \frac{\pi}{3}
+2025-04-23 02:37:56,030 - INFO - exp_llm - 345: \frac{5}{8} | \frac{5}{8}
+2025-04-23 02:38:27,515 - INFO - exp_llm - 346: 3 | 3
+2025-04-23 02:39:09,905 - INFO - exp_llm - 347: \frac{3}{4} | \frac{3}{4}
+2025-04-23 02:39:23,339 - INFO - exp_llm - 348: None | 1201
+2025-04-23 02:39:31,792 - INFO - openai._base_client - Retrying request to /chat/completions in 0.401307 seconds
+2025-04-23 02:40:00,955 - INFO - exp_llm - 349: \left(\frac{17}{4},0\right) | \left(\frac{17}{4},0\right)
+2025-04-23 02:41:05,033 - INFO - exp_llm - 350: 24 | 24
+2025-04-23 02:41:19,187 - INFO - exp_llm - 351: \begin{pmatrix} 11 \\ 44 \end{pmatrix} | \begin{pmatrix} 11 \\ 44 \end{pmatrix}
+2025-04-23 02:41:25,644 - INFO - exp_llm - 352: (3,-3,1) | (3,-3,1)
+2025-04-23 02:41:36,935 - INFO - exp_llm - 353: 18 | 18
+2025-04-23 02:41:46,203 - INFO - exp_llm - 354: 1 | 1
+2025-04-23 02:42:04,399 - INFO - exp_llm - 355: None | 62
+2025-04-23 02:42:07,396 - INFO - exp_llm - 356: 6 | 6
+2025-04-23 02:42:23,882 - INFO - exp_llm - 357: \frac{\sqrt{21}}{5} | \frac{\sqrt{21}}{5}
+2025-04-23 02:42:36,047 - INFO - exp_llm - 358: 25 | 25
+2025-04-23 02:42:43,403 - INFO - exp_llm - 359: -3 \sqrt{5} - 5 | -3 \sqrt{5} - 5
+2025-04-23 02:42:56,012 - INFO - exp_llm - 360: 2500 | 2500
+2025-04-23 02:43:11,264 - INFO - exp_llm - 361: 22 | 22
+2025-04-23 02:43:11,819 - INFO - exp_llm - 362: None | 8\text{ meals}
+2025-04-23 02:43:12,602 - INFO - exp_llm - 363: \sqrt{5}, -\sqrt{5} | \sqrt{5}, -\sqrt{5}
+2025-04-23 02:43:24,327 - INFO - exp_llm - 364: 10 | 10
+2025-04-23 02:43:26,699 - INFO - exp_llm - 365: \frac{x+2}{7} | \frac{x+2}{7}
+2025-04-23 02:43:35,714 - INFO - exp_llm - 366: \frac{\sqrt{2}}{2} | \frac{\sqrt{2}}{2}
+2025-04-23 02:43:37,589 - INFO - exp_llm - 367: 3 | 3
+2025-04-23 02:43:43,060 - INFO - exp_llm - 368: (-\infty,-7) \cup (1,2) | (-\infty,-7) \cup (1,2)
+2025-04-23 02:43:51,984 - INFO - exp_llm - 369: \frac{5}{6} | \frac{5}{6}
+2025-04-23 02:43:55,508 - INFO - exp_llm - 370: 1 | 1
+2025-04-23 02:44:02,638 - INFO - exp_llm - 371: \$2.50 | \$2.50
+2025-04-23 02:44:13,751 - INFO - exp_llm - 372: \frac 9{20} | \frac 9{20}
+2025-04-23 02:44:16,888 - INFO - exp_llm - 373: \text{Tuesday} | \text{Tuesday}
+2025-04-23 02:44:20,166 - INFO - exp_llm - 374: 24 | 24
+2025-04-23 02:44:32,215 - INFO - openai._base_client - Retrying request to /chat/completions in 0.846447 seconds
+2025-04-23 02:44:34,536 - INFO - exp_llm - 375: \frac{36}{121} | \frac{36}{121}
+2025-04-23 02:44:58,653 - INFO - exp_llm - 376: 9 | 9
+2025-04-23 02:45:24,820 - INFO - exp_llm - 377: 2 | 2
+2025-04-23 02:46:49,974 - INFO - exp_llm - 378: \frac{8}{21} | \frac{8}{21}
+2025-04-23 02:46:53,429 - INFO - exp_llm - 379: 4 | 4
+2025-04-23 02:47:11,928 - INFO - exp_llm - 380: 9 \pi | 9 \pi
+2025-04-23 02:48:05,983 - INFO - exp_llm - 381: 30 | 30
+2025-04-23 02:48:27,636 - INFO - exp_llm - 382: \dfrac{91}{216} | \dfrac{91}{216}
+2025-04-23 02:49:11,257 - INFO - exp_llm - 383: 111 | 111
+2025-04-23 02:49:20,473 - INFO - exp_llm - 384: 4 | 4
+2025-04-23 02:49:34,557 - INFO - openai._base_client - Retrying request to /chat/completions in 0.389366 seconds
+2025-04-23 02:50:44,186 - INFO - exp_llm - 385: 75^\circ | 75^\circ
+2025-04-23 02:50:52,391 - INFO - exp_llm - 386: \frac{1}{2} | \frac{1}{2}
+2025-04-23 02:51:34,797 - INFO - exp_llm - 387: 14.8 | 14.8
+2025-04-23 02:53:45,767 - INFO - exp_llm - 388: 163 | 163
+2025-04-23 02:54:20,496 - INFO - openai._base_client - Retrying request to /chat/completions in 0.444499 seconds
+2025-04-23 02:54:34,524 - INFO - exp_llm - 389: \frac{1}{5} | \frac{1}{5}
+2025-04-23 02:54:34,958 - INFO - openai._base_client - Retrying request to /chat/completions in 0.925605 seconds
+2025-04-23 02:55:00,872 - INFO - exp_llm - 390: 6 | 6
+2025-04-23 02:55:16,193 - INFO - exp_llm - 391: \begin{pmatrix} 4 & 2 \\ -1 & 1 \end{pmatrix} | \begin{pmatrix} 4 & 2 \\ -1 & 1 \end{pmatrix}
+2025-04-23 02:55:52,448 - INFO - openai._base_client - Retrying request to /chat/completions in 0.381944 seconds
+2025-04-23 02:56:30,718 - INFO - exp_llm - 392: None | 12,\!000,\!085
+2025-04-23 02:56:34,821 - INFO - openai._base_client - Retrying request to /chat/completions in 0.396485 seconds
+2025-04-23 02:57:54,191 - INFO - exp_llm - 393: 22 | 22
+2025-04-23 02:59:04,510 - INFO - exp_llm - 394: None | 20^\circ
+2025-04-23 02:59:44,216 - INFO - exp_llm - 395: 76 | 76
+2025-04-23 03:00:52,896 - INFO - openai._base_client - Retrying request to /chat/completions in 0.889426 seconds
+2025-04-23 03:01:35,930 - INFO - exp_llm - 396: None | 1208
+2025-04-23 03:01:43,496 - INFO - exp_llm - 397: \sqrt{6} | \sqrt{6}
+2025-04-23 03:01:56,983 - INFO - exp_llm - 398: 12 | 12
+2025-04-23 03:02:27,811 - INFO - exp_llm - 399: 4 | 4
+2025-04-23 03:03:43,865 - INFO - exp_llm - 400: None | 348
+2025-04-23 03:03:47,297 - INFO - exp_llm - 401: 60 | 60
+2025-04-23 03:04:05,209 - INFO - exp_llm - 402: 13 | 13
+2025-04-23 03:04:07,233 - INFO - exp_llm - 403: None | 3
+2025-04-23 03:04:14,912 - INFO - exp_llm - 404: 10 | 10
+2025-04-23 03:04:42,448 - INFO - exp_llm - 405: 5 | 5
+2025-04-23 03:04:56,530 - INFO - exp_llm - 406: 8 | 8
+2025-04-23 03:04:59,952 - INFO - exp_llm - 407: \frac{2}{3} | \frac{2}{3}
+2025-04-23 03:05:07,860 - INFO - exp_llm - 408: 192 | 192
+2025-04-23 03:05:08,557 - INFO - exp_llm - 409: \frac{1}{9} | \frac{1}{9}
+2025-04-23 03:05:10,930 - INFO - exp_llm - 410: -23.5 | -23.5
+2025-04-23 03:05:20,697 - INFO - exp_llm - 411: 16 | 16
+2025-04-23 03:05:36,716 - INFO - exp_llm - 412: \begin{pmatrix} - 2 \\ -7 \\ 13 \end{pmatrix} | \begin{pmatrix} - 2 \\ -7 \\ 13 \end{pmatrix}
+2025-04-23 03:05:46,574 - INFO - exp_llm - 413: 2 | 2
+2025-04-23 03:06:32,820 - INFO - exp_llm - 414: 1000 | 1000
+2025-04-23 03:06:36,351 - INFO - exp_llm - 415: \frac{1}{2} | \frac{1}{2}
+2025-04-23 03:06:49,436 - INFO - exp_llm - 416: 4 | 4
+2025-04-23 03:07:07,720 - INFO - exp_llm - 417: \text{neither} | \text{neither}
+2025-04-23 03:07:21,432 - INFO - exp_llm - 418: 0 | 0
+2025-04-23 03:07:26,755 - INFO - exp_llm - 419: -120 | -120
+2025-04-23 03:07:38,266 - INFO - exp_llm - 420: 50 | 50
+2025-04-23 03:07:40,230 - INFO - exp_llm - 421: 680 | 680
+2025-04-23 03:07:48,108 - INFO - exp_llm - 422: 96 | 96
+2025-04-23 03:07:54,649 - INFO - exp_llm - 423: 15554 | 15554
+2025-04-23 03:07:56,915 - INFO - exp_llm - 424: 1 | 1
+2025-04-23 03:08:36,977 - INFO - exp_llm - 425: None | \frac{3}{8}
+2025-04-23 03:08:55,867 - INFO - exp_llm - 426: 1 | 1
+2025-04-23 03:10:17,049 - INFO - exp_llm - 427: 3 | 3
+2025-04-23 03:10:51,519 - INFO - exp_llm - 428: -375 + 500i | -375 + 500i
+2025-04-23 03:11:06,632 - INFO - exp_llm - 429: \frac{1}{2} | \frac{1}{2}
+2025-04-23 03:11:08,649 - INFO - exp_llm - 430: (4,5) | (4,5)
+2025-04-23 03:11:21,314 - INFO - exp_llm - 431: None | 14,\!400
+2025-04-23 03:11:23,688 - INFO - exp_llm - 432: \sqrt{70} | \sqrt{70}
+2025-04-23 03:11:40,394 - INFO - exp_llm - 433: 8 | 8
+2025-04-23 03:11:43,371 - INFO - exp_llm - 434: -1 | -1
+2025-04-23 03:12:06,094 - INFO - exp_llm - 435: 2013 | 2013
+2025-04-23 03:12:06,485 - INFO - exp_llm - 436: -13 | -13
+2025-04-23 03:12:09,538 - INFO - exp_llm - 437: \frac{1}{3} | \frac{1}{3}
+2025-04-23 03:12:20,486 - INFO - exp_llm - 438: 30 | 30
+2025-04-23 03:12:23,291 - INFO - exp_llm - 439: 21 | 21
+2025-04-23 03:12:29,888 - INFO - exp_llm - 440: \$7.50 | \$7.50
+2025-04-23 03:13:08,941 - INFO - exp_llm - 441: 54^\circ | 54^\circ
+2025-04-23 03:13:16,691 - INFO - exp_llm - 442: 11 | 11
+2025-04-23 03:13:34,765 - INFO - exp_llm - 443: 1 | 1
+2025-04-23 03:13:34,884 - INFO - exp_llm - 444: 24 | 24
+2025-04-23 03:13:42,981 - INFO - exp_llm - 445: -2x + 20 | -2x + 20
+2025-04-23 03:13:48,160 - INFO - exp_llm - 446: None | \begin{pmatrix} -18 \\ -49 \\ 96 \end{pmatrix}
+2025-04-23 03:13:51,088 - INFO - exp_llm - 447: 54 | 54
+2025-04-23 03:13:51,459 - INFO - exp_llm - 448: -20 | -20
+2025-04-23 03:14:01,739 - INFO - exp_llm - 449: 7 | 7
+2025-04-23 03:14:02,536 - INFO - exp_llm - 450: 6x-5 | 6x-5
+2025-04-23 03:14:17,772 - INFO - exp_llm - 451: 5 | 5
+2025-04-23 03:14:28,210 - INFO - exp_llm - 452: 5 | 5
+2025-04-23 03:14:34,142 - INFO - exp_llm - 453: 0 | 0
+2025-04-23 03:14:46,542 - INFO - exp_llm - 454: 0 | 0
+2025-04-23 03:14:55,889 - INFO - exp_llm - 455: 180 | 180
+2025-04-23 03:15:01,075 - INFO - exp_llm - 456: 15 | 15
+2025-04-23 03:15:01,749 - INFO - exp_llm - 457: 32 | 32
+2025-04-23 03:15:08,333 - INFO - exp_llm - 458: 48 | 48
+2025-04-23 03:15:10,722 - INFO - exp_llm - 459: 121 | 121
+2025-04-23 03:15:14,370 - INFO - exp_llm - 460: \frac{21}{2}\pi | \frac{21}{2}\pi
+2025-04-23 03:15:16,354 - INFO - exp_llm - 461: 2560 | 2560
+2025-04-23 03:15:22,771 - INFO - exp_llm - 462: 2 | 2
+2025-04-23 03:15:29,438 - INFO - exp_llm - 463: 11 | 11
+2025-04-23 03:15:44,495 - INFO - exp_llm - 464: 192 | 192
+2025-04-23 03:15:58,247 - INFO - exp_llm - 465: 5 | 5
+2025-04-23 03:16:53,717 - INFO - exp_llm - 466: 1\frac{12}{13} | 1\frac{12}{13}
+2025-04-23 03:17:08,096 - INFO - exp_llm - 467: 24 + 6\sqrt{2} | 24 + 6\sqrt{2}
+2025-04-23 03:17:20,590 - INFO - exp_llm - 468: 1600 | 1600
+2025-04-23 03:17:21,228 - INFO - exp_llm - 469: 981 | 981
+2025-04-23 03:17:31,566 - INFO - exp_llm - 470: 11 | 11
+2025-04-23 03:18:19,784 - INFO - exp_llm - 471: \$15.48 | \$15.48
+2025-04-23 03:19:45,279 - INFO - exp_llm - 472: 8 | 8
+2025-04-23 03:20:01,080 - INFO - exp_llm - 473: 17 | 17
+2025-04-23 03:20:29,484 - INFO - openai._base_client - Retrying request to /chat/completions in 0.477634 seconds
+2025-04-23 03:20:39,546 - INFO - exp_llm - 474: None | \begin{pmatrix} 3 & 6 \\ 2 & 7 \end{pmatrix}
+2025-04-23 03:20:50,720 - INFO - exp_llm - 475: 448 | 448
+2025-04-23 03:21:15,684 - INFO - exp_llm - 476: None | \begin{pmatrix} 0 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 0 \end{pmatrix}
+2025-04-23 03:21:33,488 - INFO - exp_llm - 477: 165 | 165
+2025-04-23 03:22:10,109 - INFO - exp_llm - 478: 2 | 2
+2025-04-23 03:22:20,618 - INFO - openai._base_client - Retrying request to /chat/completions in 0.422969 seconds
+2025-04-23 03:22:37,530 - INFO - exp_llm - 479: None | \sqrt{74}
+2025-04-23 03:23:02,642 - INFO - exp_llm - 480: -80 | -80
+2025-04-23 03:23:44,481 - INFO - exp_llm - 481: 96 | 96
+2025-04-23 03:24:44,722 - INFO - exp_llm - 482: \frac{5}{8} | \frac{5}{8}
+2025-04-23 03:25:15,579 - INFO - exp_llm - 483: 156 | 156
+2025-04-23 03:25:29,986 - INFO - openai._base_client - Retrying request to /chat/completions in 0.785495 seconds
+2025-04-23 03:26:29,571 - INFO - exp_llm - 484: 1250\pi | 1250\pi
+2025-04-23 03:27:21,101 - INFO - openai._base_client - Retrying request to /chat/completions in 0.974944 seconds
+2025-04-23 03:27:30,181 - INFO - exp_llm - 485: \frac{\sqrt6}3 | \frac{\sqrt6}3
+2025-04-23 03:28:44,573 - INFO - openai._base_client - Retrying request to /chat/completions in 0.498994 seconds
+2025-04-23 03:29:13,430 - INFO - exp_llm - 486: None | 3\sqrt{3}
+2025-04-23 03:29:59,450 - INFO - exp_llm - 487: 12 | 12
+2025-04-23 03:30:00,615 - INFO - exp_llm - 488: 1 | 1
+2025-04-23 03:30:12,528 - INFO - exp_llm - 489: 9 | 9
+2025-04-23 03:30:12,795 - INFO - exp_llm - 490: 19 | 19
+2025-04-23 03:30:23,188 - INFO - exp_llm - 491: -3 | -3
+2025-04-23 03:30:25,463 - INFO - exp_llm - 492: 120^\circ | 120^\circ
+2025-04-23 03:30:39,825 - INFO - exp_llm - 493: None | 36
+2025-04-23 03:30:56,852 - INFO - exp_llm - 494: 9 | 9
+2025-04-23 03:32:51,410 - INFO - exp_llm - 495: None | -46
+2025-04-23 03:33:23,502 - INFO - exp_llm - 496: 7 | 7
+2025-04-23 03:33:56,201 - INFO - exp_llm - 497: None | \frac{25}{3}
+2025-04-23 03:34:13,577 - INFO - exp_llm - 498: 6x^2 + 30x + 36 | 6x^2 + 30x + 36
+2025-04-23 03:34:27,812 - INFO - exp_llm - 499: 72 | 72
+2025-04-23 03:35:02,381 - INFO - exp_llm - 500: 9 | 9
+2025-04-23 03:35:15,655 - INFO - exp_llm - 501: None | 3
+2025-04-23 03:35:20,449 - INFO - exp_llm - 502: \frac{2}{5} | \frac{2}{5}
+2025-04-23 03:35:25,485 - INFO - openai._base_client - Retrying request to /chat/completions in 0.485759 seconds
+2025-04-23 03:35:46,148 - INFO - exp_llm - 503: -1 | -1
+2025-04-23 03:35:54,238 - INFO - exp_llm - 504: 70 | 70
+2025-04-23 03:36:06,828 - INFO - exp_llm - 505: None | -\frac{1}{7}
+2025-04-23 03:36:25,856 - INFO - exp_llm - 506: 3 | 3
+2025-04-23 03:36:39,136 - INFO - exp_llm - 507: 26000 | 26000
+2025-04-23 03:36:53,262 - INFO - exp_llm - 508: None | \frac{448}{15625}
+2025-04-23 03:37:09,958 - INFO - exp_llm - 509: 3 | 3
+2025-04-23 03:37:19,783 - INFO - exp_llm - 510: \$4 | \$4
+2025-04-23 03:37:36,293 - INFO - exp_llm - 511: None | \frac{68}{3}\text{ pounds}
+2025-04-23 03:37:41,863 - INFO - exp_llm - 512: 13 | 13
+2025-04-23 03:37:53,270 - INFO - exp_llm - 513: None | \frac{8}{45}
+2025-04-23 03:37:53,340 - INFO - exp_llm - 514: 7 | 7
+2025-04-23 03:38:43,149 - INFO - exp_llm - 515: 1736 | 1736
+2025-04-23 03:38:56,563 - INFO - exp_llm - 516: 144 | 144
+2025-04-23 03:39:13,070 - INFO - exp_llm - 517: None | 16
+2025-04-23 03:39:51,069 - INFO - exp_llm - 518: 106^\circ | 106^\circ
+2025-04-23 03:40:32,458 - INFO - exp_llm - 519: None | 18+2\pi
+2025-04-23 03:40:44,214 - INFO - exp_llm - 520: \frac{9}{256} | \frac{9}{256}
+2025-04-23 03:41:06,932 - INFO - exp_llm - 521: None | -1
+2025-04-23 03:41:14,521 - INFO - exp_llm - 522: 360 | 360
+2025-04-23 03:41:31,011 - INFO - exp_llm - 523: 6 | 6
+2025-04-23 03:41:54,519 - INFO - exp_llm - 524: \frac{1 + \sqrt{5}}{4} | \frac{1 + \sqrt{5}}{4}
+2025-04-23 03:42:09,019 - INFO - exp_llm - 525: 3 | 3
+2025-04-23 03:42:17,532 - INFO - exp_llm - 526: 36 | 36
+2025-04-23 03:42:49,348 - INFO - exp_llm - 527: \begin{pmatrix} 1 \\ 7 \end{pmatrix} | \begin{pmatrix} 1 \\ 7 \end{pmatrix}
+2025-04-23 03:43:01,100 - INFO - exp_llm - 528: 1 | 1
+2025-04-23 03:43:10,472 - INFO - exp_llm - 529: 0, \pi, 2 \pi | 0, \pi, 2 \pi
+2025-04-23 03:43:38,218 - INFO - exp_llm - 530: 72 | 72
+2025-04-23 03:43:43,543 - INFO - exp_llm - 531: 1 | 1
+2025-04-23 03:43:58,403 - INFO - exp_llm - 532: -150 | -150
+2025-04-23 03:44:51,141 - INFO - openai._base_client - Retrying request to /chat/completions in 0.471409 seconds
+2025-04-23 03:45:06,598 - INFO - exp_llm - 533: 7x(x-1)(x-2) | 7x(x-1)(x-2)
+2025-04-23 03:45:30,237 - INFO - exp_llm - 534: None | 30^\circ
+2025-04-23 03:45:43,351 - INFO - exp_llm - 535: 0 | 0
+2025-04-23 03:45:58,504 - INFO - exp_llm - 536: None | 33\sqrt{30}
+2025-04-23 03:47:27,467 - INFO - exp_llm - 537: 6 | 6
+2025-04-23 03:47:41,924 - INFO - exp_llm - 538: 66 | 66
+2025-04-23 03:47:51,618 - INFO - exp_llm - 539: 0 | 0
+2025-04-23 03:48:17,009 - INFO - exp_llm - 540: 9 | 9
+2025-04-23 03:48:43,588 - INFO - openai._base_client - Retrying request to /chat/completions in 0.450032 seconds
+2025-04-23 03:49:00,068 - INFO - exp_llm - 541: 36^\circ | 36^\circ
+2025-04-23 03:49:51,674 - INFO - openai._base_client - Retrying request to /chat/completions in 0.939112 seconds
+2025-04-23 03:50:20,767 - INFO - exp_llm - 542: 28 | 28
+2025-04-23 03:51:12,474 - INFO - exp_llm - 543: 48 | 48
+2025-04-23 03:52:42,030 - INFO - openai._base_client - Retrying request to /chat/completions in 0.409825 seconds
+2025-04-23 03:52:51,644 - INFO - openai._base_client - Retrying request to /chat/completions in 0.459226 seconds
+2025-04-23 03:55:04,261 - INFO - exp_llm - 544: None | 84
+2025-04-23 03:55:20,801 - INFO - openai._base_client - Retrying request to /chat/completions in 0.380870 seconds
+2025-04-23 03:56:12,543 - INFO - openai._base_client - Retrying request to /chat/completions in 0.424879 seconds
+2025-04-23 03:57:52,212 - INFO - openai._base_client - Retrying request to /chat/completions in 0.827226 seconds
+2025-04-23 03:59:53,847 - INFO - openai._base_client - Retrying request to /chat/completions in 0.495576 seconds
+2025-04-23 04:00:04,289 - INFO - openai._base_client - Retrying request to /chat/completions in 0.488262 seconds
+2025-04-23 04:00:21,204 - INFO - openai._base_client - Retrying request to /chat/completions in 0.882242 seconds
+2025-04-23 04:01:13,028 - INFO - openai._base_client - Retrying request to /chat/completions in 0.978437 seconds
+2025-04-23 04:04:54,453 - INFO - openai._base_client - Retrying request to /chat/completions in 0.987467 seconds
+2025-04-23 04:05:04,796 - INFO - openai._base_client - Retrying request to /chat/completions in 0.902169 seconds
+2025-04-23 04:06:55,186 - INFO - exp_llm - 545: 6 | 6
+2025-04-23 04:07:48,541 - INFO - exp_llm - 546: \sqrt{22} | \sqrt{22}
+2025-04-23 04:09:34,574 - INFO - exp_llm - 547: None | 45^\circ
+2025-04-23 04:10:23,161 - INFO - openai._base_client - Retrying request to /chat/completions in 0.399357 seconds
+2025-04-23 04:10:26,377 - INFO - exp_llm - 548: 5 | 5
+2025-04-23 04:12:48,663 - INFO - openai._base_client - Retrying request to /chat/completions in 0.477030 seconds
+2025-04-23 04:13:03,361 - INFO - exp_llm - 549: None | 40
+2025-04-23 04:13:06,060 - INFO - exp_llm - 550: 900 | 900
+2025-04-23 04:13:17,593 - INFO - exp_llm - 551: \dfrac{1}{12} | \dfrac{1}{12}
+2025-04-23 04:13:42,890 - INFO - exp_llm - 552: 3 | 3
+2025-04-23 04:14:56,481 - INFO - openai._base_client - Retrying request to /chat/completions in 0.440293 seconds
+2025-04-23 04:15:14,925 - INFO - exp_llm - 553: 7 | 7
+2025-04-23 04:15:23,567 - INFO - openai._base_client - Retrying request to /chat/completions in 0.839931 seconds
+2025-04-23 04:15:25,110 - INFO - exp_llm - 554: 25\% | 25\%
+2025-04-23 04:15:40,732 - INFO - exp_llm - 555: 835 | 835
+2025-04-23 04:15:41,604 - INFO - exp_llm - 556: 14 | 14
+2025-04-23 04:15:51,328 - INFO - exp_llm - 557: None | 11 \frac{2}{3}
+2025-04-23 04:16:01,837 - INFO - exp_llm - 558: 78 | 78
+2025-04-23 04:16:16,364 - INFO - exp_llm - 559: \frac{\sqrt{39}}{8} | \frac{\sqrt{39}}{8}
+2025-04-23 04:16:24,335 - INFO - exp_llm - 560: 4 | 4
+2025-04-23 04:16:31,937 - INFO - exp_llm - 561: \frac{3 \pi}{4} | \frac{3 \pi}{4}
+2025-04-23 04:16:33,898 - INFO - exp_llm - 562: 136 | 136
+2025-04-23 04:16:37,342 - INFO - exp_llm - 563: 700 | 700
+2025-04-23 04:16:42,422 - INFO - exp_llm - 564: 2 | 2
+2025-04-23 04:16:49,043 - INFO - exp_llm - 565: 10 | 10
+2025-04-23 04:16:57,742 - INFO - exp_llm - 566: 2 | 2
+2025-04-23 04:17:01,870 - INFO - exp_llm - 567: 13 | 13
+2025-04-23 04:17:16,684 - INFO - exp_llm - 568: 70 | 70
+2025-04-23 04:17:42,907 - INFO - exp_llm - 569: 234 | 234
+2025-04-23 04:18:38,385 - INFO - exp_llm - 570: 120 | 120
+2025-04-23 04:18:43,078 - INFO - exp_llm - 571: \frac{3}{5} | \frac{3}{5}
+2025-04-23 04:18:48,521 - INFO - exp_llm - 572: 14 | 14
+2025-04-23 04:18:48,598 - INFO - exp_llm - 573: 1 | 1
+2025-04-23 04:19:00,356 - INFO - exp_llm - 574: 0 | 0
+2025-04-23 04:19:06,565 - INFO - exp_llm - 575: 98,\!770 | 98,\!770
+2025-04-23 04:19:09,776 - INFO - exp_llm - 576: -99 | -99
+2025-04-23 04:19:20,825 - INFO - exp_llm - 577: 2\sqrt{2} | 2\sqrt{2}
+2025-04-23 04:19:26,767 - INFO - exp_llm - 578: 28 | 28
+2025-04-23 04:19:40,445 - INFO - exp_llm - 579: 101 | 101
+2025-04-23 04:19:57,751 - INFO - exp_llm - 580: None | 9
+2025-04-23 04:20:22,211 - INFO - exp_llm - 581: 15 | 15
+2025-04-23 04:21:21,721 - INFO - exp_llm - 582: 3 | 3
+2025-04-23 04:21:55,424 - INFO - exp_llm - 583: 9 | 9
+2025-04-23 04:22:05,945 - INFO - exp_llm - 584: None | 0
+2025-04-23 04:22:13,627 - INFO - exp_llm - 585: 21 | 21
+2025-04-23 04:23:40,530 - INFO - exp_llm - 586: 314 | 314
+2025-04-23 04:24:07,999 - INFO - exp_llm - 587: 3\frac18 | 3\frac18
+2025-04-23 04:24:09,796 - INFO - openai._base_client - Retrying request to /chat/completions in 0.406857 seconds
+2025-04-23 04:24:19,127 - INFO - exp_llm - 588: 12 | 12
+2025-04-23 04:24:21,569 - INFO - exp_llm - 589: 1 | 1
+2025-04-23 04:24:29,874 - INFO - exp_llm - 590: None | 31
+2025-04-23 04:24:40,472 - INFO - openai._base_client - Retrying request to /chat/completions in 0.489308 seconds
+2025-04-23 04:25:42,679 - INFO - exp_llm - 591: \frac{1}{3} | \frac{1}{3}
+2025-04-23 04:25:47,290 - INFO - exp_llm - 592: (-5, -4) | (-5, -4)
+2025-04-23 04:28:10,096 - INFO - exp_llm - 593: None | 4096 \sqrt{2}
+2025-04-23 04:28:35,029 - INFO - exp_llm - 594: None | -1
+2025-04-23 04:28:48,005 - INFO - exp_llm - 595: None | \frac{67}{89}
+2025-04-23 04:28:59,827 - INFO - exp_llm - 596: 1951 | 1951
+2025-04-23 04:29:09,908 - INFO - exp_llm - 597: None | 12
+2025-04-23 04:29:13,438 - INFO - exp_llm - 598: 108 | 108
+2025-04-23 04:29:23,798 - INFO - exp_llm - 599: \frac{639}{40} | \frac{639}{40}
+2025-04-23 04:29:29,895 - INFO - openai._base_client - Retrying request to /chat/completions in 0.474796 seconds
+2025-04-23 04:29:32,681 - INFO - exp_llm - 600: 28 | 28
+2025-04-23 04:29:40,975 - INFO - openai._base_client - Retrying request to /chat/completions in 0.754207 seconds
+2025-04-23 04:30:02,928 - INFO - exp_llm - 601: \$20 | \$20
+2025-04-23 04:30:14,715 - INFO - exp_llm - 602: 10 | 10
+2025-04-23 04:30:37,775 - INFO - exp_llm - 603: 2 | 2
+2025-04-23 04:31:54,622 - INFO - exp_llm - 604: None | \frac{1}{16}
+2025-04-23 04:33:31,794 - INFO - exp_llm - 605: \sqrt 5 | \sqrt 5
+2025-04-23 04:34:00,973 - INFO - exp_llm - 606: 229 | 229
+2025-04-23 04:34:48,968 - INFO - exp_llm - 607: None | 10
+2025-04-23 04:35:37,794 - INFO - openai._base_client - Retrying request to /chat/completions in 0.490668 seconds
+2025-04-23 04:35:38,204 - INFO - exp_llm - 608: 33840 | 33840
+2025-04-23 04:36:43,267 - INFO - exp_llm - 609: 8 | 8
+2025-04-23 04:37:05,256 - INFO - exp_llm - 610: None | 89
+2025-04-23 04:38:09,849 - INFO - exp_llm - 611: 14 | 14
+2025-04-23 04:38:17,581 - INFO - exp_llm - 612: 1251 | 1251
+2025-04-23 04:38:24,037 - INFO - exp_llm - 613: None | 8
+2025-04-23 04:38:24,515 - INFO - exp_llm - 614: 120^\circ | 120^\circ
+2025-04-23 04:38:33,308 - INFO - exp_llm - 615: -4 | -4
+2025-04-23 04:38:55,260 - INFO - exp_llm - 616: \frac{1 + \sqrt{2}}{2} | \frac{1 + \sqrt{2}}{2}
+2025-04-23 04:39:04,490 - INFO - exp_llm - 617: 3.7 | 3.7
+2025-04-23 04:39:07,263 - INFO - exp_llm - 618: 16 | 16
+2025-04-23 04:39:16,580 - INFO - exp_llm - 619: 7000 | 7000
+2025-04-23 04:39:17,935 - INFO - exp_llm - 620: 3 | 3
+2025-04-23 04:39:31,521 - INFO - exp_llm - 621: \frac{24}{7} | \frac{24}{7}
+2025-04-23 04:39:37,573 - INFO - exp_llm - 622: 16 | 16
+2025-04-23 04:39:51,577 - INFO - exp_llm - 623: -1 | -1
+2025-04-23 04:40:08,625 - INFO - exp_llm - 624: 38 | 38
+2025-04-23 04:40:38,323 - INFO - openai._base_client - Retrying request to /chat/completions in 0.953742 seconds
+2025-04-23 04:40:41,613 - INFO - exp_llm - 625: \frac{\sqrt{3}}{9} | \frac{\sqrt{3}}{9}
+2025-04-23 04:41:03,375 - INFO - exp_llm - 626: \begin{pmatrix} 3/5 \\ 57/5 \end{pmatrix} | \begin{pmatrix} 3/5 \\ 57/5 \end{pmatrix}
+2025-04-23 04:41:17,156 - INFO - exp_llm - 627: 3 | 3
+2025-04-23 04:41:22,153 - INFO - exp_llm - 628: 32 | 32
+2025-04-23 04:41:28,955 - INFO - exp_llm - 629: 1 | 1
+2025-04-23 04:41:36,684 - INFO - exp_llm - 630: 363 | 363
+2025-04-23 04:41:40,568 - INFO - exp_llm - 631: 3 | 3
+2025-04-23 04:41:52,574 - INFO - exp_llm - 632: \dfrac{1}{221} | \dfrac{1}{221}
+2025-04-23 04:42:03,594 - INFO - exp_llm - 633: -9 | -9
+2025-04-23 04:42:04,570 - INFO - exp_llm - 634: 3,\!250 | 3,\!250
+2025-04-23 04:42:15,662 - INFO - exp_llm - 635: 0 | 0
+2025-04-23 04:42:21,907 - INFO - exp_llm - 636: \frac{1}{8} | \frac{1}{8}
+2025-04-23 04:42:31,281 - INFO - exp_llm - 637: \frac{1}{6} | \frac{1}{6}
+2025-04-23 04:42:32,919 - INFO - exp_llm - 638: 280 | 280
+2025-04-23 04:42:50,662 - INFO - exp_llm - 639: 28 | 28
+2025-04-23 04:43:08,577 - INFO - exp_llm - 640: 8 | 8
+2025-04-23 04:43:08,826 - INFO - exp_llm - 641: \text{13} | \text{13}
+2025-04-23 04:43:19,791 - INFO - exp_llm - 642: -\frac{\sqrt{3}}{3} | -\frac{\sqrt{3}}{3}
+2025-04-23 04:43:21,938 - INFO - exp_llm - 643: \frac{4}{3} | \frac{4}{3}
+2025-04-23 04:43:22,938 - INFO - exp_llm - 644: None | 80
+2025-04-23 04:43:43,987 - INFO - exp_llm - 645: None | \text{Friday}
+2025-04-23 04:44:10,324 - INFO - exp_llm - 646: 15 | 15
+2025-04-23 04:44:33,205 - INFO - exp_llm - 647: 9 | 9
+2025-04-23 04:44:48,209 - INFO - exp_llm - 648: -8 | -8
+2025-04-23 04:44:57,064 - INFO - exp_llm - 649: 123 | 123
+2025-04-23 04:45:21,317 - INFO - exp_llm - 650: None | 70 \sqrt{2}
+2025-04-23 04:45:27,045 - INFO - exp_llm - 651: 46 | 46
+2025-04-23 04:45:35,876 - INFO - exp_llm - 652: 864 \mbox{ inches}^2 | 864 \mbox{ inches}^2
+2025-04-23 04:45:42,016 - INFO - exp_llm - 653: 27 | 27
+2025-04-23 04:46:12,815 - INFO - exp_llm - 654: 900 | 900
+2025-04-23 04:46:52,342 - INFO - exp_llm - 655: (\tfrac{27}{8}, \tfrac{15}{8}) | (\tfrac{27}{8}, \tfrac{15}{8})
+2025-04-23 04:48:08,879 - INFO - openai._base_client - Retrying request to /chat/completions in 0.425925 seconds
+2025-04-23 04:50:27,163 - INFO - openai._base_client - Retrying request to /chat/completions in 0.429944 seconds
+2025-04-23 04:50:42,034 - INFO - openai._base_client - Retrying request to /chat/completions in 0.380578 seconds
+2025-04-23 04:50:59,704 - INFO - exp_llm - 656: None | 81
+2025-04-23 04:51:22,447 - INFO - exp_llm - 657: x = -1 | x = -1
+2025-04-23 04:51:34,710 - INFO - exp_llm - 658: 45^\circ, 135^\circ | 45^\circ, 135^\circ
+2025-04-23 04:51:47,851 - INFO - exp_llm - 659: (15,-11) | (15,-11)
+2025-04-23 04:51:58,527 - INFO - exp_llm - 660: 65 | 65
+2025-04-23 04:52:12,502 - INFO - exp_llm - 661: -\frac{33}{65} | -\frac{33}{65}
+2025-04-23 04:52:22,927 - INFO - exp_llm - 662: 72^\circ | 72^\circ
+2025-04-23 04:52:35,992 - INFO - exp_llm - 663: 5 | 5
+2025-04-23 04:52:36,668 - INFO - exp_llm - 664: \frac{8}{17} | \frac{8}{17}
+2025-04-23 04:52:45,784 - INFO - exp_llm - 665: (r+5)^2 | (r+5)^2
+2025-04-23 04:52:51,490 - INFO - exp_llm - 666: 106 | 106
+2025-04-23 04:53:01,603 - INFO - exp_llm - 667: 6 | 6
+2025-04-23 04:53:01,889 - INFO - exp_llm - 668: 1 | 1
+2025-04-23 04:53:13,008 - INFO - exp_llm - 669: 30 | 30
+2025-04-23 04:53:45,326 - INFO - exp_llm - 670: 16+12\sqrt{2} | 16+12\sqrt{2}
+2025-04-23 04:53:53,586 - INFO - exp_llm - 671: 6 | 6
+2025-04-23 04:54:02,483 - INFO - exp_llm - 672: \frac{3}{5} | \frac{3}{5}
+2025-04-23 04:54:15,231 - INFO - exp_llm - 673: None | 45
+2025-04-23 04:54:27,389 - INFO - exp_llm - 674: None | 75^\circ
+2025-04-23 04:54:39,732 - INFO - exp_llm - 675: 20 | 20
+2025-04-23 04:55:00,282 - INFO - exp_llm - 676: \frac{6}{7} | \frac{6}{7}
+2025-04-23 04:55:01,933 - INFO - exp_llm - 677: 45 | 45
+2025-04-23 04:55:40,561 - INFO - exp_llm - 678: -3 | -3
+2025-04-23 04:55:41,652 - INFO - openai._base_client - Retrying request to /chat/completions in 0.463588 seconds
+2025-04-23 04:55:45,188 - INFO - exp_llm - 679: \frac{1}{4} | \frac{1}{4}
+2025-04-23 04:55:55,448 - INFO - exp_llm - 680: 2\sqrt{10} | 2\sqrt{10}
+2025-04-23 04:56:17,692 - INFO - exp_llm - 681: 8 | 8
+2025-04-23 04:56:30,169 - INFO - exp_llm - 682: -10 | -10
+2025-04-23 04:56:35,974 - INFO - exp_llm - 683: \frac{\sqrt{3}}{2} | \frac{\sqrt{3}}{2}
+2025-04-23 04:57:46,771 - INFO - exp_llm - 684: None | \frac{3}{4}, -\frac{3}{4}
+2025-04-23 04:59:06,699 - INFO - exp_llm - 685: None | \begin{pmatrix} 6 \\ 3 \\ 0 \end{pmatrix}
+2025-04-23 04:59:15,256 - INFO - openai._base_client - Retrying request to /chat/completions in 0.449899 seconds
+2025-04-23 05:00:25,969 - INFO - exp_llm - 686: 1016 | 1016
+2025-04-23 05:01:30,231 - INFO - openai._base_client - Retrying request to /chat/completions in 0.405388 seconds
+2025-04-23 05:01:35,997 - INFO - openai._base_client - Retrying request to /chat/completions in 0.420659 seconds
+2025-04-23 05:02:31,547 - INFO - exp_llm - 687: None | 144
+2025-04-23 05:02:45,003 - INFO - exp_llm - 688: 256 | 256
+2025-04-23 05:02:46,790 - INFO - openai._base_client - Retrying request to /chat/completions in 0.435299 seconds
+2025-04-23 05:03:14,084 - INFO - exp_llm - 689: 19 \text{ and }43 | 19 \text{ and }43
+2025-04-23 05:03:28,259 - INFO - exp_llm - 690: 1 | 1
+2025-04-23 05:03:41,907 - INFO - exp_llm - 691: 4 | 4
+2025-04-23 05:04:04,112 - INFO - exp_llm - 692: 8 | 8
+2025-04-23 05:04:11,798 - INFO - exp_llm - 693: None | 11218
+2025-04-23 05:04:20,666 - INFO - exp_llm - 694: 12\sqrt{5} | 12\sqrt{5}
+2025-04-23 05:04:24,974 - INFO - exp_llm - 695: \frac{4}{7} | \frac{4}{7}
+2025-04-23 05:04:42,639 - INFO - exp_llm - 696: 15,\!625 | 15,\!625
+2025-04-23 05:05:06,799 - INFO - exp_llm - 697: 6\sqrt{2} | 6\sqrt{2}
+2025-04-23 05:05:34,639 - INFO - exp_llm - 698: 36^\circ | 36^\circ
+2025-04-23 05:06:13,738 - INFO - exp_llm - 699: \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right] | \left[ -\frac{\pi}{2}, \frac{\pi}{2} \right]
+2025-04-23 05:06:50,175 - INFO - openai._base_client - Retrying request to /chat/completions in 0.406491 seconds
+2025-04-23 05:06:54,757 - INFO - exp_llm - 700: \begin{pmatrix} 1/\sqrt{2} & 1/\sqrt{2} \\ -1/\sqrt{2} & 1/\sqrt{2} \end{pmatrix} | \begin{pmatrix} 1/\sqrt{2} & 1/\sqrt{2} \\ -1/\sqrt{2} & 1/\sqrt{2} \end{pmatrix}
+2025-04-23 05:07:03,833 - INFO - exp_llm - 701: None | 12
+2025-04-23 05:07:11,065 - INFO - exp_llm - 702: 1 | 1
+2025-04-23 05:07:26,599 - INFO - exp_llm - 703: 184 | 184
+2025-04-23 05:07:29,084 - INFO - exp_llm - 704: None | \frac{1}{144}
+2025-04-23 05:07:40,328 - INFO - exp_llm - 705: 150 | 150
+2025-04-23 05:07:51,906 - INFO - exp_llm - 706: 41230 | 41230
+2025-04-23 05:08:02,653 - INFO - exp_llm - 707: 144 | 144
+2025-04-23 05:08:17,074 - INFO - exp_llm - 708: -27 | -27
+2025-04-23 05:08:25,767 - INFO - exp_llm - 709: 41 | 41
+2025-04-23 05:08:34,045 - INFO - exp_llm - 710: 8 | 8
+2025-04-23 05:08:43,162 - INFO - exp_llm - 711: None | 133
+2025-04-23 05:08:50,355 - INFO - exp_llm - 712: 3 | 3
+2025-04-23 05:08:55,202 - INFO - exp_llm - 713: \frac{5}{36} | \frac{5}{36}
+2025-04-23 05:09:13,193 - INFO - exp_llm - 714: 0, \frac{2 \pi}{3}, \frac{4 \pi}{3}, 2 \pi | 0, \frac{2 \pi}{3}, \frac{4 \pi}{3}, 2 \pi
+2025-04-23 05:09:18,641 - INFO - exp_llm - 715: 7 | 7
+2025-04-23 05:09:50,716 - INFO - exp_llm - 716: \frac{2}{3} | \frac{2}{3}
+2025-04-23 05:10:16,318 - INFO - exp_llm - 717: None | 7
+2025-04-23 05:10:26,228 - INFO - exp_llm - 718: 9 | 9
+2025-04-23 05:10:43,726 - INFO - exp_llm - 719: 120^\circ | 120^\circ
+2025-04-23 05:11:57,331 - INFO - exp_llm - 720: -14 | -14
+2025-04-23 05:12:03,855 - INFO - openai._base_client - Retrying request to /chat/completions in 0.483721 seconds
+2025-04-23 05:12:19,600 - INFO - exp_llm - 721: None | \left( \frac{3}{2}, -13 \right)
+2025-04-23 05:13:30,532 - INFO - exp_llm - 722: None | 24
+2025-04-23 05:14:13,220 - INFO - openai._base_client - Retrying request to /chat/completions in 0.387031 seconds
+2025-04-23 05:14:32,398 - INFO - exp_llm - 723: 4495 | 4495
+2025-04-23 05:14:34,766 - INFO - exp_llm - 724: 4014013 | 4014013
+2025-04-23 05:14:52,835 - INFO - exp_llm - 725: 3 | 3
+2025-04-23 05:15:17,657 - INFO - exp_llm - 726: 2 | 2
+2025-04-23 05:15:24,739 - INFO - exp_llm - 727: None | 31
+2025-04-23 05:15:46,907 - INFO - exp_llm - 728: \frac{700}{3} | \frac{700}{3}
+2025-04-23 05:15:58,494 - INFO - exp_llm - 729: \frac{1}{15} | \frac{1}{15}
+2025-04-23 05:16:15,421 - INFO - exp_llm - 730: -22 | -22
+2025-04-23 05:16:46,957 - INFO - exp_llm - 731: 3 | 3
+2025-04-23 05:17:04,362 - INFO - openai._base_client - Retrying request to /chat/completions in 0.941559 seconds
+2025-04-23 05:17:20,795 - INFO - exp_llm - 732: None | 19
+2025-04-23 05:17:37,522 - INFO - exp_llm - 733: 36 | 36
+2025-04-23 05:18:17,828 - INFO - exp_llm - 734: 69\text{ degrees} | 69\text{ degrees}
+2025-04-23 05:18:29,458 - INFO - exp_llm - 735: 1 | 1
+2025-04-23 05:18:30,896 - INFO - exp_llm - 736: 9 | 9
+2025-04-23 05:18:58,187 - INFO - exp_llm - 737: None | 85,\!184
+2025-04-23 05:19:13,631 - INFO - openai._base_client - Retrying request to /chat/completions in 0.900418 seconds
+2025-04-23 05:19:20,727 - INFO - exp_llm - 738: 9 | 9
+2025-04-23 05:19:30,533 - INFO - exp_llm - 739: 2 | 2
+2025-04-23 05:19:35,067 - INFO - exp_llm - 740: None | 6
+2025-04-23 05:19:45,050 - INFO - exp_llm - 741: -9 | -9
+2025-04-23 05:19:47,245 - INFO - exp_llm - 742: (2x+3)(2x -1)(2x+1) | (2x+3)(2x -1)(2x+1)
+2025-04-23 05:19:56,844 - INFO - exp_llm - 743: 4 | 4
+2025-04-23 05:20:05,889 - INFO - exp_llm - 744: 135\text{ square feet} | 135\text{ square feet}
+2025-04-23 05:20:13,368 - INFO - exp_llm - 745: None | \text{ellipse}
+2025-04-23 05:20:26,222 - INFO - exp_llm - 746: -13.5 | -13.5
+2025-04-23 05:20:46,801 - INFO - exp_llm - 747: \text{parabola} | \text{parabola}
+2025-04-23 05:21:20,796 - INFO - exp_llm - 748: 6 | 6
+2025-04-23 05:21:29,993 - INFO - exp_llm - 749: -6 | -6
+2025-04-23 05:21:53,733 - INFO - exp_llm - 750: 4 | 4
+2025-04-23 05:21:56,152 - INFO - exp_llm - 751: 64 | 64
+2025-04-23 05:22:30,209 - INFO - exp_llm - 752: None | \begin{pmatrix} 23/8 \\ 7/4 \end{pmatrix}
+2025-04-23 05:22:43,788 - INFO - exp_llm - 753: x^5 - x^4 + x^3 - x^2 + x - 1 | x^5 - x^4 + x^3 - x^2 + x - 1
+2025-04-23 05:22:48,898 - INFO - exp_llm - 754: None | 6
+2025-04-23 05:23:00,993 - INFO - exp_llm - 755: 3 | 3
+2025-04-23 05:23:03,220 - INFO - exp_llm - 756: 6 | 6
+2025-04-23 05:23:08,780 - INFO - exp_llm - 757: 187.5 | 187.5
+2025-04-23 05:23:31,551 - INFO - exp_llm - 758: \frac{4}{3}\pi | \frac{4}{3}\pi
+2025-04-23 05:23:36,160 - INFO - exp_llm - 759: \begin{pmatrix} 3 & 2 \\ 0 & -7 \end{pmatrix} | \begin{pmatrix} 3 & 2 \\ 0 & -7 \end{pmatrix}
+2025-04-23 05:23:55,635 - INFO - exp_llm - 760: 7.5 | 7.5
+2025-04-23 05:24:35,435 - INFO - exp_llm - 761: 3.5 | 3.5
+2025-04-23 05:24:54,649 - INFO - exp_llm - 762: 13 | 13
+2025-04-23 05:25:01,103 - INFO - exp_llm - 763: None | \frac{70}{39}
+2025-04-23 05:25:03,159 - INFO - exp_llm - 764: 16 | 16
+2025-04-23 05:25:09,423 - INFO - exp_llm - 765: 3 | 3
+2025-04-23 05:25:14,170 - INFO - exp_llm - 766: -2 | -2
+2025-04-23 05:26:19,479 - INFO - exp_llm - 767: 3 | 3
+2025-04-23 05:27:17,261 - INFO - exp_llm - 768: 55 | 55
+2025-04-23 05:27:42,990 - INFO - exp_llm - 769: 1 | 1
+2025-04-23 05:28:03,263 - INFO - openai._base_client - Retrying request to /chat/completions in 0.442257 seconds
+2025-04-23 05:28:18,193 - INFO - exp_llm - 770: None | \text{(B)}
+2025-04-23 05:28:26,446 - INFO - exp_llm - 771: \begin{pmatrix} 2/5 \\ -1/5 \\ 0 \end{pmatrix} | \begin{pmatrix} 2/5 \\ -1/5 \\ 0 \end{pmatrix}
+2025-04-23 05:29:07,310 - INFO - exp_llm - 772: 6 | 6
+2025-04-23 05:29:28,010 - INFO - exp_llm - 773: 5 | 5
+2025-04-23 05:30:45,213 - INFO - exp_llm - 774: -3 | -3
+2025-04-23 05:31:01,323 - INFO - exp_llm - 775: \tfrac{8\pi}5 | \tfrac{8\pi}5
+2025-04-23 05:31:17,155 - INFO - exp_llm - 776: None | 0.076
+2025-04-23 05:31:19,499 - INFO - openai._base_client - Retrying request to /chat/completions in 0.428628 seconds
+2025-04-23 05:31:31,907 - INFO - exp_llm - 777: -4, 4 | -4, 4
+2025-04-23 05:32:17,290 - INFO - openai._base_client - Retrying request to /chat/completions in 0.472416 seconds
+2025-04-23 05:32:34,647 - INFO - exp_llm - 778: 35 | 35
+2025-04-23 05:33:03,744 - INFO - openai._base_client - Retrying request to /chat/completions in 0.920056 seconds
+2025-04-23 05:33:46,062 - INFO - exp_llm - 779: \frac{2}{5} | \frac{2}{5}
+2025-04-23 05:34:25,918 - INFO - exp_llm - 780: \frac{3}{8} | \frac{3}{8}
+2025-04-23 05:34:35,136 - INFO - exp_llm - 781: 5 | 5
+2025-04-23 05:35:14,709 - INFO - exp_llm - 782: None | 3
+2025-04-23 05:35:50,522 - INFO - exp_llm - 783: 0 | 0
+2025-04-23 05:36:01,352 - INFO - openai._base_client - Retrying request to /chat/completions in 0.491010 seconds
+2025-04-23 05:36:19,957 - INFO - openai._base_client - Retrying request to /chat/completions in 0.920936 seconds
+2025-04-23 05:36:28,883 - INFO - exp_llm - 784: None | 96\pi+120
+2025-04-23 05:37:48,145 - INFO - exp_llm - 785: \begin{pmatrix} 1 \\ -2 \\ -1 \end{pmatrix} | \begin{pmatrix} 1 \\ -2 \\ -1 \end{pmatrix}
+2025-04-23 05:37:49,161 - INFO - exp_llm - 786: 20 | 20
+2025-04-23 05:37:56,689 - INFO - exp_llm - 787: None | 0.0011_{2}
+2025-04-23 05:39:24,161 - INFO - exp_llm - 788: 26 | 26
+2025-04-23 05:39:31,901 - INFO - exp_llm - 789: \frac{6}{11} | \frac{6}{11}
+2025-04-23 05:41:01,860 - INFO - openai._base_client - Retrying request to /chat/completions in 0.905894 seconds
+2025-04-23 05:41:28,908 - INFO - openai._base_client - Retrying request to /chat/completions in 0.449750 seconds
+2025-04-23 05:41:53,014 - INFO - exp_llm - 790: 4 | 4
+2025-04-23 05:43:41,129 - INFO - exp_llm - 791: 6 | 6
+2025-04-23 05:44:02,629 - INFO - exp_llm - 792: 233 | 233
+2025-04-23 05:45:08,488 - INFO - exp_llm - 793: 1 | 1
+2025-04-23 05:46:21,944 - INFO - openai._base_client - Retrying request to /chat/completions in 0.495891 seconds
+2025-04-23 05:46:58,884 - INFO - exp_llm - 794: 6\sqrt3 | 6\sqrt3
+2025-04-23 05:48:11,202 - INFO - exp_llm - 795: 6 | 6
+2025-04-23 05:48:58,656 - INFO - exp_llm - 796: 1,3 | 1,3
+2025-04-23 05:49:02,635 - INFO - openai._base_client - Retrying request to /chat/completions in 0.383711 seconds
+2025-04-23 05:49:39,751 - INFO - exp_llm - 797: 13 | 13
+2025-04-23 05:49:57,430 - INFO - exp_llm - 798: 5 | 5
+2025-04-23 05:51:22,538 - INFO - openai._base_client - Retrying request to /chat/completions in 0.805919 seconds
+2025-04-23 05:51:37,475 - INFO - exp_llm - 799: None | 30^\circ
+2025-04-23 05:51:45,539 - INFO - exp_llm - 800: (0,1) | (0,1)
+2025-04-23 05:51:46,406 - INFO - exp_llm - 801: (-\frac{3}{2},6) | (-\frac{3}{2},6)
+2025-04-23 05:51:57,264 - INFO - exp_llm - 802: 2 | 2
+2025-04-23 05:52:01,433 - INFO - exp_llm - 803: -5 | -5
+2025-04-23 05:52:06,949 - INFO - exp_llm - 804: 200 | 200
+2025-04-23 05:52:22,863 - INFO - exp_llm - 805: 10 | 10
+2025-04-23 05:52:34,232 - INFO - exp_llm - 806: \frac{3}{4} | \frac{3}{4}
+2025-04-23 05:53:02,454 - INFO - exp_llm - 807: 24 | 24
+2025-04-23 05:53:44,744 - INFO - exp_llm - 808: 13 | 13
+2025-04-23 05:53:57,166 - INFO - exp_llm - 809: None | \sqrt{6}
+2025-04-23 05:54:05,472 - INFO - exp_llm - 810: 3125 | 3125
+2025-04-23 05:54:39,804 - INFO - openai._base_client - Retrying request to /chat/completions in 0.400332 seconds
+2025-04-23 05:55:04,987 - INFO - exp_llm - 811: 20 | 20
+2025-04-23 05:55:45,020 - INFO - exp_llm - 812: 30^\circ | 30^\circ
+2025-04-23 05:55:54,282 - INFO - exp_llm - 813: None | 95
+2025-04-23 05:56:01,026 - INFO - exp_llm - 814: 8 | 8
+2025-04-23 05:56:36,463 - INFO - exp_llm - 815: 10 | 10
+2025-04-23 05:56:57,329 - INFO - exp_llm - 816: 9 | 9
+2025-04-23 05:57:27,359 - INFO - exp_llm - 817: None | 52
+2025-04-23 05:57:34,256 - INFO - openai._base_client - Retrying request to /chat/completions in 0.464978 seconds
+2025-04-23 05:58:02,488 - INFO - openai._base_client - Retrying request to /chat/completions in 0.470461 seconds
+2025-04-23 05:59:22,702 - INFO - exp_llm - 818: 42_7 | 42_7
+2025-04-23 06:00:45,122 - INFO - openai._base_client - Retrying request to /chat/completions in 0.496156 seconds
+2025-04-23 06:01:04,913 - INFO - exp_llm - 819: 600 | 600
+2025-04-23 06:01:13,909 - INFO - exp_llm - 820: 24 | 24
+2025-04-23 06:01:20,842 - INFO - exp_llm - 821: None | 92
+2025-04-23 06:01:21,541 - INFO - exp_llm - 822: 1 | 1
+2025-04-23 06:01:23,328 - INFO - exp_llm - 823: \frac{1}{9} | \frac{1}{9}
+2025-04-23 06:01:33,968 - INFO - exp_llm - 824: x^3 + 2x^2 + x | x^3 + 2x^2 + x
+2025-04-23 06:01:47,857 - INFO - exp_llm - 825: 1 | 1
+2025-04-23 06:01:48,783 - INFO - exp_llm - 826: 2010 | 2010
+2025-04-23 06:01:57,352 - INFO - openai._base_client - Retrying request to /chat/completions in 0.443228 seconds
+2025-04-23 06:02:09,452 - INFO - exp_llm - 827: 9 | 9
+2025-04-23 06:02:10,459 - INFO - exp_llm - 828: 20\text{ degrees} | 20\text{ degrees}
+2025-04-23 06:02:15,554 - INFO - exp_llm - 829: 64 | 64
+2025-04-23 06:02:35,010 - INFO - exp_llm - 830: 1 | 1
+2025-04-23 06:02:38,706 - INFO - exp_llm - 831: x + 2 | x + 2
+2025-04-23 06:02:38,952 - INFO - exp_llm - 832: 97969 | 97969
+2025-04-23 06:02:44,444 - INFO - exp_llm - 833: 12 | 12
+2025-04-23 06:02:51,459 - INFO - exp_llm - 834: \frac{7}{3} | \frac{7}{3}
+2025-04-23 06:02:56,792 - INFO - exp_llm - 835: 8\sqrt{3} | 8\sqrt{3}
+2025-04-23 06:03:11,230 - INFO - exp_llm - 836: 71 | 71
+2025-04-23 06:03:12,802 - INFO - exp_llm - 837: (-3,2) | (-3,2)
+2025-04-23 06:03:28,920 - INFO - exp_llm - 838: 14 | 14
+2025-04-23 06:03:36,025 - INFO - exp_llm - 839: 2x | 2x
+2025-04-23 06:03:41,841 - INFO - exp_llm - 840: 6 | 6
+2025-04-23 06:03:57,966 - INFO - exp_llm - 841: \text{ACF} | \text{ACF}
+2025-04-23 06:04:16,371 - INFO - exp_llm - 842: 45 | 45
+2025-04-23 06:04:24,279 - INFO - exp_llm - 843: 4 | 4
+2025-04-23 06:04:32,906 - INFO - exp_llm - 844: 64 | 64
+2025-04-23 06:04:45,787 - INFO - exp_llm - 845: 772 | 772
+2025-04-23 06:04:46,661 - INFO - exp_llm - 846: \left( \frac{2}{5}, \frac{1}{2} \right) | \left( \frac{2}{5}, \frac{1}{2} \right)
+2025-04-23 06:04:52,050 - INFO - exp_llm - 847: \sin 3x | \sin 3x
+2025-04-23 06:04:56,071 - INFO - exp_llm - 848: 125 | 125
+2025-04-23 06:05:07,759 - INFO - exp_llm - 849: 210 | 210
+2025-04-23 06:05:26,019 - INFO - exp_llm - 850: 143 | 143
+2025-04-23 06:05:33,799 - INFO - exp_llm - 851: 512 | 512
+2025-04-23 06:05:40,685 - INFO - exp_llm - 852: 15 | 15
+2025-04-23 06:05:43,590 - INFO - exp_llm - 853: None | 41
+2025-04-23 06:05:45,032 - INFO - exp_llm - 854: 27000-4500\pi | 27000-4500\pi
+2025-04-23 06:05:48,347 - INFO - exp_llm - 855: 5 | 5
+2025-04-23 06:06:10,443 - INFO - exp_llm - 856: 7 | 7
+2025-04-23 06:06:50,587 - INFO - exp_llm - 857: (0,0) | (0,0)
+2025-04-23 06:06:59,986 - INFO - exp_llm - 858: \frac{58}{7} | \frac{58}{7}
+2025-04-23 06:07:06,056 - INFO - exp_llm - 859: 30 | 30
+2025-04-23 06:07:35,530 - INFO - exp_llm - 860: \frac{11}{2} | \frac{11}{2}
+2025-04-23 06:07:46,993 - INFO - exp_llm - 861: -x^7-2x^5+x^2 | -x^7-2x^5+x^2
+2025-04-23 06:08:50,964 - INFO - exp_llm - 862: 1 | 1
+2025-04-23 06:09:18,331 - INFO - exp_llm - 863: None | \frac{224\sqrt{3}}{3}
+2025-04-23 06:09:24,179 - INFO - exp_llm - 864: 4 | 4
+2025-04-23 06:09:43,016 - INFO - exp_llm - 865: \$ 10 | \$ 10
+2025-04-23 06:09:51,997 - INFO - exp_llm - 866: 840 | 840
+2025-04-23 06:10:41,887 - INFO - exp_llm - 867: -1 | -1
+2025-04-23 06:10:48,600 - INFO - exp_llm - 868: None | \frac{24}{25}
+2025-04-23 06:10:56,854 - INFO - exp_llm - 869: \frac32 | \frac32
+2025-04-23 06:11:56,975 - INFO - exp_llm - 870: -\frac{11}{2} | -\frac{11}{2}
+2025-04-23 06:12:00,007 - INFO - openai._base_client - Retrying request to /chat/completions in 0.388793 seconds
+2025-04-23 06:12:47,056 - INFO - openai._base_client - Retrying request to /chat/completions in 0.499131 seconds
+2025-04-23 06:13:45,316 - INFO - exp_llm - 871: 0 | 0
+2025-04-23 06:15:56,973 - INFO - openai._base_client - Retrying request to /chat/completions in 0.468747 seconds
+2025-04-23 06:16:19,477 - INFO - exp_llm - 872: \frac{3}{4} | \frac{3}{4}
+2025-04-23 06:16:23,117 - INFO - exp_llm - 873: \frac{1}{2} | \frac{1}{2}
+2025-04-23 06:16:32,886 - INFO - exp_llm - 874: 8 | 8
+2025-04-23 06:17:47,565 - INFO - openai._base_client - Retrying request to /chat/completions in 0.849805 seconds
+2025-04-23 06:17:49,183 - INFO - exp_llm - 875: \frac{\sqrt{35}}{3} | \frac{\sqrt{35}}{3}
+2025-04-23 06:17:58,387 - INFO - exp_llm - 876: 28 | 28
+2025-04-23 06:18:09,819 - INFO - exp_llm - 877: None | 40
+2025-04-23 06:18:45,368 - INFO - openai._base_client - Retrying request to /chat/completions in 0.466299 seconds
+2025-04-23 06:19:08,037 - INFO - exp_llm - 878: -\frac{35}{9} | -\frac{35}{9}
+2025-04-23 06:19:55,281 - INFO - exp_llm - 879: 180^{\circ} | 180^{\circ}
+2025-04-23 06:20:48,111 - INFO - exp_llm - 880: None | \begin{pmatrix} -5/13 \\ 12/13 \end{pmatrix}
+2025-04-23 06:21:03,658 - INFO - exp_llm - 881: 26 | 26
+2025-04-23 06:21:25,320 - INFO - exp_llm - 882: -338016 | -338016
+2025-04-23 06:21:56,649 - INFO - exp_llm - 883: -6 | -6
+2025-04-23 06:22:06,981 - INFO - exp_llm - 884: 8 | 8
+2025-04-23 06:22:19,942 - INFO - exp_llm - 885: 12 | 12
+2025-04-23 06:22:22,763 - INFO - exp_llm - 886: 2 | 2
+2025-04-23 06:22:37,361 - INFO - exp_llm - 887: 8 | 8
+2025-04-23 06:22:51,472 - INFO - exp_llm - 888: 13 | 13
+2025-04-23 06:23:07,847 - INFO - exp_llm - 889: (-6,0) | (-6,0)
+2025-04-23 06:23:38,427 - INFO - exp_llm - 890: 3 | 3
+2025-04-23 06:23:45,852 - INFO - openai._base_client - Retrying request to /chat/completions in 0.965779 seconds
+2025-04-23 06:24:06,706 - INFO - exp_llm - 891: 10 | 10
+2025-04-23 06:24:43,451 - INFO - exp_llm - 892: None | \frac{3}{16}
+2025-04-23 06:25:48,333 - INFO - exp_llm - 893: 2015 | 2015
+2025-04-23 06:27:02,340 - INFO - exp_llm - 894: 6\sqrt{3}+6 | 6\sqrt{3}+6
+2025-04-23 06:27:10,145 - INFO - exp_llm - 895: -\frac{\pi}{6} | -\frac{\pi}{6}
+2025-04-23 06:27:18,718 - INFO - exp_llm - 896: -1 | -1
+2025-04-23 06:27:27,168 - INFO - exp_llm - 897: 100^\circ | 100^\circ
+2025-04-23 06:27:34,942 - INFO - exp_llm - 898: None | 55
+2025-04-23 06:27:36,704 - INFO - exp_llm - 899: None | 96.8
+2025-04-23 06:27:47,776 - INFO - exp_llm - 900: 11 | 11
+2025-04-23 06:27:51,493 - INFO - openai._base_client - Retrying request to /chat/completions in 0.397197 seconds
+2025-04-23 06:27:57,290 - INFO - exp_llm - 901: 0 | 0
+2025-04-23 06:28:11,384 - INFO - exp_llm - 902: 445 | 445
+2025-04-23 06:28:18,450 - INFO - exp_llm - 903: 140 | 140
+2025-04-23 06:28:40,654 - INFO - exp_llm - 904: 25 | 25
+2025-04-23 06:28:54,007 - INFO - exp_llm - 905: 27 | 27
+2025-04-23 06:29:42,541 - INFO - exp_llm - 906: None | -2
+2025-04-23 06:29:56,988 - INFO - exp_llm - 907: 36^\circ | 36^\circ
+2025-04-23 06:29:57,509 - INFO - exp_llm - 908: 4 | 4
+2025-04-23 06:30:13,654 - INFO - exp_llm - 909: None | 3
+2025-04-23 06:30:18,024 - INFO - exp_llm - 910: 11 | 11
+2025-04-23 06:30:24,261 - INFO - exp_llm - 911: 1 | 1
+2025-04-23 06:30:35,144 - INFO - exp_llm - 912: 17 | 17
+2025-04-23 06:30:42,727 - INFO - exp_llm - 913: 556 | 556
+2025-04-23 06:30:51,095 - INFO - exp_llm - 914: 3 | 3
+2025-04-23 06:30:54,628 - INFO - exp_llm - 915: -7 | -7
+2025-04-23 06:31:00,114 - INFO - exp_llm - 916: None | 576
+2025-04-23 06:31:01,777 - INFO - exp_llm - 917: 4 | 4
+2025-04-23 06:31:14,558 - INFO - exp_llm - 918: 12 | 12
+2025-04-23 06:31:39,600 - INFO - exp_llm - 919: \frac{42}{5} | \frac{42}{5}
+2025-04-23 06:31:54,504 - INFO - exp_llm - 920: 28 | 28
+2025-04-23 06:32:18,880 - INFO - exp_llm - 921: 5 | 5
+2025-04-23 06:33:01,149 - INFO - exp_llm - 922: \frac{1}{2} | \frac{1}{2}
+2025-04-23 06:33:03,440 - INFO - exp_llm - 923: None | 28
+2025-04-23 06:33:17,378 - INFO - exp_llm - 924: 6 | 6
+2025-04-23 06:33:23,274 - INFO - exp_llm - 925: \frac{3}{2} | \frac{3}{2}
+2025-04-23 06:33:25,062 - INFO - exp_llm - 926: \frac{1}{2} | \frac{1}{2}
+2025-04-23 06:33:38,254 - INFO - exp_llm - 927: (3,-3) | (3,-3)
+2025-04-23 06:33:40,671 - INFO - openai._base_client - Retrying request to /chat/completions in 0.407837 seconds
+2025-04-23 06:34:02,898 - INFO - exp_llm - 928: 525\pi | 525\pi
+2025-04-23 06:34:19,698 - INFO - exp_llm - 929: None | \frac{240}{13}
+2025-04-23 06:34:22,637 - INFO - exp_llm - 930: 1 | 1
+2025-04-23 06:34:38,916 - INFO - exp_llm - 931: 33\% | 33\%
+2025-04-23 06:35:36,341 - INFO - exp_llm - 932: \frac{1}{4} | \frac{1}{4}
+2025-04-23 06:36:27,308 - INFO - exp_llm - 933: \sqrt{3} | \sqrt{3}
+2025-04-23 06:38:41,188 - INFO - openai._base_client - Retrying request to /chat/completions in 0.947225 seconds
+2025-04-23 06:38:50,947 - INFO - exp_llm - 934: 12 | 12
+2025-04-23 06:39:02,920 - INFO - openai._base_client - Retrying request to /chat/completions in 0.387131 seconds
+2025-04-23 06:39:18,019 - INFO - exp_llm - 935: 30 | 30
+2025-04-23 06:39:22,659 - INFO - openai._base_client - Retrying request to /chat/completions in 0.445636 seconds
+2025-04-23 06:39:37,740 - INFO - exp_llm - 936: None | 93
+2025-04-23 06:40:22,793 - INFO - exp_llm - 937: \frac{32\pi}{81} | \frac{32\pi}{81}
+2025-04-23 06:40:32,560 - INFO - exp_llm - 938: \frac{27}{128} | \frac{27}{128}
+2025-04-23 06:40:37,946 - INFO - exp_llm - 939: 10 | 10
+2025-04-23 06:40:40,069 - INFO - exp_llm - 940: 10 | 10
+2025-04-23 06:40:59,281 - INFO - exp_llm - 941: \frac{6\sqrt{5}}{5} | \frac{6\sqrt{5}}{5}
+2025-04-23 06:40:59,382 - INFO - exp_llm - 942: 7.5 | 7.5
+2025-04-23 06:41:03,883 - INFO - exp_llm - 943: 19 | 19
+2025-04-23 06:41:17,428 - INFO - exp_llm - 944: 3-\sqrt7 | 3-\sqrt7
+2025-04-23 06:42:08,162 - INFO - exp_llm - 945: None | \frac{1}{4}
+2025-04-23 06:42:37,046 - INFO - exp_llm - 946: \frac{1}{\sqrt{3}} | \frac{1}{\sqrt{3}}
+2025-04-23 06:42:42,737 - INFO - exp_llm - 947: \frac{\sqrt{3}}{4} | \frac{\sqrt{3}}{4}
+2025-04-23 06:45:35,783 - INFO - exp_llm - 948: None | 144
+2025-04-23 06:45:45,692 - INFO - exp_llm - 949: 90\pi | 90\pi
+2025-04-23 06:45:59,400 - INFO - openai._base_client - Retrying request to /chat/completions in 0.487047 seconds
+2025-04-23 06:46:02,008 - INFO - exp_llm - 950: \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix} | \begin{pmatrix} 0 \\ 0 \\ 0 \end{pmatrix}
+2025-04-23 06:46:02,155 - INFO - exp_llm - 951: None | 6
+2025-04-23 06:46:13,812 - INFO - exp_llm - 952: 6 | 6
+2025-04-23 06:46:18,817 - INFO - exp_llm - 953: 18 | 18
+2025-04-23 06:46:19,201 - INFO - exp_llm - 954: 1275 | 1275
+2025-04-23 06:47:08,229 - INFO - openai._base_client - Retrying request to /chat/completions in 0.391212 seconds
+2025-04-23 06:47:22,660 - INFO - exp_llm - 955: 55 | 55
+2025-04-23 06:47:33,281 - INFO - exp_llm - 956: 5,\!460 | 5,\!460
+2025-04-23 06:47:48,503 - INFO - exp_llm - 957: 12 | 12
+2025-04-23 06:48:53,848 - INFO - exp_llm - 958: -2x^2 + x - 3 | -2x^2 + x - 3
+2025-04-23 06:49:41,776 - INFO - exp_llm - 959: \sqrt{5} | \sqrt{5}
+2025-04-23 06:49:49,578 - INFO - exp_llm - 960: 0 | 0
+2025-04-23 06:50:52,083 - INFO - exp_llm - 961: 31 | 31
+2025-04-23 06:50:58,135 - INFO - exp_llm - 962: None | 9
+2025-04-23 06:51:00,647 - INFO - exp_llm - 963: 319 | 319
+2025-04-23 06:51:13,757 - INFO - exp_llm - 964: 3504 | 3504
+2025-04-23 06:51:13,829 - INFO - openai._base_client - Retrying request to /chat/completions in 0.417789 seconds
+2025-04-23 06:51:23,669 - INFO - exp_llm - 965: \!\sqrt{33} | \!\sqrt{33}
+2025-04-23 06:52:03,710 - INFO - exp_llm - 966: \frac{4}{27} | \frac{4}{27}
+2025-04-23 06:52:08,636 - INFO - openai._base_client - Retrying request to /chat/completions in 0.779571 seconds
+2025-04-23 06:52:20,420 - INFO - exp_llm - 967: 288 | 288
+2025-04-23 06:52:59,730 - INFO - exp_llm - 968: 900 | 900
+2025-04-23 06:54:00,443 - INFO - exp_llm - 969: [5,5 \sqrt{2}] | [5,5 \sqrt{2}]
+2025-04-23 06:54:36,957 - INFO - exp_llm - 970: None | 20x + 23y + 26z - 69 = 0
+2025-04-23 06:54:47,810 - INFO - exp_llm - 971: None | 190
+2025-04-23 06:55:00,915 - INFO - exp_llm - 972: 1152 | 1152
+2025-04-23 06:55:31,754 - INFO - exp_llm - 973: \frac{11}{16} | \frac{11}{16}
+2025-04-23 06:56:14,298 - INFO - openai._base_client - Retrying request to /chat/completions in 0.789692 seconds
+2025-04-23 06:56:34,855 - INFO - exp_llm - 974: 27.2 | 27.2
+2025-04-23 06:57:04,547 - INFO - exp_llm - 975: None | 3 + \sqrt{6}
+2025-04-23 06:57:24,757 - INFO - exp_llm - 976: None | 40
+2025-04-23 06:57:40,480 - INFO - exp_llm - 977: \frac{9}{100} | \frac{9}{100}
+2025-04-23 06:57:57,874 - INFO - exp_llm - 978: \frac{\sqrt{3}}{3} | \frac{\sqrt{3}}{3}
+2025-04-23 06:58:28,438 - INFO - exp_llm - 979: -\tfrac34 | -\tfrac34
+2025-04-23 06:58:43,025 - INFO - exp_llm - 980: 15^\circ | 15^\circ
+2025-04-23 06:59:02,158 - INFO - exp_llm - 981: -3 | -3
+2025-04-23 06:59:19,778 - INFO - exp_llm - 982: 0 | 0
+2025-04-23 06:59:42,633 - INFO - exp_llm - 983: 23 | 23
+2025-04-23 06:59:45,948 - INFO - exp_llm - 984: 1 | 1
+2025-04-23 06:59:58,863 - INFO - exp_llm - 985: 6 | 6
+2025-04-23 07:00:06,784 - INFO - exp_llm - 986: \text{(E)} | \text{(E)}
+2025-04-23 07:00:15,420 - INFO - exp_llm - 987: \frac{7}{8} | \frac{7}{8}
+2025-04-23 07:00:31,489 - INFO - exp_llm - 988: 25\pi | 25\pi
+2025-04-23 07:01:02,143 - INFO - exp_llm - 989: (-7, 3) | (-7, 3)
+2025-04-23 07:01:22,053 - INFO - exp_llm - 990: None | 2014
+2025-04-23 07:03:56,227 - INFO - exp_llm - 991: \frac{\sqrt{6}}{3} | \frac{\sqrt{6}}{3}
+2025-04-23 07:03:59,910 - INFO - exp_llm - 992: 50 | 50
+2025-04-23 07:04:08,807 - INFO - exp_llm - 993: 21 | 21
+2025-04-23 07:04:11,666 - INFO - exp_llm - 994: \frac{1}{4} | \frac{1}{4}
+2025-04-23 07:04:45,967 - INFO - openai._base_client - Retrying request to /chat/completions in 0.499907 seconds
+2025-04-23 07:04:46,077 - INFO - exp_llm - 995: 90^\circ | 90^\circ
+2025-04-23 07:04:52,602 - INFO - exp_llm - 996: 1024 | 1024
+2025-04-23 07:05:06,806 - INFO - openai._base_client - Retrying request to /chat/completions in 0.462330 seconds
+2025-04-23 07:05:17,678 - INFO - exp_llm - 997: \left( -\frac{1}{4}, -2 \right) | \left( -\frac{1}{4}, -2 \right)
+2025-04-23 07:06:03,397 - INFO - exp_llm - 998: 3 | 3
+2025-04-23 07:06:06,359 - INFO - exp_llm - 999: 2 \sqrt{3} + 3 | 2 \sqrt{3} + 3
+2025-04-23 07:07:23,580 - INFO - exp_llm - 1000: None | 6\sqrt{7}
+2025-04-23 07:07:23,597 - INFO - F1_Evaluator - 📊 有效样本数: 1000，跳过: 0，平均 F1 分数: 0.8194
+2025-04-23 07:07:23,603 - INFO - exp_llm - total_token=2499945
+2025-04-23 07:07:23,603 - INFO - exp_llm - self.token=0 | F1 Score=0.8194 | ACC Score=0.8170 | avg_token=2499.945
+2025-04-23 07:07:23,604 - INFO - exp_llm - F1 分数已保存至 results/20250423_0707_1D95/results.json
+2025-04-23 07:07:23,626 - INFO - exp_llm - QA 对已保存至 results/20250423_0707_1D95/qa_answers.json
+2025-04-23 07:07:23,626 - INFO - exp_llm - 实验完成
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (2/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)
+Error occurred: Request timed out., retrying... (1/3)

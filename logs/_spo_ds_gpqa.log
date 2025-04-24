@@ -1,0 +1,76 @@
+nohup: ignoring input
+2025-04-16 11:05:44,734 - INFO - exp_llm - Namespace(config='config/config_llm.yaml', model_name='ds', dataset='gpqa', token=0, prompt='spo', template='GPQA_PROMPT')
+2025-04-16 11:05:44,742 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-16 11:05:44,742 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_prompt
+2025-04-16 11:05:44,742 - INFO - ChatLLM - {'model': 'deepseek-r1:7b', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-16 11:05:44,858 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
+2025-04-16 11:05:44,858 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-16 11:05:44,883 - INFO - exp_llm - 开始训练的token数量为：0
+2025-04-16 11:06:30,466 - INFO - exp_llm - 1: B | B
+2025-04-16 11:06:48,211 - INFO - exp_llm - 2: D | D
+2025-04-16 11:07:22,325 - INFO - exp_llm - 3: B | D
+2025-04-16 11:07:28,790 - INFO - exp_llm - 4: None | C
+2025-04-16 11:07:55,158 - INFO - exp_llm - 5: C | C
+2025-04-16 11:08:22,705 - INFO - exp_llm - 6: D | D
+2025-04-16 11:08:40,590 - INFO - exp_llm - 7: A | C
+2025-04-16 11:08:43,697 - INFO - exp_llm - 8: D | B
+2025-04-16 11:09:25,840 - INFO - exp_llm - 9: A | A
+2025-04-16 11:09:33,702 - INFO - exp_llm - 10: C | D
+2025-04-16 11:10:55,364 - INFO - exp_llm - 11: C | C
+2025-04-16 11:11:18,158 - INFO - exp_llm - 12: None | A
+2025-04-16 11:11:36,471 - INFO - exp_llm - 13: B | B
+2025-04-16 11:11:39,997 - INFO - exp_llm - 14: None | D
+2025-04-16 11:12:54,805 - INFO - exp_llm - 15: None | C
+2025-04-16 11:14:26,394 - INFO - exp_llm - 16: A | D
+2025-04-16 11:15:18,990 - INFO - exp_llm - 17: None | A
+2025-04-16 11:15:25,831 - INFO - exp_llm - 18: C | A
+2025-04-16 11:16:07,576 - INFO - exp_llm - 19: None | D
+2025-04-16 11:16:38,733 - INFO - exp_llm - 20: D | D
+2025-04-16 11:16:44,652 - INFO - exp_llm - 21: B | D
+2025-04-16 11:17:27,143 - INFO - exp_llm - 22: A | C
+2025-04-16 11:18:34,214 - INFO - exp_llm - 23: A | A
+2025-04-16 11:20:08,232 - INFO - exp_llm - 24: C | A
+2025-04-16 11:20:33,386 - INFO - exp_llm - 25: B | A
+2025-04-16 11:20:42,380 - INFO - exp_llm - 26: B | C
+2025-04-16 11:21:14,212 - INFO - exp_llm - 27: 2 | A
+2025-04-16 11:21:42,193 - INFO - exp_llm - 28: A | B
+2025-04-16 11:23:23,041 - INFO - exp_llm - 29: B | A
+2025-04-16 11:24:00,914 - INFO - exp_llm - 30: C | D
+2025-04-16 11:24:11,407 - INFO - exp_llm - 31: D | B
+2025-04-16 11:24:28,065 - INFO - exp_llm - 32: B | B
+2025-04-16 11:25:06,662 - INFO - exp_llm - 33: A | B
+2025-04-16 11:25:44,974 - INFO - exp_llm - 34: None | D
+2025-04-16 11:25:58,011 - INFO - exp_llm - 35: C | D
+2025-04-16 11:27:32,787 - INFO - exp_llm - 36: None | A
+2025-04-16 11:29:14,732 - INFO - openai._base_client - Retrying request to /chat/completions in 0.423087 seconds
+2025-04-16 11:29:15,550 - INFO - exp_llm - 37: B | C
+2025-04-16 11:29:16,201 - INFO - exp_llm - 38: 1 | B
+2025-04-16 11:29:53,556 - INFO - exp_llm - 39: D | C
+2025-04-16 11:31:20,481 - INFO - exp_llm - 40: A | B
+2025-04-16 11:32:50,181 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：A light beam is propagating through a gl... 错误：can only concatenate str (not "NoneType") to str
+2025-04-16 11:33:12,341 - INFO - exp_llm - 41: A | A
+2025-04-16 11:33:19,744 - INFO - openai._base_client - Retrying request to /chat/completions in 0.411185 seconds
+2025-04-16 11:33:21,804 - INFO - exp_llm - 42: B | B
+2025-04-16 11:35:20,340 - INFO - exp_llm - 43: C | D
+2025-04-16 11:35:49,994 - INFO - exp_llm - 44: C | B
+2025-04-16 11:37:40,559 - INFO - exp_llm - 45: None | D
+2025-04-16 11:37:43,457 - INFO - exp_llm - 46: None | B
+2025-04-16 11:39:09,050 - INFO - exp_llm - 47: None | C
+2025-04-16 11:39:16,046 - INFO - exp_llm - 48: A | C
+2025-04-16 11:41:35,996 - INFO - exp_llm - 49: None | A
+2025-04-16 11:43:32,298 - INFO - exp_llm - 50: None | B
+2025-04-16 11:43:38,351 - INFO - exp_llm - 51: None | B
+2025-04-16 11:44:57,627 - INFO - exp_llm - 52: C | D
+2025-04-16 11:45:27,930 - INFO - exp_llm - 53: C | A
+2025-04-16 11:46:09,368 - INFO - exp_llm - 54: None | A
+2025-04-16 11:46:41,968 - INFO - exp_llm - 55: A | D
+2025-04-16 11:48:52,267 - INFO - exp_llm - 56: None | B
+2025-04-16 11:49:20,907 - INFO - exp_llm - 57: None | C
+2025-04-16 11:51:12,085 - INFO - exp_llm - 58: 12.87 | D
+2025-04-16 11:52:55,866 - INFO - exp_llm - 59: C | B
+2025-04-16 11:53:01,084 - INFO - exp_llm - 60: None | B
+2025-04-16 11:54:33,268 - INFO - exp_llm - 61: B | B
+2025-04-16 11:55:22,390 - INFO - exp_llm - 62: B | A
+2025-04-16 11:57:17,043 - INFO - exp_llm - 63: None | B
+2025-04-16 11:57:17,562 - INFO - exp_llm - 64: A | A
+2025-04-16 11:57:27,296 - INFO - exp_llm - 65: None | C

@@ -1,0 +1,21 @@
+nohup: ignoring input
+2025-04-23 12:17:46,635 - INFO - exp_llm - Namespace(config='config/config_llm.yaml', model_name='o3', dataset='gpqa', token=5000, prompt='0', template='GPQA_PROMPT', is_extract='false')
+2025-04-23 12:17:46,644 - INFO - F1_Evaluator - 初始化 F1_Evaluator
+2025-04-23 12:17:46,644 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_prompt
+2025-04-23 12:17:46,644 - INFO - ChatLLM - {'model': 'o3-mini', 'temperature': 0.7, 'max_tokens': 12000}
+2025-04-23 12:17:46,740 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
+2025-04-23 12:17:46,740 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
+2025-04-23 12:17:46,748 - INFO - exp_llm - 开始训练的token数量为：5000
+2025-04-23 12:17:52,692 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：Calculate the eigenvector of a quantum m... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:17:54,562 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：All the following statements about the m... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:17:56,747 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：A quantum mechanical particle of mass m ... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:17:58,038 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：The universe if filled with the Cosmic M... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:17:58,910 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：Chip-seq on a PFA-fixed sample with an a... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:17:59,586 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：Among the following exoplanets, which on... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:18:00,759 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：Find KE of product particles in,
+Pi(+) =... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:18:01,232 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：Researchers are attempting to detect tra... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:18:09,424 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：A common approximation made in many-body... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:18:09,570 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：What is the concentration of calcium ion... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:18:12,322 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：A student regrets that he fell asleep du... 错误：can only concatenate str (not "NoneType") to str
+2025-04-23 12:18:16,695 - ERROR - exp_llm - ⚠️ 模型调用失败，跳过问题：Compounds that have the same molecular f... 错误：can only concatenate str (not "NoneType") to str
