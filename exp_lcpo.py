@@ -172,7 +172,7 @@ class LCPO_Runner:
             self.qa_answers_by_ni[n_i] = answers
 
         # 单独处理protect
-        if self.protect_token == 0:
+        if self.protect_token != 0:
             logger.info(f"特殊处理：训练的token数量为：{self.protect_token}")
             protect_answers = await self._execute_protect_prompt()
             self.qa_answers_by_ni[self.protect_token] = protect_answers
@@ -280,7 +280,7 @@ def parse_args():
     parser.add_argument("--model_name", type=str, default="ds", help="Project name")
     # train
     parser.add_argument("--dataset", type=str, default="math", help="Project name")
-    parser.add_argument("--sample_k", type=int, default=3, help="抽样的QA数量（0表示全部）")
+    parser.add_argument("--sample_k", type=int, default=2, help="抽样的QA数量（0表示全部）")
     parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
@@ -288,9 +288,9 @@ def parse_args():
     parser.add_argument("--is_truth", type=str, default="true", help="是否有人工标注")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     # init_token_list
-    parser.add_argument("--init_left", type=int, default=200, help="初试token_list边界左值")
-    parser.add_argument("--init_right", type=int, default=5001, help="初试token_list边界右值")
-    parser.add_argument("--init_step", type=int, default=800, help="初试token_list边界步长")
+    parser.add_argument("--init_left", type=int, default=800, help="初试token_list边界左值")
+    parser.add_argument("--init_right", type=int, default=8001, help="初试token_list边界右值")
+    parser.add_argument("--init_step", type=int, default=1200, help="初试token_list边界步长")
     return parser.parse_args()
 
 
@@ -313,7 +313,6 @@ def main():
     except Exception as e:
         logger.error(f"实验启动失败: {str(e)}")
         exit(1)
-
 
 if __name__ == "__main__":
     main()

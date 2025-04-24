@@ -73,7 +73,7 @@ def main():
     multiple_choice_data = generate_multiple_choice(data)
 
     # 保存为 JSON 文件
-    save_to_json(multiple_choice_data, 'diamond.json')
+    save_to_json(multiple_choice_data, 'GPQA-Diamond/diamond.json')
 
     print("数据已成功转换为 JSON 格式！")
 

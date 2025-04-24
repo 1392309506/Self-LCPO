@@ -1,5 +1,5 @@
 EXTRACT_ANSWER_PROMPT="""
-I will first provide you with the standard answer to a question, and then give you a personal answer. 
+I will first provide you with the standard answer to a question, and then give you a personal answer.
 The answers will be provided in XML format <standard> and <personal>.
 You need to judge whether the personal answer is correct or not. 1 means right and 0 means wrong.
 Conclude with a definitive answer formatted in XML:<judge>[1 or 0]</judge>.
@@ -34,9 +34,9 @@ Respond strictly in this XML format:
 
 
 EXTRACT_PROMPT="""
-Extract the **final truthfulness label** from the answer process.The possible labels are: A or B.
+Extract the **final label** from the answer process.The possible labels are: A or B.
 If no such label is mentioned or inferable, return `None`.
-Always conclude with an XML-formatted tag:
+Ensure the response concludes with the answer in the XML format:
 <answer>A or B</answer>
 
 question:
@@ -45,20 +45,27 @@ question:
 answer process:
 {content}
 """
+EXTRACT_MATH_PROMPT= """
+Extract the **final answer** from the answer process.
+Ensure the response concludes with the answer in the XML format:<answer>your_answer_here</answer>
 
+answer process:
+{content}
+"""
 # EXTRACT_PROMPT="""
 # You are given an answer process. Your task is to extract the **final truthfulness label** from it.
 
 # The possible labels are:
-# - Yes
+# - A
 # - No
 
 # If no such label is mentioned or inferable, return `None`.
+# Ensure the response concludes with the answer in the XML format:
+# <answer>Yes or No</answer>
 
-# Always conclude with an XML-formatted tag:
-# <answer>your_label_here</answer>
+# # question:
+# # {question}
 
-# Content:
-# {content}
-
+# # answer process:
+# # {content}
 # """

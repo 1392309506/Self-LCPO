@@ -29,8 +29,7 @@ class Prompt_Runner:
         self.dataset = dataset
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
-        # self.qa = self.loadUtil.load_json(0)
-        self.qa = self.loadUtil.load_json_skip_head(67)
+        self.qa = self.loadUtil.load_json(67)
 
         self.F1_Evaluator = F1_Evaluator()
         self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
