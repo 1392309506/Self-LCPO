@@ -1,5 +1,5 @@
 # 在其他文件中复用
-from config_loader import ConfigLoader
+from component.config_loader import ConfigLoader
 
 def test_config_loading():
     config = ConfigLoader("../config/config_llm.yaml")
