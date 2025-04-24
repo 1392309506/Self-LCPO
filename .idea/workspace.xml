@@ -4,21 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="modify ssh and add config">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GBSM8K/dataset.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GBSM8K/run.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GBSM8K/test.jsonl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GPQA-Diamond/dataset2json.py" beforeDir="false" afterPath="$PROJECT_DIR$/dataset/dataset2json.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GSM8K/GSM8K.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/GSM8K/data2json.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/OlyMath/dataset2json.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/dataset/StrategyQA/dataset2json.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix extract">
       <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/dataset_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/dataset_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/execute_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/extract_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/extract_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,34 +34,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.dataset2json (2).executor&quot;: &quot;Run&quot;,
-    &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO/dataset&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.dataset2json (1).executor": "Run",
+    "Python.dataset2json (2).executor": "Run",
+    "Python.dataset2json.executor": "Run",
+    "Python.exp_lcpo.executor": "Run",
+    "Python.exp_llm.executor": "Run",
+    "Python.exp_prompt.executor": "Run",
+    "Python.general_llm_client.executor": "Run",
+    "Python.gpqa.executor": "Run",
+    "Python.length_optimizer (1).executor": "Run",
+    "Python.length_optimizer.executor": "Run",
+    "Python.popb_optimizer.executor": "Run",
+    "Python.run.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO/utils",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\utils" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\GBSM8K" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\GPQA" />
-      <recent name="D:\Code_store\Python\Self-LCPO\metagpt" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\Code_store\Python\Self-LCPO\dataset" />
@@ -355,7 +342,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745493335312</updated>
     </task>
-    <option name="localTasksCounter" value="15" />
+    <task id="LOCAL-00015" summary="fix extract">
+      <option name="closed" value="true" />
+      <created>1745496552921</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1745496552921</updated>
+    </task>
+    <option name="localTasksCounter" value="16" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -382,6 +377,7 @@
     <MESSAGE value="finish PBO-LC" />
     <MESSAGE value="add protect-token" />
     <MESSAGE value="modify ssh and add config" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify ssh and add config" />
+    <MESSAGE value="fix extract" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix extract" />
   </component>
 </project>
