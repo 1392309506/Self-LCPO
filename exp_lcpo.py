@@ -143,7 +143,7 @@ class LCPO_Runner:
                 standard_answer = item.get("answer")
                 # LLM 提取答案（修正）
                 if self.is_extract == "true":
-                    if answer != standard_answer:
+                    if answer == None:
                         judge = await self._extract(standard=standard_answer, personal=response.content)
                         if judge == 1 or judge == "1":
                             answer = standard_answer

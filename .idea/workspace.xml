@@ -5,6 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="struct IO">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -71,7 +74,7 @@
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
     </key>
   </component>
-  <component name="RunManager" selected="Python.dataset2json (2)">
+  <component name="RunManager" selected="Python.exp_prompt">
     <configuration name="dataset2json (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Self-LCPO" />
       <option name="ENV_FILES" value="" />
@@ -206,9 +209,9 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.exp_prompt" />
         <item itemvalue="Python.dataset2json (2)" />
         <item itemvalue="Python.exp_lcpo" />
-        <item itemvalue="Python.exp_prompt" />
         <item itemvalue="Python.dataset2json (1)" />
         <item itemvalue="Python.dataset2json (1)" />
       </list>
@@ -382,7 +385,15 @@
       <option name="project" value="LOCAL" />
       <updated>1745649547074</updated>
     </task>
-    <option name="localTasksCounter" value="20" />
+    <task id="LOCAL-00020" summary="struct IO">
+      <option name="closed" value="true" />
+      <created>1745669835852</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1745669835852</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">

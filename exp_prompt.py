@@ -22,7 +22,7 @@ logger = LoggerUtil.get_logger("exp_llm")
 
 
 class Prompt_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 100, prompt: str = "",
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 0, prompt: str = "",
                  template: str = "", is_extract:str="true"):
         self.config = config
         self.model_name = model_name
@@ -40,7 +40,7 @@ class Prompt_Runner:
             params=self.model.get("params"),
             name="exp_prompt"
         )
-        self.max_concurrent_requests = 5
+        self.max_concurrent_requests = 10
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.token = token
         self.f1_score = 0
@@ -95,9 +95,7 @@ class Prompt_Runner:
     async def _execute_prompt(self, n: int) -> List[str]:
         """并发执行提示"""
         prompt = ""
-        if self.prompt == "blank":
-            prompt = BLANK_PROMPT
-        elif self.prompt == "spo":
+        if self.prompt == "spo":
             prompt = SPO_PROMPT
         elif self.prompt == "cot":
             prompt = COT_PROMPT
@@ -128,7 +126,7 @@ class Prompt_Runner:
 
                 if self.is_extract == "true":
                     # LLM 提取答案（修正）
-                    if answer != standard_answer:
+                    if answer == None:
                         answer = await self._extract(standard=standard_answer, personal=response.content, question=question)
 
                 logger.info(str(self.cnt) + ": " + answer + " | " + standard_answer)
@@ -191,11 +189,11 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
-    parser.add_argument("--dataset", type=str, default="str", help="评估使用的数据集名称")
+    parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
+    parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
     parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
-    parser.add_argument("--template", type=str, default="STR_PROMPT", help="使用的prompt模板")
+    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     return parser.parse_args()
 
