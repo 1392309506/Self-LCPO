@@ -4,10 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="a little fix">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025_4_10_21_53__Changes_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="struct IO">
+      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -368,7 +366,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745501884867</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary="modify requirements">
+      <option name="closed" value="true" />
+      <created>1745649366876</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1745649366876</updated>
+    </task>
+    <task id="LOCAL-00019" summary="struct IO">
+      <option name="closed" value="true" />
+      <created>1745649547074</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1745649547074</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -397,6 +411,8 @@
     <MESSAGE value="modify ssh and add config" />
     <MESSAGE value="fix extract" />
     <MESSAGE value="a little fix" />
-    <option name="LAST_COMMIT_MESSAGE" value="a little fix" />
+    <MESSAGE value="modify requirements" />
+    <MESSAGE value="struct IO" />
+    <option name="LAST_COMMIT_MESSAGE" value="struct IO" />
   </component>
 </project>

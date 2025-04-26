@@ -10,7 +10,7 @@ from typing import List
 
 from component.config_loader import ConfigLoader
 from prompt.execute_prompt import BLANK_PROMPT, SPO_PROMPT, COT_PROMPT
-from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT, EXTRACT_PROMPT, EXTRACT_MATH_PROMPT
+from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -40,7 +40,7 @@ class Prompt_Runner:
             params=self.model.get("params"),
             name="exp_prompt"
         )
-        self.max_concurrent_requests = 15
+        self.max_concurrent_requests = 5
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.token = token
         self.f1_score = 0
@@ -140,11 +140,8 @@ class Prompt_Runner:
 
     async def _extract(self, standard: str, personal: str, question: str) -> str:
         prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard, personal=personal)
-        # prompt = EXTRACT_PROMPT.format(content=personal,question=question)
-        # prompt = EXTRACT_MATH_PROMPT.format(content=personal)
         messages = [{"role": "user", "content": prompt}]
         response = await self.extract_llm.chat(messages)
-        # personal = LoadUtils.extract_content(response.content, "answer")
 
         judge = LoadUtils.extract_content(response.content, "judge")
         if judge == "1" or judge == "[1]" or judge == "(1)":
