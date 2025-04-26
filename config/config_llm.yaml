@@ -27,7 +27,7 @@ models:
   - name: "o3"
     api-type: "openai"
     base_url: "https://api.chatanywhere.tech"
-    api_key: "sk-nPi0i8clw9NZrCcPZFWxRNwkWgaewoeIJVXUqtKus0TaBiTo"
+    api_key: "sk-mQDzZKvecqFTyQveK1CivmRb416ioiIG5zy34c8W97cUNnsX"
     params:
       model: "o3-mini"
       temperature: 0.7

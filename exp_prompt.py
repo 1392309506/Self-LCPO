@@ -40,7 +40,7 @@ class Prompt_Runner:
             params=self.model.get("params"),
             name="exp_prompt"
         )
-        self.max_concurrent_requests = 10
+        self.max_concurrent_requests = 5
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.token = token
         self.f1_score = 0
