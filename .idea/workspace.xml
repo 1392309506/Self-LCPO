@@ -4,8 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix extract">
-      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="a little fix">
+      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_2025_4_10_21_53__Changes_.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,27 +36,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.dataset2json (1).executor": "Run",
-    "Python.dataset2json (2).executor": "Run",
-    "Python.dataset2json.executor": "Run",
-    "Python.exp_lcpo.executor": "Run",
-    "Python.exp_llm.executor": "Run",
-    "Python.exp_prompt.executor": "Run",
-    "Python.general_llm_client.executor": "Run",
-    "Python.gpqa.executor": "Run",
-    "Python.length_optimizer (1).executor": "Run",
-    "Python.length_optimizer.executor": "Run",
-    "Python.popb_optimizer.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO/utils",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO/utils&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code_store\Python\Self-LCPO\utils" />
@@ -350,7 +352,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745496552921</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="a little fix">
+      <option name="closed" value="true" />
+      <created>1745501852522</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1745501852522</updated>
+    </task>
+    <task id="LOCAL-00017" summary="a little fix">
+      <option name="closed" value="true" />
+      <created>1745501884867</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1745501884867</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -378,6 +396,7 @@
     <MESSAGE value="add protect-token" />
     <MESSAGE value="modify ssh and add config" />
     <MESSAGE value="fix extract" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix extract" />
+    <MESSAGE value="a little fix" />
+    <option name="LAST_COMMIT_MESSAGE" value="a little fix" />
   </component>
 </project>
