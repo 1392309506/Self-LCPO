@@ -1,74 +1,0 @@
-nohup: ignoring input
-2025-04-14 09:49:29,264 - INFO - exp_llm - Namespace(config='config/config_llm.yaml', model_name='qwq', dataset='math', token=0, prompt='spo')
-2025-04-14 09:49:29,272 - INFO - F1_Evaluator - 初始化 F1_Evaluator
-2025-04-14 09:49:29,273 - INFO - ChatLLM - 初始化Chat LLM | Name: exp_prompt
-2025-04-14 09:49:29,273 - INFO - ChatLLM - {'model': 'qwq32b', 'temperature': 0.7, 'max_tokens': 16384, 'model_path': '/root/qwq32b', 'device': 'cuda:2'}
-Sliding Window Attention is enabled but not implemented for `sdpa`; unexpected results may be encountered.
-Loading QWQ model from /root/qwq32b on cuda:2
-Loading checkpoint shards:   0%|          | 0/14 [00:00<?, ?it/s]Loading checkpoint shards:  14%|█▍        | 2/14 [00:00<00:02,  4.70it/s]Loading checkpoint shards:  21%|██▏       | 3/14 [00:00<00:03,  3.55it/s]Loading checkpoint shards:  29%|██▊       | 4/14 [00:01<00:03,  3.13it/s]Loading checkpoint shards:  36%|███▌      | 5/14 [00:01<00:03,  2.93it/s]Loading checkpoint shards:  43%|████▎     | 6/14 [00:01<00:02,  2.84it/s]Loading checkpoint shards:  50%|█████     | 7/14 [00:02<00:02,  2.79it/s]Loading checkpoint shards:  57%|█████▋    | 8/14 [00:02<00:02,  2.68it/s]Loading checkpoint shards:  64%|██████▍   | 9/14 [00:03<00:01,  2.67it/s]Loading checkpoint shards:  71%|███████▏  | 10/14 [00:03<00:01,  2.20it/s]Loading checkpoint shards:  79%|███████▊  | 11/14 [00:04<00:01,  1.96it/s]Loading checkpoint shards:  86%|████████▌ | 12/14 [00:04<00:01,  1.99it/s]Loading checkpoint shards:  93%|█████████▎| 13/14 [00:07<00:01,  1.09s/it]Loading checkpoint shards: 100%|██████████| 14/14 [00:09<00:00,  1.36s/it]Loading checkpoint shards: 100%|██████████| 14/14 [00:09<00:00,  1.51it/s]
-2025-04-14 09:51:00,480 - INFO - ChatLLM - 初始化Chat LLM | Name: extract_llm
-2025-04-14 09:51:00,481 - INFO - ChatLLM - {'model': 'gpt-3.5-turbo', 'temperature': 0.7, 'max_tokens': 4096}
-2025-04-14 09:51:00,609 - INFO - exp_llm - 开始训练的token数量为：0
-2025-04-14 09:51:16,643 - INFO - exp_llm - 1: None | \frac{295}{396}
-2025-04-14 09:51:17,661 - INFO - exp_llm - 2: None | (2,3)
-2025-04-14 09:51:17,859 - INFO - exp_llm - 3: None | 30
-2025-04-14 09:51:17,881 - INFO - exp_llm - 4: None | 152A_{11}
-2025-04-14 09:51:17,891 - INFO - exp_llm - 5: None | (3,4]
-2025-04-14 09:51:17,904 - INFO - exp_llm - 6: None | 30
-2025-04-14 09:51:17,917 - INFO - exp_llm - 7: None | 3 + 2 \sqrt{2}
-2025-04-14 09:51:17,968 - INFO - exp_llm - 8: None | 2
-2025-04-14 09:51:18,061 - INFO - exp_llm - 9: None | -1
-2025-04-14 09:51:18,064 - INFO - exp_llm - 10: None | \dfrac{1}{3}
-2025-04-14 09:51:18,073 - INFO - exp_llm - 11: \left(-\infty,-\frac 12\right)\cup \left(-\frac 12,\infty\right) | \left(-\infty,-\frac 12\right)\cup \left(-\frac 12,\infty\right)
-2025-04-14 09:51:18,093 - INFO - exp_llm - 12: None | 0
-2025-04-14 09:51:18,122 - INFO - exp_llm - 13: None | 8
-2025-04-14 09:51:18,147 - INFO - exp_llm - 14: None | 9
-2025-04-14 09:51:18,162 - INFO - exp_llm - 15: None | 11
-2025-04-14 09:51:18,198 - INFO - exp_llm - 16: None | 371,\!043,\!400
-2025-04-14 09:51:18,428 - INFO - exp_llm - 17: None | 110
-2025-04-14 09:51:20,648 - INFO - exp_llm - 18: None | -2
-2025-04-14 09:51:21,475 - INFO - exp_llm - 19: None | 0
-2025-04-14 09:51:21,504 - INFO - exp_llm - 20: None | 15
-2025-04-14 09:51:21,692 - INFO - exp_llm - 21: \frac{1}{350} | \frac{1}{350}
-2025-04-14 09:51:21,699 - INFO - exp_llm - 22: None | -21
-2025-04-14 09:51:21,710 - INFO - exp_llm - 23: None | \dfrac{30}{143}
-2025-04-14 09:51:21,736 - INFO - exp_llm - 24: None | (9, 3)
-2025-04-14 09:51:21,786 - INFO - exp_llm - 25: None | 105
-2025-04-14 09:51:21,895 - INFO - exp_llm - 26: None | (-4,1)
-2025-04-14 09:51:21,934 - INFO - exp_llm - 27: None | 2
-2025-04-14 09:51:21,987 - INFO - exp_llm - 28: None | \frac{25}{8}
-2025-04-14 09:51:22,555 - INFO - exp_llm - 29: None | 13
-2025-04-14 09:51:24,095 - INFO - exp_llm - 30: None | 72
-2025-04-14 09:51:25,258 - INFO - exp_llm - 31: None | -8
-2025-04-14 09:51:25,292 - INFO - exp_llm - 32: None | \dfrac{4}{25}
-2025-04-14 09:51:25,338 - INFO - exp_llm - 33: None | 268
-2025-04-14 09:51:25,362 - INFO - exp_llm - 34: None | 8
-2025-04-14 09:51:25,728 - INFO - exp_llm - 35: None | 48
-2025-04-14 09:51:25,821 - INFO - exp_llm - 36: None | 48
-2025-04-14 09:51:25,842 - INFO - exp_llm - 37: None | 240
-2025-04-14 09:51:26,116 - INFO - exp_llm - 38: None | 828
-2025-04-14 09:51:28,303 - INFO - exp_llm - 39: None | 3
-2025-04-14 09:51:28,611 - INFO - exp_llm - 40: None | 6
-2025-04-14 09:51:28,909 - INFO - exp_llm - 41: None | 12
-2025-04-14 09:51:28,950 - INFO - exp_llm - 42: None | 26
-2025-04-14 09:51:29,133 - INFO - exp_llm - 43: None | 75
-2025-04-14 09:51:29,557 - INFO - exp_llm - 44: None | 0
-2025-04-14 09:51:29,586 - INFO - exp_llm - 45: None | 321
-2025-04-14 09:51:31,759 - INFO - exp_llm - 46: None | \frac{197}{2}
-2025-04-14 09:51:31,971 - INFO - exp_llm - 47: None | 5
-2025-04-14 09:51:32,930 - INFO - exp_llm - 48: None | 48
-2025-04-14 09:51:33,093 - INFO - exp_llm - 49: None | 15
-2025-04-14 09:51:33,891 - INFO - exp_llm - 50: None | 15
-2025-04-14 09:51:37,102 - INFO - exp_llm - 51: None | 12
-2025-04-14 09:51:37,611 - INFO - exp_llm - 52: None | 2
-2025-04-14 09:51:38,383 - INFO - exp_llm - 53: None | 9
-2025-04-14 09:51:39,206 - INFO - exp_llm - 54: \sqrt{2} | \sqrt{2}
-2025-04-14 09:51:41,346 - INFO - exp_llm - 55: None | 23
-2025-04-14 09:51:42,075 - INFO - exp_llm - 56: None | 5
-2025-04-14 09:51:42,214 - INFO - exp_llm - 57: None | 6
-2025-04-14 09:51:45,003 - INFO - exp_llm - 58: \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 1 & 1 \end{pmatrix} | \begin{pmatrix} 0 & 1 & 0 \\ 0 & 0 & 1 \\ 1 & 1 & 1 \end{pmatrix}
-2025-04-14 09:51:45,403 - INFO - exp_llm - 59: None | 3:1
-2025-04-14 09:51:49,339 - INFO - exp_llm - 60: None | 2 \tan x
-2025-04-14 09:51:52,983 - INFO - exp_llm - 61: None | 17
-2025-04-14 09:51:56,736 - INFO - exp_llm - 62: None | 8000
-2025-04-14 09:52:01,633 - INFO - exp_llm - 63: None | 5

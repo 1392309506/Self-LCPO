@@ -1,0 +1,37 @@
+prompt: |
+  Please think step by step.
+  Ensure the response concludes with the answer in the XML format: 
+  <answer>[A, B, C or D]</answer>.
+
+requirements: |
+  Must put the final answer at the end with XML. (<answer>(A, B, C or D)</answer>,such as <answer>A</answer>)
+  The provided prompt needs to adapt to all current types of questions.
+
+count: None
+
+qa:
+  - question: |
+        Two quantum states with energies E1 and E2 have a lifetime of 10^-9 sec and 10^-8 sec, respectively. We want to clearly distinguish these two energy levels. Which one of the following options could be their energy difference so that they be clearly resolved?\n (A: 10^-8 ev, B: 10^-11 ev, C: 10^-9 ev, D: 10^-4 ev)
+
+    answer: |
+        A lot of thinking and analysis processes.
+        ...
+        Final Answer:
+        <answer>(A, B, C or D)</answer>
+  - question: |
+      trans-cinnamaldehyde was treated with methylmagnesium bromide, forming product 1.\n\n1 was treated with pyridinium chlorochromate, forming product 2.\n\n3 was treated with (dimethyl(oxo)-l6-sulfaneylidene)methane in DMSO at elevated temperature, forming product 3.\n\nhow many carbon atoms are there in product 3? (A: 12, B: 10, C: 11, D: 14)
+
+    answer: |
+        A lot of thinking and analysis processes.
+        ...
+        Final Answer:
+        <answer>(A, B, C or D)</answer>
+
+  - question: |
+      A spin-half particle is in a linear superposition0.8|\\uparrow\\rangle+0.6|\\downarrow\\rangle of its spin-up and spin-down states. If |\\uparrow\\rangle and |\\downarrow\\rangle are the eigenstates of \\sigma_{z} , then what is the expectation value up to one decimal place, of the operator 10\\sigma_{z}+5\\sigma_{x} ? Here, symbols have their usual meanings (A: 9.1, B: 7.6, C: 7.2, D: 8.6)
+
+    answer: |
+        A lot of thinking and analysis processes.
+        ...
+        Final Answer:
+        <answer>(A, B, C or D)</answer>

@@ -1,7 +1,0 @@
-{
-    "set_token": 0,
-    "f1_score": 0.359375,
-    "acc": 0.359375,
-    "total_token": 655081,
-    "dataset": "gpqa"
-}

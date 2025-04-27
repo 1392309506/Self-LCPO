@@ -1,0 +1,25 @@
+prompt: |
+  Please think step by step.Ensure the response concludes with the answer in the XML format:
+  <answer>[Yes or No]</answer>.
+
+requirements: 'with the final answer formatted in XML: <answer>Yes or No</answer>.'
+count: null
+qa:
+- question: "does ethanol take more energy make that produces"
+  answer: |
+    A lot of thinking and analysis processes.
+    ...
+    Final Answer:
+    <answer>Yes or No</answer>
+- question: "is house tax and property tax are same"
+  answer: |
+    A lot of thinking and analysis processes.
+    ...
+    Final Answer:
+    <answer>Yes or No</answer>
+- question: "is pain experienced in a missing body part or paralyzed area"
+  answer: |
+    A lot of thinking and analysis processes.
+    ...
+    Final Answer:
+    <answer>    <answer>Yes or No</answer>

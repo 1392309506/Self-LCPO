@@ -1,8 +1,3 @@
-# 实验参数
-experiment:
-  n_i_values: [100, 200, 500, 1000, 2000, 4000]
-  max_questions: 50
-
 # 数据集配置
 datasets:
   bbh: BBH/navigate.json
@@ -11,8 +6,6 @@ datasets:
   wsc: WSC/wsc.json
   str: StrategyQA/dev.json
   boolq: BoolQ/dev.json
-  oly: OlyMath/OlyMath.json
-
 
 # 模型配置
 models:

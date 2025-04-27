@@ -1,5 +1,0 @@
-
-Please think step by step.
-Ensure the response concludes with the answer in the XML format: 
-<answer>your_answer_here</answer>.
-Think for 4000 tokens.

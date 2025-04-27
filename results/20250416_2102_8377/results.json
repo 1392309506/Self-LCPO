@@ -1,7 +1,0 @@
-{
-    "set_token": 0,
-    "f1_score": 0.932,
-    "acc": 0.932,
-    "total_token": 353326,
-    "dataset": "bbh"
-}

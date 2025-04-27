@@ -1,0 +1,39 @@
+prompt: |
+  Please think step by step.
+  Ensure the response concludes with the answer in the XML format: 
+  <answer>[A or B]</answer>.
+
+requirements: |
+  Must put the final answer at the end with XML. (<answer>(A or B)</answer>,such as <answer>A</answer>)
+  The provided prompt needs to adapt to all current types of questions.
+
+count: None
+
+qa:
+  - question: |
+        The city councilmen refused the demonstrators a permit becausetheyfeared violence. Who does 'they' refer to?\nOptions:\n- A. The city councilmen\n- B. The demonstrators
+
+
+    answer: |
+        A lot of thinking and analysis processes.
+        ...
+        Final Answer:
+        <answer>(A or B)</answer>
+
+  - question: |
+      The city councilmen refused the demonstrators a permit becausetheyadvocated violence. Who does 'they' refer to?\nOptions:\n- A. The city councilmen\n- B. The demonstrators
+
+    answer: |
+        A lot of thinking and analysis processes.
+        ...
+        Final Answer:
+        <answer>(A or B)</answer>
+
+  - question: |
+        The trophy doesn't fit into the brown suitcase becauseitis too large. Who does 'it' refer to?\nOptions:\n- A. the trophy\n- B. the suitcase
+
+    answer: |
+        A lot of thinking and analysis processes.
+        ...
+        Final Answer:
+        <answer>(A or B)</answer>
