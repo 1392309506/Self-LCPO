@@ -87,8 +87,11 @@ class Prompt_Runner:
         # 保存 results
         results_file_path = folder / "results_data.json"
         try:
+            # 过滤掉为 None 的元素
+            filtered_results = [result for result in self.results if result is not None]
+
             with open(results_file_path, "w", encoding="utf-8") as f:
-                json.dump(self.results, f, indent=4, ensure_ascii=False)
+                json.dump(filtered_results, f, indent=4, ensure_ascii=False)
             logger.info(f"Results data saved to {results_file_path}")
         except Exception as e:
             logger.error(f"Failed to save results data: {e}")
@@ -123,12 +126,12 @@ class Prompt_Runner:
 
                 answer = LoadUtils.extract_content(response.content, "answer")
                 standard_answer = item.get("answer")
-
-                if self.is_extract == "true":
+                if answer == None:
+                    if self.is_extract == "true":
                     # LLM 提取答案（修正）
-                    if answer == None:
                         answer = await self._extract(standard=standard_answer, personal=response.content, question=question)
-
+                    else :
+                        answer = "None"
                 token_count = self.llm.get_current_token()  # 获取当前API请求消耗的token数量
                 # 记录答案和token消耗
                 result = {
@@ -139,6 +142,7 @@ class Prompt_Runner:
                 self.results.append(result)  # 将每个问题的结果保存到self.qa_results中
                 logger.info(str(self.cnt) + "( " + str(token_count) + " ): " + answer + " | " + standard_answer)
                 self.cnt += 1
+                print("ok")
                 return answer
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
@@ -165,7 +169,7 @@ class Prompt_Runner:
             # 计算 F1 和 ACC
             self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
             self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
-            avg_token = self.llm.get_total_token() / len(self.qa)  # 假设self.qa包含所有问题
+            avg_token = self.llm.get_total_token() / len(self.qa)
             logger.info(f"total_token={self.llm.get_total_token()}")
             logger.info(
                 f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f} | avg_token={avg_token:.2f}")
@@ -175,16 +179,16 @@ class Prompt_Runner:
             logger.info("实验完成")
 
         except Exception as e:
+            logger.error(f"实验运行失败: {str(e)}")
             # 计算 分数
             self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
             self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
-            avg_token = self.llm.get_total_token() / self.F1_Evaluator.get_len()
+            avg_token = self.llm.get_total_token() / len(self.qa)
             logger.info(f"total_token={self.llm.get_total_token()}")
             logger.info(
                 f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f} | avg_token={avg_token}")
 
             self._save_results()
-            logger.error(f"实验运行失败: {str(e)}")
 
 
 def parse_args():
