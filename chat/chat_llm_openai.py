@@ -24,6 +24,7 @@ class ChatLLM:
         self.temperature = params.get("temperature", 0.7)
         self.max_tokens = params.get("max_tokens", 1024)
         self.total_token = 0
+        self.cur_token = 0
         logger.info("初始化Chat LLM | Name: "+name)
         logger.info(params)
 
@@ -120,7 +121,8 @@ class ChatLLM:
                     temperature=self.temperature,
                     max_tokens=self.max_tokens
                 )
-                self.total_token+=completion.usage.total_tokens
+                self.cur_token = completion.usage.total_tokens
+                self.total_token+=self.cur_token
                 return completion.choices[0].message
             except Exception as e:
                 print(f"Error occurred: {e}, retrying... ({retries + 1}/{max_retries})")
@@ -137,6 +139,8 @@ class ChatLLM:
         返回当前累计的 token 总花销
         """
         return self.total_token
+    def get_current_token(self) -> int:
+        return self.cur_token
 
     def token2zero(self):
         """

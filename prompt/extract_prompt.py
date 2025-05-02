@@ -45,13 +45,17 @@ question:
 answer process:
 {content}
 """
-EXTRACT_MATH_PROMPT= """
-Extract the **final answer** from the answer process.
-Ensure the response concludes with the answer in the XML format:<answer>your_answer_here</answer>
 
-answer process:
-{content}
+EXTRACT_SCORE_PROMPT = """
+Your task is to extract a difficulty score from this response, based on a scale from 1 to 10, where 1 represents the easiest possible question and 10 represents the hardest possible question.
+
+Unstructured Response:
+{response}
+
+Ensure the response concludes with the answer in the XML format:
+<score>1~10</score>
 """
+
 # EXTRACT_PROMPT="""
 # You are given an answer process. Your task is to extract the **final truthfulness label** from it.
 

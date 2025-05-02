@@ -4,8 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add spo dataset template">
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="spo baseline">
+      <change afterPath="$PROJECT_DIR$/exp_data.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/chat_llm_openai.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/chat_llm_openai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/extract_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/extract_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,27 +38,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.dataset2json (1).executor": "Run",
-    "Python.dataset2json (2).executor": "Run",
-    "Python.dataset2json.executor": "Run",
-    "Python.exp_lcpo.executor": "Run",
-    "Python.exp_llm.executor": "Run",
-    "Python.exp_prompt.executor": "Run",
-    "Python.general_llm_client.executor": "Run",
-    "Python.gpqa.executor": "Run",
-    "Python.length_optimizer (1).executor": "Run",
-    "Python.length_optimizer.executor": "Run",
-    "Python.popb_optimizer.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code_store\Python\Self-LCPO" />
@@ -414,7 +418,23 @@
       <option name="project" value="LOCAL" />
       <updated>1745756213891</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="start to run TALE baseline">
+      <option name="closed" value="true" />
+      <created>1745756845151</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1745756845151</updated>
+    </task>
+    <task id="LOCAL-00025" summary="spo baseline">
+      <option name="closed" value="true" />
+      <created>1745906630445</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1745906630446</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -447,6 +467,8 @@
     <MESSAGE value="struct IO" />
     <MESSAGE value="modify exp max_concurrent_requests" />
     <MESSAGE value="add spo dataset template" />
-    <option name="LAST_COMMIT_MESSAGE" value="add spo dataset template" />
+    <MESSAGE value="start to run TALE baseline" />
+    <MESSAGE value="spo baseline" />
+    <option name="LAST_COMMIT_MESSAGE" value="spo baseline" />
   </component>
 </project>

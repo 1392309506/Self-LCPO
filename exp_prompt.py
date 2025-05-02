@@ -5,11 +5,10 @@ import json
 import argparse
 from datetime import datetime
 from pathlib import Path
-from random import randint
-from typing import List
+from typing import List, Optional
 
 from component.config_loader import ConfigLoader
-from prompt.execute_prompt import BLANK_PROMPT, SPO_PROMPT, COT_PROMPT
+from prompt.execute_prompt import SPO_PROMPT, COT_PROMPT
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 
 from utils.load_utils import LoadUtils
@@ -18,8 +17,7 @@ from chat.chat_llm_openai import ChatLLM
 from component.f1_score import F1_Evaluator
 from utils.logger_utils import LoggerUtil
 
-logger = LoggerUtil.get_logger("exp_llm")
-
+logger = LoggerUtil.get_logger("exp_prompt")
 
 class Prompt_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 0, prompt: str = "",
@@ -32,7 +30,6 @@ class Prompt_Runner:
         self.qa = self.loadUtil.load_json(0)
 
         self.F1_Evaluator = F1_Evaluator()
-        self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
         self.llm = ChatLLM(
             api_type=self.model.get("api_type"),
             api_key=self.model.get("api_key"),
@@ -59,38 +56,42 @@ class Prompt_Runner:
             name="extract_llm"
         )
 
+        self.results = []
+
     def _save_results(self):
-        """保存 F1 分数 和 QA 对"""
+        """保存评估结果，包括 F1 分数、准确率以及模型的回答"""
         results_dir = Path("results")
         results_dir.mkdir(parents=True, exist_ok=True)
 
-        # 生成时间戳+随机码文件夹名
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M")
-        random_code = hex(randint(0, 65535))[2:].upper()
-        folder = Path("results") / f"{timestamp}_{random_code}"
+        # 使用“exp_prompt”作为二级文件夹，日期作为三级文件夹
+        timestamp = datetime.now().strftime("%Y%m%d")
+        folder_name = f"{timestamp}_{self.model_name}_{self.dataset}"
+        folder = results_dir / "exp_prompt" / timestamp / folder_name
         folder.mkdir(parents=True, exist_ok=True)
 
-        # 保存 分数
+        # 保存分数
         results_path = folder / "results.json"
         try:
             with open(results_path, "w", encoding="utf-8") as f:
-                json.dump({"set_token": self.token,
-                           "f1_score": self.f1_score,
-                           "acc": self.acc,
-                           "total_token": self.llm.get_total_token(),
-                           "dataset": self.dataset}, f, indent=4, ensure_ascii=False)
-            logger.info(f"F1 分数已保存至 {results_path}")
+                json.dump({
+                    "token": self.token,
+                    "f1_score": self.f1_score,
+                    "accuracy": self.acc,
+                    "total_token": self.llm.get_total_token(),
+                    "dataset": self.dataset
+                }, f, indent=4, ensure_ascii=False)
+            logger.info(f"Results saved to {results_path}")
         except Exception as e:
-            logger.error(f"保存 F1 分数失败: {e}")
+            logger.error(f"Failed to save results: {e}")
 
-        # 保存 QA 对
-        qa_path = folder / "qa_answers.json"
+        # 保存 results
+        results_file_path = folder / "results_data.json"
         try:
-            with open(qa_path, "w", encoding="utf-8") as f:
-                json.dump(self.qa_answers_by_ni, f, indent=2, ensure_ascii=False)
-            logger.info(f"QA 对已保存至 {qa_path}")
+            with open(results_file_path, "w", encoding="utf-8") as f:
+                json.dump(self.results, f, indent=4, ensure_ascii=False)
+            logger.info(f"Results data saved to {results_file_path}")
         except Exception as e:
-            logger.error(f"保存 QA 对失败: {e}")
+            logger.error(f"Failed to save results data: {e}")
 
     async def _execute_prompt(self, n: int) -> List[str]:
         """并发执行提示"""
@@ -102,12 +103,11 @@ class Prompt_Runner:
         else:
             prompt = self.template.format(count=n)
 
-
         tasks = [self._fetch_answer(item, prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
         return results
 
-    async def _fetch_answer(self, item: dict, prompt: str = "") -> str | None:
+    async def _fetch_answer(self, item: dict, prompt: str = "") -> Optional[str]:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
         question = item.get("question")
         content = prompt + "\n" + question
@@ -129,7 +129,15 @@ class Prompt_Runner:
                     if answer == None:
                         answer = await self._extract(standard=standard_answer, personal=response.content, question=question)
 
-                logger.info(str(self.cnt) + ": " + answer + " | " + standard_answer)
+                token_count = self.llm.get_current_token()  # 获取当前API请求消耗的token数量
+                # 记录答案和token消耗
+                result = {
+                    "question": question,
+                    "answer": answer,
+                    "token_consumed": token_count
+                }
+                self.results.append(result)  # 将每个问题的结果保存到self.qa_results中
+                logger.info(str(self.cnt) + "( " + str(token_count) + " ): " + answer + " | " + standard_answer)
                 self.cnt += 1
                 return answer
             except Exception as e:
@@ -149,26 +157,20 @@ class Prompt_Runner:
         return personal
 
     async def run(self):
-        """执行实验流程"""
+        """执行实验流程，获取每道题的答案和消耗的token数量，并保存结果"""
         logger.info(f"开始训练的token数量为：{self.token}")
-        answers = await self._execute_prompt(self.token)
-
-        # 存储 QA 对
-        qa_pairs = [
-            {"question": item.get("question"), "answer": answer}
-            for item, answer in zip(self.qa, answers)
-        ]
+        await self._execute_prompt(self.token)
+        answers = [item["answer"] for item in self.results if item["answer"] is not None]
         try:
-            self.qa_answers_by_ni[self.token] = qa_pairs
-
-            # 计算 分数
+            # 计算 F1 和 ACC
             self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
             self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
-            avg_token = self.llm.get_total_token() / self.F1_Evaluator.get_len()
+            avg_token = self.llm.get_total_token() / len(self.qa)  # 假设self.qa包含所有问题
             logger.info(f"total_token={self.llm.get_total_token()}")
             logger.info(
-                f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f} | avg_token={avg_token}")
+                f"self.token={self.token} | F1 Score={self.f1_score:.4f} | ACC Score={self.acc:.4f} | avg_token={avg_token:.2f}")
 
+            # 保存结果
             self._save_results()
             logger.info("实验完成")
 
