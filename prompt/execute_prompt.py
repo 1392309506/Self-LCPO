@@ -6,7 +6,7 @@ Conclude your response with the final answer formatted in XML: <answer>your_answ
 COT_PROMPT = """
 Please think step by step.
 Ensure the response concludes with the answer in the XML format:
-<answer>your_answer_here</answer>
+<answer>A, B, C, or D</answer>.
 """
 
 

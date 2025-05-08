@@ -25,7 +25,7 @@ class TokenLengthOptimizer:
     """
     使用 Pairwise Gaussian Process 实现的偏好贝叶斯优化器，用于寻找最佳 LLM token 长度。
     """
-    def __init__(self, token_bounds=(100, 150000), config: ConfigLoader = None, model_name: str = "gpt", llm: ChatLLM=None,
+    def __init__(self, token_bounds=(100, 15000), config: ConfigLoader = None, model_name: str = "gpt", llm: ChatLLM=None,
                  qa:list = None, is_truth :str = "true"):
         self.token_bounds = token_bounds                  # token 长度的搜索边界
         self.token_history = []                           # 记录历史所有 token 值

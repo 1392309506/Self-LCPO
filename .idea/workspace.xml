@@ -4,20 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix exp_prompt">
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add paint.py and fix bayesian">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/f1_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/evaluator.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/paint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/Agival-MATH.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/BoolQ.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/GPQA.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/Navigate.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/Strategy.yaml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings/WSC.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/requirements.txt" beforeDir="false" afterPath="$PROJECT_DIR$/requirements.txt" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -458,7 +448,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746199930148</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="add paint.py and fix bayesian">
+      <option name="closed" value="true" />
+      <created>1746708843146</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1746708843146</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -495,6 +493,7 @@
     <MESSAGE value="spo baseline" />
     <MESSAGE value="add token_cost in every qa" />
     <MESSAGE value="fix exp_prompt" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix exp_prompt" />
+    <MESSAGE value="add paint.py and fix bayesian" />
+    <option name="LAST_COMMIT_MESSAGE" value="add paint.py and fix bayesian" />
   </component>
 </project>
