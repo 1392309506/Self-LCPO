@@ -14,7 +14,7 @@ from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
 
-from component.f1_score import F1_Evaluator
+from component.evaluator import Evaluator
 from utils.logger_utils import LoggerUtil
 
 logger = LoggerUtil.get_logger("exp_prompt")
@@ -29,7 +29,7 @@ class Prompt_Runner:
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
         self.qa = self.loadUtil.load_json(0)
 
-        self.F1_Evaluator = F1_Evaluator()
+        self.Evaluator = Evaluator()
         self.llm = ChatLLM(
             api_type=self.model.get("api_type"),
             api_key=self.model.get("api_key"),
@@ -63,10 +63,9 @@ class Prompt_Runner:
         results_dir = Path("results")
         results_dir.mkdir(parents=True, exist_ok=True)
 
-        # 使用“exp_prompt”作为二级文件夹，日期作为三级文件夹
+        # exp_prompt/日期/模型名_数据集名
         timestamp = datetime.now().strftime("%Y%m%d")
-        folder_name = f"{timestamp}_{self.model_name}_{self.dataset}"
-        folder = results_dir / "exp_prompt" / timestamp / folder_name
+        folder = results_dir / "exp_prompt" / timestamp / f"{self.model_name}_{self.dataset}"
         folder.mkdir(parents=True, exist_ok=True)
 
         # 保存分数
@@ -142,7 +141,6 @@ class Prompt_Runner:
                 self.results.append(result)  # 将每个问题的结果保存到self.qa_results中
                 logger.info(str(self.cnt) + "( " + str(token_count) + " ): " + answer + " | " + standard_answer)
                 self.cnt += 1
-                print("ok")
                 return answer
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
@@ -167,8 +165,8 @@ class Prompt_Runner:
         answers = [item["answer"] for item in self.results if item["answer"] is not None]
         try:
             # 计算 F1 和 ACC
-            self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
-            self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
+            self.f1_score = self.Evaluator.calculate_f1_list(self.qa, answers)
+            self.acc = self.Evaluator.calculate_ACC(self.qa, answers)
             avg_token = self.llm.get_total_token() / len(self.qa)
             logger.info(f"total_token={self.llm.get_total_token()}")
             logger.info(
@@ -181,8 +179,8 @@ class Prompt_Runner:
         except Exception as e:
             logger.error(f"实验运行失败: {str(e)}")
             # 计算 分数
-            self.f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
-            self.acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
+            self.f1_score = self.Evaluator.calculate_f1_list(self.qa, answers)
+            self.acc = self.Evaluator.calculate_ACC(self.qa, answers)
             avg_token = self.llm.get_total_token() / len(self.qa)
             logger.info(f"total_token={self.llm.get_total_token()}")
             logger.info(

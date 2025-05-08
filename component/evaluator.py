@@ -3,9 +3,9 @@ import re
 from typing import List, Dict, Optional
 
 from utils.logger_utils import LoggerUtil
-logger = LoggerUtil.get_logger("F1_Evaluator")
+logger = LoggerUtil.get_logger("Evaluator")
 
-class F1_Evaluator:
+class Evaluator:
     def __init__(self):
         logger.info(f"初始化 F1_Evaluator")
         self.len=0
@@ -119,5 +119,5 @@ def parse_args():
 
 if __name__ == "__main__":
     args = parse_args()
-    evaluator = F1_Evaluator()
+    evaluator = Evaluator()
     # evaluator.evaluate_spo()

@@ -4,9 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add token_cost in every qa">
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix exp_prompt">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/f1_score.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/evaluator.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_data.py" beforeDir="false" afterPath="$PROJECT_DIR$/paint.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/Agival-MATH.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/BoolQ.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/GPQA.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/Navigate.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/Strategy.yaml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/settings/WSC.yaml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -439,7 +450,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746172000578</updated>
     </task>
-    <option name="localTasksCounter" value="27" />
+    <task id="LOCAL-00027" summary="fix exp_prompt">
+      <option name="closed" value="true" />
+      <created>1746199930148</created>
+      <option name="number" value="00027" />
+      <option name="presentableId" value="LOCAL-00027" />
+      <option name="project" value="LOCAL" />
+      <updated>1746199930148</updated>
+    </task>
+    <option name="localTasksCounter" value="28" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -475,6 +494,7 @@
     <MESSAGE value="start to run TALE baseline" />
     <MESSAGE value="spo baseline" />
     <MESSAGE value="add token_cost in every qa" />
-    <option name="LAST_COMMIT_MESSAGE" value="add token_cost in every qa" />
+    <MESSAGE value="fix exp_prompt" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix exp_prompt" />
   </component>
 </project>

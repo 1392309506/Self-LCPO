@@ -6,7 +6,7 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 import random
-from typing import List
+from typing import List, Optional
 
 from component.length_optimizer import TokenLengthOptimizer
 from component.config_loader import ConfigLoader
@@ -16,7 +16,7 @@ from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
 
-from component.f1_score import F1_Evaluator
+from component.evaluator import Evaluator
 from utils.logger_utils import LoggerUtil
 
 logger = LoggerUtil.get_logger("exp_lcpo")
@@ -32,7 +32,7 @@ class LCPO_Runner:
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
         self.qa = self.loadUtil.load_json(sample_k)
-        self.F1_Evaluator = F1_Evaluator()
+        self.Evaluator = Evaluator()
         self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
         self.llm = ChatLLM(
             api_type=self.model.get("api_type"),
@@ -41,7 +41,7 @@ class LCPO_Runner:
             params=self.model.get("params"),
             name="exp_lcpo",
         )
-        self.opt = TokenLengthOptimizer(token_bounds=(100, 4000), config=config, model_name=model_name, llm=self.llm,
+        self.opt = TokenLengthOptimizer(token_bounds=(min(initial_tokens), max(initial_tokens)), config=config, model_name=model_name, llm=self.llm,
                                         qa=self.qa,is_truth=is_truth)
         self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
@@ -65,6 +65,9 @@ class LCPO_Runner:
         self.initial_tokens = initial_tokens
         self.is_extract = is_extract
         self.is_truth = is_truth
+
+        self.cnt = 0
+        self.results = []
 
 
     async def _save_results(self):
@@ -288,9 +291,9 @@ def parse_args():
     parser.add_argument("--is_truth", type=str, default="true", help="是否有人工标注")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     # init_token_list
-    parser.add_argument("--init_left", type=int, default=800, help="初试token_list边界左值")
-    parser.add_argument("--init_right", type=int, default=8001, help="初试token_list边界右值")
-    parser.add_argument("--init_step", type=int, default=1200, help="初试token_list边界步长")
+    parser.add_argument("--init_left", type=int, default=100, help="初试token_list边界左值")
+    parser.add_argument("--init_right", type=int, default=150000, help="初试token_list边界右值")
+    parser.add_argument("--init_step", type=int, default=2000, help="初试token_list边界步长")
     return parser.parse_args()
 
 

@@ -13,7 +13,7 @@ from component.config_loader import ConfigLoader
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
 
-from component.f1_score import F1_Evaluator
+from component.evaluator import Evaluator
 
 from utils.logger_utils import LoggerUtil
 
@@ -27,7 +27,7 @@ class IO_Runner:
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
         self.qa = self.loadUtil.load_json(100)
-        self.F1_Evaluator = F1_Evaluator()
+        self.F1_Evaluator = Evaluator()
         self.qa_pairs = {}  # 存储每个 token 限制下的 QA 对
         self.llm = ChatLLM(
             api_type=self.model.get("api_type"),
