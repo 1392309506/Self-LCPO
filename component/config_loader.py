@@ -31,7 +31,7 @@ class ConfigLoader:
             raise ValueError("配置文件解析失败: 配置内容为空")
 
         # 验证必要配置段
-        required_sections = ['experiment', 'datasets', 'models']
+        required_sections = ['datasets', 'models']
         for section in required_sections:
             if section not in self.config:
                 raise ValueError(f"配置缺少必要章节: {section}")

@@ -287,7 +287,7 @@ def parse_args():
     parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
-    parser.add_argument("--template", type=str, default="MATH_PROMPT", help="使用的prompt模板")
+    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
     parser.add_argument("--is_truth", type=str, default="true", help="是否有人工标注")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     # init_token_list
