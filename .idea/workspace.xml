@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix 150000 to 15000">
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix ConfigLoader">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -470,7 +467,23 @@
       <option name="project" value="LOCAL" />
       <updated>1746715563107</updated>
     </task>
-    <option name="localTasksCounter" value="30" />
+    <task id="LOCAL-00030" summary="modify exp_llm">
+      <option name="closed" value="true" />
+      <created>1746720871009</created>
+      <option name="number" value="00030" />
+      <option name="presentableId" value="LOCAL-00030" />
+      <option name="project" value="LOCAL" />
+      <updated>1746720871009</updated>
+    </task>
+    <task id="LOCAL-00031" summary="fix ConfigLoader">
+      <option name="closed" value="true" />
+      <created>1746721327719</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1746721327719</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -485,7 +498,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="first commit" />
     <MESSAGE value="adjust project structure" />
     <MESSAGE value="Supplementary README.md document content" />
     <MESSAGE value="Optimization tool category, supplement llm_client" />
@@ -509,6 +521,8 @@
     <MESSAGE value="fix exp_prompt" />
     <MESSAGE value="add paint.py and fix bayesian" />
     <MESSAGE value="fix 150000 to 15000" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix 150000 to 15000" />
+    <MESSAGE value="modify exp_llm" />
+    <MESSAGE value="fix ConfigLoader" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix ConfigLoader" />
   </component>
 </project>

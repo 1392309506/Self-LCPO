@@ -21,7 +21,7 @@ logger = LoggerUtil.get_logger("exp_llm")
 
 
 class IO_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, prompt: str, template: str):
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, template: str):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
@@ -39,7 +39,6 @@ class IO_Runner:
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.result = 0
         self.cnt = 0
-        self.prompt = prompt
         self.template = template
 
         extract_model = config.models["gpt"]
@@ -189,7 +188,7 @@ def main():
     print(args)
     try:
         config = ConfigLoader(args.config)
-        runner = IO_Runner(config, args.model_name, args.dataset, args.prompt, args.template)
+        runner = IO_Runner(config, args.model_name, args.dataset, args.template)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

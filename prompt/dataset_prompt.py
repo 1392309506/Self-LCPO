@@ -6,6 +6,7 @@ GPQA_PROMPT ="""
 Please think step by step.
 Ensure the response concludes with the answer in the XML format:
 <answer>A, B, C, or D</answer>.
+Think for {count} tokens.
 """
 
 WSC_PROMPT = """
@@ -13,15 +14,17 @@ Identify who 'they' refers to in the following sentence: \"The city councilmen r
 """
 
 BBH_PROMPT ="""
-First, estimate the minimum number of tokens needed to reason through the following question correctly.
-Then, reason step-by-step within this estimated budget.
-
+Please think step by step
 Ensure the response concludes with the answer in the XML format:
 <answer>Yes or No</answer>
+Think for {count} tokens.
 """
 
 STR_PROMPT="""
-present your answer in the specified XML format: <answer>[Yes or No]</answer>.\n
+Please think step by step
+Ensure the response concludes with the answer in the XML format:
+<answer>Yes or No</answer>
+Think for {count} tokens.
 """
 
 
