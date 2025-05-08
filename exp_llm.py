@@ -145,7 +145,7 @@ class IO_Runner:
     async def run(self):
         """执行实验流程"""
         try:
-            init_tokenlist = list(range(100,101,200))
+            init_tokenlist = list(range(300,2701,400))
             for token in init_tokenlist:
                 logger.info(f"开始训练的token数量为：{token}")
                 answers = await self._execute_prompt(token)

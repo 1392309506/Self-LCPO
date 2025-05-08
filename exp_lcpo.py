@@ -280,9 +280,9 @@ def parse_args():
     # config
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="ds", help="Project name")
+    parser.add_argument("--model_name", type=str, default="o3", help="Project name")
     # train
-    parser.add_argument("--dataset", type=str, default="math", help="Project name")
+    parser.add_argument("--dataset", type=str, default="gpqa", help="Project name")
     parser.add_argument("--sample_k", type=int, default=2, help="抽样的QA数量（0表示全部）")
     parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
