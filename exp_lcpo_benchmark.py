@@ -162,7 +162,7 @@ class LCPO_Runner:
         ranking = LoadUtils.extract_content(response.content, "judge")
         return ranking
 
-    def benchmark_listwise(self, qa_dict: dict[int, list[dict]], top_ratio: float = 0.1) -> list[int]:
+    def benchmark_listwise(self, qa_dict: dict[int, list[dict]]) -> list[int]:
         """
         使用 ACC 作为评价指标，对 token 数进行 listwise 排序（替代 LLM 推理方式）
 
@@ -177,12 +177,10 @@ class LCPO_Runner:
 
         for token in token_list:
             qa_pairs = qa_dict[token]
-            n = max(1, int(len(qa_pairs) * top_ratio))  # 至少一个样本
-            subset = qa_pairs[:n]
 
             correct = 0
             total = 0
-            for item in subset:
+            for item in qa_pairs:
                 pred = item.get("pred", "").strip()
                 ans = item.get("answer", "").strip()
                 if pred != "None" and ans != "None":
@@ -191,8 +189,8 @@ class LCPO_Runner:
                         correct += 1
 
             acc = correct / total if total > 0 else 0.0
+            logger.info("Token = "+str(token)+" | ACC = "+str(acc))
             acc_list.append(acc)
-
         # 返回 token 数值排序（从高到低）
         return [token_list[i] for i in sorted(range(len(acc_list)), key=lambda i: -acc_list[i])]
     async def _warmup(self):
