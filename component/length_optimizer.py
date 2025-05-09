@@ -97,29 +97,50 @@ class TokenLengthOptimizer:
         exclude = exclude or set()
         suggestions = set()
 
-        # 优化采集函数，生成新 token 候选
+        # Step 1: 使用采集函数获得理论最优点
         try:
-            while len(suggestions) < n_suggestions:
-                acq_func = AnalyticExpectedUtilityOfBestOption(pref_model=self.gpmodel)
-                candidates, _ = optimize_acqf(
-                    acq_function=acq_func,
-                    bounds=bounds,
-                    q=2,  # 只支持 q=1 或 q=2
-                    num_restarts=5,
-                    raw_samples=64,
-                )
-                for c in candidates:
-                    val = int(c.item())
-                    if val not in exclude and self.token_bounds[0] <= val <= self.token_bounds[1] and val not in self.token_history:
-                        suggestions.add(val)
-        except Exception:
-            # fallback 随机生成
-            while len(suggestions) < n_suggestions:
-                fallback = random.randint(*self.token_bounds)
-                if fallback not in exclude:
-                    suggestions.add(fallback)
+            acq_func = AnalyticExpectedUtilityOfBestOption(pref_model=self.gpmodel)
+            candidates, _ = optimize_acqf(
+                acq_function=acq_func,
+                bounds=bounds,
+                q=1,
+                num_restarts=5,
+                raw_samples=64,
+            )
+            val = int(candidates[0].item())
+            if val not in exclude and self.token_bounds[0] <= val <= self.token_bounds[1] and val not in self.token_history:
+                suggestions.add(val)
+        except Exception as e:
+            logger.warning(f"采集函数优化失败，跳过最优采样: {e}")
 
-        # 替换最后一个为 anchor token（如当前最优值）
+        # Step 2: 从后验均值中补齐其他 token 候选
+        try:
+            needed = n_suggestions - len(suggestions)
+            if needed > 0:
+                # Dense 网格采样
+                candidate_tokens = torch.linspace(
+                    self.token_bounds[0], self.token_bounds[1], steps=512, dtype=torch.float
+                ).unsqueeze(-1)
+                posterior = self.gpmodel.posterior(candidate_tokens)
+                means = posterior.mean.squeeze(-1)
+                token_scores = list(zip(candidate_tokens.squeeze(-1).tolist(), means.tolist()))
+                token_scores.sort(key=lambda x: x[1], reverse=True)
+                for val, score in token_scores:
+                    val = int(val)
+                    if val not in suggestions and val not in exclude and val not in self.token_history:
+                        suggestions.add(val)
+                    if len(suggestions) >= n_suggestions:
+                        break
+        except Exception as e:
+            logger.warning(f"后验均值补充失败，尝试 fallback: {e}")
+
+        # Step 3: fallback 随机生成（如仍不足）
+        while len(suggestions) < n_suggestions:
+            fallback = random.randint(*self.token_bounds)
+            if fallback not in suggestions and fallback not in exclude:
+               suggestions.add(fallback)
+
+        # Step 4: 替换一个为 anchor_token（如提供）
         if anchor_token and anchor_token not in suggestions and anchor_token not in exclude:
             suggestions = list(suggestions)
             suggestions[-1] = anchor_token
