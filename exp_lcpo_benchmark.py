@@ -150,7 +150,6 @@ class LCPO_Runner:
                             answer = standard_answer
                         elif answer == None:
                             answer = "None"
-                logger.info(f"question: {question[:40]}已执行完毕")
                 return answer
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
