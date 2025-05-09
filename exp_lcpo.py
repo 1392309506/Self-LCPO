@@ -284,7 +284,7 @@ def parse_args():
     # train
     parser.add_argument("--dataset", type=str, default="gpqa", help="Project name")
     parser.add_argument("--sample_k", type=int, default=2, help="抽样的QA数量（0表示全部）")
-    parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
+    parser.add_argument("--n_steps", type=int, default=20, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
     parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
@@ -292,8 +292,8 @@ def parse_args():
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     # init_token_list
     parser.add_argument("--init_left", type=int, default=100, help="初试token_list边界左值")
-    parser.add_argument("--init_right", type=int, default=15000, help="初试token_list边界右值")
-    parser.add_argument("--init_step", type=int, default=2000, help="初试token_list边界步长")
+    parser.add_argument("--init_right", type=int, default=8000, help="初试token_list边界右值")
+    parser.add_argument("--init_step", type=int, default=1000, help="初试token_list边界步长")
     return parser.parse_args()
 
 

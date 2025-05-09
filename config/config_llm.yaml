@@ -28,7 +28,7 @@ models:
   - name: "gpt"
     api-type: "openai"
     base_url: "https://api.chatanywhere.tech"
-    api_key: "sk-Eby2FTk6vPxIz7i2Gh78uqG7uQZ6YVfPxNwpsCMgfDsk2lyy"
+    api_key: "sk-2xGzyYL3nQDvw3XS9SjoDKn5aNucUxYil16rci6Gcr358zyJ"
     # api_key: "sk-iX0M9keAJemCgNFqvQMVLyWkcembRT27ix50aymLnvZ18QuT"
     params:
       model: "gpt-3.5-turbo"

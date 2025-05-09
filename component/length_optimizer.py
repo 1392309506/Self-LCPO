@@ -110,7 +110,7 @@ class TokenLengthOptimizer:
                 )
                 for c in candidates:
                     val = int(c.item())
-                    if val not in exclude and self.token_bounds[0] <= val <= self.token_bounds[1]:
+                    if val not in exclude and self.token_bounds[0] <= val <= self.token_bounds[1] and val not in self.token_history:
                         suggestions.add(val)
         except Exception:
             # fallback 随机生成
@@ -195,7 +195,7 @@ class TokenLengthOptimizer:
                 if len(ranked) < len(token_list)/3 :
                     raise ValueError("length of ranked is not included enough good tokens")
                 if isinstance(ranked, list) and all(isinstance(i, int) for i in ranked):
-                    logger.info(f"🧠 warm-up listwise 排序结果: {ranked}")
+                    logger.info(f"🧠 listwise 排序结果: {ranked}")
                     return ranked
                 else:
                     raise ValueError("解析出的结构不是 int list")
