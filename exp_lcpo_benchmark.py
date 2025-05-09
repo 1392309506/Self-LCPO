@@ -6,12 +6,10 @@ import argparse
 from datetime import datetime
 from pathlib import Path
 import random
-from typing import List, Optional
+from typing import List
 
 from component.length_optimizer import TokenLengthOptimizer
 from component.config_loader import ConfigLoader
-from prompt.dataset_prompt import MATH_PROMPT
-from prompt.execute_prompt import SPO_PROMPT
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -74,40 +72,38 @@ class LCPO_Runner:
         self.cnt = 0
         self.results = []
 
-
     async def _save_results(self):
-        """保存最优 Prompt 与对应的 F1 分数到新文件夹"""
+        """保存最优 prompt、预测结果、token 使用信息等到统一目录"""
         if not hasattr(self, 'sorted_tokens') or not self.sorted_tokens:
-            logger.warning("没有实验结果需要保存。")
+            logger.warning("没有排序结果，跳过保存。")
             return
+
         best_token = self.sorted_tokens[0]
-        answers = await self._execute_prompt(best_token)
-        # 存储每个 n_i 下的 QA 对
-        qa_pairs = [
-            {"question": item.get("question"), "answer": answer}
-            for item, answer in zip(self.qa, answers)
-        ]
-        self.qa_answers_by_ni[best_token] = qa_pairs
-        # 获取最优 token 与其 F1 分数
         logger.info(f"🏆 最佳 token: {best_token}")
 
-        # 生成时间戳+随机码文件夹名
+        logger.info(f"📥 使用最佳 token 执行预测")
+
+        # 构造保存路径
         timestamp = datetime.now().strftime("%Y%m%d_%H%M")
         random_code = hex(random.randint(0, 65535))[2:].upper()
         folder = Path("results") / f"{timestamp}_{random_code}"
         folder.mkdir(parents=True, exist_ok=True)
 
-        # 生成 best_prompt
-        best_prompt = MATH_PROMPT.format(
-            question=self.qa[0]["question"],
-            count=best_token
-        )
+        # 构造 summary.json 内容
+        total_token = self.llm.get_total_token()
+        best_prompt = self.template.format(count=best_token, question=self.qa[0]["question"])
+        summary_data = {
+            "best_token": best_token,
+            "total_token_usage": total_token,
+            "best_prompt": best_prompt
+        }
 
-        # 保存 Prompt
-        prompt_path = folder / "best_prompt.txt"
-        with open(prompt_path, "w", encoding="utf-8") as f:
-            f.write(best_prompt)
+        summary_path = folder / "summary.json"
+        with open(summary_path, "w", encoding="utf-8") as f:
+            json.dump(summary_data, f, indent=2, ensure_ascii=False)
+        logger.info(f"📝 已保存 summary.json 到 {summary_path}")
 
+        logger.info(f"✅ 所有实验结果已保存到 {folder}")
 
     async def _execute_protect_prompt(self) -> List[str]:
         """并发执行提示"""
@@ -116,21 +112,12 @@ class LCPO_Runner:
         tasks = [self._fetch_answer(item, prompt) for item in self.qa]
         results = await asyncio.gather(*tasks)
         return results
-
-    async def _execute_prompt(self, n: int) -> List[dict]:
-        """并发执行提示，返回带 question、answer、pred 的结构"""
+    async def _execute_prompt(self, n: int) -> List[str]:
+        """并发执行提示"""
         prompt = self.template.format(count=n)
+
         tasks = [self._fetch_answer(item, prompt) for item in self.qa]
-        preds = await asyncio.gather(*tasks)
-
-        results = []
-        for item, pred in zip(self.qa, preds):
-            results.append({
-                "question": item.get("question", "").strip(),
-                "answer": item.get("answer", "").strip(),
-                "pred": pred.strip() if pred else "None"
-            })
-
+        results = await asyncio.gather(*tasks)
         return results
 
     async def _fetch_answer(self, item: dict, prompt: str = "") -> str | None:
@@ -323,6 +310,7 @@ class LCPO_Runner:
             logger.info("🏁 模型训练结束")
             await self._save_results()
             logger.info("✅ 实验完成")
+            logger.info("token = "+str(self.llm.get_total_token()))
 
         except Exception as e:
             logger.error(f"实验运行失败: {str(e)}")
@@ -337,7 +325,7 @@ def parse_args():
     # train
     parser.add_argument("--dataset", type=str, default="gpqa", help="Project name")
     parser.add_argument("--sample_k", type=int, default=2, help="抽样的QA数量（0表示全部）")
-    parser.add_argument("--n_steps", type=int, default=20, help="贝叶斯优化迭代轮次")
+    parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
     parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
