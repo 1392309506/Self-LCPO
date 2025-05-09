@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix ConfigLoader">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="modify dataset prompt" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -483,7 +481,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746721327719</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="modify dataset prompt">
+      <option name="closed" value="true" />
+      <created>1746722046267</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1746722046267</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -498,7 +504,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="adjust project structure" />
     <MESSAGE value="Supplementary README.md document content" />
     <MESSAGE value="Optimization tool category, supplement llm_client" />
     <MESSAGE value="Optimization tool category, supplement llm_client, complete exp_llm" />
@@ -523,6 +528,7 @@
     <MESSAGE value="fix 150000 to 15000" />
     <MESSAGE value="modify exp_llm" />
     <MESSAGE value="fix ConfigLoader" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix ConfigLoader" />
+    <MESSAGE value="modify dataset prompt" />
+    <option name="LAST_COMMIT_MESSAGE" value="modify dataset prompt" />
   </component>
 </project>

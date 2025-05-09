@@ -36,22 +36,11 @@ class ConfigLoader:
             if section not in self.config:
                 raise ValueError(f"配置缺少必要章节: {section}")
 
-        # 验证实验参数
-        self._validate_experiment_section()
-
         # 验证数据集路径
         self._validate_datasets()
 
         # 验证模型配置
         self._validate_models()
-
-    def _validate_experiment_section(self):
-        """验证实验参数配置"""
-        exp = self.config['experiment']
-        if not isinstance(exp.get('n_i_values'), list):
-            raise ValueError("experiment.n_i_values 必须为列表")
-        if not isinstance(exp.get('max_questions'), int):
-            raise ValueError("experiment.max_questions 必须为整数")
 
     def _validate_datasets(self):
         """验证数据集配置"""
@@ -78,14 +67,6 @@ class ConfigLoader:
             # 验证参数结构
             if not isinstance(model['params'], dict):
                 raise ValueError(f"模型 {model['name']} 的params必须为字典类型")
-
-    @property
-    def experiment(self) -> Dict[str, Any]:
-        """获取实验参数"""
-        return {
-            'n_i_values': self.config['experiment']['n_i_values'],
-            'max_questions': self.config['experiment']['max_questions']
-        }
 
     @property
     def datasets(self) -> Dict[str, str]:
