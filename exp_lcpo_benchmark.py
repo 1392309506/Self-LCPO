@@ -22,14 +22,13 @@ logger = LoggerUtil.get_logger("exp_lcpo_benchmark")
 
 class LCPO_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, is_truth : str,
-                 sample_k: int = 0, n_steps: int = 5,
-                 protect_token: int = 0, template: str = "GPQA_PROMPT", initial_tokens=list(range(1000, 5001, 500)),
-                 is_extract:str="true", protect_prompt:str=""):
+                 n_steps: int = 5, protect_token: int = 0, template: str = "GPQA_PROMPT",
+                 initial_tokens=list(range(1000, 5001, 500)), is_extract:str="true", protect_prompt:str=""):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
-        self.qa_all = self.loadUtil.load_json(sample_k)
+        self.qa_all = self.loadUtil.load_json(0)
         split_point = max(1, len(self.qa_all) // 10)
 
         self.qa = self.qa_all[:split_point]  # 前 10% 作为训练集
@@ -138,7 +137,6 @@ class LCPO_Runner:
                     return "None"
 
                 answer = response.content
-                # logger.info(answer)
                 # 需要人工标注：答案作为监督信号。否则过程作为监督信号
                 if self.is_truth == "true" :
                     answer = LoadUtils.extract_content(answer, "answer")
@@ -324,7 +322,6 @@ def parse_args():
     parser.add_argument("--model_name", type=str, default="o3", help="Project name")
     # train
     parser.add_argument("--dataset", type=str, default="gpqa", help="Project name")
-    parser.add_argument("--sample_k", type=int, default=2, help="抽样的QA数量（0表示全部）")
     parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
@@ -346,7 +343,7 @@ def main():
         initial_tokens = list(range(args.init_left, args.init_right, args.init_step))
         config = ConfigLoader(args.config)
         runner = LCPO_Runner(config=config, model_name=args.model_name, dataset=args.dataset,
-                             sample_k=args.sample_k, n_steps=args.n_steps, protect_token=args.protect_token,
+                             n_steps=args.n_steps, protect_token=args.protect_token,
                              template=args.template, initial_tokens=initial_tokens, is_truth=args.is_truth,
                              is_extract=args.is_extract)
 
