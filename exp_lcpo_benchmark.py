@@ -150,7 +150,14 @@ class LCPO_Runner:
                             answer = standard_answer
                         elif answer == None:
                             answer = "None"
-                return answer
+
+
+                result={
+                    "question":question,
+                    "answer":standard_answer,
+                    "pre":answer,
+                }
+                return result
             except Exception as e:
                 logger.error(f"⚠️ 模型调用失败，跳过问题：{question[:40]}... 错误：{str(e)}")
                 return None
@@ -171,6 +178,7 @@ class LCPO_Runner:
         返回:
             list[int]: 排序后的 token 数值（从高 ACC 到低）
         """
+        print(qa_dict)
         token_list = list(qa_dict.keys())
         acc_list = []
 
@@ -326,7 +334,7 @@ def parse_args():
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     # init_token_list
     parser.add_argument("--init_left", type=int, default=100, help="初试token_list边界左值")
-    parser.add_argument("--init_right", type=int, default=8000, help="初试token_list边界右值")
+    parser.add_argument("--init_right", type=int, default=800, help="初试token_list边界右值")
     parser.add_argument("--init_step", type=int, default=1000, help="初试token_list边界步长")
     return parser.parse_args()
 

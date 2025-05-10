@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="delete a log and fix bm_listwise" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix bm_lcpo">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_lcpo_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo_benchmark.py" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,28 +35,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Python.dataset2json (1).executor": "Run",
-    "Python.dataset2json (2).executor": "Run",
-    "Python.dataset2json.executor": "Run",
-    "Python.exp_lcpo.executor": "Run",
-    "Python.exp_lcpo_benchmark.executor": "Run",
-    "Python.exp_llm.executor": "Run",
-    "Python.exp_prompt.executor": "Run",
-    "Python.general_llm_client.executor": "Run",
-    "Python.gpqa.executor": "Run",
-    "Python.length_optimizer (1).executor": "Run",
-    "Python.length_optimizer.executor": "Run",
-    "Python.popb_optimizer.executor": "Run",
-    "Python.run.executor": "Run",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
-    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO",
-    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json (2).executor&quot;: &quot;Run&quot;,
+    &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_lcpo_benchmark.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
+    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
+    &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
+    &quot;Python.run.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code_store\Python\Self-LCPO" />
@@ -524,7 +527,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746801246993</updated>
     </task>
-    <option name="localTasksCounter" value="40" />
+    <task id="LOCAL-00040" summary="fix bm_lcpo">
+      <option name="closed" value="true" />
+      <created>1746848971975</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1746848971975</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -539,7 +550,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add dataset" />
     <MESSAGE value="finish PBO-LC" />
     <MESSAGE value="add protect-token" />
     <MESSAGE value="modify ssh and add config" />
@@ -564,6 +574,7 @@
     <MESSAGE value="fix benchmark sample_k" />
     <MESSAGE value="delete a log" />
     <MESSAGE value="delete a log and fix bm_listwise" />
-    <option name="LAST_COMMIT_MESSAGE" value="delete a log and fix bm_listwise" />
+    <MESSAGE value="fix bm_lcpo" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix bm_lcpo" />
   </component>
 </project>
