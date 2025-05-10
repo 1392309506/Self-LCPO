@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="modify dataset prompt" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="delete a log and fix bm_listwise" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -32,27 +32,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.dataset2json (2).executor&quot;: &quot;Run&quot;,
-    &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.dataset2json (1).executor": "Run",
+    "Python.dataset2json (2).executor": "Run",
+    "Python.dataset2json.executor": "Run",
+    "Python.exp_lcpo.executor": "Run",
+    "Python.exp_lcpo_benchmark.executor": "Run",
+    "Python.exp_llm.executor": "Run",
+    "Python.exp_prompt.executor": "Run",
+    "Python.general_llm_client.executor": "Run",
+    "Python.gpqa.executor": "Run",
+    "Python.length_optimizer (1).executor": "Run",
+    "Python.length_optimizer.executor": "Run",
+    "Python.popb_optimizer.executor": "Run",
+    "Python.run.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code_store\Python\Self-LCPO" />
@@ -74,7 +75,7 @@
       <command value="pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_lcpo">
+  <component name="RunManager" selected="Python.exp_lcpo_benchmark">
     <configuration name="dataset2json (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Self-LCPO" />
       <option name="ENV_FILES" value="" />
@@ -119,28 +120,6 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="dataset2json" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Self-LCPO" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/AGIEval-MATH" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\dataset\LIAR\dataset2json.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <configuration name="exp_lcpo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="Self-LCPO" />
       <option name="ENV_FILES" value="" />
@@ -155,6 +134,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_lcpo.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exp_lcpo_benchmark" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="Self-LCPO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_lcpo_benchmark.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -185,34 +186,12 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="length_optimizer (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="Self-LCPO" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/component" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/component/length_optimizer.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.exp_lcpo_benchmark" />
         <item itemvalue="Python.exp_lcpo" />
         <item itemvalue="Python.exp_prompt" />
         <item itemvalue="Python.dataset2json (2)" />
-        <item itemvalue="Python.dataset2json (1)" />
         <item itemvalue="Python.dataset2json (1)" />
       </list>
     </recent_temporary>
@@ -489,7 +468,63 @@
       <option name="project" value="LOCAL" />
       <updated>1746722046267</updated>
     </task>
-    <option name="localTasksCounter" value="33" />
+    <task id="LOCAL-00033" summary="fix ConfigLoader">
+      <option name="closed" value="true" />
+      <created>1746764432624</created>
+      <option name="number" value="00033" />
+      <option name="presentableId" value="LOCAL-00033" />
+      <option name="project" value="LOCAL" />
+      <updated>1746764432624</updated>
+    </task>
+    <task id="LOCAL-00034" summary="modify PBO">
+      <option name="closed" value="true" />
+      <created>1746773464861</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1746773464861</updated>
+    </task>
+    <task id="LOCAL-00035" summary="strength PBO and add benchmark experiment">
+      <option name="closed" value="true" />
+      <created>1746798101988</created>
+      <option name="number" value="00035" />
+      <option name="presentableId" value="LOCAL-00035" />
+      <option name="project" value="LOCAL" />
+      <updated>1746798101988</updated>
+    </task>
+    <task id="LOCAL-00036" summary="fix save_results">
+      <option name="closed" value="true" />
+      <created>1746800232372</created>
+      <option name="number" value="00036" />
+      <option name="presentableId" value="LOCAL-00036" />
+      <option name="project" value="LOCAL" />
+      <updated>1746800232372</updated>
+    </task>
+    <task id="LOCAL-00037" summary="fix benchmark sample_k">
+      <option name="closed" value="true" />
+      <created>1746800533083</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1746800533083</updated>
+    </task>
+    <task id="LOCAL-00038" summary="delete a log">
+      <option name="closed" value="true" />
+      <created>1746801007311</created>
+      <option name="number" value="00038" />
+      <option name="presentableId" value="LOCAL-00038" />
+      <option name="project" value="LOCAL" />
+      <updated>1746801007311</updated>
+    </task>
+    <task id="LOCAL-00039" summary="delete a log and fix bm_listwise">
+      <option name="closed" value="true" />
+      <created>1746801246993</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1746801246993</updated>
+    </task>
+    <option name="localTasksCounter" value="40" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -504,12 +539,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Supplementary README.md document content" />
-    <MESSAGE value="Optimization tool category, supplement llm_client" />
-    <MESSAGE value="Optimization tool category, supplement llm_client, complete exp_llm" />
-    <MESSAGE value="add metagpt" />
-    <MESSAGE value="complete exp_lcpo" />
-    <MESSAGE value="fix model and make it strong" />
     <MESSAGE value="add dataset" />
     <MESSAGE value="finish PBO-LC" />
     <MESSAGE value="add protect-token" />
@@ -527,8 +556,14 @@
     <MESSAGE value="add paint.py and fix bayesian" />
     <MESSAGE value="fix 150000 to 15000" />
     <MESSAGE value="modify exp_llm" />
-    <MESSAGE value="fix ConfigLoader" />
     <MESSAGE value="modify dataset prompt" />
-    <option name="LAST_COMMIT_MESSAGE" value="modify dataset prompt" />
+    <MESSAGE value="fix ConfigLoader" />
+    <MESSAGE value="modify PBO" />
+    <MESSAGE value="strength PBO and add benchmark experiment" />
+    <MESSAGE value="fix save_results" />
+    <MESSAGE value="fix benchmark sample_k" />
+    <MESSAGE value="delete a log" />
+    <MESSAGE value="delete a log and fix bm_listwise" />
+    <option name="LAST_COMMIT_MESSAGE" value="delete a log and fix bm_listwise" />
   </component>
 </project>

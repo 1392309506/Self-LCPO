@@ -168,7 +168,6 @@ class LCPO_Runner:
 
         参数:
             qa_dict: dict[token] = list[{'question':..., 'answer':..., 'pred':...}]
-            top_ratio: 使用每组 QA 对中的前若干比例样本评估 ACC
         返回:
             list[int]: 排序后的 token 数值（从高 ACC 到低）
         """
@@ -216,7 +215,7 @@ class LCPO_Runner:
 
         # 构建 QA dict：{token: list[qa dict]}
         init_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in self.initial_tokens}
-        ranked_tokens = self.benchmark_listwise(init_qa_dict, top_ratio=0.1)
+        ranked_tokens = self.benchmark_listwise(init_qa_dict)
         ranked_indices = [self.initial_tokens.index(t) for t in ranked_tokens]
         self.opt.update_listwise(self.initial_tokens, ranked_indices)
 
@@ -238,7 +237,7 @@ class LCPO_Runner:
 
             # 排序当前池并删除最差的若干个（保留 best_token）
             current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
-            ranked_tokens = self.benchmark_listwise(current_qa_dict, top_ratio=0.1)
+            ranked_tokens = self.benchmark_listwise(current_qa_dict)
             ranked_indices = [self.token_list.index(t) for t in ranked_tokens]
             self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
 
@@ -280,7 +279,7 @@ class LCPO_Runner:
 
             # 只在所有 token 生成与处理完毕后一次性更新模型
             current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
-            ranked_tokens = self.benchmark_listwise(current_qa_dict, top_ratio=0.1)
+            ranked_tokens = self.benchmark_listwise(current_qa_dict)
             ranked_indices = [self.token_list.index(t) for t in ranked_tokens]
             self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
             logger.info(f"📊 排序 index: {ranked_indices}")
