@@ -334,7 +334,7 @@ def parse_args():
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     # init_token_list
     parser.add_argument("--init_left", type=int, default=100, help="初试token_list边界左值")
-    parser.add_argument("--init_right", type=int, default=800, help="初试token_list边界右值")
+    parser.add_argument("--init_right", type=int, default=8000, help="初试token_list边界右值")
     parser.add_argument("--init_step", type=int, default=1000, help="初试token_list边界步长")
     return parser.parse_args()
 
