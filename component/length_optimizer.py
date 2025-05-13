@@ -103,7 +103,7 @@ class TokenLengthOptimizer:
             candidates, _ = optimize_acqf(
                 acq_function=acq_func,
                 bounds=bounds,
-                q=1,
+                q=2,
                 num_restarts=5,
                 raw_samples=64,
             )

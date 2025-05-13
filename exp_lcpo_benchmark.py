@@ -23,16 +23,16 @@ logger = LoggerUtil.get_logger("exp_lcpo_benchmark")
 class LCPO_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, is_truth : str,
                  n_steps: int = 5, protect_token: int = 0, template: str = "GPQA_PROMPT",
-                 initial_tokens=list(range(1000, 5001, 500)), is_extract:str="true", protect_prompt:str=""):
+                 initial_tokens=list(range(100, 8001, 1000)), is_extract:str="true", protect_prompt:str=""):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
         self.qa_all = self.loadUtil.load_json(0)
-        split_point = max(1, len(self.qa_all) // 10)
+        split_point = max(1, len(self.qa_all) // 10 * 3)
 
-        self.qa = self.qa_all[:split_point]  # 前 10% 作为训练集
-        self.qa_test = self.qa_all[split_point:]  # 后 90% 作为测试集
+        self.qa = self.qa_all[:split_point]
+        self.qa_test = self.qa_all[split_point:]
 
         self.Evaluator = Evaluator()
         self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
@@ -188,13 +188,12 @@ class LCPO_Runner:
             correct = 0
             total = 0
             for item in qa_pairs:
-                pred = item.get("pred", "").strip()
+                pre = item.get("pre", "").strip()
                 ans = item.get("answer", "").strip()
-                if pred != "None" and ans != "None":
+                if pre != "None" and ans != "None":
                     total += 1
-                    if pred == ans:
+                    if pre == ans:
                         correct += 1
-
             acc = correct / total if total > 0 else 0.0
             logger.info("Token = "+str(token)+" | ACC = "+str(acc))
             acc_list.append(acc)
@@ -325,11 +324,11 @@ def parse_args():
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="o3", help="Project name")
     # train
-    parser.add_argument("--dataset", type=str, default="gpqa", help="Project name")
+    parser.add_argument("--dataset", type=str, default="str", help="Project name")
     parser.add_argument("--n_steps", type=int, default=6, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
-    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
+    parser.add_argument("--template", type=str, default="STR_PROMPT", help="使用的prompt模板")
     parser.add_argument("--is_truth", type=str, default="true", help="是否有人工标注")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     # init_token_list

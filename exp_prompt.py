@@ -10,6 +10,7 @@ from typing import List, Optional
 from component.config_loader import ConfigLoader
 from prompt.execute_prompt import SPO_PROMPT, COT_PROMPT
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
+from prompt.dataset_prompt import MATH_PROMPT,GPQA_PROMPT,WSC_PROMPT,BBH_PROMPT,STR_PROMPT,BOOLQ_PROMPT
 
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -21,13 +22,17 @@ logger = LoggerUtil.get_logger("exp_prompt")
 
 class Prompt_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 0, prompt: str = "",
-                 template: str = "", is_extract:str="true"):
+                  is_extract:str="true"):
         self.config = config
         self.model_name = model_name
         self.dataset = dataset
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
-        self.qa = self.loadUtil.load_json(0)
+        self.qa_all = self.loadUtil.load_json(0)
+        split_point = max(1, len(self.qa_all) // 10 * 3)
+
+        self.qa_train = self.qa_all[:split_point]
+        self.qa = self.qa_all[split_point:]
 
         self.Evaluator = Evaluator()
         self.llm = ChatLLM(
@@ -44,7 +49,15 @@ class Prompt_Runner:
         self.acc = 0
         self.cnt = 1
         self.prompt = prompt
-        self.template = template
+        self.prompts = {
+            "math": MATH_PROMPT,
+            "gpqa": GPQA_PROMPT,
+            "wsc": WSC_PROMPT,
+            "bbh": BBH_PROMPT,
+            "str": STR_PROMPT,
+            "boolq": BOOLQ_PROMPT
+        }
+        self.template = self.prompts[dataset]
         self.is_extract = is_extract
 
         extract_model = config.models["gpt"]
@@ -113,6 +126,7 @@ class Prompt_Runner:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
         question = item.get("question")
         content = prompt + "\n" + question
+        print(content)
 
         async with self._semaphore:
             try:
@@ -197,7 +211,6 @@ def parse_args():
     parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
     parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
-    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     return parser.parse_args()
 
@@ -208,7 +221,7 @@ def main():
     try:
         config = ConfigLoader(args.config)
         runner = Prompt_Runner(config, args.model_name, args.dataset, token=args.token, prompt=args.prompt,
-                               template=args.template,is_extract=args.is_extract)
+                               is_extract=args.is_extract)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

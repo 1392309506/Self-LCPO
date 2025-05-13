@@ -24,6 +24,8 @@ class ChatLLM:
         self.temperature = params.get("temperature", 0.7)
         self.max_tokens = params.get("max_tokens", 1024)
         self.total_token = 0
+        self.prompt_token = 0
+        self.completion_token = 0
         self.cur_token = 0
         logger.info("初始化Chat LLM | Name: "+name)
         logger.info(params)
@@ -95,7 +97,7 @@ class ChatLLM:
                     do_sample=True,
                     pad_token_id=self.tokenizer.eos_token_id
                 )
-                     # ✅ Token统计
+                # ✅ Token统计
                 input_ids = inputs["input_ids"]
                 input_token_count = input_ids.shape[1]
                 output_token_count = outputs.shape[1] - input_ids.shape[1]
@@ -119,10 +121,13 @@ class ChatLLM:
                     model=self.model,
                     messages=messages,
                     temperature=self.temperature,
-                    max_tokens=self.max_tokens
+                    max_tokens=self.max_tokens,
+                    stream=True
                 )
                 self.cur_token = completion.usage.total_tokens
                 self.total_token+=self.cur_token
+                self.prompt_token += completion.usage.prompt_tokens
+                self.completion_token += completion.usage.completion_tokens
                 return completion.choices[0].message
             except Exception as e:
                 print(f"Error occurred: {e}, retrying... ({retries + 1}/{max_retries})")
@@ -139,6 +144,11 @@ class ChatLLM:
         返回当前累计的 token 总花销
         """
         return self.total_token
+
+    def get_completion_token(self) -> int:
+        return self.completion_token
+    def get_prompt_token(self) -> int:
+        return self.prompt_token
     def get_current_token(self) -> int:
         return self.cur_token
 
@@ -147,13 +157,13 @@ class ChatLLM:
         token花销归零
         """
         self.total_token = 0
+        self.prompt_token = 0
+        self.completion_token = 0
 
 if __name__ == "__main__":
     async def main():
         llm = ChatLLM(
-            api_type="qwq",
-            api_key="sk-iX0M9keAJemCgNFqvQMVLyWkcembRT27ix50aymLnvZ18QuT",
-            base_url="https://api.chatanywhere.tech",
+            api_type="gpt",
             # params={
             #     "model": "",
             #     "temperature": 0.7,

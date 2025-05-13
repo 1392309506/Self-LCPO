@@ -24,7 +24,7 @@ STR_PROMPT="""
 Please think step by step
 Ensure the response concludes with the answer in the XML format:
 <answer>Yes or No</answer>
-Think for {count} tokens.
+Think until you have used exactly {count} tokens. Do not stop early. Only after reaching the full count, Once you reach the count, output immediately.
 """
 
 

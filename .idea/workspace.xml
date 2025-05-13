@@ -4,14 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix bm_lcpo">
-      <change afterPath="$PROJECT_DIR$/ACC-suggested.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ACC-token.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Self-LCPO.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/TBO.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add additional experiment">
+      <change afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ACC-suggested.py" beforeDir="false" afterPath="$PROJECT_DIR$/ACC-suggested.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ACC-token.py" beforeDir="false" afterPath="$PROJECT_DIR$/ACC-token.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat/chat_llm_openai.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/chat_llm_openai.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_lcpo_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo_benchmark.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/dataset_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/dataset_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/execute_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +48,8 @@
   </component>
   <component name="PropertiesComponent">{
   &quot;keyToString&quot;: {
+    &quot;Python.ACC-suggested.executor&quot;: &quot;Run&quot;,
+    &quot;Python.ACC-token.executor&quot;: &quot;Run&quot;,
     &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.dataset2json (2).executor&quot;: &quot;Run&quot;,
     &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
@@ -71,11 +79,11 @@
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\test" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\OlyMath" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\GBSM8K" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\LIAR" />
-      <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -83,52 +91,8 @@
       <command value="pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_lcpo_benchmark">
-    <configuration name="dataset2json (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TBO" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/LIAR" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/LIAR/dataset2json.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="dataset2json (2)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TBO" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/dataset/OlyMath" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/dataset/OlyMath/dataset2json.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="exp_lcpo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.exp_llm">
+    <configuration name="ACC-suggested" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -141,7 +105,29 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_lcpo.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ACC-suggested.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="ACC-token" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="TBO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ACC-token.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -164,6 +150,28 @@
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
       <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_lcpo_benchmark.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="exp_llm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="TBO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_llm.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,11 +204,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.exp_lcpo_benchmark" />
-        <item itemvalue="Python.exp_lcpo" />
+        <item itemvalue="Python.exp_llm" />
         <item itemvalue="Python.exp_prompt" />
-        <item itemvalue="Python.dataset2json (2)" />
-        <item itemvalue="Python.dataset2json (1)" />
+        <item itemvalue="Python.ACC-suggested" />
+        <item itemvalue="Python.ACC-token" />
+        <item itemvalue="Python.exp_lcpo_benchmark" />
       </list>
     </recent_temporary>
   </component>
@@ -548,7 +556,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746855301549</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="add additional experiment">
+      <option name="closed" value="true" />
+      <created>1746938572965</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1746938572965</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -563,7 +579,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="finish PBO-LC" />
     <MESSAGE value="add protect-token" />
     <MESSAGE value="modify ssh and add config" />
     <MESSAGE value="fix extract" />
@@ -588,6 +603,7 @@
     <MESSAGE value="delete a log" />
     <MESSAGE value="delete a log and fix bm_listwise" />
     <MESSAGE value="fix bm_lcpo" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix bm_lcpo" />
+    <MESSAGE value="add additional experiment" />
+    <option name="LAST_COMMIT_MESSAGE" value="add additional experiment" />
   </component>
 </project>

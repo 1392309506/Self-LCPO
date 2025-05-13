@@ -9,6 +9,8 @@ from random import randint
 from typing import List
 import matplotlib.pyplot as plt
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT, EXTRACT_PROMPT
+from prompt.dataset_prompt import MATH_PROMPT,GPQA_PROMPT,WSC_PROMPT,BBH_PROMPT,STR_PROMPT,BOOLQ_PROMPT
+
 from component.config_loader import ConfigLoader
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -21,7 +23,7 @@ logger = LoggerUtil.get_logger("exp_llm")
 
 
 class IO_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, template: str):
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
@@ -39,7 +41,15 @@ class IO_Runner:
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.result = 0
         self.cnt = 0
-        self.template = template
+        self.prompts = {
+            "math": MATH_PROMPT,
+            "gpqa": GPQA_PROMPT,
+            "wsc": WSC_PROMPT,
+            "bbh": BBH_PROMPT,
+            "str": STR_PROMPT,
+            "boolq": BOOLQ_PROMPT
+        }
+        self.template = self.prompts[dataset]
 
         extract_model = config.models["gpt"]
         self.extract_llm = ChatLLM(
@@ -50,6 +60,7 @@ class IO_Runner:
             name="extract_llm"
         )
         self.acc_list={}
+        self.result = []
 
     import matplotlib.pyplot as plt
 
@@ -59,9 +70,8 @@ class IO_Runner:
         results_dir.mkdir(parents=True, exist_ok=True)
 
         # 生成时间戳+随机码文件夹名
-        timestamp = datetime.now().strftime("%Y%m%d_%H%M_" + self.dataset)
-        random_code = hex(randint(0, 65535))[2:].upper()
-        folder = results_dir / f"{timestamp}_{random_code}"
+        timestamp = datetime.now().strftime("%Y%m%d")
+        folder = results_dir / f"{timestamp}_LLM_{self.dataset}"
         folder.mkdir(parents=True, exist_ok=True)
 
         # 提取 acc_list 中的 ACC 值（acc_list[token] = qa_pairs）
@@ -103,6 +113,7 @@ class IO_Runner:
     async def _fetch_answer(self, item: dict, prompt: str = "") -> str | None:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
         question = item.get("question")
+
         content = prompt + "\n" + question
 
         async with self._semaphore:
@@ -115,11 +126,13 @@ class IO_Runner:
                     return None
 
                 answer = LoadUtils.extract_content(response.content, "answer")
+                # print(response.content)
                 standard_answer = item.get("answer")
                 # LLM 提取答案（修正）
                 if answer != standard_answer:
                     answer = await self._extract(standard=standard_answer, personal=response.content, question=question)
-
+                if answer != standard_answer:
+                    print(content)
                 logger.info(str(self.cnt) + ": " + answer + " | " + standard_answer)
                 self.cnt += 1
                 return answer
@@ -144,8 +157,9 @@ class IO_Runner:
     async def run(self):
         """执行实验流程"""
         try:
-            init_tokenlist = list(range(100,2701,200))
+            init_tokenlist = list(range(100,2701,400))
             for token in init_tokenlist:
+                self.llm.token2zero()
                 logger.info(f"开始训练的token数量为：{token}")
                 answers = await self._execute_prompt(token)
 
@@ -158,7 +172,19 @@ class IO_Runner:
 
                 f1_score = self.F1_Evaluator.calculate_f1_list(self.qa, answers)
                 acc = self.F1_Evaluator.calculate_ACC(self.qa, answers)
+                total_token = self.llm.get_total_token()
+                prompt_token = self.llm.get_prompt_token()
+                completion_token = self.llm.get_completion_token()
                 avg_token = self.llm.get_total_token() / self.F1_Evaluator.get_len()
+                result = {
+                    "suggest_token": token,
+                    "acc": acc,
+                    "total_token": total_token,
+                    "prompt_token": prompt_token,
+                    "completion_token": completion_token,
+                }
+                self.result.append(result)
+                print(result)
 
                 logger.info(f"total_token={self.llm.get_total_token()}")
                 logger.info(
@@ -175,11 +201,9 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="ds", help="使用的模型名称")
-    parser.add_argument("--dataset", type=str, default="boolq", help="评估使用的数据集名称")
-
+    parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
+    parser.add_argument("--dataset", type=str, default="str", help="评估使用的数据集名称")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
-    parser.add_argument("--template", type=str, default="BOOLQ_PROMPT", help="使用的prompt模板")
     return parser.parse_args()
 
 
@@ -188,7 +212,7 @@ def main():
     print(args)
     try:
         config = ConfigLoader(args.config)
-        runner = IO_Runner(config, args.model_name, args.dataset, args.template)
+        runner = IO_Runner(config, args.model_name, args.dataset)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

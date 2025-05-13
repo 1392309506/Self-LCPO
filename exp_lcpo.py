@@ -10,7 +10,7 @@ from typing import List
 
 from component.length_optimizer import TokenLengthOptimizer
 from component.config_loader import ConfigLoader
-from prompt.dataset_prompt import MATH_PROMPT
+from prompt.dataset_prompt import MATH_PROMPT,GPQA_PROMPT,WSC_PROMPT,BBH_PROMPT,STR_PROMPT,BOOLQ_PROMPT
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 from utils.load_utils import LoadUtils
 from chat.chat_llm_openai import ChatLLM
@@ -24,7 +24,7 @@ logger = LoggerUtil.get_logger("exp_lcpo")
 class LCPO_Runner:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, is_truth : str,
                  sample_k: int = 0, n_steps: int = 5,
-                 protect_token: int = 0, template: str = "GPQA_PROMPT", initial_tokens=list(range(1000, 5001, 500)),
+                 protect_token: int = 0, initial_tokens=list(range(100, 8000, 1000)),
                  is_extract:str="true", protect_prompt:str=""):
         self.config = config
         self.dataset = dataset
@@ -51,7 +51,15 @@ class LCPO_Runner:
         self.protect_token = protect_token
         self.protect_prompt = protect_prompt
         self.model_name = model_name
-        self.template = template
+        self.prompts = {
+            "math": MATH_PROMPT,
+            "gpqa": GPQA_PROMPT,
+            "wsc": WSC_PROMPT,
+            "bbh": BBH_PROMPT,
+            "str": STR_PROMPT,
+            "boolq": BOOLQ_PROMPT
+        }
+        self.template = self.prompts[dataset]
 
         extract_model = config.models["gpt"]
         self.extract_llm = ChatLLM(
@@ -67,6 +75,7 @@ class LCPO_Runner:
 
         self.cnt = 0
         self.results = []
+
 
     async def _save_results(self):
         """保存最优 prompt、预测结果、token 使用信息等到统一目录"""
@@ -284,12 +293,11 @@ def parse_args():
     parser.add_argument("--n_steps", type=int, default=20, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
-    parser.add_argument("--template", type=str, default="GPQA_PROMPT", help="使用的prompt模板")
-    parser.add_argument("--is_truth", type=str, default="true", help="是否有人工标注")
-    parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
+    parser.add_argument("--is_truth", type=str, default="false", help="是否有人工标注")
+    parser.add_argument("--is_extract", type=str, default="false", help="是否需要提取")
     # init_token_list
     parser.add_argument("--init_left", type=int, default=100, help="初试token_list边界左值")
-    parser.add_argument("--init_right", type=int, default=8000, help="初试token_list边界右值")
+    parser.add_argument("--init_right", type=int, default=15000, help="初试token_list边界右值")
     parser.add_argument("--init_step", type=int, default=1000, help="初试token_list边界步长")
     return parser.parse_args()
 
@@ -303,7 +311,7 @@ def main():
         config = ConfigLoader(args.config)
         runner = LCPO_Runner(config=config, model_name=args.model_name, dataset=args.dataset,
                              sample_k=args.sample_k, n_steps=args.n_steps, protect_token=args.protect_token,
-                             template=args.template, initial_tokens=initial_tokens, is_truth=args.is_truth,
+                              initial_tokens=initial_tokens, is_truth=args.is_truth,
                              is_extract=args.is_extract)
 
         loop = asyncio.get_event_loop()
