@@ -4,20 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add additional experiment">
-      <change afterPath="$PROJECT_DIR$/test/test.py" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix additional experiment">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ACC-suggested.py" beforeDir="false" afterPath="$PROJECT_DIR$/ACC-suggested.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ACC-token.py" beforeDir="false" afterPath="$PROJECT_DIR$/ACC-token.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat/chat_llm_openai.py" beforeDir="false" afterPath="$PROJECT_DIR$/chat/chat_llm_openai.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/component/length_optimizer.py" beforeDir="false" afterPath="$PROJECT_DIR$/component/length_optimizer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_lcpo_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo_benchmark.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/dataset_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/dataset_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/prompt/execute_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -564,7 +555,15 @@
       <option name="project" value="LOCAL" />
       <updated>1746938572965</updated>
     </task>
-    <option name="localTasksCounter" value="43" />
+    <task id="LOCAL-00043" summary="fix additional experiment">
+      <option name="closed" value="true" />
+      <created>1747142764641</created>
+      <option name="number" value="00043" />
+      <option name="presentableId" value="LOCAL-00043" />
+      <option name="project" value="LOCAL" />
+      <updated>1747142764641</updated>
+    </task>
+    <option name="localTasksCounter" value="44" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -579,7 +578,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add protect-token" />
     <MESSAGE value="modify ssh and add config" />
     <MESSAGE value="fix extract" />
     <MESSAGE value="a little fix" />
@@ -604,6 +602,7 @@
     <MESSAGE value="delete a log and fix bm_listwise" />
     <MESSAGE value="fix bm_lcpo" />
     <MESSAGE value="add additional experiment" />
-    <option name="LAST_COMMIT_MESSAGE" value="add additional experiment" />
+    <MESSAGE value="fix additional experiment" />
+    <option name="LAST_COMMIT_MESSAGE" value="fix additional experiment" />
   </component>
 </project>

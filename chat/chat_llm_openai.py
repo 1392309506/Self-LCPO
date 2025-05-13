@@ -122,7 +122,6 @@ class ChatLLM:
                     messages=messages,
                     temperature=self.temperature,
                     max_tokens=self.max_tokens,
-                    stream=True
                 )
                 self.cur_token = completion.usage.total_tokens
                 self.total_token+=self.cur_token

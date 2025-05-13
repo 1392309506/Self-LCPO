@@ -5,10 +5,9 @@ import json
 import argparse
 from datetime import datetime
 from pathlib import Path
-from random import randint
 from typing import List
 import matplotlib.pyplot as plt
-from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT, EXTRACT_PROMPT
+from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 from prompt.dataset_prompt import MATH_PROMPT,GPQA_PROMPT,WSC_PROMPT,BBH_PROMPT,STR_PROMPT,BOOLQ_PROMPT
 
 from component.config_loader import ConfigLoader

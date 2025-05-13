@@ -29,10 +29,7 @@ class Prompt_Runner:
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
         self.qa_all = self.loadUtil.load_json(0)
-        split_point = max(1, len(self.qa_all) // 10 * 3)
-
-        self.qa_train = self.qa_all[:split_point]
-        self.qa = self.qa_all[split_point:]
+        self.qa = self.qa_all
 
         self.Evaluator = Evaluator()
         self.llm = ChatLLM(
@@ -209,7 +206,7 @@ def parse_args():
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
-    parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
+    parser.add_argument("--token", type=int, default=6656, help="用于测试的 token 数量")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     return parser.parse_args()
