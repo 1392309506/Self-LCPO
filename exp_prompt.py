@@ -145,7 +145,9 @@ class Prompt_Runner:
                 token_count = self.llm.get_current_token()  # 获取当前API请求消耗的token数量
                 # 记录答案和token消耗
                 result = {
+                    "prompt": prompt,
                     "question": question,
+                    "standard_answer": standard_answer,
                     "answer": answer,
                     "token_consumed": token_count
                 }
@@ -172,8 +174,8 @@ class Prompt_Runner:
     async def run(self):
         """执行实验流程，获取每道题的答案和消耗的token数量，并保存结果"""
         logger.info(f"开始训练的token数量为：{self.token}")
-        await self._execute_prompt(self.token)
-        answers = [item["answer"] for item in self.results if item["answer"] is not None]
+        answers = await self._execute_prompt(self.token)
+        # [item["answer"] for item in self.results if item["answer"] is not None]
         try:
             # 计算 F1 和 ACC
             self.f1_score = self.Evaluator.calculate_f1_list(self.qa, answers)
@@ -207,7 +209,7 @@ def parse_args():
     parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
     parser.add_argument("--token", type=int, default=6656, help="用于测试的 token 数量")
-    parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
+    parser.add_argument("--prompt", type=str, default="cot", help="用于测试的特殊提示")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     return parser.parse_args()
 

@@ -141,7 +141,6 @@ class IO_Runner:
 
     async def _extract(self, standard: str, personal: str, question: str) -> str:
         prompt = EXTRACT_ANSWER_PROMPT.format(standard=standard, personal=personal)
-        # prompt = EXTRACT_PROMPT.format(content=personal,question=question)
         messages = [{"role": "user", "content": prompt}]
         response = await self.extract_llm.chat(messages)
         personal = LoadUtils.extract_content(response.content, "answer")
@@ -156,7 +155,7 @@ class IO_Runner:
     async def run(self):
         """执行实验流程"""
         try:
-            init_tokenlist = list(range(100,2701,400))
+            init_tokenlist = list(range(1300,2701,400))
             for token in init_tokenlist:
                 self.llm.token2zero()
                 logger.info(f"开始训练的token数量为：{token}")
@@ -201,7 +200,7 @@ def parse_args():
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
-    parser.add_argument("--dataset", type=str, default="str", help="评估使用的数据集名称")
+    parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
     return parser.parse_args()
 
