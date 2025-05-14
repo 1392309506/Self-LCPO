@@ -1,5 +1,6 @@
 BLANK_PROMPT="""
-Conclude your response with the final answer formatted in XML: <answer>your_answer_here</answer>.
+Ensure the response concludes with the answer in the XML format:
+<answer>A, B, C or D</answer>
 """
 
 

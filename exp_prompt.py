@@ -8,7 +8,7 @@ from pathlib import Path
 from typing import List, Optional
 
 from component.config_loader import ConfigLoader
-from prompt.execute_prompt import SPO_PROMPT, COT_PROMPT
+from prompt.execute_prompt import SPO_PROMPT, COT_PROMPT, BLANK_PROMPT
 from prompt.extract_prompt import EXTRACT_ANSWER_PROMPT
 from prompt.dataset_prompt import MATH_PROMPT,GPQA_PROMPT,WSC_PROMPT,BBH_PROMPT,STR_PROMPT,BOOLQ_PROMPT
 
@@ -87,6 +87,7 @@ class Prompt_Runner:
                     "f1_score": self.f1_score,
                     "accuracy": self.acc,
                     "total_token": self.llm.get_total_token(),
+                    "avg_token": self.llm.get_total_token()/len(self.results),
                     "dataset": self.dataset
                 }, f, indent=4, ensure_ascii=False)
             logger.info(f"Results saved to {results_path}")
@@ -112,6 +113,8 @@ class Prompt_Runner:
             prompt = SPO_PROMPT
         elif self.prompt == "cot":
             prompt = COT_PROMPT
+        elif self.prompt == "blank":
+            prompt = BLANK_PROMPT
         else:
             prompt = self.template.format(count=n)
 
@@ -123,7 +126,6 @@ class Prompt_Runner:
         """发送异步请求获取答案（失败返回 None，不污染 F1 数据）"""
         question = item.get("question")
         content = prompt + "\n" + question
-        print(content)
 
         async with self._semaphore:
             try:
@@ -208,8 +210,8 @@ def parse_args():
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
-    parser.add_argument("--token", type=int, default=6656, help="用于测试的 token 数量")
-    parser.add_argument("--prompt", type=str, default="cot", help="用于测试的特殊提示")
+    parser.add_argument("--token", type=int, default=3250, help="用于测试的 token 数量")
+    parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
     parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     return parser.parse_args()
 

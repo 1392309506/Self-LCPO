@@ -5,9 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix additional experiment">
+      <change afterPath="$PROJECT_DIR$/test/calculate/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/calculate/calculate_acc.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/calculate/calculate_increase.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/calculate/latex_table.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/calculate/latex_table_parser.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/paint/__init__.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/paint/table1.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/test/paint/table1.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ACC-suggested.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/paint/ACC-suggested.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ACC-token.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/paint/ACC-token.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/paint.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/paint/paint.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/prompt/execute_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -37,31 +47,36 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Python.ACC-suggested.executor&quot;: &quot;Run&quot;,
-    &quot;Python.ACC-token.executor&quot;: &quot;Run&quot;,
-    &quot;Python.dataset2json (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.dataset2json (2).executor&quot;: &quot;Run&quot;,
-    &quot;Python.dataset2json.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_lcpo_benchmark.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
-    &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
-    &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
-    &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer (1).executor&quot;: &quot;Run&quot;,
-    &quot;Python.length_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.popb_optimizer.executor&quot;: &quot;Run&quot;,
-    &quot;Python.run.executor&quot;: &quot;Run&quot;,
-    &quot;Python.test.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/Code_store/Python/Self-LCPO&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Python.ACC-suggested.executor": "Run",
+    "Python.ACC-token.executor": "Run",
+    "Python.calculate_acc.executor": "Run",
+    "Python.calculate_increase.executor": "Run",
+    "Python.dataset2json (1).executor": "Run",
+    "Python.dataset2json (2).executor": "Run",
+    "Python.dataset2json.executor": "Run",
+    "Python.exp_lcpo.executor": "Run",
+    "Python.exp_lcpo_benchmark.executor": "Run",
+    "Python.exp_llm.executor": "Run",
+    "Python.exp_prompt.executor": "Run",
+    "Python.general_llm_client.executor": "Run",
+    "Python.gpqa.executor": "Run",
+    "Python.latex_table_parser (1).executor": "Run",
+    "Python.latex_table_parser.executor": "Run",
+    "Python.length_optimizer (1).executor": "Run",
+    "Python.length_optimizer.executor": "Run",
+    "Python.popb_optimizer.executor": "Run",
+    "Python.run.executor": "Run",
+    "Python.table1.executor": "Run",
+    "Python.test.executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "D:/Code_store/Python/Self-LCPO",
+    "settings.editor.selected.configurable": "com.jetbrains.python.configuration.PyActiveSdkModuleConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="D:\Code_store\Python\Self-LCPO" />
@@ -71,11 +86,11 @@
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\ AGIEval-MATH" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\Code_store\Python\Self-LCPO\test\paint" />
+      <recent name="D:\Code_store\Python\Self-LCPO\test\calculate" />
       <recent name="D:\Code_store\Python\Self-LCPO\test" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset" />
       <recent name="D:\Code_store\Python\Self-LCPO\dataset\OlyMath" />
-      <recent name="D:\Code_store\Python\Self-LCPO\dataset\GBSM8K" />
-      <recent name="D:\Code_store\Python\Self-LCPO\dataset\LIAR" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -83,8 +98,8 @@
       <command value="pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_llm">
-    <configuration name="ACC-suggested" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.exp_prompt">
+    <configuration name="calculate_acc" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -93,11 +108,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/calculate" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ACC-suggested.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/calculate/calculate_acc.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -106,7 +121,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="ACC-token" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="calculate_increase" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -115,33 +130,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/calculate" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/ACC-token.py" />
-      <option name="PARAMETERS" value="" />
-      <option name="SHOW_COMMAND_LINE" value="false" />
-      <option name="EMULATE_TERMINAL" value="false" />
-      <option name="MODULE_MODE" value="false" />
-      <option name="REDIRECT_INPUT" value="false" />
-      <option name="INPUT_FILE" value="" />
-      <method v="2" />
-    </configuration>
-    <configuration name="exp_llm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
-      <module name="TBO" />
-      <option name="ENV_FILES" value="" />
-      <option name="INTERPRETER_OPTIONS" value="" />
-      <option name="PARENT_ENVS" value="true" />
-      <envs>
-        <env name="PYTHONUNBUFFERED" value="1" />
-      </envs>
-      <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
-      <option name="IS_MODULE_SDK" value="true" />
-      <option name="ADD_CONTENT_ROOTS" value="true" />
-      <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_llm.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/calculate/calculate_increase.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,7 +165,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="test" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="latex_table_parser (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,11 +174,33 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/calculate" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/test.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/calculate/latex_table_parser.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="table1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="TBO" />
+      <option name="ENV_FILES" value="" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/paint" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/paint/table1.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -196,11 +211,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.exp_llm" />
         <item itemvalue="Python.exp_prompt" />
-        <item itemvalue="Python.test" />
-        <item itemvalue="Python.ACC-suggested" />
-        <item itemvalue="Python.ACC-token" />
+        <item itemvalue="Python.table1" />
+        <item itemvalue="Python.calculate_increase" />
+        <item itemvalue="Python.latex_table_parser (1)" />
+        <item itemvalue="Python.calculate_acc" />
       </list>
     </recent_temporary>
   </component>
@@ -572,7 +587,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747151571485</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="fix additional experiment">
+      <option name="closed" value="true" />
+      <created>1747199847305</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1747199847305</updated>
+    </task>
+    <option name="localTasksCounter" value="46" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
