@@ -18,8 +18,8 @@ def main():
 
     # 图像与数据输出路径
     output_dir = 'figures'
-    if file_path.startswith('results/exp_prompt/'):
-        relative_subpath = file_path[len('results/exp_prompt/'):]  # '20250503/...'
+    if file_path.startswith('../../results/exp_prompt/'):
+        relative_subpath = file_path[len('../../results/exp_prompt/'):]  # '20250503/...'
     relative_dir = os.path.dirname(relative_subpath)  # '20250503/20250503_ds_boolq'
     # 构造输出路径
     output_dir = os.path.join('figures', relative_dir)
@@ -96,7 +96,7 @@ def main():
 
 def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
-    parser.add_argument('--file_path', type=str, default="results/exp_prompt/20250505/20250505_ds_gpqa/results_data.json", help="目录")
+    parser.add_argument('--file_path', type=str, default="../../results/exp_prompt/20250515/cot_o3_wsc/results_data.json", help="目录")
     return parser.parse_args()
 
 if __name__ == "__main__":

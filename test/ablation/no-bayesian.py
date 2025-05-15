@@ -33,6 +33,7 @@ class LCPO_Runner:
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
         self.qa = self.loadUtil.load_json(sample_k)
+
         self.Evaluator = Evaluator()
         self.qa_answers_by_ni = {}  # 存储每个 token 限制下的 QA 对
         self.llm = ChatLLM(
@@ -42,8 +43,9 @@ class LCPO_Runner:
             params=self.model.get("params"),
             name="exp_lcpo",
         )
-        self.opt = TokenLengthOptimizer(token_bounds=(min(initial_tokens), max(initial_tokens)), config=config, model_name=model_name, llm=self.llm,
-                                        qa=self.qa,is_truth=is_truth)
+        self.opt = TokenLengthOptimizer(token_bounds=(min(initial_tokens), max(initial_tokens)), config=config,
+                                        model_name=model_name, llm=self.llm,
+                                        qa=self.qa, is_truth=is_truth)
         self.max_concurrent_requests = 5  # 建议 5~15，根据模型和账户配额灵活设置
         self._semaphore = asyncio.Semaphore(self.max_concurrent_requests)
         self.n_steps = n_steps
@@ -145,7 +147,6 @@ class LCPO_Runner:
                     return "None"
 
                 answer = response.content
-                # logger.info(answer)
                 # 需要人工标注：答案作为监督信号。否则过程作为监督信号
                 if self.is_truth == "true" :
                     answer = LoadUtils.extract_content(answer, "answer")
@@ -174,7 +175,6 @@ class LCPO_Runner:
 
     async def _warmup(self):
         """执行 warm-up 初始化阶段"""
-        # initial_tokens = self.config.experiment["n_i_values"]
 
         for n_i in self.initial_tokens:
             logger.info(f"开始训练的token数量为：{n_i}")
@@ -194,85 +194,14 @@ class LCPO_Runner:
 
         init_qa_dict = {n_i: self.qa_answers_by_ni[n_i] for n_i in self.initial_tokens}
         ranked_indices = await self.opt.listwise(qa_dict=init_qa_dict)
-        self.opt.update_listwise(self.initial_tokens, ranked_indices)
+        print(ranked_indices)
+        self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
 
-    async def _iterative_optimization(self):
-        """执行多轮优化迭代（滑动窗口控制 token 集）"""
-        n_steps = self.n_steps
-
-        for step in range(n_steps):
-            logger.info(f"\n[Step {step + 1}] 当前候选池: {self.token_list}")
-            best_token = 0
-
-            try:
-                best_token = self.opt.get_best_token()
-                logger.info(f"🎯 当前 GP 模型预测最优 token 可能为: {best_token}")
-            except Exception:
-                logger.warning("⚠️ 尚无可用的 GP 最优 token，使用默认值 0")
-
-            # 排序当前池并删除最差的若干个（保留 best_token）
-            current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
-            ranked_indices = await self.opt.listwise(qa_dict=current_qa_dict)
-            self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
-
-            n_change = max(1, len(self.token_list) // 3)
-            tokens_to_remove = self.sorted_tokens[-n_change:]
-
-            for t in tokens_to_remove:
-                if t != best_token and t != self.protect_token:
-                    self.token_list.remove(t)
-                    logger.info(f"🗑️  移除 token: {t}")
-                else:
-                    logger.info(f"🔒 保留 best_token: {t}（禁止移除）")
-                    n_change -= 1
-
-            # 生成新 token，exclude 中不要包含 best_token
-            exclude_set = (set(self.qa_answers_by_ni.keys()) | set(self.token_list)) - {best_token}
-            new_tokens = self.opt.suggest_next(
-                n_suggestions=max(n_change, 1),
-                anchor_token=best_token,
-                exclude=exclude_set,
-            )
-
-            logger.info(f"新增 token: {new_tokens}")
-
-            # 过滤：排除空值（避免 NoneType 错误）和重复项
-            filtered_new_tokens = [
-                token for token in new_tokens
-                if token is not None and token not in self.all_tested_tokens
-            ]
-            self.token_list.extend(filtered_new_tokens)
-            logger.info(f"➕ 过滤后新增 : {filtered_new_tokens}")
-
-            # 执行新 token 的生成（仅处理过滤后的 token）
-            for n_i in filtered_new_tokens:
-                logger.info(f"生成 token={n_i} 的回答中")
-                answers = await self._execute_prompt(n_i)
-                self.qa_answers_by_ni[n_i] = answers
-                self.all_tested_tokens.add(n_i)  # 标记为已处理
-
-            # 只在所有 token 生成与处理完毕后一次性更新模型
-            current_qa_dict = {n: self.qa_answers_by_ni[n] for n in self.token_list}
-            ranked_indices = await self.opt.listwise(current_qa_dict)
-            self.sorted_tokens = [self.token_list[i] for i in ranked_indices]
-            logger.info(f"📊 排序 index: {ranked_indices}")
-            logger.info(f"➡️  token 排名: {self.sorted_tokens}")
-
-            self.opt.update_listwise(self.token_list, ranked_indices)
-            logger.info("✅ 模型已更新")
-
-            if len(self.token_list) < 4:
-                logger.info(f"✅ token_list 长度过短，提前终止迭代 (当前为 {len(self.token_list)})")
-                break
 
     async def run(self):
         """主实验入口：包含 warm-up + 多轮优化"""
         try:
             await self._warmup()
-            print("🔎 token_history:", self.opt.token_history)
-            print("🔎 comparisons:", self.opt.comparisons)
-            logger.info("🚀 进入贝叶斯优化迭代阶段")
-            await self._iterative_optimization()
 
             logger.info("🏁 模型训练结束")
             await self._save_results()
@@ -286,13 +215,13 @@ class LCPO_Runner:
 def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     # config
-    parser.add_argument('--config', type=str, default='config/config_llm.yaml',
+    parser.add_argument('--config', type=str, default='../../config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="o3", help="Project name")
     # train
-    parser.add_argument("--dataset", type=str, default="str", help="Project name")
+    parser.add_argument("--dataset", type=str, default="wsc", help="Project name")
     parser.add_argument("--sample_k", type=int, default=2, help="抽样的QA数量（0表示全部）")
-    parser.add_argument("--n_steps", type=int, default=20, help="贝叶斯优化迭代轮次")
+    parser.add_argument("--n_steps", type=int, default=10, help="贝叶斯优化迭代轮次")
     parser.add_argument("--protect_token", type=int, default=0, help="特殊token花销")
     parser.add_argument("--protect_prompt", type=str, default="COT_PROMPT", help="特殊token模板")
     parser.add_argument("--is_truth", type=str, default="false", help="是否有人工标注")

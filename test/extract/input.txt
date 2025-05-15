@@ -1,0 +1,10 @@
+str	gpqa	bbh	wsc
+Count: 227.0000	Count: 198.0000	Count: 250.0000	Count: 270.0000
+Mean: 908.1189	Mean: 3290.5303	Mean: 896.8760	Mean: 756.1926
+Std Dev: 614.8547	Std Dev: 2860.2962	Std Dev: 283.5503	Std Dev: 460.1992
+Min: 215.0000	Min: 391.0000	Min: 383.0000	Min: 266.0000
+Max: 3808.0000	Max: 14787.0000	Max: 2159.0000	Max: 2605.0000
+Zscore Min: -1.1273	Zscore Min: -1.0137	Zscore Min: -1.8123	Zscore Min: -1.0652
+Zscore Max: 4.7164	Zscore Max: 4.0193	Zscore Max: 4.4511	Zscore Max: 4.0174
+Skewness: 1.9893	Skewness: 1.7142	Skewness: 1.1921	Skewness: 1.8208
+Kurtosis: 4.3482	Kurtosis: 2.6730	Kurtosis: 2.5775	Kurtosis: 2.9596

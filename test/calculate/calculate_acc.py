@@ -92,7 +92,7 @@ def main():
     import argparse
 
     parser = argparse.ArgumentParser(description='计算模型回答准确率(ACC)')
-    parser.add_argument('-input_file', default='../../results/exp_prompt/20250514/o3_gpqa/results_data.json', help='输入的JSON文件路径')
+    parser.add_argument('-input_file', default='../../results/exp_prompt/20250514/cot_o3_gpqa/results_data.json', help='输入的JSON文件路径')
     parser.add_argument('-output', default='result.json', help='输出报告文件路径(可选)')
     args = parser.parse_args()
 

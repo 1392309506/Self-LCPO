@@ -18,9 +18,9 @@ from chat.chat_llm_openai import ChatLLM
 from component.evaluator import Evaluator
 from utils.logger_utils import LoggerUtil
 
-logger = LoggerUtil.get_logger("exp_prompt")
+logger = LoggerUtil.get_logger("exp_prompt2")
 
-class Prompt_Runner:
+class Prompt_Runner2:
     def __init__(self, config: ConfigLoader, model_name: str, dataset: str, token: int = 0, prompt: str = "",
                   is_extract:str="true"):
         self.config = config
@@ -209,9 +209,9 @@ def parse_args():
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
     parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
-    parser.add_argument("--dataset", type=str, default="str", help="评估使用的数据集名称")
-    parser.add_argument("--token", type=int, default=2100, help="用于测试的 token 数量")
-    parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
+    parser.add_argument("--dataset", type=str, default="wsc", help="评估使用的数据集名称")
+    parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
+    parser.add_argument("--prompt", type=str, default="cot", help="用于测试的特殊提示")
     parser.add_argument("--is_extract", type=str, default="false", help="是否需要提取")
     return parser.parse_args()
 
@@ -221,7 +221,7 @@ def main():
     logger.info(args)
     try:
         config = ConfigLoader(args.config)
-        runner = Prompt_Runner(config, args.model_name, args.dataset, token=args.token, prompt=args.prompt,
+        runner = Prompt_Runner2(config, args.model_name, args.dataset, token=args.token, prompt=args.prompt,
                                is_extract=args.is_extract)
 
         loop = asyncio.get_event_loop()

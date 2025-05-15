@@ -22,7 +22,7 @@ logger = LoggerUtil.get_logger("exp_llm")
 
 
 class IO_Runner:
-    def __init__(self, config: ConfigLoader, model_name: str, dataset: str):
+    def __init__(self, config: ConfigLoader, model_name: str, dataset: str, initial_tokens=list(range(100, 8001, 1000)),):
         self.config = config
         self.dataset = dataset
         self.model = config.models[model_name]
@@ -60,8 +60,7 @@ class IO_Runner:
         )
         self.acc_list={}
         self.result = []
-
-    import matplotlib.pyplot as plt
+        self.initial_tokens = initial_tokens
 
     def _save_results(self):
         """保存 ACC 分数，并绘制结果图"""
@@ -70,7 +69,7 @@ class IO_Runner:
 
         # 生成时间戳+随机码文件夹名
         timestamp = datetime.now().strftime("%Y%m%d")
-        folder = results_dir / f"{timestamp}_LLM_{self.dataset}"
+        folder = results_dir / "exp_llm" /f"{timestamp}_LLM_{self.dataset}"
         folder.mkdir(parents=True, exist_ok=True)
 
         # 提取 acc_list 中的 ACC 值（acc_list[token] = qa_pairs）
@@ -82,7 +81,7 @@ class IO_Runner:
         # 保存 JSON
         results_path = folder / "results.json"
         with open(results_path, "w", encoding="utf-8") as f:
-            json.dump(acc_result, f, indent=2, ensure_ascii=False)
+            json.dump(self.result, f, indent=2, ensure_ascii=False)
 
         # 绘制 ACC 曲线图
         tokens = sorted(acc_result.keys())
@@ -155,8 +154,7 @@ class IO_Runner:
     async def run(self):
         """执行实验流程"""
         try:
-            init_tokenlist = list(range(1300,2701,400))
-            for token in init_tokenlist:
+            for token in self.initial_tokens:
                 self.llm.token2zero()
                 logger.info(f"开始训练的token数量为：{token}")
                 answers = await self._execute_prompt(token)
@@ -177,9 +175,9 @@ class IO_Runner:
                 result = {
                     "suggest_token": token,
                     "acc": acc,
-                    "total_token": total_token,
-                    "prompt_token": prompt_token,
-                    "completion_token": completion_token,
+                    "total_token": total_token/len(self.qa),
+                    "prompt_token": prompt_token/len(self.qa),
+                    "completion_token": completion_token/len(self.qa),
                 }
                 self.result.append(result)
                 print(result)
@@ -202,6 +200,10 @@ def parse_args():
     parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
+    # init_token_list
+    parser.add_argument("--init_left", type=int, default=100, help="初试token_list边界左值")
+    parser.add_argument("--init_right", type=int, default=8000, help="初试token_list边界右值")
+    parser.add_argument("--init_step", type=int, default=1000, help="初试token_list边界步长")
     return parser.parse_args()
 
 
@@ -209,8 +211,9 @@ def main():
     args = parse_args()
     print(args)
     try:
+        initial_tokens = list(range(args.init_left, args.init_right, args.init_step))
         config = ConfigLoader(args.config)
-        runner = IO_Runner(config, args.model_name, args.dataset)
+        runner = IO_Runner(config=config, model_name=args.model_name, dataset=args.dataset,initial_tokens=initial_tokens)
 
         loop = asyncio.get_event_loop()
         loop.run_until_complete(runner.run())

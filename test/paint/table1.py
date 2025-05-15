@@ -8,8 +8,8 @@ def extract_data_from_txt(file_path):
         content = f.read()
 
     # 分割数据集
-    datasets = content.split('\n')[:2]  # 只处理前两行（StrategyQA和gpqa）
-
+    datasets = content.split('\n')[1:]  # 只处理前两行（StrategyQA和gpqa）
+    print(datasets)
     results = {}
 
     for dataset in datasets:
@@ -33,7 +33,9 @@ def extract_data_from_txt(file_path):
                 extracted = {
                     'suggest_token': data['suggest_token'],
                     'acc': data['acc'],
-                    'total_token': data['total_token']
+                    'total_token': data['total_token']/100,
+                    'prompt_token': data['prompt_token']/100,
+                    'completion_token': data['completion_token']/100
                 }
                 results[dataset_name].append(extracted)
 
