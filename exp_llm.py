@@ -27,7 +27,7 @@ class IO_Runner:
         self.dataset = dataset
         self.model = config.models[model_name]
         self.loadUtil = LoadUtils(file_name=config.datasets[dataset])
-        self.qa = self.loadUtil.load_json(100)
+        self.qa = self.loadUtil.load_json(3)
         self.F1_Evaluator = Evaluator()
         self.qa_pairs = {}  # 存储每个 token 限制下的 QA 对
         self.llm = ChatLLM(
@@ -195,15 +195,17 @@ class IO_Runner:
 
 def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
-    parser.add_argument('--config', type=str, default='config/config_llm.yaml',
+    parser.add_argument('--config'
+
+                        , type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
+    parser.add_argument("--model_name", type=str, default="o4", help="使用的模型名称")
     parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
     # init_token_list
-    parser.add_argument("--init_left", type=int, default=100, help="初试token_list边界左值")
-    parser.add_argument("--init_right", type=int, default=8000, help="初试token_list边界右值")
-    parser.add_argument("--init_step", type=int, default=1000, help="初试token_list边界步长")
+    parser.add_argument("--init_left", type=int, default=2000, help="初试token_list边界左值")
+    parser.add_argument("--init_right", type=int, default=12000, help="初试token_list边界右值")
+    parser.add_argument("--init_step", type=int, default=100, help="初试token_list边界步长")
     return parser.parse_args()
 
 

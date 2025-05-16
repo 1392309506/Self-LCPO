@@ -9,7 +9,7 @@ datasets:
 
 # 模型配置
 models:
-  - name: "ds"
+  - name: "ds7b"
     api-type: "openai"
     base_url: "http://localhost:11434/v1"
     api_key: "ollama"
@@ -20,15 +20,47 @@ models:
   - name: "o3"
     api-type: "openai"
     base_url: "https://api.chatanywhere.tech"
-    api_key: "sk-2xGzyYL3nQDvw3XS9SjoDKn5aNucUxYil16rci6Gcr358zyJ"
+    api_key: "sk-mtrIkccxaoPMkQkwCKPlsNzvtwDY5eX2m93iUBrFMwd4cwxm"
     params:
       model: "o3-mini"
+      temperature: 0
+      max_tokens: 12000
+  - name: "ds"
+    api-type: "openai"
+    base_url: "https://api.chatanywhere.tech"
+    api_key: "sk-Qi7W3yX9lkwDaV5DHXAxXUVo3rinQCXa2rotl1mtSnBYRITD"
+    params:
+      model: "deepseek-r1"
+      temperature: 0
+      max_tokens: 12000
+  - name: "ds2"
+    api-type: "openai"
+    base_url: "https://api.chatanywhere.tech"
+    api_key: "sk-mtrIkccxaoPMkQkwCKPlsNzvtwDY5eX2m93iUBrFMwd4cwxm"
+    params:
+      model: "deepseek-r1"
+      temperature: 0
+      max_tokens: 12000
+  - name: "ds3"
+    api-type: "openai"
+    base_url: "https://api.chatanywhere.tech"
+    api_key: "sk-cWR6XubpwBleOn2TEjhmyIusfcaNZDQoPKrDxILk1TD5rNUs"
+    params:
+      model: "deepseek-r1"
+      temperature: 0
+      max_tokens: 12000
+  - name: "o4"
+    api-type: "openai"
+    base_url: "https://api.chatanywhere.tech"
+    api_key: "sk-Qi7W3yX9lkwDaV5DHXAxXUVo3rinQCXa2rotl1mtSnBYRITD"
+    params:
+      model: "o4-mini"
       temperature: 0
       max_tokens: 12000
   - name: "gpt"
     api-type: "openai"
     base_url: "https://api.chatanywhere.tech"
-    api_key: "sk-2xGzyYL3nQDvw3XS9SjoDKn5aNucUxYil16rci6Gcr358zyJ"
+    api_key: "sk-mtrIkccxaoPMkQkwCKPlsNzvtwDY5eX2m93iUBrFMwd4cwxm"
     # api_key: "sk-iX0M9keAJemCgNFqvQMVLyWkcembRT27ix50aymLnvZ18QuT"
     params:
       model: "gpt-3.5-turbo"

@@ -4,22 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="fix additional experiment">
-      <change afterPath="$PROJECT_DIR$/exp_prompt2.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ablation/no-bayesian.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/ablation/no-process.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/extract/__init__.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/test/extract/input.txt" afterDir="false" />
+    <list default="true" id="a549199a-7d11-4ad1-8fdd-f4a6e8ea3f0c" name="Changes" comment="add experiment">
+      <change afterPath="$PROJECT_DIR$/exp_prompt_ds3_TALE.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_prompt_o4_TBO.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/exp_prompt_o4_spo.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/config_llm.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/config/config_llm.yaml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_lcpo.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_lcpo.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_lcpo_benchmark.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/ablation/exp_lcpo_benchmark.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/exp_llm.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_llm.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nohup.out" beforeDir="false" afterPath="$PROJECT_DIR$/test/ablation/__init__.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/calculate/calculate_acc.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/calculate/calculate_acc.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/paint/paint.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/paint/paint.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/paint/table1.py" beforeDir="false" afterPath="$PROJECT_DIR$/test/paint/table1.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/paint/table1.txt" beforeDir="false" afterPath="$PROJECT_DIR$/test/paint/table1.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt_o4.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/exp_prompt2.py" beforeDir="false" afterPath="$PROJECT_DIR$/exp_prompt2.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/dataset_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/dataset_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/prompt/execute_prompt.py" beforeDir="false" afterPath="$PROJECT_DIR$/prompt/execute_prompt.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/data_utils.py" beforeDir="false" afterPath="$PROJECT_DIR$/utils/data_utils.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,9 +59,23 @@
     &quot;Python.exp_lcpo.executor&quot;: &quot;Run&quot;,
     &quot;Python.exp_lcpo_benchmark.executor&quot;: &quot;Run&quot;,
     &quot;Python.exp_llm.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm2 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm3.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm4.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm5.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_llm6.executor&quot;: &quot;Run&quot;,
     &quot;Python.exp_llm_STR.executor&quot;: &quot;Run&quot;,
     &quot;Python.exp_prompt.executor&quot;: &quot;Run&quot;,
     &quot;Python.exp_prompt2.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_ds2_IO (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_ds2_IO.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_ds2_TALE (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_ds3_TALE (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_ds_IO.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_ds_TALE.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_o4 (1).executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_o4_TBO.executor&quot;: &quot;Run&quot;,
+    &quot;Python.exp_prompt_o4_spo (1).executor&quot;: &quot;Run&quot;,
     &quot;Python.general_llm_client.executor&quot;: &quot;Run&quot;,
     &quot;Python.gpqa.executor&quot;: &quot;Run&quot;,
     &quot;Python.latex_table_parser (1).executor&quot;: &quot;Run&quot;,
@@ -105,8 +116,8 @@
       <command value="pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple" />
     </option>
   </component>
-  <component name="RunManager" selected="Python.exp_llm">
-    <configuration name="exp_llm" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Python.exp_lcpo">
+    <configuration name="exp_lcpo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -119,7 +130,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_llm.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_lcpo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -128,7 +139,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="exp_llm_STR" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="exp_prompt_o4 (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -141,7 +152,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_llm_STR.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_prompt_o4.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -150,7 +161,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="exp_prompt" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="exp_prompt_o4_TBO" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -163,7 +174,7 @@
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_prompt.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_prompt_o4_TBO.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -172,7 +183,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="no-bayesian" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="exp_prompt_o4_spo (1)" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -181,11 +192,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/ablation" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/ablation/no-bayesian.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/exp_prompt_o4_spo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -194,7 +205,7 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
-    <configuration name="table1" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+    <configuration name="exp_prompt_o4_spo" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
       <module name="TBO" />
       <option name="ENV_FILES" value="" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -203,11 +214,11 @@
         <env name="PYTHONUNBUFFERED" value="1" />
       </envs>
       <option name="SDK_HOME" value="" />
-      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$/test/paint" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
       <option name="IS_MODULE_SDK" value="true" />
       <option name="ADD_CONTENT_ROOTS" value="true" />
       <option name="ADD_SOURCE_ROOTS" value="true" />
-      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/test/paint/table1.py" />
+      <option name="SCRIPT_NAME" value="D:\Code_store\Python\Self-LCPO\exp_prompt_o4_spo.py" />
       <option name="PARAMETERS" value="" />
       <option name="SHOW_COMMAND_LINE" value="false" />
       <option name="EMULATE_TERMINAL" value="false" />
@@ -218,11 +229,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Python.exp_llm" />
-        <item itemvalue="Python.table1" />
-        <item itemvalue="Python.no-bayesian" />
-        <item itemvalue="Python.exp_prompt" />
-        <item itemvalue="Python.exp_llm_STR" />
+        <item itemvalue="Python.exp_lcpo" />
+        <item itemvalue="Python.exp_prompt_o4_TBO" />
+        <item itemvalue="Python.exp_prompt_o4_spo (1)" />
+        <item itemvalue="Python.exp_prompt_o4 (1)" />
+        <item itemvalue="Python.exp_prompt_o4_spo" />
       </list>
     </recent_temporary>
   </component>
@@ -610,7 +621,15 @@
       <option name="project" value="LOCAL" />
       <updated>1747205141687</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="add experiment">
+      <option name="closed" value="true" />
+      <created>1747278963218</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1747278963218</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -625,7 +644,6 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="modify ssh and add config" />
     <MESSAGE value="fix extract" />
     <MESSAGE value="a little fix" />
     <MESSAGE value="modify requirements" />
@@ -650,6 +668,7 @@
     <MESSAGE value="fix bm_lcpo" />
     <MESSAGE value="add additional experiment" />
     <MESSAGE value="fix additional experiment" />
-    <option name="LAST_COMMIT_MESSAGE" value="fix additional experiment" />
+    <MESSAGE value="add experiment" />
+    <option name="LAST_COMMIT_MESSAGE" value="add experiment" />
   </component>
 </project>

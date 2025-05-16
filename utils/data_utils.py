@@ -33,7 +33,7 @@ class DataUtils:
         return None
 
     def get_results_file_path(self, prompt_path: Path) -> Path:
-        return prompt_path / "results.json"
+        return prompt_path / "str_results.json"
 
     def create_result_data(self, round: int, answers: list[dict], prompt: str, succeed: bool, tokens: int) -> dict:
         now = datetime.datetime.now()
@@ -45,7 +45,7 @@ class DataUtils:
 
     def _load_scores(self):
         rounds_dir = self.root_path / "prompts"
-        result_file = rounds_dir / "results.json"
+        result_file = rounds_dir / "str_results.json"
         self.top_scores = []
 
         try:

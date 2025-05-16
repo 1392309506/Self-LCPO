@@ -75,7 +75,7 @@ class Prompt_Runner:
 
         # exp_prompt/日期/模型名_数据集名
         timestamp = datetime.now().strftime("%Y%m%d")
-        folder = results_dir / "exp_prompt" / timestamp / f"{self.model_name}_{self.dataset}"
+        folder = results_dir / "exp_prompt_ds_TALE" / timestamp / f"{self.model_name}_{self.dataset}"
         folder.mkdir(parents=True, exist_ok=True)
 
         # 保存分数
@@ -208,11 +208,11 @@ def parse_args():
     parser = argparse.ArgumentParser(description='大模型思考长度实验')
     parser.add_argument('--config', type=str, default='config/config_llm.yaml',
                         help='配置文件路径（默认：config/config_llm.yaml）')
-    parser.add_argument("--model_name", type=str, default="o3", help="使用的模型名称")
-    parser.add_argument("--dataset", type=str, default="str", help="评估使用的数据集名称")
-    parser.add_argument("--token", type=int, default=2100, help="用于测试的 token 数量")
+    parser.add_argument("--model_name", type=str, default="ds3", help="使用的模型名称")
+    parser.add_argument("--dataset", type=str, default="gpqa", help="评估使用的数据集名称")
+    parser.add_argument("--token", type=int, default=0, help="用于测试的 token 数量")
     parser.add_argument("--prompt", type=str, default="", help="用于测试的特殊提示")
-    parser.add_argument("--is_extract", type=str, default="false", help="是否需要提取")
+    parser.add_argument("--is_extract", type=str, default="true", help="是否需要提取")
     return parser.parse_args()
 
 
